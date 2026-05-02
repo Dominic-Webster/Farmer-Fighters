@@ -1,20 +1,34 @@
 [gd_scene format=3 uid="uid://dxehpbkc50swe"]
 
 [ext_resource type="Script" uid="uid://r2b0g2n63i4x" path="res://player/player.gd" id="1_3c3w1"]
-[ext_resource type="Texture2D" uid="uid://dtenx2tr85twu" path="res://icon.svg" id="1_ulp21"]
+[ext_resource type="PackedScene" uid="uid://71uyi7sm2pys" path="res://scenes/bullet/bullet.tscn" id="2_wnvi2"]
+[ext_resource type="Texture2D" uid="uid://11jws6okj3ol" path="res://player/temp_farmer.png" id="3_wnvi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
-size = Vector2(128, 128)
+size = Vector2(96, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnvi2"]
+size = Vector2(96, 176)
 
 [node name="Player" type="CharacterBody2D" unique_id=1057382120]
+collision_mask = 16
 script = ExtResource("1_3c3w1")
+bullet_scene = ExtResource("2_wnvi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1000172112]
-texture = ExtResource("1_ulp21")
+scale = Vector2(8, 8)
+texture = ExtResource("3_wnvi2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=168178212]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=168178212]
 shape = SubResource("RectangleShape2D_ulp21")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1451360841]
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1451360841]
 
 [node name="Timer" type="Timer" parent="." unique_id=2064562530]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=615748774]
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1755343782]
+shape = SubResource("RectangleShape2D_wnvi2")
+debug_color = Color(0.5616511, 0.5566963, 0.16425428, 0.41960785)

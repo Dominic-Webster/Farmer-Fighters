@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://6hvwbnhjywsy"]
+
+[ext_resource type="Script" uid="uid://gehpehg04te7" path="res://scenes/temp_enemy/temp_enemy.gd" id="1_ct1jc"]
+[ext_resource type="Texture2D" uid="uid://bvs4q2dnxd66h" path="res://scenes/temp_enemy/chips.png" id="2_ct1jc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1jc"]
+size = Vector2(112, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n02v"]
+size = Vector2(112, 128)
+
+[node name="TempEnemy" type="CharacterBody2D" unique_id=1649133003]
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_ct1jc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429257884]
+scale = Vector2(4, 4)
+texture = ExtResource("2_ct1jc")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1846907719]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ct1jc")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=390549218]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=507705423]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_7n02v")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

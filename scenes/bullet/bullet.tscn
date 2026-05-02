@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://71uyi7sm2pys"]
+
+[ext_resource type="Texture2D" uid="uid://burxfocm1a4l8" path="res://scenes/bullet/Tomato.png" id="1_7c8un"]
+[ext_resource type="Script" uid="uid://5up256ti0xho" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
+radius = 15.033297
+
+[node name="Bullet" type="Area2D" unique_id=333448136]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_83itf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1597927093]
+texture = ExtResource("1_7c8un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1046330663]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_83itf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2132901817]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
