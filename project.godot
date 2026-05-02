@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Farmer Fighters"
+run/main_scene="uid://box6td8thmvls"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="viewport"
 
 [physics]
 
