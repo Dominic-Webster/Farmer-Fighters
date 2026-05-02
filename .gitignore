@@ -1,0 +1,17 @@
+# Godot 4+
+.godot/
+
+# Godot 3 (if applicable)
+.import/
+
+# Exported builds
+export.cfg
+export_presets.cfg
+
+# Mono / C#
+.mono/
+data_*/
+
+# OS junk
+.DS_Store
+Thumbs.db
