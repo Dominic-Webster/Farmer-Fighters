@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://11jws6okj3ol" path="res://player/temp_farmer.png" id="3_wnvi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
-size = Vector2(96, 176)
+size = Vector2(120, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnvi2"]
-size = Vector2(96, 176)
+size = Vector2(120, 220)
 
 [node name="Player" type="CharacterBody2D" unique_id=1057382120]
 collision_mask = 16
@@ -16,7 +16,7 @@ script = ExtResource("1_3c3w1")
 bullet_scene = ExtResource("2_wnvi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1000172112]
-scale = Vector2(8, 8)
+scale = Vector2(10, 10)
 texture = ExtResource("3_wnvi2")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=168178212]
