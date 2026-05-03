@@ -11,7 +11,7 @@ size = Vector2(112, 128)
 
 [node name="TempEnemy" type="CharacterBody2D" unique_id=1649133003]
 collision_layer = 4
-collision_mask = 17
+collision_mask = 20
 script = ExtResource("1_ct1jc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429257884]

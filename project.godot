@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Farmer Fighters"
-run/main_scene="uid://box6td8thmvls"
+run/main_scene="uid://26crlnyqwmbm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+RunManager="*uid://c4ju8dq2o4gso"
 
 [display]
 

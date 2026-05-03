@@ -1,17 +1,29 @@
 extends CharacterBody2D
 class_name Player
 
+signal damaged
+
 @onready var timer : Timer = $Timer
 @onready var shoot_point : Marker2D = $ShootPoint
+@onready var sprite : Sprite2D = $Sprite2D
+
+@export var max_health : int = 4
+var current_health : int
 
 @export var speed : float = 400
 @export var fire_rate : float = 0.3
 var can_shoot : bool = true
+var is_flashing : bool = false
 
 @export var bullet_scene : PackedScene
 
+var knockback_velocity := Vector2.ZERO
+@export var knockback_strength := 300
+@export var knockback_decay := 800
+
 
 func _ready() -> void:
+	current_health = max_health
 	add_to_group("player")
 
 
@@ -23,7 +35,14 @@ func _physics_process(_delta):
 	
 	direction = direction.normalized()
 	
-	velocity = direction * speed
+	var move_velocity = direction * speed
+	
+	# Apply Knockback
+	velocity = move_velocity + knockback_velocity
+	
+	# Smoothly reduce knockback over time
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
+	
 	move_and_slide()
 
 
@@ -59,3 +78,38 @@ func shoot(direction: Vector2):
 	timer.start()
 	await timer.timeout
 	can_shoot = true
+
+
+func _on_hurt_box_area_entered(area) -> void:
+	if area.is_in_group("enemy"):
+		var dir = (global_position - area.global_position).normalized()
+		knockback_velocity = dir * knockback_strength
+		
+		if area.get("damage"):
+			take_damage(area.damage)
+		else:
+			take_damage(1)
+
+
+func take_damage(amount : int):
+	current_health -= amount
+	flash_red()
+	damaged.emit()
+	
+	if current_health < 1:
+		player_died()
+
+
+func player_died():
+	queue_free()
+
+
+func flash_red():
+	if is_flashing:
+		return
+	
+	is_flashing = true
+	sprite.modulate = Color(1, 0.4, 0.4) # red
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color(1, 1, 1) # back to normal
+	is_flashing = false
