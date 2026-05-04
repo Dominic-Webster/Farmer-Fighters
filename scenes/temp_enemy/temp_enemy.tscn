@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvs4q2dnxd66h" path="res://scenes/temp_enemy/chips.png" id="2_ct1jc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1jc"]
-size = Vector2(112, 128)
+size = Vector2(112, 64.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n02v"]
 size = Vector2(112, 128)
@@ -19,7 +19,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_ct1jc")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1846907719]
-position = Vector2(0.5, -0.5)
+position = Vector2(0.5, 31.25)
 shape = SubResource("RectangleShape2D_ct1jc")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=390549218]

@@ -7,7 +7,7 @@ signal damaged
 @onready var shoot_point : Marker2D = $ShootPoint
 @onready var sprite : Sprite2D = $Sprite2D
 
-@export var max_health : int = 4
+@export var max_health : int = 6
 var current_health : int
 
 @export var speed : float = 400

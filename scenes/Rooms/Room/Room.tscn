@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://b63p34hpa5iuq"]
 
+[ext_resource type="Texture2D" uid="uid://dcbxfm7sij107" path="res://scenes/Rooms/Room/room1.png" id="1_endo3"]
+
 [node name="Room" type="Node2D" unique_id=479718819]
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
+scale = Vector2(4, 4)
+texture = ExtResource("1_endo3")
+centered = false

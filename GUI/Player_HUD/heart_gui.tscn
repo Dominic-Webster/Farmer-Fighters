@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dfubkg2426icd"]
+
+[ext_resource type="Script" uid="uid://dbs4n2vk7brrv" path="res://GUI/Player_HUD/heart_gui.gd" id="1_r8rx1"]
+[ext_resource type="Texture2D" uid="uid://crkqead1q8ka1" path="res://GUI/Player_HUD/Tomato_health.png" id="2_s2x5a"]
+
+[node name="HeartGui" type="Control" unique_id=801388645]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r8rx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942648599]
+scale = Vector2(3, 3)
+texture = ExtResource("2_s2x5a")
+centered = false
+hframes = 2
+vframes = 2

@@ -2,15 +2,28 @@
 
 [ext_resource type="Script" uid="uid://crksrwxccpows" path="res://scenes/test/test_combat.gd" id="1_st4qh"]
 [ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_51e2l"]
-[ext_resource type="Texture2D" uid="uid://bnxprbhsl8rpr" path="res://scenes/test/floor.png" id="2_oj4i3"]
+[ext_resource type="Texture2D" uid="uid://dcbxfm7sij107" path="res://scenes/Rooms/Room/room1.png" id="2_oj4i3"]
 [ext_resource type="PackedScene" uid="uid://6hvwbnhjywsy" path="res://scenes/temp_enemy/temp_enemy.tscn" id="3_oj4i3"]
+[ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="5_oj4i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj4i3"]
+size = Vector2(1920, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6n02"]
+size = Vector2(1920, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1suh2"]
+size = Vector2(166, 777)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ns80"]
+size = Vector2(166, 777)
 
 [node name="Test" type="Node2D" unique_id=12163676]
 script = ExtResource("1_st4qh")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1333106720]
-self_modulate = Color(0.1987377, 0.1987377, 0.1987377, 1)
-scale = Vector2(8, 8)
+position = Vector2(0, -9)
+scale = Vector2(4, 4)
 texture = ExtResource("2_oj4i3")
 centered = false
 
@@ -23,10 +36,39 @@ position = Vector2(418, 236)
 [node name="TempEnemy2" parent="." unique_id=1090762724 instance=ExtResource("3_oj4i3")]
 position = Vector2(1645, 741)
 
-[node name="HealthLabel" type="Label" parent="." unique_id=1319381476]
-offset_left = 20.0
-offset_top = 10.0
-offset_right = 208.0
-offset_bottom = 79.0
-theme_override_font_sizes/font_size = 50
-text = "Health: "
+[node name="PlayerHud" parent="." unique_id=1867377868 instance=ExtResource("5_oj4i3")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1010525928]
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=184710126]
+position = Vector2(960, 66.5)
+shape = SubResource("RectangleShape2D_oj4i3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1778523188]
+position = Vector2(0, 938)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=268892650]
+position = Vector2(960, 67)
+shape = SubResource("RectangleShape2D_k6n02")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=125102400]
+position = Vector2(0, 938)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2016833465]
+position = Vector2(69, -406.5)
+shape = SubResource("RectangleShape2D_1suh2")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1928215399]
+position = Vector2(1782, 938)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1855255843]
+position = Vector2(69, -406.5)
+shape = SubResource("RectangleShape2D_2ns80")
