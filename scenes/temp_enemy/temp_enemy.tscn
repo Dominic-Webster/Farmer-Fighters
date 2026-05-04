@@ -7,7 +7,7 @@
 size = Vector2(112, 64.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n02v"]
-size = Vector2(112, 128)
+size = Vector2(97, 108)
 
 [node name="TempEnemy" type="CharacterBody2D" unique_id=1649133003]
 collision_layer = 4
@@ -28,7 +28,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=507705423]
-position = Vector2(0.5, -0.5)
+position = Vector2(-1.5, 3)
 shape = SubResource("RectangleShape2D_7n02v")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
