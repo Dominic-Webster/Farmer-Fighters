@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://csiefuil5w7sk"]
+
+[ext_resource type="Script" uid="uid://84omqkjhgsfu" path="res://scenes/test/test_procedural_gen.gd" id="1_3udjo"]
+
+[node name="TestProGen" type="Node2D" unique_id=373455427]
+script = ExtResource("1_3udjo")
+
+[node name="Label" type="Label" parent="." unique_id=588571944]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -11.5
+offset_right = 1922.0
+offset_bottom = 1070.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "PROCEDURAL GENERATION TESTING"
+horizontal_alignment = 1
+vertical_alignment = 1

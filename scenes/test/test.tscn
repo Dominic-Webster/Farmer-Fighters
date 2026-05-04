@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://crksrwxccpows" path="res://scenes/test/test_combat.gd" id="1_st4qh"]
 [ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_51e2l"]
-[ext_resource type="Texture2D" uid="uid://dcbxfm7sij107" path="res://scenes/Rooms/Room/room1.png" id="2_oj4i3"]
 [ext_resource type="PackedScene" uid="uid://6hvwbnhjywsy" path="res://scenes/temp_enemy/temp_enemy.tscn" id="3_oj4i3"]
 [ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="5_oj4i3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xpfv1"]
+load_path = "res://.godot/imported/room1.png-6499510ad15172899c06cae64c47f39d.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj4i3"]
 size = Vector2(1920, 153)
@@ -24,7 +26,7 @@ script = ExtResource("1_st4qh")
 [node name="Floor" type="Sprite2D" parent="." unique_id=1333106720]
 position = Vector2(0, -9)
 scale = Vector2(4, 4)
-texture = ExtResource("2_oj4i3")
+texture = SubResource("CompressedTexture2D_xpfv1")
 centered = false
 
 [node name="Player" parent="." unique_id=1057382120 instance=ExtResource("2_51e2l")]
