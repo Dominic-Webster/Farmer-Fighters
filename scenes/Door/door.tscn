@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dm0pxgs0ljqy4"]
+
+[ext_resource type="Texture2D" uid="uid://cpxr188gsx4rw" path="res://scenes/Door/door.png" id="1_sik3a"]
+
+[node name="Door" type="Node2D" unique_id=911366584]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1869129494]
+scale = Vector2(4, 4)
+texture = ExtResource("1_sik3a")
+hframes = 2
+vframes = 2
