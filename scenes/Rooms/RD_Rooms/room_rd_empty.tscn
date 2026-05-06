@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://dmihtfjm576tw"]
+[gd_scene format=3 uid="uid://c5shx66dq8ksj"]
 
-[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_f3owq"]
-[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_oqrbd"]
-[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_5s76m"]
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_51fkr"]
+[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_g5wiu"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_40566"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv0yo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0odsv"]
 size = Vector2(1920, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
@@ -14,20 +14,20 @@ size = Vector2(895, 153)
 size = Vector2(897, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m62on"]
-size = Vector2(166, 323)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_impox"]
-size = Vector2(166, 323)
+size = Vector2(166, 776)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dcmp"]
 size = Vector2(166, 324)
 
-[node name="rdl_empty" type="Node2D" unique_id=479718819]
-script = ExtResource("1_f3owq")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_impox"]
+size = Vector2(166, 323)
+
+[node name="rd_empty" type="Node2D" unique_id=479718819]
+script = ExtResource("1_51fkr")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("3_oqrbd")
+texture = ExtResource("3_g5wiu")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -39,7 +39,7 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top" unique_id=1032411535]
 position = Vector2(960, 66.5)
-shape = SubResource("RectangleShape2D_dv0yo")
+shape = SubResource("RectangleShape2D_0odsv")
 
 [node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=17589378]
 position = Vector2(1, 938)
@@ -60,12 +60,8 @@ collision_layer = 16
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" unique_id=1101910015]
-position = Vector2(69, -179.5)
+position = Vector2(69, -406)
 shape = SubResource("RectangleShape2D_m62on")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Left" unique_id=622444905]
-position = Vector2(69, -632)
-shape = SubResource("RectangleShape2D_impox")
 
 [node name="Right" type="StaticBody2D" parent="Walls" unique_id=372076269]
 position = Vector2(1786, 946)
@@ -178,14 +174,10 @@ position = Vector2(1677, 826)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 
-[node name="DoorRight" parent="Doors" unique_id=1660162846 instance=ExtResource("5_5s76m")]
+[node name="DoorRight" parent="Doors" unique_id=1660162846 instance=ExtResource("5_40566")]
 position = Vector2(1824, 540)
 rotation = 1.5707964
 
-[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("5_5s76m")]
+[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("5_40566")]
 position = Vector2(960, 980)
 rotation = 3.1415927
-
-[node name="DoorLeft" parent="Doors" unique_id=11583183 instance=ExtResource("5_5s76m")]
-position = Vector2(96, 540)
-rotation = -1.5707964

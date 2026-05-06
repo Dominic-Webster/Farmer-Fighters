@@ -1,9 +1,6 @@
 extends Node2D
 class_name Room
 
-@export var player_scene: PackedScene
-
-@onready var gui : PlayerHud = $PlayerHud
 @onready var player_spawn_c : Marker2D = $"Player Spawns/PlayerSpawnC"
 @onready var player_spawn_t : Marker2D = $"Player Spawns/PlayerSpawnT"
 @onready var player_spawn_r : Marker2D = $"Player Spawns/PlayerSpawnR"
@@ -21,12 +18,12 @@ var door_right : bool = false
 
 
 func _enter_room(dir_from : String) -> void:
-	var player = player_scene.instantiate()
+	var player = RunManager.player
 	if not discovered:
 		match dir_from:
 			"C":
 				player.global_position = player_spawn_c.global_position
-			"T":
+			"U":
 				player.global_position = player_spawn_t.global_position
 			"R":
 				player.global_position = player_spawn_r.global_position
@@ -35,21 +32,32 @@ func _enter_room(dir_from : String) -> void:
 			"L":
 				player.global_position = player_spawn_l.global_position
 		
+		lock_doors()
 		load_enemies(dir_from)
 		discovered = true
+		
 	else:
-		pass
-	
-	add_child(player)
-	
-	if RunManager.player == null:
-		RunManager.start_new_run(player)
-	else:
-		player = RunManager.player
-	
-	gui.update_hp(player.max_health, player.max_health)
-	player.damaged.connect(func(): gui.update_hp(player.current_health, player.max_health))
+		spawn_open_doors()
+
 
 
 func load_enemies(player_spawn : String) -> void:
 	pass
+
+
+func lock_doors() -> void:
+	for door in doors.get_children():
+		if door is Door:
+			door.lock_door()
+
+
+func unlock_doors() -> void:
+	for door in doors.get_children():
+		if door is Door:
+			door.unlock_door()
+
+
+func spawn_open_doors() -> void:
+	for door in doors.get_children():
+		if door is Door:
+			door.spawn_open()

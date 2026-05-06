@@ -1,11 +1,8 @@
-[gd_scene format=3 uid="uid://dmihtfjm576tw"]
+[gd_scene format=3 uid="uid://b0icmdnj1acox"]
 
-[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_f3owq"]
-[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_oqrbd"]
-[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_5s76m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv0yo"]
-size = Vector2(1920, 153)
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_tlojw"]
+[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_j4qn7"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_2usei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
 size = Vector2(895, 153)
@@ -14,20 +11,17 @@ size = Vector2(895, 153)
 size = Vector2(897, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m62on"]
-size = Vector2(166, 323)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_impox"]
-size = Vector2(166, 323)
+size = Vector2(166, 776)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dcmp"]
-size = Vector2(166, 324)
+size = Vector2(166, 776)
 
-[node name="rdl_empty" type="Node2D" unique_id=479718819]
-script = ExtResource("1_f3owq")
+[node name="ud_empty" type="Node2D" unique_id=479718819]
+script = ExtResource("1_tlojw")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("3_oqrbd")
+texture = ExtResource("3_j4qn7")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -38,8 +32,12 @@ collision_layer = 16
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top" unique_id=1032411535]
-position = Vector2(960, 66.5)
-shape = SubResource("RectangleShape2D_dv0yo")
+position = Vector2(447.5, 66.5)
+shape = SubResource("RectangleShape2D_endo3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Top" unique_id=959034463]
+position = Vector2(1471.5, 66.5)
+shape = SubResource("RectangleShape2D_6jc54")
 
 [node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=17589378]
 position = Vector2(1, 938)
@@ -60,12 +58,8 @@ collision_layer = 16
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" unique_id=1101910015]
-position = Vector2(69, -179.5)
+position = Vector2(69, -406)
 shape = SubResource("RectangleShape2D_m62on")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Left" unique_id=622444905]
-position = Vector2(69, -632)
-shape = SubResource("RectangleShape2D_impox")
 
 [node name="Right" type="StaticBody2D" parent="Walls" unique_id=372076269]
 position = Vector2(1786, 946)
@@ -73,12 +67,8 @@ collision_layer = 16
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right" unique_id=1021384621]
-position = Vector2(69, -180)
+position = Vector2(69, -406)
 shape = SubResource("RectangleShape2D_3dcmp")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Right" unique_id=315593283]
-position = Vector2(69, -632)
-shape = SubResource("RectangleShape2D_impox")
 
 [node name="Player Spawns" type="Node2D" parent="." unique_id=332080770]
 
@@ -178,14 +168,9 @@ position = Vector2(1677, 826)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 
-[node name="DoorRight" parent="Doors" unique_id=1660162846 instance=ExtResource("5_5s76m")]
-position = Vector2(1824, 540)
-rotation = 1.5707964
+[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("5_2usei")]
+position = Vector2(960, 100)
 
-[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("5_5s76m")]
+[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("5_2usei")]
 position = Vector2(960, 980)
 rotation = 3.1415927
-
-[node name="DoorLeft" parent="Doors" unique_id=11583183 instance=ExtResource("5_5s76m")]
-position = Vector2(96, 540)
-rotation = -1.5707964

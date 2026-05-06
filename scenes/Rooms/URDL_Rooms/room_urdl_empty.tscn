@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://b63p34hpa5iuq"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_kokm8"]
-[ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_prkqh"]
 [ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_fnr8j"]
-[ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="4_5b7kp"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_onuos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
@@ -23,7 +21,6 @@ size = Vector2(166, 324)
 
 [node name="urdl_empty" type="Node2D" unique_id=479718819]
 script = ExtResource("1_kokm8")
-player_scene = ExtResource("2_prkqh")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
@@ -179,8 +176,6 @@ position = Vector2(1392, 828)
 
 [node name="EnemySpawn24" type="Marker2D" parent="EnemySpawns" unique_id=747916426]
 position = Vector2(1677, 826)
-
-[node name="PlayerHud" parent="." unique_id=1867377868 instance=ExtResource("4_5b7kp")]
 
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 

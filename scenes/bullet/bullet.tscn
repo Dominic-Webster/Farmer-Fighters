@@ -13,6 +13,7 @@ collision_mask = 20
 script = ExtResource("1_83itf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1597927093]
+z_index = 200
 texture = ExtResource("1_7c8un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1046330663]

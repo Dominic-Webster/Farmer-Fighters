@@ -94,6 +94,25 @@ func _generate_branches() -> void:
 			_branch_candidates.erase(candidate)
 
 
+func _has_room(pos: Vector2i) -> bool:
+	if pos.x < 0 or pos.x >= _dimensons.x:
+		return false
+	if pos.y < 0 or pos.y >= _dimensons.y:
+		return false
+	
+	return str(dungeon[pos.x][pos.y]) != ""
+
+
+func get_room_code(pos: Vector2i) -> String:
+	var code := ""
+	
+	if _has_room(pos + Vector2i(0, -1)): code += "U"
+	if _has_room(pos + Vector2i(1, 0)): code += "R"
+	if _has_room(pos + Vector2i(0, 1)): code += "D"
+	if _has_room(pos + Vector2i(-1, 0)): code += "L"
+	
+	return code
+
 
 # Used for debug
 func _print_dungeon() -> void:
