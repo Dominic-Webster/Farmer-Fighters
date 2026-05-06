@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://csiefuil5w7sk"]
 
 [ext_resource type="Script" uid="uid://84omqkjhgsfu" path="res://scenes/test/test_procedural_gen.gd" id="1_3udjo"]
+[ext_resource type="Texture2D" uid="uid://dtenx2tr85twu" path="res://icon.svg" id="2_x7fxb"]
 
 [node name="TestProGen" type="Node2D" unique_id=373455427]
 script = ExtResource("1_3udjo")
 
 [node name="Label" type="Label" parent="." unique_id=588571944]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,3 +21,359 @@ theme_override_font_sizes/font_size = 100
 text = "PROCEDURAL GENERATION TESTING"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="8x8" type="VBoxContainer" parent="." unique_id=492026020]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 450.0
+offset_top = 6.0
+offset_right = 1505.0
+offset_bottom = 1086.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 130
+
+[node name="HBoxContainer" type="HBoxContainer" parent="8x8" unique_id=1294606759]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=1584525877]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=2041851359]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=242273715]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=2071236683]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=1999748494]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=1127628628]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=647576032]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer" unique_id=877726056]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="8x8" unique_id=1489837669]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=1128157079]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=1520352032]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=1493592823]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=929248963]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=589854821]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=20229015]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=412665635]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer2" unique_id=829993732]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="8x8" unique_id=888644808]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=531222057]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=1567448132]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=1305173267]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=547492563]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=145321171]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=1808833388]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=1111228186]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer3" unique_id=346167993]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="8x8" unique_id=586664484]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=41112657]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=1452878822]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=1407583168]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=412199690]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=1583582475]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=1661715960]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=2084735953]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer4" unique_id=231722957]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="8x8" unique_id=62823482]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=178366346]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=103281229]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=786042683]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=1578764043]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=1612599970]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=229888702]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=938555984]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer5" unique_id=930567123]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="8x8" unique_id=902385323]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=1460805112]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=1416638211]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=425863899]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=913027744]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=1679946248]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=26780865]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=1464262903]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer6" unique_id=1780365267]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="8x8" unique_id=1493453919]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=357264997]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=1932334703]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=294216282]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=1984152549]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=1238107381]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=705944919]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=19318620]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer7" unique_id=1163953895]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="8x8" unique_id=483908155]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=1459282876]
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=289281721]
+position = Vector2(130, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=566455506]
+position = Vector2(260, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=1260592926]
+position = Vector2(390, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=2135895330]
+position = Vector2(520, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D6" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=1547991647]
+position = Vector2(650, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D7" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=481200642]
+position = Vector2(780, 0)
+texture = ExtResource("2_x7fxb")
+centered = false
+
+[node name="Sprite2D8" type="Sprite2D" parent="8x8/HBoxContainer8" unique_id=779393242]
+position = Vector2(910, 0)
+texture = ExtResource("2_x7fxb")
+centered = false

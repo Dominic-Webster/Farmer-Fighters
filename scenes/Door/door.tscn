@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cpxr188gsx4rw" path="res://scenes/Door/door.png" id="1_sik3a"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sik3a"]
+size = Vector2(128, 104)
+
 [node name="Door" type="Node2D" unique_id=911366584]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1869129494]
@@ -9,3 +12,10 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_sik3a")
 hframes = 2
 vframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1196764117]
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1876131455]
+shape = SubResource("RectangleShape2D_sik3a")

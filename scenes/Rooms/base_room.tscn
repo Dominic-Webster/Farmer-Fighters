@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://c86v3qgeku1p7"]
+
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_8ahxk"]
+[ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_ij1fv"]
+[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_bxg8r"]
+[ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="4_4ude2"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_qqecb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
+size = Vector2(1920, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e83i2"]
+size = Vector2(1920, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m62on"]
+size = Vector2(166, 776)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrxbf"]
+size = Vector2(166, 776)
+
+[node name="trdl_empty" type="Node2D" unique_id=479718819]
+script = ExtResource("1_8ahxk")
+player_scene = ExtResource("2_ij1fv")
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
+scale = Vector2(4, 4)
+texture = ExtResource("3_bxg8r")
+centered = false
+
+[node name="Walls" type="Node2D" parent="." unique_id=98348940]
+
+[node name="Top" type="StaticBody2D" parent="Walls" unique_id=949202282]
+position = Vector2(1, 9)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top" unique_id=1032411535]
+position = Vector2(960, 66.5)
+shape = SubResource("RectangleShape2D_endo3")
+
+[node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=1485712633]
+position = Vector2(1, 946)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom" unique_id=101635882]
+position = Vector2(960, 67)
+shape = SubResource("RectangleShape2D_e83i2")
+
+[node name="Left" type="StaticBody2D" parent="Walls" unique_id=1548441894]
+position = Vector2(-4, 946)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" unique_id=1101910015]
+position = Vector2(69, -406.5)
+shape = SubResource("RectangleShape2D_m62on")
+
+[node name="Right" type="StaticBody2D" parent="Walls" unique_id=668579597]
+position = Vector2(1786, 946)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right" unique_id=661722138]
+position = Vector2(69, -406.5)
+shape = SubResource("RectangleShape2D_xrxbf")
+
+[node name="Player Spawns" type="Node2D" parent="." unique_id=332080770]
+
+[node name="PlayerSpawnC" type="Marker2D" parent="Player Spawns" unique_id=1571906042]
+position = Vector2(960, 540)
+
+[node name="PlayerSpawnT" type="Marker2D" parent="Player Spawns" unique_id=290097644]
+position = Vector2(960, 200)
+
+[node name="PlayerSpawnR" type="Marker2D" parent="Player Spawns" unique_id=1368949892]
+position = Vector2(1720, 540)
+
+[node name="PlayerSpawnD" type="Marker2D" parent="Player Spawns" unique_id=375498285]
+position = Vector2(960, 880)
+
+[node name="PlayerSpawnL" type="Marker2D" parent="Player Spawns" unique_id=284417141]
+position = Vector2(200, 540)
+
+[node name="EnemySpawns" type="Node2D" parent="." unique_id=1659199399]
+
+[node name="EnemySpawn" type="Marker2D" parent="EnemySpawns" unique_id=744945110]
+
+[node name="PlayerHud" parent="." unique_id=1867377868 instance=ExtResource("4_4ude2")]
+
+[node name="Doors" type="Node2D" parent="." unique_id=1263460266]
+
+[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("5_qqecb")]
+position = Vector2(960, 100)
+
+[node name="DoorRight" parent="Doors" unique_id=1660162846 instance=ExtResource("5_qqecb")]
+position = Vector2(1820, 540)
+rotation = 1.5707964
+
+[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("5_qqecb")]
+position = Vector2(960, 980)
+rotation = 3.1415927
+
+[node name="DoorLeft" parent="Doors" unique_id=11583183 instance=ExtResource("5_qqecb")]
+position = Vector2(100, 540)
+rotation = -1.5707964

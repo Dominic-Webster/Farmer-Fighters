@@ -1,12 +1,9 @@
-# testing dungeon generation
-extends Node2D
+# Map Generation Manager
+extends Node
 
 # ---------
 # Variables
 # ---------
-
-# Visuals
-@onready var grid : VBoxContainer = $"8x8"
 
 @export var _dimensons : Vector2i = Vector2i(8, 8)
 @export var _start : Vector2i = Vector2i(-1, -1)
@@ -22,13 +19,16 @@ var _branch_candidates : Array[Vector2i]
 # Functions
 # ---------
 
-func _ready() -> void:
+
+func create_new_map() -> void:
 	_initialize_dungeon()
 	_place_entrance()
 	_generate_path(_start, _critical_path_length, "C")
 	_generate_branches()
-	_print_dungeon()
-	_display_dungeon()
+
+
+func clear_map() -> void:
+	dungeon.clear()
 
 
 func _initialize_dungeon() -> void:
@@ -94,6 +94,8 @@ func _generate_branches() -> void:
 			_branch_candidates.erase(candidate)
 
 
+
+# Used for debug
 func _print_dungeon() -> void:
 	var dungeon_as_string : String = ""
 	for y in range(_dimensons.y - 1, -1, -1):
@@ -104,25 +106,3 @@ func _print_dungeon() -> void:
 				dungeon_as_string += "   "
 		dungeon_as_string += '\n'
 	print(dungeon_as_string)
-
-
-
-func _display_dungeon() -> void:
-	for row in grid.get_children():
-		for col in row.get_children():
-			col.visible = true
-			col.modulate = Color(1.0, 1.0, 1.0, 1.0)
-			if not dungeon[col.get_index()][7 - row.get_index()]:
-				col.visible = false
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "S":
-				col.modulate = Color(0.0, 1.0, 0.0, 1.0)
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "C":
-				col.modulate = Color(0.486, 1.0, 0.714, 1.0)
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "1":
-				col.modulate = Color(0.784, 0.376, 0.0, 1.0)
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "2":
-				col.modulate = Color(1.0, 1.0, 0.0, 1.0)
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "3":
-				col.modulate = Color(0.0, 0.0, 1.0, 1.0)
-			if str(dungeon[col.get_index()][7 - row.get_index()]) == "4":
-				col.modulate = Color(1.0, 0.0, 1.0, 1.0)
