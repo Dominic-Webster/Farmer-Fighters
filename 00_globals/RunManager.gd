@@ -124,3 +124,12 @@ func _get_opposite_dir(dir: String) -> String:
 		"L": return "R"
 		"R": return "L"
 	return "C"
+
+
+func mark_room_cleared() -> void:
+	var pos = current_room
+	
+	if not MapGenerationManager.room_states.has(pos):
+		MapGenerationManager.room_states[pos] = {}
+	
+	MapGenerationManager.room_states[pos]["cleared"] = true

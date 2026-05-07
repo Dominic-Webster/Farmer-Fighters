@@ -30,11 +30,13 @@ func _enter_room(dir_from : String) -> void:
 		"L":
 			player.global_position = player_spawn_l.global_position
 	
-	load_enemies(dir_from)
-	if enemies_exist():
-		lock_doors()
-	else:
+	var pos = RunManager.current_room
+	
+	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
+	else:
+		load_enemies(dir_from)
+		lock_doors()
 
 
 func _input(_event: InputEvent) -> void:
@@ -87,6 +89,7 @@ func _on_enemy_died():
 	enemy_count -= 1
 	
 	if enemy_count == 0:
+		RunManager.mark_room_cleared()
 		unlock_doors()
 
 

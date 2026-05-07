@@ -72,7 +72,7 @@ func shoot(direction: Vector2):
 	bullet.global_position = shoot_point.global_position
 	bullet.direction = direction
 	
-	get_parent().add_child(bullet)
+	RunManager.current_room_instance.add_child(bullet)
 	
 	timer.wait_time = fire_rate
 	timer.start()

@@ -14,6 +14,8 @@ extends Node
 var dungeon : Array = []
 var _branch_candidates : Array[Vector2i]
 
+var room_states := {}  # Dictionary<Vector2i, Dictionary>
+
 
 # ---------
 # Functions
@@ -21,6 +23,7 @@ var _branch_candidates : Array[Vector2i]
 
 
 func create_new_map() -> void:
+	room_states.clear()
 	_initialize_dungeon()
 	_place_entrance()
 	_generate_path(_start, _critical_path_length, "C")
