@@ -25,6 +25,7 @@ func create_new_map() -> void:
 	_place_entrance()
 	_generate_path(_start, _critical_path_length, "C")
 	_generate_branches()
+	_print_dungeon()
 
 
 func clear_map() -> void:
@@ -100,7 +101,7 @@ func _has_room(pos: Vector2i) -> bool:
 	if pos.y < 0 or pos.y >= _dimensons.y:
 		return false
 	
-	return str(dungeon[pos.x][pos.y]) != ""
+	return str(dungeon[pos.x][pos.y]) != "0"
 
 
 func get_room_code(pos: Vector2i) -> String:

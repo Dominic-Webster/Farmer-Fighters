@@ -4,6 +4,51 @@ class_name  Door
 @onready var collider : StaticBody2D = $StaticBody2D
 @onready var art : Sprite2D = $Sprite2D
 @onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var trigger : Area2D = $Area2D
+
+enum dir {
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+}
+
+@export var direction : dir = dir.UP
+
+var used : bool = false
+
+
+func _ready() -> void:
+	trigger.body_entered.connect(_on_body_entered)
+	trigger.body_exited.connect(_on_body_exited)
+
+
+func _on_body_entered(body):
+	if used:
+		return
+	
+	if not RunManager.can_trigger_doors:
+		return
+	
+	if body == RunManager.player:
+		trigger.set_deferred("monitoring", false)
+		used = true
+		
+		RunManager.call_deferred("change_room", get_dir_string())
+
+
+func get_dir_string() -> String:
+	match direction:
+		dir.UP: return "U"
+		dir.RIGHT: return "R"
+		dir.DOWN: return "D"
+		dir.LEFT: return "L"
+	return ""
+
+
+func _on_body_exited(body):
+	if body == RunManager.player:
+		used = false
 
 
 func lock_door():

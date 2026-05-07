@@ -43,6 +43,9 @@ _data = {
 &"door_open": SubResource("Animation_jl38d")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_choqv"]
+size = Vector2(128, 76)
+
 [node name="Door" type="Node2D" unique_id=911366584]
 script = ExtResource("1_choqv")
 
@@ -61,3 +64,9 @@ shape = SubResource("RectangleShape2D_sik3a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2051410651]
 libraries/ = SubResource("AnimationLibrary_lsl3o")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1821818907]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=201271]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_choqv")

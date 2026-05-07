@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://i5icu3vu6423"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_r7bot"]
+[ext_resource type="PackedScene" uid="uid://6hvwbnhjywsy" path="res://scenes/temp_enemy/temp_enemy.tscn" id="2_4qd63"]
 [ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_0bkqh"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_rkutx"]
 
@@ -24,6 +25,7 @@ size = Vector2(166, 776)
 
 [node name="ul_empty" type="Node2D" unique_id=479718819]
 script = ExtResource("1_r7bot")
+enemy_scenes = Array[PackedScene]([ExtResource("2_4qd63")])
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
@@ -92,11 +94,11 @@ position = Vector2(1720, 540)
 
 [node name="PlayerSpawnD" type="Marker2D" parent="Player Spawns" unique_id=375498285]
 self_modulate = Color(0, 1, 0, 1)
-position = Vector2(960, 880)
+position = Vector2(958, 828)
 
 [node name="PlayerSpawnL" type="Marker2D" parent="Player Spawns" unique_id=284417141]
 self_modulate = Color(0, 1, 0, 1)
-position = Vector2(200, 540)
+position = Vector2(198, 483)
 
 [node name="EnemySpawns" type="Node2D" parent="." unique_id=1659199399]
 
@@ -180,3 +182,4 @@ position = Vector2(960, 100)
 [node name="DoorLeft" parent="Doors" unique_id=11583183 instance=ExtResource("5_rkutx")]
 position = Vector2(96, 540)
 rotation = -1.5707964
+direction = 3

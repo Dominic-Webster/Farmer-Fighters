@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name TempEnemy
 
+signal died
+
 var player : Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_box : Area2D = $HurtBox
@@ -54,6 +56,7 @@ func take_damage(amount: int, from_position : Vector2):
 
 
 func die():
+	died.emit()
 	queue_free()
 
 
