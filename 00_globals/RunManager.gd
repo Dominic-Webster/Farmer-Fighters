@@ -1,6 +1,8 @@
 # Run Manager
 extends Node
 
+var difficulty : String
+
 var player : Player
 var current_room : Vector2i = Vector2i(0, 0)
 var current_room_instance : Node = null

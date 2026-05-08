@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6hvwbnhjywsy"]
 
 [ext_resource type="Script" uid="uid://gehpehg04te7" path="res://scenes/temp_enemy/temp_enemy.gd" id="1_ct1jc"]
-[ext_resource type="Texture2D" uid="uid://bvs4q2dnxd66h" path="res://scenes/temp_enemy/chips.png" id="2_ct1jc"]
+[ext_resource type="Texture2D" uid="uid://bvs4q2dnxd66h" path="res://scenes/temp_enemy/temp_chips.png" id="2_ct1jc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct1jc"]
 size = Vector2(112, 64.5)
