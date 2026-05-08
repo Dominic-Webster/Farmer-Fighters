@@ -132,4 +132,8 @@ func mark_room_cleared() -> void:
 	if not MapGenerationManager.room_states.has(pos):
 		MapGenerationManager.room_states[pos] = {}
 	
-	MapGenerationManager.room_states[pos]["cleared"] = true
+	MapGenerationManager.room_states[pos] = {
+		"cleared": true,
+		"visited": true,
+		"type": "combat"
+	}
