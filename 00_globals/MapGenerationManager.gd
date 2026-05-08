@@ -21,7 +21,6 @@ var room_states := {}  # Dictionary<Vector2i, Dictionary>
 # Functions
 # ---------
 
-
 func create_new_map() -> void:
 	room_states.clear()
 	_initialize_dungeon()
@@ -72,8 +71,18 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 			not dungeon[current.x + direction.x][current.y + direction.y]):
 				current += direction
 				dungeon[current.x][current.y] = marker
+				
+				# Makes critical path rooms able to be branched from
 				if length > 1 and marker == "C":
-					_branch_candidates.append(current)
+					_branch_candidates.append(current) 
+				
+				# Marks Boss room or treasure room
+				if length == 1:
+					if marker == "C":
+						dungeon[current.x][current.y] = "B"
+					else:
+						dungeon[current.x][current.y] = "T"
+				
 				if _generate_path(current, length - 1, marker):
 					return true
 				else:

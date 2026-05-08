@@ -32,11 +32,16 @@ func _enter_room(dir_from : String) -> void:
 	
 	var pos = RunManager.current_room
 	
+	_set_door_art()
+	
 	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
 	else:
 		load_enemies(dir_from)
-		lock_doors()
+		if enemy_count == 0:
+			spawn_open_doors()
+		else:
+			lock_doors()
 
 
 func _input(_event: InputEvent) -> void:
@@ -45,6 +50,11 @@ func _input(_event: InputEvent) -> void:
 
 
 func load_enemies(_player_spawn : String) -> void:
+	if (MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "S" or
+		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "B" or
+		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "T"):
+			return
+	
 	var spawns : Array[int] = []
 	var counter : int = 0
 	
@@ -121,3 +131,40 @@ func enemies_exist() -> bool:
 func set_floor(desc : String) -> void:
 	if desc == "Start":
 		art.texture = load("res://scenes/Rooms/start_room.png")
+
+
+func _set_door_art() -> void:
+	var x_pos : int = RunManager.current_room.x
+	var y_pos : int = RunManager.current_room.y
+	
+	# Up
+	if doors.has_node("DoorUp"):
+		if y_pos > 0:
+			if str(MapGenerationManager.dungeon[x_pos][y_pos - 1]) == "B":
+				$Doors/DoorUp.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos][y_pos - 1]) == "T":
+				$Doors/DoorUp.set_door_art("T")
+	
+	# Right
+	if doors.has_node("DoorRight"):
+		if x_pos < (MapGenerationManager._dimensons.x - 1):
+			if str(MapGenerationManager.dungeon[x_pos + 1][y_pos]) == "B":
+				$Doors/DoorRight.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos + 1][y_pos]) == "T":
+				$Doors/DoorRight.set_door_art("T")
+	
+	# Down
+	if doors.has_node("DoorDown"):
+		if y_pos < (MapGenerationManager._dimensons.y - 1):
+			if str(MapGenerationManager.dungeon[x_pos][y_pos + 1]) == "B":
+				$Doors/DoorDown.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos][y_pos + 1]) == "T":
+				$Doors/DoorDown.set_door_art("T")
+	
+	# Left
+	if doors.has_node("DoorLeft"):
+		if x_pos > 0:
+			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "B":
+				$Doors/DoorLeft.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "T":
+				$Doors/DoorLeft.set_door_art("T")

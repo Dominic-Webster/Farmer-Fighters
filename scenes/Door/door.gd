@@ -64,3 +64,10 @@ func unlock_door():
 func spawn_open():
 	collider.set_collision_layer_value(5, false)
 	art.frame = 3
+
+
+func set_door_art(desc : String):
+	if desc == "B":
+		art.texture = load("res://scenes/Door/boss_door.png")
+	if desc == "T":
+		art.texture = load("res://scenes/Door/treasure_door.png")
