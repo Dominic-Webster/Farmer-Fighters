@@ -55,31 +55,8 @@ func load_enemies(_player_spawn : String) -> void:
 		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "T"):
 			return
 	
-	var spawns : Array[int] = []
+	var spawns : Array[int] = get_enemy_spawns(_player_spawn)
 	var counter : int = 0
-	
-	if _player_spawn == "C":
-		spawns.append(0)
-		spawns.append(5)
-		spawns.append(18)
-	elif _player_spawn == "U":
-		spawns.append(18)
-		spawns.append(20)
-		spawns.append(23)
-	elif _player_spawn == "R":
-		spawns.append(0)
-		spawns.append(6)
-		spawns.append(18)
-	elif _player_spawn == "D":
-		spawns.append(0)
-		spawns.append(2)
-		spawns.append(5)
-	elif _player_spawn == "L":
-		spawns.append(5)
-		spawns.append(11)
-		spawns.append(23)
-	else:
-		spawns.append(0)
 	
 	for spawn in enemy_spawns.get_children():
 		if counter in spawns:
@@ -93,6 +70,53 @@ func load_enemies(_player_spawn : String) -> void:
 		
 			enemy.died.connect(_on_enemy_died)
 		counter += 1
+
+
+func get_enemy_spawns(_player : String) -> Array[int]:
+	var spawns : Array[int] = []
+	var options : Array[int] = []
+	var max_enemies : int = randi_range(1, 4)
+	
+	if _player == "C":
+		options = [0, 1, 4, 5, 6, 11, 12, 17, 18, 19, 22, 23]
+		for i in options:
+			if randi_range(1, 3) == 1:
+				spawns.append(i)
+				if spawns.size() == max_enemies:
+					break
+	elif _player == "U":
+		options = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+		for i in options:
+			if randi_range(1, 3) == 1:
+				spawns.append(i)
+				if spawns.size() == max_enemies:
+					break
+	elif _player == "R":
+		options = [0, 1, 2, 3, 6, 7, 8, 12, 13, 14, 18, 19, 20, 21]
+		for i in options:
+			if randi_range(1, 3) == 1:
+				spawns.append(i)
+				if spawns.size() == max_enemies:
+					break
+	elif _player == "D":
+		options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+		for i in options:
+			if randi_range(1, 3) == 1:
+				spawns.append(i)
+				if spawns.size() == max_enemies:
+					break
+	elif _player == "L":
+		options = [2, 3, 4, 5, 9, 10, 11, 15, 16, 17, 20, 21, 22, 23]
+		for i in options:
+			if randi_range(1, 3) == 1:
+				spawns.append(i)
+				if spawns.size() == max_enemies:
+					break
+	
+	if spawns.size() == 0:
+		spawns = [0]
+	
+	return spawns
 
 
 func _on_enemy_died():
