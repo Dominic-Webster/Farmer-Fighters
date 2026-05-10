@@ -8,6 +8,8 @@ var jumping : bool = false
 var jump_direction : Vector2 = Vector2.ZERO
 var jump_timer : float = randf_range(jump_delay.x, jump_delay.y)
 
+var dead : bool = false
+
 
 func _physics_process(_delta: float) -> void:
 	if player == null:
@@ -26,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 	# Waiting before next jump
 	jump_timer -= _delta
 	
-	if jump_timer <= 0:
+	if jump_timer <= 0 and not dead:
 		start_jump()
 
 
@@ -43,8 +45,14 @@ func start_jump() -> void:
 	# Delay before actual movement (wind-up)
 	await anim.animation_finished
 	
+	if dead:
+		return
+	
 	# Move during jump
 	await get_tree().create_timer(0.25).timeout
+	
+	if dead:
+		return
 	
 	anim.play("jump_down")
 	
@@ -55,5 +63,19 @@ func start_jump() -> void:
 	anim.play("end_jump")
 	await anim.animation_finished
 	
+	if dead:
+		return
+	
 	# Wait before next jump
 	jump_timer = randf_range(jump_delay.x, jump_delay.y)
+
+
+func die():
+	died.emit()
+	dead = true
+	jumping = false
+	hurt_box.set_deferred("monitoring", false)
+	anim.stop()
+	anim.play("die")
+	await anim.animation_finished
+	queue_free()
