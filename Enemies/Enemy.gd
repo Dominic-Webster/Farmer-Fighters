@@ -6,6 +6,7 @@ signal died
 var player : Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_box : Area2D = $HurtBox
+@onready var anim : AnimationPlayer = $AnimationPlayer
 
 @export var enemy_data : EnemyData
 
@@ -37,17 +38,17 @@ func await_player() -> void:
 	player = RunManager.player
 
 
-func _physics_process(_delta: float) -> void:
-	if player == null:
-		return
-	
-	var direction = (player.global_position - global_position).normalized()
-	var move_velocity = direction * move_speed
-	
-	velocity = move_velocity + knockback_velocity
-	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
-	
-	move_and_slide()
+#func _physics_process(_delta: float) -> void:
+	#if player == null:
+		#return
+	#
+	#var direction = (player.global_position - global_position).normalized()
+	#var move_velocity = direction * move_speed
+	#
+	#velocity = move_velocity + knockback_velocity
+	#knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
+	#
+	#move_and_slide()
 
 
 func take_damage(amount: int, from_position : Vector2):
