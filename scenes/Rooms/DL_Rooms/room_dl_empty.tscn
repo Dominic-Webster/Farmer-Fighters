@@ -22,6 +22,18 @@ size = Vector2(166, 323)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dcmp"]
 size = Vector2(166, 776)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xca21"]
+size = Vector2(1920, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atcks"]
+size = Vector2(1920, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ihl8"]
+size = Vector2(100, 880)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smht5"]
+size = Vector2(104, 880)
+
 [node name="dl_empty" type="Node2D" unique_id=479718819]
 script = ExtResource("1_htxl7")
 
@@ -183,3 +195,41 @@ direction = 2
 position = Vector2(96, 540)
 rotation = -1.5707964
 direction = 3
+
+[node name="BulletBounds" type="Node2D" parent="." unique_id=1930288882]
+
+[node name="Top" type="Area2D" parent="BulletBounds" unique_id=1346113176]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Top" unique_id=224242490]
+position = Vector2(960, 44.5)
+shape = SubResource("RectangleShape2D_xca21")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Bottom" type="Area2D" parent="BulletBounds" unique_id=506812887]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Bottom" unique_id=702041162]
+position = Vector2(960, 1032.5)
+shape = SubResource("RectangleShape2D_atcks")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Left" type="Area2D" parent="BulletBounds" unique_id=866213104]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Left" unique_id=177036494]
+position = Vector2(50, 540)
+shape = SubResource("RectangleShape2D_1ihl8")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Right" type="Area2D" parent="BulletBounds" unique_id=606259575]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Right" unique_id=1155718357]
+position = Vector2(1868, 540)
+shape = SubResource("RectangleShape2D_smht5")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)

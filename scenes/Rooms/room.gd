@@ -9,6 +9,7 @@ class_name Room
 @onready var player_spawn_l : Marker2D = $"Player Spawns/PlayerSpawnL"
 @onready var doors : Node2D = $Doors
 @onready var enemy_spawns : Node2D = $EnemySpawns
+@onready var bullet_bounds : Node2D = $BulletBounds
 
 var enemy_scenes : Array[PackedScene] = [
 	load("res://Enemies/Chips/Chips.tscn"),
@@ -36,6 +37,8 @@ func _enter_room(dir_from : String) -> void:
 	var pos = RunManager.current_room
 	
 	_set_door_art()
+	
+	_load_bullet_bounds()
 	
 	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
@@ -195,3 +198,9 @@ func _set_door_art() -> void:
 				$Doors/DoorLeft.set_door_art("B")
 			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "T":
 				$Doors/DoorLeft.set_door_art("T")
+
+
+func _load_bullet_bounds() -> void:
+	if bullet_bounds:
+		for child in bullet_bounds.get_children():
+			child.add_to_group("bullet_bounds")
