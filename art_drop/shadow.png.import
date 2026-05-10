@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvs4q2dnxd66h"
-path="res://.godot/imported/temp_chips.png-d39400eb9bb5a2a5372246477b2997aa.ctex"
+uid="uid://ddhi4wr4aakr7"
+path="res://.godot/imported/shadow.png-f65d8ee7e6972539dabc831522c0ded7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/temp_enemy/temp_chips.png"
-dest_files=["res://.godot/imported/temp_chips.png-d39400eb9bb5a2a5372246477b2997aa.ctex"]
+source_file="res://art_drop/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-f65d8ee7e6972539dabc831522c0ded7.ctex"]
 
 [params]
 

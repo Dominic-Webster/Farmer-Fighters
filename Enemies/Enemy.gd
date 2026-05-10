@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name TempEnemy
+class_name Enemy
 
 signal died
 
@@ -7,9 +7,11 @@ var player : Player
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurt_box : Area2D = $HurtBox
 
-@export var move_speed : float = 150
-@export var damage : int = 1
-@export var max_health : int = 3
+@export var enemy_data : EnemyData
+
+var move_speed : float = 150
+var damage : int = 1
+var max_health : int = 3
 var health : int = 0
 
 var is_flashing : bool = false
@@ -18,6 +20,11 @@ var knockback_velocity := Vector2.ZERO
 
 
 func _ready():
+	if not enemy_data == null:
+		max_health = enemy_data.health
+		damage = enemy_data.damage
+		move_speed = enemy_data.move_speed
+	
 	add_to_group("enemy")
 	hurt_box.add_to_group("enemy")
 	health = max_health

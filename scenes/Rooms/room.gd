@@ -10,7 +10,9 @@ class_name Room
 @onready var doors : Node2D = $Doors
 @onready var enemy_spawns : Node2D = $EnemySpawns
 
-@export var enemy_scenes : Array[PackedScene]
+var enemy_scenes : Array[PackedScene] = [
+	load("res://Enemies/Chips/Chips.tscn")
+]
 
 var enemy_count : int = 0
 

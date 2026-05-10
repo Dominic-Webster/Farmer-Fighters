@@ -85,8 +85,9 @@ func _on_hurt_box_area_entered(area) -> void:
 		var dir = (global_position - area.global_position).normalized()
 		knockback_velocity = dir * knockback_strength
 		
-		if area.get("damage"):
-			take_damage(area.damage)
+		var enemy = area.get_parent()
+		if "damage" in enemy:
+			take_damage(enemy.damage)
 		else:
 			take_damage(1)
 

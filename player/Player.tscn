@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://r2b0g2n63i4x" path="res://player/player.gd" id="1_3c3w1"]
 [ext_resource type="PackedScene" uid="uid://71uyi7sm2pys" path="res://scenes/bullet/bullet.tscn" id="2_wnvi2"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_83hs8"]
 [ext_resource type="Texture2D" uid="uid://11jws6okj3ol" path="res://player/temp_farmer.png" id="3_wnvi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
@@ -14,6 +15,12 @@ size = Vector2(64, 136)
 collision_mask = 16
 script = ExtResource("1_3c3w1")
 bullet_scene = ExtResource("2_wnvi2")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1823037824]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 80)
+scale = Vector2(3, 3)
+texture = ExtResource("3_83hs8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1000172112]
 scale = Vector2(8, 8)

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b3b61lvsun88o"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_htxl7"]
-[ext_resource type="PackedScene" uid="uid://6hvwbnhjywsy" path="res://scenes/temp_enemy/temp_enemy.tscn" id="2_atcks"]
 [ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/room_empty.png" id="3_f0lus"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="5_dxux5"]
 
@@ -25,7 +24,6 @@ size = Vector2(166, 776)
 
 [node name="dl_empty" type="Node2D" unique_id=479718819]
 script = ExtResource("1_htxl7")
-enemy_scenes = Array[PackedScene]([ExtResource("2_atcks")])
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
