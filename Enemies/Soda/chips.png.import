@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tgejf4hg0r5h"
-path="res://.godot/imported/soda.png-e18f32473ef2ee9a50d90c3639124baa.ctex"
+uid="uid://dc8k0iwi6a1s1"
+path="res://.godot/imported/chips.png-a54ec66896b28a2755d84a4d07b7da0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Soda/soda.png"
-dest_files=["res://.godot/imported/soda.png-e18f32473ef2ee9a50d90c3639124baa.ctex"]
+source_file="res://Enemies/Soda/chips.png"
+dest_files=["res://.godot/imported/chips.png-a54ec66896b28a2755d84a4d07b7da0e.ctex"]
 
 [params]
 

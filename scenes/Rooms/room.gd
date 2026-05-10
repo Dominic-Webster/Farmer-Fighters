@@ -50,9 +50,9 @@ func _enter_room(dir_from : String) -> void:
 			lock_doors()
 
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("opendoor"):
-		unlock_doors()
+#func _input(_event: InputEvent) -> void:
+	#if Input.is_action_pressed("opendoor"):
+		#unlock_doors()
 
 
 func load_enemies(_player_spawn : String) -> void:

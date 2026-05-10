@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wxd38mvn23ok" path="res://Enemies/Soda/Soda.gd" id="1_y853g"]
 [ext_resource type="Resource" uid="uid://rxo3d60kemgs" path="res://Enemies/Soda/Soda.tres" id="2_j17qh"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_xupd7"]
-[ext_resource type="Texture2D" uid="uid://tgejf4hg0r5h" path="res://Enemies/Soda/soda.png" id="3_j17qh"]
+[ext_resource type="Texture2D" uid="uid://dc8k0iwi6a1s1" path="res://Enemies/Soda/chips.png" id="4_j17qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3ijf"]
 size = Vector2(72, 72)
@@ -28,7 +28,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_n3ijf"]
 resource_name = "die"
-length = 0.43333668
+length = 0.36666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,16 +36,34 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_sksyr"]
+resource_name = "move"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sksyr"]
 _data = {
 &"RESET": SubResource("Animation_j17qh"),
-&"die": SubResource("Animation_n3ijf")
+&"die": SubResource("Animation_n3ijf"),
+&"move": SubResource("Animation_sksyr")
 }
 
 [node name="Soda" type="CharacterBody2D" unique_id=383500422]
@@ -62,7 +80,7 @@ texture = ExtResource("2_xupd7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1748490601]
 scale = Vector2(6, 6)
-texture = ExtResource("3_j17qh")
+texture = ExtResource("4_j17qh")
 hframes = 4
 vframes = 2
 
@@ -81,5 +99,6 @@ shape = SubResource("RectangleShape2D_sksyr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1980954169]
 libraries/ = SubResource("AnimationLibrary_sksyr")
+autoplay = &"move"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
