@@ -18,7 +18,7 @@ var is_flashing : bool = false
 @export var bullet_scene : PackedScene
 
 var knockback_velocity := Vector2.ZERO
-@export var knockback_strength := 300
+@export var knockback_strength := 350
 @export var knockback_decay := 800
 
 

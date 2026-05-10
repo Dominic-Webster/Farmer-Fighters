@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://rxo3d60kemgs"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_5nakn"]
+
+[resource]
+script = ExtResource("1_5nakn")
+enemy_name = "Soda"
+damage = 1
+health = 3
+move_speed = 200.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

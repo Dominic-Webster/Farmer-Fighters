@@ -11,7 +11,8 @@ class_name Room
 @onready var enemy_spawns : Node2D = $EnemySpawns
 
 var enemy_scenes : Array[PackedScene] = [
-	load("res://Enemies/Chips/Chips.tscn")
+	load("res://Enemies/Chips/Chips.tscn"),
+	load("res://Enemies/Soda/Soda.tscn")
 ]
 
 var enemy_count : int = 0
