@@ -1,5 +1,6 @@
 {
 	"common": [
-		"res://Items/Apple/Apple.tscn"
+		"res://Items/Apple/Apple.tscn",
+		"res://Items/Broccoli/Broccoli.tscn"
 	],
 }

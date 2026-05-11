@@ -51,7 +51,7 @@ func await_player() -> void:
 	#move_and_slide()
 
 
-func take_damage(amount: int, from_position : Vector2):
+func take_damage(amount: float, from_position : Vector2):
 	health -= amount
 	
 	var dir = (global_position - from_position).normalized()

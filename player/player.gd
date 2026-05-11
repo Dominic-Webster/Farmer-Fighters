@@ -1,28 +1,45 @@
 extends CharacterBody2D
 class_name Player
 
+# -------
+# Signals
+# -------
+
 signal damaged
 
+# ----------
+# Variables
+# ----------
+
+# Stats
+@export var max_health : int = 6
+@export var damage : float = 1.0
+@export var luck : int = 1
+@export var move_speed : float = 400
+@export var fire_rate : float = 0.3
+
+# Additional Stats
+var current_health : int
+var items : Array[String] = []
+
+# Shooting Variables
 @onready var timer : Timer = $Timer
 @onready var shoot_point : Marker2D = $ShootPoint
 @onready var sprite : Sprite2D = $Sprite2D
-
-@export var max_health : int = 6
-var current_health : int
-
-@export var move_speed : float = 400
-@export var fire_rate : float = 0.3
-var can_shoot : bool = true
-var is_flashing : bool = false
-
 @export var bullet_scene : PackedScene
+var can_shoot : bool = true
 
-var knockback_velocity := Vector2.ZERO
+# Knockback
 @export var knockback_strength := 350
 @export var knockback_decay := 800
+var knockback_velocity := Vector2.ZERO
 
-var items : Array[String] = []
+# Extra
+var is_flashing : bool = false
 
+# ---------
+# Functions
+# ---------
 
 func _ready() -> void:
 	current_health = max_health
