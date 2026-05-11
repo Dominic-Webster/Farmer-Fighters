@@ -138,3 +138,10 @@ func flash_red():
 func add_item_to_array(item : String) -> void:
 	if item != "":
 		items.append(item)
+
+
+func heal(amount : int) -> void:
+	current_health += amount
+	if current_health > max_health:
+		current_health = max_health
+	damaged.emit()

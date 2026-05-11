@@ -22,7 +22,7 @@ var enemy_count : int = 0
 
 func _enter_room(dir_from : String) -> void:
 	var player = RunManager.player
-
+	
 	match dir_from:
 		"C":
 			player.global_position = player_spawn_c.global_position
@@ -36,9 +36,12 @@ func _enter_room(dir_from : String) -> void:
 			player.global_position = player_spawn_l.global_position
 		
 	var pos = RunManager.current_room
-		
+	
 	_set_door_art()
 	_load_bullet_bounds()
+	
+	# Always respawn persistent pickup if present and not picked up
+	spawn_room_pickup(pos)
 	
 	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
@@ -135,6 +138,57 @@ func _on_enemy_died():
 	if enemy_count == 0:
 		RunManager.mark_room_cleared()
 		unlock_doors()
+	
+		# Persistent pickup logic
+		var pos = RunManager.current_room
+		var state = MapGenerationManager.room_states.get(pos, {})
+		if not state.has("pickup_picked_up") or not state["pickup_picked_up"]:
+			# Only roll if not already present
+			if not state.has("pickup_item_path"):
+				var player = RunManager.player
+				var luck : int = 1
+				if player != null and "luck" in player:
+					luck = player.luck
+				var roll = randi_range(1, 25)
+				if roll <= luck:
+					var pickup_scene = get_random_pickup_scene()
+					if pickup_scene:
+						state["pickup_item_path"] = pickup_scene.resource_path
+						state["pickup_picked_up"] = false
+						MapGenerationManager.room_states[pos] = state
+						spawn_room_pickup(pos)
+
+
+# Spawns a persistent pickup for the room if it exists and is not picked up
+func spawn_room_pickup(pos: Vector2i) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+	if state.has("pickup_item_path") and (not state.has("pickup_picked_up") or not state["pickup_picked_up"]):
+		var pickup_scene = load(state["pickup_item_path"])
+		if pickup_scene:
+			var pickup = pickup_scene.instantiate()
+			pickup.global_position = player_spawn_c.global_position
+			call_deferred("add_child", pickup)
+			if pickup.has_signal("picked_up"):
+				pickup.picked_up.connect(func():
+					var s = MapGenerationManager.room_states.get(pos, {})
+					s["pickup_picked_up"] = true
+					MapGenerationManager.room_states[pos] = s
+				)
+
+
+# Helper to get a random pickup scene from pickup_pool.json
+func get_random_pickup_scene():
+	var file = FileAccess.open("res://Data/pickup_pool.json", FileAccess.READ)
+	if not file:
+		return null
+	var data = JSON.parse_string(file.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY or not data.has("common"):
+		return null
+	var pool = data["common"]
+	if pool.size() == 0:
+		return null
+	var item_path = pool[randi() % pool.size()]
+	return load(item_path)
 
 
 func lock_doors() -> void:
