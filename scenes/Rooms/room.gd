@@ -11,14 +11,8 @@ class_name Room
 @onready var enemy_spawns : Node2D = $EnemySpawns
 @onready var bullet_bounds : Node2D = $BulletBounds
 
-var enemy_scenes : Array[PackedScene] = [
-	load("res://Enemies/Chips/Chips.tscn"),
-	load("res://Enemies/Soda/Soda.tscn"),
-	load("res://Enemies/Red_Chips/Red_Chips.tscn")
-]
 
 var enemy_count : int = 0
-
 
 
 func _enter_room(dir_from : String) -> void:
@@ -50,6 +44,9 @@ func _enter_room(dir_from : String) -> void:
 		if MapGenerationManager.dungeon[pos.x][pos.y] == "T":
 			spawn_room_treasure(pos)
 			spawn_open_doors()
+		if MapGenerationManager.dungeon[pos.x][pos.y] == "B":
+			load_boss(dir_from)
+			lock_doors()
 		else:
 			load_enemies(dir_from)
 			if enemy_count == 0:
@@ -72,18 +69,68 @@ func load_enemies(_player_spawn : String) -> void:
 	var spawns : Array[int] = get_enemy_spawns(_player_spawn)
 	var counter : int = 0
 	
+	var enemy_pool = get_enemy_pool()
 	for spawn in enemy_spawns.get_children():
 		if counter in spawns:
-			var scene = enemy_scenes.pick_random()
+			var scene_path = enemy_pool[randi() % enemy_pool.size()]
+			var scene = load(scene_path)
 			var enemy = scene.instantiate()
 			enemy.global_position = spawn.global_position
-		
 			add_child(enemy)
-		
 			enemy_count += 1
-		
 			enemy.died.connect(_on_enemy_died)
 		counter += 1
+
+
+# Helper to get the enemy pool for the current floor (for now, always floor1)
+func get_enemy_pool() -> Array:
+	var file = FileAccess.open("res://Data/enemy_pool.json", FileAccess.READ)
+	if not file:
+		return []
+	var data = JSON.parse_string(file.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY or not data.has("floor1"):
+		return []
+	return data["floor1"]
+
+
+func load_boss(_player_spawn : String) -> void:
+	var boss_spawn : int = 16
+	var counter : int = 0
+	
+	match _player_spawn:
+		"C":
+			boss_spawn = 16
+		"U":
+			boss_spawn = 16
+		"R":
+			boss_spawn = 13
+		"D":
+			boss_spawn = 7
+		"L":
+			boss_spawn = 16
+	
+	var boss_pool = get_boss_pool()
+	for spawn in enemy_spawns.get_children():
+		if counter == boss_spawn:
+			var scene_path = boss_pool[randi() % boss_pool.size()]
+			var scene = load(scene_path)
+			var boss = scene.instantiate()
+			boss.global_position = spawn.global_position
+			add_child(boss)
+			enemy_count += 1
+			boss.died.connect(_on_enemy_died)
+		counter += 1
+	
+
+
+func get_boss_pool() -> Array:
+	var file = FileAccess.open("res://Data/boss_pool.json", FileAccess.READ)
+	if not file:
+		return []
+	var data = JSON.parse_string(file.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY or not data.has("floor1"):
+		return []
+	return data["floor1"]
 
 
 func get_enemy_spawns(_player : String) -> Array[int]:
