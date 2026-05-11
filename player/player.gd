@@ -17,6 +17,7 @@ signal damaged
 @export var luck : int = 1
 @export var move_speed : float = 400
 @export var fire_rate : float = 0.3
+@export var bullet_speed : float = 800
 
 # Additional Stats
 var current_health : int

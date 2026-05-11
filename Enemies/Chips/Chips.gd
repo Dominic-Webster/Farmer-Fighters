@@ -1,7 +1,7 @@
 extends Enemy
 class_name Chips
 
-@export var jump_speed : float = 250.0
+@export var jump_speed : float = 350.0
 @export var jump_delay : Vector2 = Vector2(1.0, 2.0)
 
 var jumping : bool = false
