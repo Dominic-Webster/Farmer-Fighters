@@ -12,8 +12,8 @@ var player : Player
 
 var move_speed : float = 150
 var damage : int = 1
-var max_health : int = 3
-var health : int = 0
+var max_health : float = 3
+var health : float = 0
 
 var is_flashing : bool = false
 

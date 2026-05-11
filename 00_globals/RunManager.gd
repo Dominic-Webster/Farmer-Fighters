@@ -109,7 +109,7 @@ func change_room(direction: String):
 			offset = Vector2i(-1, 0)
 	
 	var new_pos = current_room + offset
-	print(new_pos)
+	#print(new_pos)
 	
 	# Safety check
 	if not MapGenerationManager._has_room(new_pos):

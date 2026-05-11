@@ -10,7 +10,7 @@ signal damaged
 @export var max_health : int = 6
 var current_health : int
 
-@export var speed : float = 400
+@export var move_speed : float = 400
 @export var fire_rate : float = 0.3
 var can_shoot : bool = true
 var is_flashing : bool = false
@@ -20,6 +20,8 @@ var is_flashing : bool = false
 var knockback_velocity := Vector2.ZERO
 @export var knockback_strength := 350
 @export var knockback_decay := 800
+
+var items : Array[String] = []
 
 
 func _ready() -> void:
@@ -35,7 +37,7 @@ func _physics_process(_delta):
 	
 	direction = direction.normalized()
 	
-	var move_velocity = direction * speed
+	var move_velocity = direction * move_speed
 	
 	# Apply Knockback
 	velocity = move_velocity + knockback_velocity
@@ -114,3 +116,8 @@ func flash_red():
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1) # back to normal
 	is_flashing = false
+
+
+func add_item_to_array(item : String) -> void:
+	if item != "":
+		items.append(item)

@@ -19,9 +19,10 @@ var enemy_scenes : Array[PackedScene] = [
 var enemy_count : int = 0
 
 
+
 func _enter_room(dir_from : String) -> void:
 	var player = RunManager.player
-	
+
 	match dir_from:
 		"C":
 			player.global_position = player_spawn_c.global_position
@@ -33,21 +34,24 @@ func _enter_room(dir_from : String) -> void:
 			player.global_position = player_spawn_d.global_position
 		"L":
 			player.global_position = player_spawn_l.global_position
-	
+		
 	var pos = RunManager.current_room
-	
+		
 	_set_door_art()
-	
 	_load_bullet_bounds()
 	
 	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
 	else:
-		load_enemies(dir_from)
-		if enemy_count == 0:
+		if MapGenerationManager.dungeon[pos.x][pos.y] == "T":
+			spawn_room_treasure(pos)
 			spawn_open_doors()
 		else:
-			lock_doors()
+			load_enemies(dir_from)
+			if enemy_count == 0:
+				spawn_open_doors()
+			else:
+				lock_doors()
 
 
 #func _input(_event: InputEvent) -> void:
@@ -204,3 +208,47 @@ func _load_bullet_bounds() -> void:
 	if bullet_bounds:
 		for child in bullet_bounds.get_children():
 			child.add_to_group("bullet_bounds")
+
+
+
+# Spawns the treasure item for this room, tracking persistence and pickup
+func spawn_room_treasure(pos: Vector2i) -> void:
+	# Ensure room_states entry exists
+	if not MapGenerationManager.room_states.has(pos):
+		MapGenerationManager.room_states[pos] = {}
+	
+	var state = MapGenerationManager.room_states[pos]
+	
+	# If item was picked up, do not spawn
+	if state.has("treasure_picked_up") and state["treasure_picked_up"]:
+		return
+	
+	# If item_path not set, pick a random one and store it
+	var item_scene
+	if not state.has("treasure_item_path"):
+		item_scene = get_random_item_scene()
+		state["treasure_item_path"] = item_scene.resource_path
+		MapGenerationManager.room_states[pos] = state
+	else:
+		item_scene = load(state["treasure_item_path"])
+	
+	# Instance and spawn the item
+	var item = item_scene.instantiate()
+	item.global_position = player_spawn_c.global_position
+	add_child(item)
+	
+	# Connect picked_up signal to mark as picked up
+	if item.has_signal("picked_up"):
+		item.picked_up.connect(func():
+			var s = MapGenerationManager.room_states.get(pos, {})
+			s["treasure_picked_up"] = true
+			MapGenerationManager.room_states[pos] = s
+		)
+
+
+func get_random_item_scene():
+	var file = FileAccess.open("res://Data/item_pool.json", FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	var pool = data["common"]
+	var item_path = pool[randi() % pool.size()]
+	return load(item_path)
