@@ -13,7 +13,8 @@ class_name Room
 
 var enemy_scenes : Array[PackedScene] = [
 	load("res://Enemies/Chips/Chips.tscn"),
-	load("res://Enemies/Soda/Soda.tscn")
+	load("res://Enemies/Soda/Soda.tscn"),
+	load("res://Enemies/Red_Chips/Red_Chips.tscn")
 ]
 
 var enemy_count : int = 0

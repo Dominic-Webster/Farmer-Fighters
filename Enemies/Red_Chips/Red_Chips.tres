@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://om3jfrqsasy"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_dn00c"]
+
+[resource]
+script = ExtResource("1_dn00c")
+enemy_name = "Red Chips"
+damage = 1
+health = 10.0
+move_speed = 150.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"
