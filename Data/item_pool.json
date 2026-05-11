@@ -1,8 +1,5 @@
 {
 	"common": [
-		"res://Items/4_Leaf_Clover/4_Leaf_Clover.tscn",
-		"res://Items/Apple/Apple.tscn",
-		"res://Items/Broccoli/Broccoli.tscn",
-		"res://Items/Habanero/Habanero.tscn"
+		"res://Items/Good_Soil/Good_Soil.tscn"
 	],
 }
