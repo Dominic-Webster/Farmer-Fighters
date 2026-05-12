@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://da2mpu7hfy45u"]
+
+[ext_resource type="Script" uid="uid://c7r77nkiu3klf" path="res://Enemies/Dark_Soda/dark_soda.gd" id="1_bprxi"]
+[ext_resource type="Resource" uid="uid://cw4gexweyrp1q" path="res://Enemies/Dark_Soda/Dark_Soda.tres" id="2_1xtsk"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_y8dw4"]
+[ext_resource type="Texture2D" uid="uid://lkxhlr0ltbih" path="res://Enemies/Dark_Soda/dark_soda.png" id="4_gqwd4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0k6b"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duwl5"]
+size = Vector2(72, 138)
+
+[sub_resource type="Animation" id="Animation_bprxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1xtsk"]
+resource_name = "die"
+length = 0.36667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_y8dw4"]
+resource_name = "move"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8dw4"]
+_data = {
+&"RESET": SubResource("Animation_bprxi"),
+&"die": SubResource("Animation_1xtsk"),
+&"move": SubResource("Animation_y8dw4")
+}
+
+[node name="DarkSoda" type="CharacterBody2D" unique_id=83871008]
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_bprxi")
+enemy_data = ExtResource("2_1xtsk")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1501611235]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 70)
+scale = Vector2(3, 3)
+texture = ExtResource("3_y8dw4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003874918]
+scale = Vector2(6, 6)
+texture = ExtResource("4_gqwd4")
+hframes = 4
+vframes = 2
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=907832009]
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_k0k6b")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1851452366]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=360277256]
+position = Vector2(-1, 3)
+shape = SubResource("RectangleShape2D_duwl5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1052199424]
+libraries/ = SubResource("AnimationLibrary_y8dw4")
+autoplay = &"move"
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

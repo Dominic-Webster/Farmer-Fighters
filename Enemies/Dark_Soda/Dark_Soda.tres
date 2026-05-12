@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cw4gexweyrp1q"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_dvbq5"]
+
+[resource]
+script = ExtResource("1_dvbq5")
+enemy_name = "Dark Soda"
+damage = 1
+health = 3.0
+move_speed = 300.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

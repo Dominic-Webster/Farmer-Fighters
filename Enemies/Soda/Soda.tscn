@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wxd38mvn23ok" path="res://Enemies/Soda/Soda.gd" id="1_y853g"]
 [ext_resource type="Resource" uid="uid://rxo3d60kemgs" path="res://Enemies/Soda/Soda.tres" id="2_j17qh"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_xupd7"]
-[ext_resource type="Texture2D" uid="uid://dc8k0iwi6a1s1" path="res://Enemies/Soda/chips.png" id="4_j17qh"]
+[ext_resource type="Texture2D" uid="uid://dc8k0iwi6a1s1" path="res://Enemies/Soda/soda.png" id="4_j17qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3ijf"]
 size = Vector2(72, 72)
