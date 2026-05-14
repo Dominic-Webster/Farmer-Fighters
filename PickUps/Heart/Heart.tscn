@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://taw2nmfgoo1d" path="res://PickUps/Heart/heart.gd" id="1_4qmb0"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_sjkjb"]
-[ext_resource type="Texture2D" uid="uid://burxfocm1a4l8" path="res://scenes/bullet/Tomato.png" id="3_td21h"]
+[ext_resource type="Texture2D" uid="uid://burxfocm1a4l8" path="res://Bullets/Tomato_Bullet/Tomato.png" id="3_td21h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wtrb"]
 size = Vector2(90, 77)

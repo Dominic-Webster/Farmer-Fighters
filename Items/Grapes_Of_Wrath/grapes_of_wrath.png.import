@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://burxfocm1a4l8"
-path="res://.godot/imported/Tomato.png-11f66bc83b4aee5d261e80720a8caa1d.ctex"
+uid="uid://odklxynsjebp"
+path="res://.godot/imported/grapes_of_wrath.png-70e445f637e42d68b36f089eda2c9361.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/bullet/Tomato.png"
-dest_files=["res://.godot/imported/Tomato.png-11f66bc83b4aee5d261e80720a8caa1d.ctex"]
+source_file="res://Items/Grapes_Of_Wrath/grapes_of_wrath.png"
+dest_files=["res://.godot/imported/grapes_of_wrath.png-70e445f637e42d68b36f089eda2c9361.ctex"]
 
 [params]
 

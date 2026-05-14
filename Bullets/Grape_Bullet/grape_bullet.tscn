@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://xlyjx438goq3"]
+
+[ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_qx7jc"]
+[ext_resource type="Texture2D" uid="uid://4xeoxhv0ay5d" path="res://Bullets/Grape_Bullet/grape.png" id="1_smuvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qx7jc"]
+radius = 7.28011
+
+[node name="GrapeBullet" type="Area2D" unique_id=170760366]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_qx7jc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1684180075]
+z_index = 200
+texture = ExtResource("1_smuvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1708201128]
+shape = SubResource("CircleShape2D_qx7jc")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1412067847]
+rect = Rect2(-7, -7, 14, 14)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

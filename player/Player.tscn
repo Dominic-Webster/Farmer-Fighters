@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxehpbkc50swe"]
 
 [ext_resource type="Script" uid="uid://r2b0g2n63i4x" path="res://player/player.gd" id="1_3c3w1"]
-[ext_resource type="PackedScene" uid="uid://71uyi7sm2pys" path="res://scenes/bullet/bullet.tscn" id="2_wnvi2"]
+[ext_resource type="PackedScene" uid="uid://71uyi7sm2pys" path="res://Bullets/Tomato_Bullet/tomato_bullet.tscn" id="2_wnvi2"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_83hs8"]
 [ext_resource type="Texture2D" uid="uid://11jws6okj3ol" path="res://player/temp_farmer.png" id="3_wnvi2"]
 

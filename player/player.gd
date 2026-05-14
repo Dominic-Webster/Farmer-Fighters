@@ -18,6 +18,7 @@ signal damaged
 @export var move_speed : float = 400
 @export var fire_rate : float = 0.3
 @export var bullet_speed : float = 800
+@export var accuracy : Vector2 = Vector2(-0.05, 0.05)
 
 # Additional Stats
 var current_health : int
@@ -27,8 +28,17 @@ var items : Array[String] = []
 @onready var timer : Timer = $Timer
 @onready var shoot_point : Marker2D = $ShootPoint
 @onready var sprite : Sprite2D = $Sprite2D
-@export var bullet_scene : PackedScene
 var can_shoot : bool = true
+
+enum Bullets {
+	TOMATO,
+	GRAPE
+}
+
+var current_bullet : Bullets = Bullets.TOMATO
+
+var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
+var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
 
 # Knockback
 @export var knockback_strength := 350
@@ -88,7 +98,17 @@ func shoot(direction: Vector2):
 		
 	can_shoot = false
 	
-	var bullet = bullet_scene.instantiate()
+	# Accuracy
+	direction.x += randf_range(accuracy.x, accuracy.y)
+	direction.y += randf_range(accuracy.x, accuracy.y)
+	
+	var bullet
+	match current_bullet:
+		Bullets.TOMATO:
+			bullet = tomato_bullet.instantiate()
+		Bullets.GRAPE:
+			bullet = grape_bullet.instantiate()
+	
 	bullet.global_position = shoot_point.global_position
 	bullet.direction = direction
 	
