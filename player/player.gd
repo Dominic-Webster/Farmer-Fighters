@@ -57,23 +57,47 @@ func _ready() -> void:
 	add_to_group("player")
 
 
+
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
-	
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	
 	direction = direction.normalized()
-	
+
 	var move_velocity = direction * move_speed
-	
 	# Apply Knockback
 	velocity = move_velocity + knockback_velocity
-	
 	# Smoothly reduce knockback over time
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
-	
+
+	# Update sprite facing
+	update_sprite_facing()
+
 	move_and_slide()
+
+
+# Helper to set sprite frame/flip based on shoot or move direction
+func update_sprite_facing():
+	var shoot_dir = get_shoot_direction()
+	var move_dir = Vector2.ZERO
+	move_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	move_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	move_dir = move_dir.normalized()
+
+	var face_dir = shoot_dir if shoot_dir != Vector2.ZERO else move_dir
+
+	if face_dir == Vector2.ZERO or face_dir.y > 0:
+		sprite.frame = 0
+		sprite.flip_h = false
+	elif face_dir.y < 0:
+		sprite.frame = 1
+		sprite.flip_h = false
+	elif face_dir.x > 0:
+		sprite.frame = 2
+		sprite.flip_h = false
+	elif face_dir.x < 0:
+		sprite.frame = 2
+		sprite.flip_h = true
 
 
 func _process(_delta):

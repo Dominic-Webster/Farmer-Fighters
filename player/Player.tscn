@@ -1,33 +1,32 @@
 [gd_scene format=3 uid="uid://dxehpbkc50swe"]
 
 [ext_resource type="Script" uid="uid://r2b0g2n63i4x" path="res://player/player.gd" id="1_3c3w1"]
-[ext_resource type="PackedScene" uid="uid://71uyi7sm2pys" path="res://Bullets/Tomato_Bullet/tomato_bullet.tscn" id="2_wnvi2"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_83hs8"]
-[ext_resource type="Texture2D" uid="uid://11jws6okj3ol" path="res://player/temp_farmer.png" id="3_wnvi2"]
+[ext_resource type="Texture2D" uid="uid://cjjkws1amp5y2" path="res://player/temp_farmer2.png" id="3_wnvi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
-size = Vector2(64, 73)
+size = Vector2(62, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnvi2"]
-size = Vector2(64, 136)
+size = Vector2(80, 201)
 
 [node name="Player" type="CharacterBody2D" unique_id=1057382120]
 collision_mask = 16
 script = ExtResource("1_3c3w1")
-bullet_scene = ExtResource("2_wnvi2")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1823037824]
 modulate = Color(1, 1, 1, 0.5882353)
-position = Vector2(0, 80)
+position = Vector2(0, 100)
 scale = Vector2(3, 3)
 texture = ExtResource("3_83hs8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1000172112]
-scale = Vector2(8, 8)
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_wnvi2")
+hframes = 3
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=168178212]
-position = Vector2(0, 51.5)
+position = Vector2(0, 59.5)
 shape = SubResource("RectangleShape2D_ulp21")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1451360841]
@@ -38,7 +37,7 @@ shape = SubResource("RectangleShape2D_ulp21")
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1755343782]
-position = Vector2(0, 4)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_wnvi2")
 debug_color = Color(0.5616511, 0.5566963, 0.16425428, 0.41960785)
 
