@@ -2,9 +2,9 @@ extends Item
 class_name GrapesOfWrath
 
 var item_name : String = "Grapes Of Wrath"
-var damage_nerf : float = 0.75
-var fire_rate_buff : float = 0.6
-var accuracy_debuff : float = 0.1
+var damage_nerf : float = 0.5
+var fire_rate_buff : float = 0.15
+var accuracy_debuff : float = 0.05
 
 
 func _on_body_entered(_body) -> void:
@@ -25,12 +25,3 @@ func _on_body_entered(_body) -> void:
 		
 		queue_free()
 		picked_up.emit()
-
-
-		#"res://Items/4_Leaf_Clover/4_Leaf_Clover.tscn",
-		#"res://Items/Apple/Apple.tscn",
-		#"res://Items/Broccoli/Broccoli.tscn",
-		#"res://Items/Fertilizer/Fertilizer.tscn",
-		#"res://Items/Good_Soil/Good_Soil.tscn",
-		#"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
-		#"res://Items/Habanero/Habanero.tscn"
