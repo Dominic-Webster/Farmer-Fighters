@@ -32,6 +32,7 @@ var can_shoot : bool = true
 
 enum Bullets {
 	TOMATO,
+	CABBAGE,
 	GRAPE
 }
 
@@ -39,6 +40,7 @@ var current_bullet : Bullets = Bullets.TOMATO
 
 var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
 var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
+var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
 
 # Knockback
 @export var knockback_strength := 350
@@ -132,6 +134,8 @@ func shoot(direction: Vector2):
 			bullet = tomato_bullet.instantiate()
 		Bullets.GRAPE:
 			bullet = grape_bullet.instantiate()
+		Bullets.CABBAGE:
+			bullet = cabbage_bullet.instantiate()
 	
 	bullet.global_position = shoot_point.global_position
 	bullet.direction = direction

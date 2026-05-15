@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ce7gt0pw2pwce"]
+
+[ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_njfts"]
+[ext_resource type="Texture2D" uid="uid://dr0a44ah1i0fp" path="res://Bullets/Cabbage_Bullet/Cabbage.png" id="2_njfts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2i0tb"]
+radius = 35.0
+
+[node name="CabbageBullet" type="Area2D" unique_id=1569631330]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_njfts")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1496456518]
+z_index = 200
+scale = Vector2(3, 3)
+texture = ExtResource("2_njfts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686158556]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_2i0tb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=690758443]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
