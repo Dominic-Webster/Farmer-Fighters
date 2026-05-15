@@ -91,10 +91,12 @@ func _physics_process(_delta: float) -> void:
 
 
 func die():
-	died.emit()
-	hurt_box.set_deferred("monitoring", false)
-	move_speed = 0
-	anim.stop()
-	anim.play("die")
-	await anim.animation_finished
-	queue_free()
+	if not is_dead:
+		died.emit()
+		is_dead = true
+		hurt_box.set_deferred("monitoring", false)
+		move_speed = 0
+		anim.stop()
+		anim.play("die")
+		await anim.animation_finished
+		queue_free()

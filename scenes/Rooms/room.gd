@@ -267,6 +267,8 @@ func enemies_exist() -> bool:
 func set_floor(desc : String) -> void:
 	if desc == "Start":
 		art.texture = load("res://scenes/Rooms/start_room.png")
+	elif desc == "Item":
+		art.texture = load("res://scenes/Rooms/item_room.png")
 
 
 func _set_door_art() -> void:

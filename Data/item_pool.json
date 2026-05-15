@@ -8,6 +8,8 @@
 		"res://Items/Good_Soil/Good_Soil.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Habanero/Habanero.tscn",
-		"res://Items/Spinach/Spinach.tscn"
+		"res://Items/Radish/Radish.tscn",
+		"res://Items/Spinach/Spinach.tscn",
+		"res://Items/Turnip/Turnip.tscn"
 	],
 }

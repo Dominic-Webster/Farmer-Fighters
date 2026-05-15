@@ -16,6 +16,7 @@ var max_health : float = 3
 var health : float = 0
 
 var is_flashing : bool = false
+var is_dead : bool = false
 
 var knockback_velocity := Vector2.ZERO
 
@@ -64,8 +65,10 @@ func take_damage(amount: float, from_position : Vector2):
 
 
 func die():
-	died.emit()
-	queue_free()
+	if not is_dead:
+		is_dead = true
+		died.emit()
+		queue_free()
 
 
 func _on_hurt_box_area_entered(area):

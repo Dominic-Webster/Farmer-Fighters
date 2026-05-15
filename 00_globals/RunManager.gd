@@ -76,6 +76,8 @@ func load_room(pos: Vector2i, entry_dir: String):
 	
 	if str(MapGenerationManager.dungeon[pos.x][pos.y]) == "S":
 		current_room_instance.set_floor("Start")
+	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "T":
+		current_room_instance.set_floor("Item")
 	
 	# Enter room (handles player spawn)
 	room._enter_room(entry_dir)

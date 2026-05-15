@@ -20,6 +20,13 @@ signal damaged
 @export var bullet_speed : float = 800
 @export var accuracy : Vector2 = Vector2(-0.05, 0.05)
 
+# Dash Stats
+var dash_unlocked = false
+@export var dash_speed : float = 2000
+@export var dash_duration : float = 0.1
+@export var dash_damage : float = 0
+@export var dash_cooldown_time: float = 0.5
+
 # Additional Stats
 var current_health : int
 var items : Array[String] = []
@@ -50,6 +57,12 @@ var knockback_velocity := Vector2.ZERO
 # Extra
 var is_flashing : bool = false
 
+# Dash function variables
+var is_dashing: bool = false
+var dash_direction: Vector2 = Vector2.ZERO
+var dash_time_left: float = 0.0
+var dash_cooldown: float = 0.0
+
 # ---------
 # Functions
 # ---------
@@ -59,22 +72,37 @@ func _ready() -> void:
 	add_to_group("player")
 
 
-
 func _physics_process(_delta):
 	var direction = Vector2.ZERO
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = direction.normalized()
-
-	var move_velocity = direction * move_speed
-	# Apply Knockback
-	velocity = move_velocity + knockback_velocity
-	# Smoothly reduce knockback over time
-	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
-
+	
+	# Dash logic
+	if dash_cooldown > 0.0:
+		dash_cooldown -= _delta
+	if is_dashing:
+		velocity = dash_direction * dash_speed
+		dash_time_left -= _delta
+		if dash_time_left <= 0.0:
+			is_dashing = false
+			dash_cooldown = dash_cooldown_time
+	else:
+		var move_velocity = direction * move_speed
+		velocity = move_velocity + knockback_velocity
+		# Smoothly reduce knockback over time
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
+	
+	# Dash input
+	if not is_dashing and dash_unlocked and dash_cooldown <= 0.0 and Input.is_action_just_pressed("dash"):
+		if direction != Vector2.ZERO:
+			is_dashing = true
+			dash_direction = direction
+			dash_time_left = dash_duration
+	
 	# Update sprite facing
 	update_sprite_facing()
-
+	
 	move_and_slide()
 
 
@@ -161,12 +189,13 @@ func _on_hurt_box_area_entered(area) -> void:
 
 
 func take_damage(amount : int):
-	current_health -= amount
-	flash_red()
-	damaged.emit()
-	
-	if current_health < 1:
-		player_died()
+	if not is_dashing:
+		current_health -= amount
+		flash_red()
+		damaged.emit()
+		
+		if current_health < 1:
+			player_died()
 
 
 func player_died():

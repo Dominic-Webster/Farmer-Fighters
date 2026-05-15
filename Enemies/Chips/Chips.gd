@@ -71,11 +71,12 @@ func start_jump() -> void:
 
 
 func die():
-	died.emit()
-	dead = true
-	jumping = false
-	hurt_box.set_deferred("monitoring", false)
-	anim.stop()
-	anim.play("die")
-	await anim.animation_finished
-	queue_free()
+	if not is_dead:
+		died.emit()
+		is_dead = true
+		hurt_box.set_deferred("monitoring", false)
+		move_speed = 0
+		anim.stop()
+		anim.play("die")
+		await anim.animation_finished
+		queue_free()
