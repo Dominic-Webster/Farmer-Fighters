@@ -2,6 +2,7 @@ extends Item
 class_name Broccoli
 
 var item_name : String = "Broccoli"
+var desc : String = "+ Damage"
 var damage_boost : float = 0.5
 
 

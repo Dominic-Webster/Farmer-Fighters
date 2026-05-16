@@ -2,6 +2,7 @@ extends Item
 class_name GreenBean
 
 var item_name : String = "Green Bean"
+var desc : String = "Dash (+ Duration)"
 var dash_duration_buff : float = 0.05
 
 

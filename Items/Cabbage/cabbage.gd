@@ -2,6 +2,7 @@ extends Item
 class_name Cabbage
 
 var item_name : String = "Cabbage"
+var desc : String = "Bullets become Cabbages"
 var damage_buff : float = 1
 var accuracy_buff : float = 0.02
 

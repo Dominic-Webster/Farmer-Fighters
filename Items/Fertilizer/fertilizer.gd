@@ -2,6 +2,7 @@ extends Item
 class_name Fertilizer
 
 var item_name : String = "Fertilizer"
+var desc : String = "+ Bullet Speed"
 var speed_boost : int = 200
 
 

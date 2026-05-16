@@ -2,6 +2,7 @@ extends Item
 class_name Apple
 
 var item_name : String = "Apple"
+var desc : String = "+ Move Speed"
 var speed_boost : float = 100.0
 
 

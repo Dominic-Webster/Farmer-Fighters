@@ -2,6 +2,7 @@ extends Item
 class_name Habanero
 
 var item_name : String = "Habanero"
+var desc : String = "+ Fire Rate"
 var fire_rate_boost : float = 0.05
 
 

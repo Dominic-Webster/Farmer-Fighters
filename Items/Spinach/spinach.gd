@@ -2,6 +2,7 @@ extends Item
 class_name Spinach
 
 var item_name : String = "Spinach"
+var desc : String = "+ Stats"
 var move_speed_boost : float = 100
 var damage_boost : float = 0.5
 var proj_speed_boost : float = 150

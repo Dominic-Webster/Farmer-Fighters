@@ -2,6 +2,7 @@ extends Item
 class_name Radish
 
 var item_name : String = "Radish"
+var desc : String = "Dash (+ Speed)"
 var dash_speed_buff : float = 250
 
 

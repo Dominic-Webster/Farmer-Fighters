@@ -2,6 +2,7 @@ extends Item
 class_name GrapesOfWrath
 
 var item_name : String = "Grapes Of Wrath"
+var desc : String = "+ Bullets become Grapes"
 var damage_nerf : float = 0.5
 var fire_rate_buff : float = 0.15
 var accuracy_debuff : float = 0.05

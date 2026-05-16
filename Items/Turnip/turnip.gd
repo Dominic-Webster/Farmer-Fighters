@@ -2,6 +2,7 @@ extends Item
 class_name Turnip
 
 var item_name : String = "Turnip"
+var desc : String = "Dash (+ Cooldown)"
 var dash_cooldown_buff : float = 0.2
 
 

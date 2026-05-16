@@ -2,6 +2,7 @@ extends Item
 class_name GoodSoil
 
 var item_name : String = "Good Soil"
+var desc : String = "+ Health"
 var health_boost : int = 2
 
 

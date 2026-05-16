@@ -2,6 +2,7 @@ extends Item
 class_name FourLeafClover
 
 var item_name : String = "4 Leaf Clover"
+var desc : String = "+ Luck"
 var luck_boost : int = 2
 
 
