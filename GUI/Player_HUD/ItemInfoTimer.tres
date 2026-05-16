@@ -1,0 +1,5 @@
+[gd_resource type="Timer" load_steps=2 format=3]
+
+[resource]
+wait_time = 2.0
+one_shot = true

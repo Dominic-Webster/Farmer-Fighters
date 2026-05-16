@@ -4,6 +4,7 @@ extends Node
 var difficulty : String
 
 var player : Player
+var gui : PlayerHud = null
 var current_room : Vector2i = Vector2i(0, 0)
 var current_room_instance : Node = null
 

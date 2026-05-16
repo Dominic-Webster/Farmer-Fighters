@@ -210,6 +210,7 @@ func _on_enemy_died():
 # Spawns a persistent pickup for the room if it exists and is not picked up
 func spawn_room_pickup(pos: Vector2i) -> void:
 	var state = MapGenerationManager.room_states.get(pos, {})
+
 	if state.has("pickup_item_path") and (not state.has("pickup_picked_up") or not state["pickup_picked_up"]):
 		var pickup_scene = load(state["pickup_item_path"])
 		if pickup_scene:
@@ -217,10 +218,12 @@ func spawn_room_pickup(pos: Vector2i) -> void:
 			pickup.global_position = player_spawn_c.global_position
 			call_deferred("add_child", pickup)
 			if pickup.has_signal("picked_up"):
-				pickup.picked_up.connect(func():
+				pickup.picked_up.connect(func(iname, desc):
 					var s = MapGenerationManager.room_states.get(pos, {})
 					s["pickup_picked_up"] = true
 					MapGenerationManager.room_states[pos] = s
+					if RunManager.gui:
+						RunManager.gui.show_item_info(iname, desc)
 				)
 
 
@@ -341,13 +344,15 @@ func spawn_room_treasure(pos: Vector2i) -> void:
 	item.global_position = player_spawn_c.global_position
 	add_child(item)
 	
-	# Connect picked_up signal to mark as picked up
+	# Connect picked_up signal to mark as picked up and show HUD info
 	if item.has_signal("picked_up"):
-		item.picked_up.connect(func():
+		item.picked_up.connect(func(iname, desc):
 			var s = MapGenerationManager.room_states.get(pos, {})
 			s["treasure_picked_up"] = true
 			MapGenerationManager.room_states[pos] = s
-		)
+			if RunManager.gui:
+				RunManager.gui.show_item_info(iname, desc)
+			)
 
 
 func get_random_item_scene():

@@ -1,14 +1,14 @@
 extends Item
 class_name Cabbage
 
-var item_name : String = "Cabbage"
-var desc : String = "Bullets become Cabbages"
 var damage_buff : float = 1
 var accuracy_buff : float = 0.02
 
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
+		item_name = "Cabbage"
+		desc = "Bullets become Cabbages"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.CABBAGE
 		
@@ -30,4 +30,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.accuracy.y = 0
 		
 		queue_free()
-		picked_up.emit()
+		picked_up.emit(item_name, desc)

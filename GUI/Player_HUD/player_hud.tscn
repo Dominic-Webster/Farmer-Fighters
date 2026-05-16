@@ -22,3 +22,33 @@ offset_top = 20.0
 offset_right = 430.0
 offset_bottom = 60.0
 theme_override_constants/h_separation = 110
+
+[node name="ItemInfo" type="Panel" parent="Control" unique_id=585260264]
+layout_mode = 0
+offset_left = 1450.0
+offset_top = 824.0
+offset_right = 1881.0
+offset_bottom = 1047.0
+
+[node name="ItemName" type="Label" parent="Control/ItemInfo" unique_id=977354647]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 413.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 30
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemDesc" type="Label" parent="Control/ItemInfo" unique_id=513845258]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 80.0
+offset_right = 412.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 25
+text = "Item Description"
+horizontal_alignment = 1
+
+[node name="ItemInfoTimer" type="Timer" parent="." unique_id=1960749794]
