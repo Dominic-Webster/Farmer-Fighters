@@ -22,7 +22,7 @@ signal damaged
 
 # Dash Stats
 var dash_unlocked = false
-@export var dash_speed : float = 2000
+@export var dash_speed : float = 2500
 @export var dash_duration : float = 0.1
 @export var dash_damage : float = 0
 @export var dash_cooldown_time: float = 0.5
@@ -182,6 +182,11 @@ func _on_hurt_box_area_entered(area) -> void:
 		knockback_velocity = dir * knockback_strength
 		
 		var enemy = area.get_parent()
+		
+		# Deal dash damage to enemy if dashing and dash_damage > 0
+		if is_dashing and dash_damage > 0 and "take_damage" in enemy:
+			enemy.take_damage(dash_damage, global_position)
+		
 		if "damage" in enemy:
 			take_damage(enemy.damage)
 		else:
