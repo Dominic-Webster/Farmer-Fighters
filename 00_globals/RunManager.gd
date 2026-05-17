@@ -3,6 +3,13 @@ extends Node
 
 var difficulty : String
 
+
+@export var room_parent : Node   # Assign this in your main scene
+
+# Stores which scene was chosen for each room position
+var room_history := {}
+const RoomOptions = preload("res://scenes/Rooms/RoomOptions.gd")
+
 var player : Player
 var gui : PlayerHud = null
 var current_room : Vector2i = Vector2i(0, 0)
@@ -11,25 +18,7 @@ var current_room_instance : Node = null
 var is_transitioning : bool = false
 var can_trigger_doors : bool = false
 
-@export var room_parent : Node   # Assign this in your main scene
-
-var ROOM_SCENES = {
-	"URDL": preload("res://scenes/Rooms/URDL_Rooms/room_urdl_empty.tscn"),
-	"URD": preload("res://scenes/Rooms/URD_Rooms/room_urd_empty.tscn"),
-	"RDL": preload("res://scenes/Rooms/RDL_Rooms/room_rdl_empty.tscn"),
-	"UDL": preload("res://scenes/Rooms/UDL_Rooms/room_udl_empty.tscn"),
-	"URL": preload("res://scenes/Rooms/URL_Rooms/room_url_empty.tscn"),
-	"UR": preload("res://scenes/Rooms/UR_Rooms/room_ur_empty.tscn"),
-	"UD": preload("res://scenes/Rooms/UD_Rooms/room_ud_empty.tscn"),
-	"UL": preload("res://scenes/Rooms/UL_Rooms/room_ul_empty.tscn"),
-	"RD": preload("res://scenes/Rooms/RD_Rooms/room_rd_empty.tscn"),
-	"RL": preload("res://scenes/Rooms/RL_Rooms/room_rl_empty.tscn"),
-	"DL": preload("res://scenes/Rooms/DL_Rooms/room_dl_empty.tscn"),
-	"U": preload("res://scenes/Rooms/U_Rooms/room_u_empty.tscn"),
-	"R": preload("res://scenes/Rooms/R_Rooms/room_r_empty.tscn"),
-	"D": preload("res://scenes/Rooms/D_Rooms/room_d_empty.tscn"),
-	"L": preload("res://scenes/Rooms/L_Rooms/room_l_empty.tscn")
-}
+var current_floor : int = 1
 
 
 func start_new_run(_player : Player):
@@ -52,43 +41,55 @@ func load_room(pos: Vector2i, entry_dir: String):
 	# Remove old room
 	if current_room_instance:
 		current_room_instance.queue_free()
-	
-	# Get room layout code
-	var code = MapGenerationManager.get_room_code(pos)
-	
+
+	# Get room layout code (lowercase for consistency)
+	var code = MapGenerationManager.get_room_code(pos).to_lower()
 	if code == "":
 		push_error("Room has no connections at: " + str(pos))
 		return
-	
-	if not ROOM_SCENES.has(code):
-		push_error("Missing room scene for code: " + code)
-		return
-	
-	# Instantiate room
-	var scene = ROOM_SCENES[code]
+
+	# Determine room type
+	var room_type = "normal"
+	if str(MapGenerationManager.dungeon[pos.x][pos.y]) == "S":
+		room_type = "start"
+	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "T":
+		room_type = "item"
+
+	# Get room options for current floor, code, and type
+	var options = RoomOptions.get_options(current_floor, code, room_type)
+	if options.size() == 0:
+		# fallback to normal if special type missing
+		options = RoomOptions.get_options(current_floor, code, "normal")
+		if options.size() == 0:
+			push_error("No room options for code: " + code + " on floor: " + str(current_floor) + " (type: " + room_type + ")")
+			return
+
+	# Use stored variant if available, otherwise pick and store
+	var pos_key = str(pos)
+	var scene_path = ""
+	if room_history.has(pos_key):
+		scene_path = room_history[pos_key]
+	else:
+		scene_path = options[randi() % options.size()]
+		room_history[pos_key] = scene_path
+	var scene = load(scene_path)
 	var room = scene.instantiate()
-	
-	
+
 	current_room_instance = room
 	room_parent.add_child(room)
-	
+
 	# Update current position
 	current_room = pos
-	
-	if str(MapGenerationManager.dungeon[pos.x][pos.y]) == "S":
-		current_room_instance.set_floor("Start")
-	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "T":
-		current_room_instance.set_floor("Item")
-	
+
 	# Enter room (handles player spawn)
 	room._enter_room(entry_dir)
-	
+
 	# Small delay before allowing another transition
 	can_trigger_doors = false
-	
+
 	await get_tree().process_frame  # let physics settle
 	await get_tree().process_frame  # extra safety
-	
+
 	can_trigger_doors = true
 	is_transitioning = false
 

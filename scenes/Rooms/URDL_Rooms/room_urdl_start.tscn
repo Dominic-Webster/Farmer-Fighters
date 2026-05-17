@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://duifi6gxvh22d"]
+[gd_scene format=3 uid="uid://bpn8xltbp2rkw"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_i3onp"]
-[ext_resource type="Texture2D" uid="uid://b6kj82slekljw" path="res://scenes/Rooms/00_sprites/room_empty.png" id="2_o53vo"]
+[ext_resource type="Texture2D" uid="uid://dlgq78a5rwebd" path="res://scenes/Rooms/00_sprites/start_room.png" id="2_i3onp"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_st3bt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
@@ -31,12 +31,12 @@ size = Vector2(100, 880)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prkqh"]
 size = Vector2(104, 880)
 
-[node name="urdl_empty" type="Node2D" unique_id=479718819]
+[node name="urdl_start" type="Node2D" unique_id=479718819]
 script = ExtResource("1_i3onp")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("2_o53vo")
+texture = ExtResource("2_i3onp")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -177,152 +177,8 @@ debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
 
 [node name="SpawnPool_Up" type="Node2D" parent="SpawnPools" unique_id=221369824]
 
-[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1593936668]
-position = Vector2(237, 439)
-
-[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1413428052]
-position = Vector2(1677, 441)
-
-[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=294355169]
-position = Vector2(239, 628)
-
-[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=720215681]
-position = Vector2(531, 628)
-
-[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1451478464]
-position = Vector2(821, 632)
-
-[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1330620968]
-position = Vector2(1106, 634)
-
-[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1842767064]
-position = Vector2(1394, 632)
-
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1422398761]
-position = Vector2(1679, 630)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1041957986]
-position = Vector2(237, 824)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=730002161]
-position = Vector2(529, 824)
-
-[node name="EnemySpawn11" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=428129274]
-position = Vector2(819, 828)
-
-[node name="EnemySpawn12" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=181730193]
-position = Vector2(1104, 830)
-
-[node name="EnemySpawn13" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1000877743]
-position = Vector2(1392, 828)
-
-[node name="EnemySpawn14" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=747916426]
-position = Vector2(1677, 826)
-
 [node name="SpawnPool_Right" type="Node2D" parent="SpawnPools" unique_id=847344014]
-
-[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=744945110]
-position = Vector2(237, 244)
-
-[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1646558140]
-position = Vector2(529, 244)
-
-[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=833476682]
-position = Vector2(819, 248)
-
-[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=177542292]
-position = Vector2(237, 439)
-
-[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=807883491]
-position = Vector2(529, 439)
-
-[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=997614821]
-position = Vector2(239, 628)
-
-[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=852932085]
-position = Vector2(531, 628)
-
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=167859148]
-position = Vector2(237, 824)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=551281410]
-position = Vector2(529, 824)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1770383551]
-position = Vector2(819, 828)
 
 [node name="SpawnPool_Down" type="Node2D" parent="SpawnPools" unique_id=1794120643]
 
-[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1911850708]
-position = Vector2(237, 244)
-
-[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1895492361]
-position = Vector2(529, 244)
-
-[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1471284805]
-position = Vector2(819, 248)
-
-[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=514140217]
-position = Vector2(1104, 250)
-
-[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=673769074]
-position = Vector2(1392, 248)
-
-[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=556159833]
-position = Vector2(1677, 246)
-
-[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1066359484]
-position = Vector2(237, 439)
-
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1953308860]
-position = Vector2(529, 439)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=620738076]
-position = Vector2(819, 443)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1754028462]
-position = Vector2(1104, 445)
-
-[node name="EnemySpawn11" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=420153304]
-position = Vector2(1392, 443)
-
-[node name="EnemySpawn12" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1066085709]
-position = Vector2(1677, 441)
-
-[node name="EnemySpawn13" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=982437080]
-position = Vector2(239, 628)
-
-[node name="EnemySpawn14" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1491190880]
-position = Vector2(1679, 630)
-
 [node name="SpawnPool_Left" type="Node2D" parent="SpawnPools" unique_id=33648805]
-
-[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1726381185]
-position = Vector2(1104, 250)
-
-[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1448232783]
-position = Vector2(1392, 248)
-
-[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=420725128]
-position = Vector2(1677, 246)
-
-[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=2025625628]
-position = Vector2(1392, 443)
-
-[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1747778470]
-position = Vector2(1677, 441)
-
-[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=705017716]
-position = Vector2(1394, 632)
-
-[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1792306067]
-position = Vector2(1679, 630)
-
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=344909395]
-position = Vector2(1104, 830)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1165916807]
-position = Vector2(1392, 828)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1063660302]
-position = Vector2(1677, 826)

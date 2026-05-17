@@ -8,7 +8,7 @@ class_name Room
 @onready var player_spawn_d : Marker2D = $"Player Spawns/PlayerSpawnD"
 @onready var player_spawn_l : Marker2D = $"Player Spawns/PlayerSpawnL"
 @onready var doors : Node2D = $Doors
-@onready var enemy_spawns : Node2D = $EnemySpawns
+@onready var spawn_pools : Node2D = $SpawnPools
 @onready var bullet_bounds : Node2D = $BulletBounds
 
 
@@ -66,12 +66,12 @@ func load_enemies(_player_spawn : String) -> void:
 		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "T"):
 			return
 	
-	var spawns : Array[int] = get_enemy_spawns(_player_spawn)
-	var counter : int = 0
+	var enemy_limit = randi_range(1, 4)
 	
 	var enemy_pool = get_enemy_pool()
-	for spawn in enemy_spawns.get_children():
-		if counter in spawns:
+	var spawn_points = get_spawn_points(_player_spawn)
+	for spawn in spawn_points:
+		if randi_range(1, 3) == 1 and enemy_count < enemy_limit:
 			var scene_path = enemy_pool[randi() % enemy_pool.size()]
 			var scene = load(scene_path)
 			var enemy = scene.instantiate()
@@ -79,7 +79,16 @@ func load_enemies(_player_spawn : String) -> void:
 			add_child(enemy)
 			enemy_count += 1
 			enemy.died.connect(_on_enemy_died)
-		counter += 1
+	
+	# load one enemy just in case
+	if enemy_count == 0:
+		var scene_path = enemy_pool[randi() % enemy_pool.size()]
+		var scene = load(scene_path)
+		var enemy = scene.instantiate()
+		enemy.global_position = spawn_points[0].global_position
+		add_child(enemy)
+		enemy_count += 1
+		enemy.died.connect(_on_enemy_died)
 
 
 # Helper to get the enemy pool for the current floor (for now, always floor1)
@@ -94,32 +103,16 @@ func get_enemy_pool() -> Array:
 
 
 func load_boss(_player_spawn : String) -> void:
-	var boss_spawn : int = 16
-	var counter : int = 0
-	
-	match _player_spawn:
-		"C":
-			boss_spawn = 16
-		"U":
-			boss_spawn = 16
-		"R":
-			boss_spawn = 13
-		"D":
-			boss_spawn = 7
-		"L":
-			boss_spawn = 16
-	
 	var boss_pool = get_boss_pool()
-	for spawn in enemy_spawns.get_children():
-		if counter == boss_spawn:
-			var scene_path = boss_pool[randi() % boss_pool.size()]
-			var scene = load(scene_path)
-			var boss = scene.instantiate()
-			boss.global_position = spawn.global_position
-			add_child(boss)
-			enemy_count += 1
-			boss.died.connect(_on_enemy_died)
-		counter += 1
+	var spawn_points = get_spawn_points(_player_spawn)
+	var spawn = randi_range(0, spawn_points.size() - 1)
+	var scene_path = boss_pool[randi() % boss_pool.size()]
+	var scene = load(scene_path)
+	var boss = scene.instantiate()
+	boss.global_position = spawn_points[spawn].global_position
+	add_child(boss)
+	enemy_count += 1
+	boss.died.connect(_on_enemy_died)
 	
 
 
@@ -133,51 +126,6 @@ func get_boss_pool() -> Array:
 	return data["floor1"]
 
 
-func get_enemy_spawns(_player : String) -> Array[int]:
-	var spawns : Array[int] = []
-	var options : Array[int] = []
-	var max_enemies : int = randi_range(1, 4)
-	
-	if _player == "C":
-		options = [0, 1, 4, 5, 6, 11, 12, 17, 18, 19, 22, 23]
-		for i in options:
-			if randi_range(1, 3) == 1:
-				spawns.append(i)
-				if spawns.size() == max_enemies:
-					break
-	elif _player == "U":
-		options = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-		for i in options:
-			if randi_range(1, 3) == 1:
-				spawns.append(i)
-				if spawns.size() == max_enemies:
-					break
-	elif _player == "R":
-		options = [0, 1, 2, 3, 6, 7, 8, 12, 13, 14, 18, 19, 20, 21]
-		for i in options:
-			if randi_range(1, 3) == 1:
-				spawns.append(i)
-				if spawns.size() == max_enemies:
-					break
-	elif _player == "D":
-		options = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-		for i in options:
-			if randi_range(1, 3) == 1:
-				spawns.append(i)
-				if spawns.size() == max_enemies:
-					break
-	elif _player == "L":
-		options = [2, 3, 4, 5, 9, 10, 11, 15, 16, 17, 20, 21, 22, 23]
-		for i in options:
-			if randi_range(1, 3) == 1:
-				spawns.append(i)
-				if spawns.size() == max_enemies:
-					break
-	
-	if spawns.size() == 0:
-		spawns = [0]
-	
-	return spawns
 
 
 func _on_enemy_died():
@@ -269,9 +217,9 @@ func enemies_exist() -> bool:
 
 func set_floor(desc : String) -> void:
 	if desc == "Start":
-		art.texture = load("res://scenes/Rooms/start_room.png")
+		art.texture = load("res://scenes/Rooms/00_sprites/start_room.png")
 	elif desc == "Item":
-		art.texture = load("res://scenes/Rooms/item_room.png")
+		art.texture = load("res://scenes/Rooms/00_sprites/item_room.png")
 
 
 func _set_door_art() -> void:
@@ -361,3 +309,17 @@ func get_random_item_scene():
 	var pool = data["common"]
 	var item_path = pool[randi() % pool.size()]
 	return load(item_path)
+
+
+# Returns the spawn points for the given entry direction ("U", "R", "D", "L")
+func get_spawn_points(entry_dir: String) -> Array:
+	var pool_name = "SpawnPool_"
+	match entry_dir:
+		"U": pool_name += "Up"
+		"R": pool_name += "Right"
+		"D": pool_name += "Down"
+		"L": pool_name += "Left"
+		_: return []
+	if spawn_pools.has_node(pool_name):
+		return spawn_pools.get_node(pool_name).get_children()
+	return []
