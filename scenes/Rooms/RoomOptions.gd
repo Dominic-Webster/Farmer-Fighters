@@ -37,7 +37,10 @@ static var ROOM_OPTIONS = {
 			"item": ["res://scenes/Rooms/UR_Rooms/room_ur_item.tscn"]
 		},
 		"ud": {
-			"normal": ["res://scenes/Rooms/UD_Rooms/room_ud_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/UD_Rooms/room_ud_empty.tscn",
+				"res://scenes/Rooms/UD_Rooms/room_ud_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/UD_Rooms/room_ud_start.tscn"],
 			"item": ["res://scenes/Rooms/UD_Rooms/room_ud_item.tscn"]
 		},
@@ -52,7 +55,10 @@ static var ROOM_OPTIONS = {
 			"item": ["res://scenes/Rooms/RD_Rooms/room_rd_item.tscn"]
 		},
 		"rl": {
-			"normal": ["res://scenes/Rooms/RL_Rooms/room_rl_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/RL_Rooms/room_rl_empty.tscn",
+				"res://scenes/Rooms/RL_Rooms/room_rl_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/RL_Rooms/room_rl_start.tscn"],
 			"item": ["res://scenes/Rooms/RL_Rooms/room_rl_item.tscn"]
 		},
@@ -62,22 +68,34 @@ static var ROOM_OPTIONS = {
 			"item": ["res://scenes/Rooms/DL_Rooms/room_dl_item.tscn"]
 		},
 		"u": {
-			"normal": ["res://scenes/Rooms/U_Rooms/room_u_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/U_Rooms/room_u_empty.tscn",
+				"res://scenes/Rooms/U_Rooms/room_u_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/U_Rooms/room_u_start.tscn"],
 			"item": ["res://scenes/Rooms/U_Rooms/room_u_item.tscn"]
 		},
 		"r": {
-			"normal": ["res://scenes/Rooms/R_Rooms/room_r_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/R_Rooms/room_r_empty.tscn",
+				"res://scenes/Rooms/R_Rooms/room_r_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/R_Rooms/room_r_start.tscn"],
 			"item": ["res://scenes/Rooms/R_Rooms/room_r_item.tscn"]
 		},
 		"d": {
-			"normal": ["res://scenes/Rooms/D_Rooms/room_d_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/D_Rooms/room_d_empty.tscn",
+				"res://scenes/Rooms/D_Rooms/room_d_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/D_Rooms/room_d_start.tscn"],
 			"item": ["res://scenes/Rooms/D_Rooms/room_d_item.tscn"]
 		},
 		"l": {
-			"normal": ["res://scenes/Rooms/L_Rooms/room_l_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/L_Rooms/room_l_empty.tscn",
+				"res://scenes/Rooms/L_Rooms/room_l_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/L_Rooms/room_l_start.tscn"],
 			"item": ["res://scenes/Rooms/L_Rooms/room_l_item.tscn"]
 		}
