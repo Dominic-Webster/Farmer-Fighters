@@ -45,7 +45,10 @@ static var ROOM_OPTIONS = {
 			"item": ["res://scenes/Rooms/UD_Rooms/room_ud_item.tscn"]
 		},
 		"ul": {
-			"normal": ["res://scenes/Rooms/UL_Rooms/room_ul_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/UL_Rooms/room_ul_empty.tscn",
+				"res://scenes/Rooms/UL_Rooms/room_ul_1.tscn"
+			],
 			"start": ["res://scenes/Rooms/UL_Rooms/room_ul_start.tscn"],
 			"item": ["res://scenes/Rooms/UL_Rooms/room_ul_item.tscn"]
 		},
