@@ -7,7 +7,8 @@ static var ROOM_OPTIONS = {
 			"normal": [
 				"res://scenes/Rooms/URDL_Rooms/room_urdl_empty.tscn",
 				"res://scenes/Rooms/URDL_Rooms/room_urdl_1.tscn",
-				"res://scenes/Rooms/URDL_Rooms/room_urdl_2.tscn"
+				"res://scenes/Rooms/URDL_Rooms/room_urdl_2.tscn",
+				"res://scenes/Rooms/URDL_Rooms/room_urdl_3.tscn"
 				],
 			"start": ["res://scenes/Rooms/URDL_Rooms/room_urdl_start.tscn"],
 			"item": ["res://scenes/Rooms/URDL_Rooms/room_urdl_item.tscn"],
@@ -92,7 +93,10 @@ static var ROOM_OPTIONS = {
 			"boss": ["res://scenes/Rooms/UL_Rooms/room_ul_empty.tscn"]
 		},
 		"rd": {
-			"normal": ["res://scenes/Rooms/RD_Rooms/room_rd_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/RD_Rooms/room_rd_empty.tscn",
+				"res://scenes/Rooms/RD_Rooms/room_rd_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/RD_Rooms/room_rd_start.tscn"],
 			"item": ["res://scenes/Rooms/RD_Rooms/room_rd_item.tscn"],
 			"boss": ["res://scenes/Rooms/RD_Rooms/room_rd_empty.tscn"]
@@ -107,7 +111,10 @@ static var ROOM_OPTIONS = {
 			"boss": ["res://scenes/Rooms/RL_Rooms/room_rl_empty.tscn"]
 		},
 		"dl": {
-			"normal": ["res://scenes/Rooms/DL_Rooms/room_dl_empty.tscn"],
+			"normal": [
+				"res://scenes/Rooms/DL_Rooms/room_dl_empty.tscn",
+				"res://scenes/Rooms/DL_Rooms/room_dl_1.tscn"
+				],
 			"start": ["res://scenes/Rooms/DL_Rooms/room_dl_start.tscn"],
 			"item": ["res://scenes/Rooms/DL_Rooms/room_dl_item.tscn"],
 			"boss": ["res://scenes/Rooms/DL_Rooms/room_dl_empty.tscn"]

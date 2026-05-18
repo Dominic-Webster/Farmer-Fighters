@@ -74,7 +74,7 @@ var dash_cooldown: float = 0.0
 func _ready() -> void:
 	current_health = max_health
 	add_to_group("player")
-	push_area.body_entered.connect(_on_push_area_body_entered)
+	#push_area.body_entered.connect(_on_push_area_body_entered)
 
 
 func _physics_process(_delta):
