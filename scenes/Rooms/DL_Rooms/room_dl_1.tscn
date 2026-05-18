@@ -42,8 +42,6 @@ script = ExtResource("1_k6atk")
 scale = Vector2(4, 4)
 texture = ExtResource("2_ykeac")
 centered = false
-flip_h = true
-flip_v = true
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
 
