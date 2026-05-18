@@ -57,6 +57,8 @@ var knockback_velocity := Vector2.ZERO
 # Extra
 var is_flashing : bool = false
 
+var eggplant : int = 0
+
 # Dash function variables
 var is_dashing: bool = false
 var dash_direction: Vector2 = Vector2.ZERO
@@ -150,25 +152,78 @@ func shoot(direction: Vector2):
 	if not can_shoot:
 		return
 		
+	# Eggplant
+	if eggplant > 0:
+		eggplant_shoot(eggplant)
+	else:
+		can_shoot = false
+		
+		# Accuracy
+		direction.x += randf_range(accuracy.x, accuracy.y)
+		direction.y += randf_range(accuracy.x, accuracy.y)
+		
+		var bullet
+		match current_bullet:
+			Bullets.TOMATO:
+				bullet = tomato_bullet.instantiate()
+			Bullets.GRAPE:
+				bullet = grape_bullet.instantiate()
+			Bullets.CABBAGE:
+				bullet = cabbage_bullet.instantiate()
+		
+		bullet.global_position = shoot_point.global_position
+		bullet.direction = direction
+		
+		RunManager.current_room_instance.add_child(bullet)
+		
+		timer.wait_time = fire_rate
+		timer.start()
+		await timer.timeout
+		can_shoot = true
+
+
+func eggplant_shoot(level : int) -> void:
 	can_shoot = false
+	var amount : int
+	if level == 1:
+		amount = 4
+	else:
+		amount = 8
 	
-	# Accuracy
-	direction.x += randf_range(accuracy.x, accuracy.y)
-	direction.y += randf_range(accuracy.x, accuracy.y)
-	
-	var bullet
-	match current_bullet:
-		Bullets.TOMATO:
-			bullet = tomato_bullet.instantiate()
-		Bullets.GRAPE:
-			bullet = grape_bullet.instantiate()
-		Bullets.CABBAGE:
-			bullet = cabbage_bullet.instantiate()
-	
-	bullet.global_position = shoot_point.global_position
-	bullet.direction = direction
-	
-	RunManager.current_room_instance.add_child(bullet)
+	for i in range(amount):
+		var bullet
+		match current_bullet:
+			Bullets.TOMATO:
+				bullet = tomato_bullet.instantiate()
+			Bullets.GRAPE:
+				bullet = grape_bullet.instantiate()
+			Bullets.CABBAGE:
+				bullet = cabbage_bullet.instantiate()
+		
+		bullet.global_position = shoot_point.global_position
+		
+		match i:
+			0:
+				bullet.direction = Vector2.UP
+			1:
+				bullet.direction = Vector2.RIGHT
+			2:
+				bullet.direction = Vector2.DOWN
+			3:
+				bullet.direction = Vector2.LEFT
+			4:
+				bullet.direction = Vector2(1, 1).normalized()
+			5:
+				bullet.direction = Vector2(1, -1).normalized()
+			6:
+				bullet.direction = Vector2(-1, -1).normalized()
+			7:
+				bullet.direction = Vector2(-1, 1).normalized()
+		# Accuracy
+		bullet.direction.x += randf_range(accuracy.x, accuracy.y)
+		bullet.direction.y += randf_range(accuracy.x, accuracy.y)
+		
+		RunManager.current_room_instance.add_child(bullet)
 	
 	timer.wait_time = fire_rate
 	timer.start()
