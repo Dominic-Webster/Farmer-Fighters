@@ -54,6 +54,8 @@ func load_room(pos: Vector2i, entry_dir: String):
 		room_type = "start"
 	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "T":
 		room_type = "item"
+	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "B":
+		room_type = "boss"
 
 	# Get room options for current floor, code, and type
 	var options = RoomOptions.get_options(current_floor, code, room_type)
