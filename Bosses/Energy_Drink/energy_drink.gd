@@ -90,6 +90,8 @@ func _physics_process(_delta: float) -> void:
 				return
 
 
+const ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
+
 func die():
 	if not is_dead:
 		died.emit()
@@ -99,4 +101,16 @@ func die():
 		anim.stop()
 		anim.play("die")
 		await anim.animation_finished
+		visible = false
+
+		# Spawn elevator after boss defeat at center of screen
+		var elevator = ElevatorScene.instantiate()
+		get_parent().add_child(elevator)
+		# Center in viewport
+		var viewport = get_viewport()
+		var center = viewport.get_visible_rect().size / 2
+		elevator.global_position = center
+		await get_tree().process_frame # Ensure elevator is in scene tree
+		await elevator.lower()
+
 		queue_free()
