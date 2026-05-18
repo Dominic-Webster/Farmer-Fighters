@@ -92,6 +92,8 @@ position = Vector2(69, -406)
 shape = SubResource("RectangleShape2D_3dcmp")
 
 [node name="Extra" type="StaticBody2D" parent="Walls" unique_id=566199774]
+collision_layer = 16
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Extra" unique_id=1154451943]
 position = Vector2(959.5, 515.5)
