@@ -28,6 +28,10 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
 
+[global_group]
+
+"\"bullet_bounds\""=""
+
 [input]
 
 move_up={
@@ -106,6 +110,8 @@ dash={
 2d_physics/layer_4="Enemy Bullets"
 2d_physics/layer_5="Wall"
 2d_physics/layer_6="Items"
+2d_physics/layer_7="Props"
+2d_physics/layer_8="PushArea"
 
 [physics]
 

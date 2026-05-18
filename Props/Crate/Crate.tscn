@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://8lpu3esnqtbg"]
+
+[ext_resource type="Texture2D" uid="uid://c37u6l7v6fftc" path="res://Props/Crate/crate.png" id="1_ripeh"]
+[ext_resource type="Script" uid="uid://b150mlndknf0y" path="res://Props/prop.gd" id="1_twtwc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twtwc"]
+size = Vector2(127, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ripeh"]
+size = Vector2(127, 128)
+
+[node name="Crate" type="RigidBody2D" unique_id=1611485073]
+collision_layer = 64
+collision_mask = 213
+mass = 4.0
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 4.0
+angular_damp = 999.0
+script = ExtResource("1_twtwc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=712576580]
+scale = Vector2(4, 4)
+texture = ExtResource("1_ripeh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797825712]
+shape = SubResource("RectangleShape2D_twtwc")
+
+[node name="BulletBounds" type="Area2D" parent="." unique_id=1935464801]
+collision_layer = 16
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds" unique_id=2121363242]
+shape = SubResource("RectangleShape2D_ripeh")
+debug_color = Color(0.67064726, 0.50662106, 0.14479983, 0.41960785)

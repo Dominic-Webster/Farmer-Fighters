@@ -65,6 +65,8 @@ var dash_direction: Vector2 = Vector2.ZERO
 var dash_time_left: float = 0.0
 var dash_cooldown: float = 0.0
 
+@onready var push_area : Area2D = $PushArea
+
 # ---------
 # Functions
 # ---------
@@ -72,6 +74,7 @@ var dash_cooldown: float = 0.0
 func _ready() -> void:
 	current_health = max_health
 	add_to_group("player")
+	push_area.body_entered.connect(_on_push_area_body_entered)
 
 
 func _physics_process(_delta):
@@ -94,17 +97,17 @@ func _physics_process(_delta):
 		velocity = move_velocity + knockback_velocity
 		# Smoothly reduce knockback over time
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
-	
+
 	# Dash input
 	if not is_dashing and dash_unlocked and dash_cooldown <= 0.0 and Input.is_action_just_pressed("dash"):
 		if direction != Vector2.ZERO:
 			is_dashing = true
 			dash_direction = direction
 			dash_time_left = dash_duration
-	
+
 	# Update sprite facing
 	update_sprite_facing()
-	
+
 	move_and_slide()
 
 
@@ -121,15 +124,23 @@ func update_sprite_facing():
 	if face_dir == Vector2.ZERO or face_dir.y > 0:
 		sprite.frame = 0
 		sprite.flip_h = false
+		push_area.position.x = 0
+		push_area.position.y = 56
 	elif face_dir.y < 0:
 		sprite.frame = 1
 		sprite.flip_h = false
+		push_area.position.x = 0
+		push_area.position.y = 63
 	elif face_dir.x > 0:
 		sprite.frame = 2
 		sprite.flip_h = false
+		push_area.position.x = 4
+		push_area.position.y = 60
 	elif face_dir.x < 0:
 		sprite.frame = 2
 		sprite.flip_h = true
+		push_area.position.x = -4
+		push_area.position.y = 60
 
 
 func _process(_delta):
@@ -246,6 +257,17 @@ func _on_hurt_box_area_entered(area) -> void:
 			take_damage(enemy.damage)
 		else:
 			take_damage(1)
+
+
+func _on_push_area_body_entered(body):
+	if body is RigidBody2D:
+		# Only push if the player is moving
+		if velocity.length() > 0.1:
+			var push_dir = velocity.normalized()
+			var crate_speed_in_dir = body.linear_velocity.dot(push_dir)
+			var push_threshold = 40
+			if crate_speed_in_dir < push_threshold:
+				body.apply_central_impulse(push_dir * 3000) # Adjust force as needed
 
 
 func take_damage(amount : int):

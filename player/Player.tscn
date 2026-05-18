@@ -8,10 +8,13 @@
 size = Vector2(62, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnvi2"]
-size = Vector2(80, 201)
+size = Vector2(80, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83hs8"]
+size = Vector2(60, 89)
 
 [node name="Player" type="CharacterBody2D" unique_id=1057382120]
-collision_mask = 16
+collision_mask = 80
 script = ExtResource("1_3c3w1")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1823037824]
@@ -37,8 +40,16 @@ shape = SubResource("RectangleShape2D_ulp21")
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1755343782]
-position = Vector2(0, 4.5)
+position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_wnvi2")
 debug_color = Color(0.5616511, 0.5566963, 0.16425428, 0.41960785)
+
+[node name="PushArea" type="Area2D" parent="." unique_id=1042499381]
+position = Vector2(0, 60)
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea" unique_id=858923351]
+shape = SubResource("RectangleShape2D_83hs8")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
