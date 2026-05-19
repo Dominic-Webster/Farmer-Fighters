@@ -334,3 +334,22 @@ func get_spawn_points(entry_dir: String) -> Array:
 	if spawn_pools.has_node(pool_name):
 		return spawn_pools.get_node(pool_name).get_children()
 	return []
+
+
+func spawn_elevator_at_center():
+	# Spawn elevator at center of viewport, save state for persistence
+	var ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
+	var elevator = ElevatorScene.instantiate()
+	add_child(elevator)
+	var viewport = get_viewport()
+	var center = viewport.get_visible_rect().size / 2
+	elevator.global_position = center
+	elevator.load_in()
+	await get_tree().process_frame # Ensure elevator is in scene tree
+	await elevator.lower()
+	# Save elevator state for persistence
+	var pos = RunManager.current_room
+	var state = MapGenerationManager.room_states.get(pos, {})
+	state["elevator_present"] = true
+	state["elevator_position"] = elevator.global_position
+	MapGenerationManager.room_states[pos] = state

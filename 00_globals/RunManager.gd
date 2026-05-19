@@ -26,8 +26,6 @@ func start_new_run(_player : Player):
 	MapGenerationManager.create_new_map()
 	current_room = MapGenerationManager._start
 	
-	print("Starting room: ", current_room)
-	
 	if _player == null:
 		player = preload("res://player/Player.tscn").instantiate()
 	else:
