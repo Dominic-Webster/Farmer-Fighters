@@ -25,6 +25,8 @@ func create_new_map() -> void:
 	room_states.clear()
 	dungeon.clear()
 	_branch_candidates.clear()
+	RunManager.room_history.clear()
+	
 	_initialize_dungeon()
 	_place_entrance()
 	_generate_path(_start, _critical_path_length, "C")

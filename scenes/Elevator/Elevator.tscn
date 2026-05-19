@@ -10,7 +10,7 @@ size = Vector2(120, 12)
 size = Vector2(20, 92)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nocw"]
-size = Vector2(80, 40)
+size = Vector2(80, 49.5)
 
 [sub_resource type="Animation" id="Animation_e4f03"]
 length = 0.001
@@ -237,7 +237,7 @@ shape = SubResource("RectangleShape2D_e4f03")
 [node name="Area2D" type="Area2D" parent="." unique_id=902238762]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1980220970]
-position = Vector2(0, 4)
+position = Vector2(0, 8.75)
 shape = SubResource("RectangleShape2D_4nocw")
 debug_color = Color(0.68853486, 0.3465349, 0.90406454, 0.41960785)
 

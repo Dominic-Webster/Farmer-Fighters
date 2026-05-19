@@ -110,7 +110,15 @@ func die():
 		var viewport = get_viewport()
 		var center = viewport.get_visible_rect().size / 2
 		elevator.global_position = center
+		elevator.load_in()
 		await get_tree().process_frame # Ensure elevator is in scene tree
 		await elevator.lower()
+
+		# Store elevator state and position for persistence
+		var pos = RunManager.current_room
+		var state = MapGenerationManager.room_states.get(pos, {})
+		state["elevator_present"] = true
+		state["elevator_position"] = elevator.global_position
+		MapGenerationManager.room_states[pos] = state
 
 		queue_free()

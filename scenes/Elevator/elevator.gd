@@ -12,12 +12,12 @@ func _ready():
 func load_in() -> void:
 	var player_x : float = RunManager.player.global_position.x
 	
-	if player_x < 0:
-		global_position.x = 200
+	if player_x < 960:
+		global_position.x += 200
 	else:
-		global_position.x = -200
+		global_position.x -= 200
 	
-	global_position.y = 540
+	global_position.y -= 50
 
 func lower() -> void:
 	visible = true

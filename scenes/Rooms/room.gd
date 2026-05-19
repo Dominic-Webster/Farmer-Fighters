@@ -37,7 +37,18 @@ func _enter_room(dir_from : String) -> void:
 	
 	# Always respawn persistent pickup if present and not picked up
 	spawn_room_pickup(pos)
-	
+
+	# Respawn elevator if present in this room (e.g. boss room after defeat)
+	if MapGenerationManager.room_states.has(pos):
+		var state = MapGenerationManager.room_states[pos]
+		if state.has("elevator_present") and state["elevator_present"]:
+			var ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
+			var elevator = ElevatorScene.instantiate()
+			elevator.global_position = state["elevator_position"]
+			add_child(elevator)
+			elevator.visible = true
+			elevator.open()
+
 	if MapGenerationManager.room_states.has(pos) and MapGenerationManager.room_states[pos].get("cleared", false):
 		spawn_open_doors()
 	else:
@@ -81,7 +92,7 @@ func load_enemies(_player_spawn : String) -> void:
 			enemy.died.connect(_on_enemy_died)
 	
 	# load one enemy just in case
-	if enemy_count == 0:
+	if enemy_count == 0 and spawn_points.size() > 0:
 		var scene_path = enemy_pool[randi() % enemy_pool.size()]
 		var scene = load(scene_path)
 		var enemy = scene.instantiate()
