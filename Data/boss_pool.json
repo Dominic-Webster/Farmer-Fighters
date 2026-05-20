@@ -1,5 +1,8 @@
 {
-	"floor1": [
+	"1": [
+		"res://Bosses/Big_Chips/Big_Chips.tscn"
+	],
+	"2": [
 		"res://Bosses/Energy_Drink/Energy_Drink.tscn"
 	],
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8bqd3lxpyt0t"
-path="res://.godot/imported/purple_chips.png-33af217af9b81220ef07d2e6af1a7cbf.ctex"
+uid="uid://bi0kuxq512tg7"
+path="res://.godot/imported/big_chips.png-1e838f31331b0a6eca593477c38aa65e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Purple_Chips/purple_chips.png"
-dest_files=["res://.godot/imported/purple_chips.png-33af217af9b81220ef07d2e6af1a7cbf.ctex"]
+source_file="res://Bosses/Big_Chips/big_chips.png"
+dest_files=["res://.godot/imported/big_chips.png-1e838f31331b0a6eca593477c38aa65e.ctex"]
 
 [params]
 

@@ -80,6 +80,11 @@ func load_enemies(_player_spawn : String) -> void:
 	var enemy_limit = randi_range(1, 4)
 	
 	var enemy_pool = get_enemy_pool()
+	
+	if enemy_pool == []:
+		print("No Enemy Pool")
+		return
+	
 	var spawn_points = get_spawn_points(_player_spawn)
 	for spawn in spawn_points:
 		if randi_range(1, 3) == 1 and enemy_count < enemy_limit:
@@ -108,13 +113,22 @@ func get_enemy_pool() -> Array:
 	if not file:
 		return []
 	var data = JSON.parse_string(file.get_as_text())
-	if typeof(data) != TYPE_DICTIONARY or not data.has("floor1"):
+	
+	var current_floor = str(RunManager.current_floor)
+	
+	if typeof(data) != TYPE_DICTIONARY or not data.has(current_floor):
 		return []
-	return data["floor1"]
+	
+	return data[current_floor]
 
 
 func load_boss(_player_spawn : String) -> void:
 	var boss_pool = get_boss_pool()
+	
+	if boss_pool == []:
+		print("No Enemy Pool")
+		return
+	
 	var spawn_points = get_spawn_points(_player_spawn)
 	var spawn = randi_range(0, spawn_points.size() - 1)
 	var scene_path = boss_pool[randi() % boss_pool.size()]
@@ -132,9 +146,12 @@ func get_boss_pool() -> Array:
 	if not file:
 		return []
 	var data = JSON.parse_string(file.get_as_text())
-	if typeof(data) != TYPE_DICTIONARY or not data.has("floor1"):
+	
+	var current_floor = str(RunManager.current_floor)
+	
+	if typeof(data) != TYPE_DICTIONARY or not data.has(current_floor):
 		return []
-	return data["floor1"]
+	return data[current_floor]
 
 
 
