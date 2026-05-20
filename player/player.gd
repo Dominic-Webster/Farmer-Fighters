@@ -27,9 +27,11 @@ var dash_unlocked = false
 @export var dash_damage : float = 0
 @export var dash_cooldown_time: float = 0.5
 
-# Additional Stats
 var current_health : int
 var items : Array[String] = []
+
+# Damage cooldown
+var can_take_damage : bool = true
 
 # Shooting Variables
 @onready var timer : Timer = $Timer
@@ -274,13 +276,15 @@ func _on_push_area_body_entered(body):
 
 
 func take_damage(amount : int):
-	if not is_dashing:
+	if not is_dashing and can_take_damage:
+		can_take_damage = false
 		current_health -= amount
 		flash_red()
 		damaged.emit()
-		
 		if current_health < 1:
 			player_died()
+		await get_tree().create_timer(0.5).timeout
+		can_take_damage = true
 
 
 func player_died():
