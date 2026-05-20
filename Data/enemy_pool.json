@@ -3,6 +3,14 @@
 		"res://Enemies/Chips/Chips.tscn",
 		"res://Enemies/Dark_Soda/Dark_Soda.tscn",
 		"res://Enemies/Soda/Soda.tscn",
+		"res://Enemies/Purple_Chips/Purple_Chips.tscn",
+		"res://Enemies/Red_Chips/Red_Chips.tscn"
+	],
+	"floor2": [
+		"res://Enemies/Chips/Chips.tscn",
+		"res://Enemies/Dark_Soda/Dark_Soda.tscn",
+		"res://Enemies/Soda/Soda.tscn",
+		"res://Enemies/Purple_Chips/Purple_Chips.tscn",
 		"res://Enemies/Red_Chips/Red_Chips.tscn"
 	],
 }

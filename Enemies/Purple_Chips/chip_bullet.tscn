@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bfjhfktcpo8es"]
+
+[ext_resource type="Texture2D" uid="uid://4hr6na0n5yl0" path="res://Enemies/Purple_Chips/chip_bullet.png" id="1_5r8d0"]
+[ext_resource type="Script" uid="uid://0sujw73v2p7o" path="res://Enemies/enemy_bullet.gd" id="1_airin"]
+[ext_resource type="Resource" uid="uid://iqi3hmyh56d8" path="res://Enemies/Purple_Chips/chip_bullet.tres" id="2_ocfhv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_airin"]
+size = Vector2(60, 69)
+
+[sub_resource type="Animation" id="Animation_5r8d0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_airin"]
+resource_name = "spin"
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707963267948966, 3.141592653589793, 4.71238898038469, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocfhv"]
+_data = {
+&"RESET": SubResource("Animation_5r8d0"),
+&"spin": SubResource("Animation_airin")
+}
+
+[node name="ChipBullet" type="Area2D" unique_id=249560929]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_airin")
+data = ExtResource("2_ocfhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445442734]
+z_index = 200
+scale = Vector2(3, 3)
+texture = ExtResource("1_5r8d0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786075711]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_airin")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=224798987]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=405109685]
+libraries/ = SubResource("AnimationLibrary_ocfhv")
+autoplay = &"spin"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -243,7 +243,7 @@ func eggplant_shoot(level : int) -> void:
 
 
 func _on_hurt_box_area_entered(area) -> void:
-	if area.is_in_group("enemy"):
+	if area.is_in_group("enemy") or area.is_in_group("enemy_bullet"):
 		var dir = (global_position - area.global_position).normalized()
 		knockback_velocity = dir * knockback_strength
 		
@@ -257,6 +257,9 @@ func _on_hurt_box_area_entered(area) -> void:
 			take_damage(enemy.damage)
 		else:
 			take_damage(1)
+		
+		if area.is_in_group("enemy_bullet"):
+			area.queue_free()
 
 
 func _on_push_area_body_entered(body):

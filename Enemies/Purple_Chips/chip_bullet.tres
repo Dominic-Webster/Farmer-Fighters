@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyBulletData" format=3 uid="uid://iqi3hmyh56d8"]
+
+[ext_resource type="Script" uid="uid://4k0vxftdg7d4" path="res://Enemies/enemy_bullet_data.gd" id="1_ijme3"]
+
+[resource]
+script = ExtResource("1_ijme3")
+bullet_speed = 600.0
+metadata/_custom_type_script = "uid://4k0vxftdg7d4"
