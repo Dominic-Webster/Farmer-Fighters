@@ -1,16 +1,19 @@
 {
 	"1": [
-		"res://Enemies/Chips/Chips.tscn",
-		"res://Enemies/Dark_Soda/Dark_Soda.tscn",
-		"res://Enemies/Soda/Soda.tscn",
-		"res://Enemies/Purple_Chips/Purple_Chips.tscn",
-		"res://Enemies/Red_Chips/Red_Chips.tscn"
+		"res://Enemies/Floor1/Chips/Chips.tscn",
+		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
+		"res://Enemies/Floor1/Soda/Soda.tscn",
+		"res://Enemies/Floor1/Purple_Chips/Purple_Chips.tscn",
+		"res://Enemies/Floor1/Red_Chips/Red_Chips.tscn"
 	],
 	"2": [
-		"res://Enemies/Chips/Chips.tscn",
-		"res://Enemies/Dark_Soda/Dark_Soda.tscn",
-		"res://Enemies/Soda/Soda.tscn",
-		"res://Enemies/Purple_Chips/Purple_Chips.tscn",
-		"res://Enemies/Red_Chips/Red_Chips.tscn"
+		"res://Enemies/Floor1/Chips/Chips.tscn",
+		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
+		"res://Enemies/Floor1/Soda/Soda.tscn",
+		"res://Enemies/Floor1/Purple_Chips/Purple_Chips.tscn",
+		"res://Enemies/Floor1/Red_Chips/Red_Chips.tscn"
 	],
+	"3": [
+		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn"
+	]
 }

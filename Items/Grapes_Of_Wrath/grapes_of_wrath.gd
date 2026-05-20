@@ -2,7 +2,7 @@ extends Item
 class_name GrapesOfWrath
 
 var damage_nerf : float = 0.5
-var fire_rate_buff : float = 0.15
+var fire_rate_buff : float = 0.17
 var accuracy_debuff : float = 0.05
 
 
@@ -18,8 +18,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.fire_rate = 0.01
 		
 		RunManager.player.damage -= damage_nerf
-		if RunManager.player.damage < 0.1:
-			RunManager.player.damage = 0.1
+		if RunManager.player.damage < 0.25:
+			RunManager.player.damage = 0.25
 		
 		RunManager.player.accuracy.x -= accuracy_debuff
 		RunManager.player.accuracy.y += accuracy_debuff

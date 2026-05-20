@@ -61,4 +61,9 @@ func die():
 		anim.stop()
 		anim.play("die")
 		await anim.animation_finished
+		visible = false
+		
+		# Tell the room to spawn the elevator and handle persistence
+		await get_parent().spawn_elevator_at_center()
+		
 		queue_free()

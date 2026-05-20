@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bqfhv1pybmfap"]
+
+[ext_resource type="Script" uid="uid://dh2bhil5s5bte" path="res://Enemies/Floor3/Red_Bear/red_bear.gd" id="1_1lleu"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_370nw"]
+[ext_resource type="Texture2D" uid="uid://c6g0oqy60lvdv" path="res://Enemies/Floor3/Red_Bear/red_bear.png" id="2_igesq"]
+[ext_resource type="Resource" uid="uid://bq6pbgovqmeci" path="res://Enemies/Floor3/Red_Bear/red_bear.tres" id="2_smy2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lleu"]
+size = Vector2(69, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smy2q"]
+size = Vector2(72, 97)
+
+[sub_resource type="Animation" id="Animation_smy2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7gs1h"]
+resource_name = "die"
+length = 0.46667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_1lleu"]
+resource_name = "move"
+length = 0.93333673
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.7, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.7, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.17453292519943295, 0.0, 0.17453292519943295, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smy2q"]
+_data = {
+&"RESET": SubResource("Animation_smy2q"),
+&"die": SubResource("Animation_7gs1h"),
+&"move": SubResource("Animation_1lleu")
+}
+
+[node name="RedBear" type="CharacterBody2D" unique_id=138779912]
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_1lleu")
+enemy_data = ExtResource("2_smy2q")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1800590051]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("1_370nw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773918882]
+scale = Vector2(7, 7)
+texture = ExtResource("2_igesq")
+hframes = 3
+vframes = 3
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=178428477]
+position = Vector2(-1.5, 33.5)
+shape = SubResource("RectangleShape2D_1lleu")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1285069719]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=509473690]
+position = Vector2(-1, 5.5)
+shape = SubResource("RectangleShape2D_smy2q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390452778]
+libraries/ = SubResource("AnimationLibrary_smy2q")
+autoplay = &"move"
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
