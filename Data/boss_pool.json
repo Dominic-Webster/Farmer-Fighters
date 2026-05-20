@@ -1,8 +1,8 @@
 {
 	"1": [
-		"res://Bosses/Big_Chips/Big_Chips.tscn"
+		"res://Bosses/Energy_Drink/Energy_Drink.tscn"
 	],
 	"2": [
-		"res://Bosses/Energy_Drink/Energy_Drink.tscn"
+		"res://Bosses/Big_Chips/Big_Chips.tscn"
 	],
 }
