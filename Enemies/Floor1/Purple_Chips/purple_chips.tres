@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c63mq8pqjidsh"]
 
-[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_7g1qr"]
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_fedw0"]
 
 [resource]
-script = ExtResource("1_7g1qr")
+script = ExtResource("1_fedw0")
 enemy_name = "Purple_Chips"
 damage = 1
 health = 4.0
-move_speed = 100.0
 metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

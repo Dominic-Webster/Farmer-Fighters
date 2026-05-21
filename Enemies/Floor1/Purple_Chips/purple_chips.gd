@@ -5,7 +5,7 @@ class_name PurpleChips
 
 @export var bullet_scene : PackedScene
 
-@export var action_delay : Vector2 = Vector2(0.75, 2.0)
+@export var action_delay : Vector2 = Vector2(0.1, 2.5)
 @export var accuracy : Vector2 = Vector2(-0.05, 0.05)
 
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
@@ -17,8 +17,8 @@ func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
 	# Apply knockback only
-	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 300 * _delta)
-	velocity = knockback_velocity
+	#knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 10 * _delta)
+	#velocity = knockback_velocity
 	move_and_slide()
 
 	# Action timer logic
@@ -46,6 +46,9 @@ func shoot_at_player() -> void:
 	var angle_offset = randf_range(accuracy.x, accuracy.y)
 	dir = dir.rotated(angle_offset)
 	bullet.direction = dir
+	
+	if RunManager.current_floor == 1:
+		bullet.speed -= 100
 
 
 func die():

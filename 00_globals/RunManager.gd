@@ -23,6 +23,8 @@ var current_floor : int = 1
 
 func start_new_run(_player : Player):
 	
+	current_floor = 1
+	
 	MapGenerationManager.create_new_map()
 	current_room = MapGenerationManager._start
 	

@@ -2,14 +2,14 @@ extends Item
 class_name GrapesOfWrath
 
 var damage_nerf : float = 0.5
-var fire_rate_buff : float = 0.17
+var fire_rate_buff : float = 0.15
 var accuracy_debuff : float = 0.05
 
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Grapes Of Wrath"
-		desc = "+ Bullets become Grapes"
+		desc = "Bullets become Grapes"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.GRAPE
 		

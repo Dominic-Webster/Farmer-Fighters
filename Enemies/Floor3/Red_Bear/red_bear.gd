@@ -25,6 +25,11 @@ func _physics_process(_delta: float) -> void:
 			# Update direction towards player
 			last_direction = direction
 			move_velocity = last_direction * move_speed
+			
+			if RunManager.player.global_position.x < global_position.x:
+				sprite.flip_h = true
+			else:
+				sprite.flip_h = false
 		
 		velocity = move_velocity + knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
