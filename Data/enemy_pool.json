@@ -14,6 +14,7 @@
 		"res://Enemies/Floor1/Red_Chips/Red_Chips.tscn"
 	],
 	"3": [
-		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn"
+		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn",
+		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn"
 	]
 }
