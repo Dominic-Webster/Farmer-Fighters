@@ -10,8 +10,8 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
 			desc = "+ Health"
 			RunManager.player.add_item_to_array(item_name)
-			RunManager.player.max_health += health_boost
-			RunManager.player.current_health += health_boost
+			RunManager.player.num_hearts += 1
+			RunManager.player.current_health = RunManager.player.get_max_health()
 			RunManager.player.damaged.emit()
 			queue_free()
 			picked_up.emit(item_name, desc)

@@ -71,7 +71,6 @@ func update_heart(_index: int, _hp: int, heart_value := 2, _heart_type: Variant 
 
 
 func update_max_hp(_max_hp: int, _heart_type: Variant = null) -> void:
-	# This function is now handled in update_hp, but kept for compatibility
 	pass
 
 
@@ -80,7 +79,6 @@ func show_item_info(iname : String, desc : String) -> void:
 	item_info_desc.text = desc
 	item_info.visible = true
 	item_info_timer.start()
-
 
 
 func hide_item_info() -> void:

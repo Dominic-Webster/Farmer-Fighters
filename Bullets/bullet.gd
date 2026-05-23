@@ -7,7 +7,7 @@ var direction := Vector2.ZERO
 
 
 func _ready() -> void:
-	damage = RunManager.player.damage
+	damage = RunManager.player.damage * RunManager.player.damage_mult
 	speed = RunManager.player.bullet_speed
 	add_to_group("player_bullet")
 	area_entered.connect(_on_area_entered)

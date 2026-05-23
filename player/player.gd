@@ -14,6 +14,7 @@ signal damaged
 # Stats
 @export var num_hearts : int = 3 # Number of hearts
 @export var damage : float = 1.0
+@export var damage_mult : float = 1.0
 @export var luck : int = 1
 @export var move_speed : float = 400
 @export var fire_rate : float = 0.3
@@ -49,38 +50,6 @@ var current_health : int = 0
 
 func get_max_health() -> int:
 	return num_hearts * get_heart_value()
-
-
-func upgrade_hearts_to_carrot():
-	if current_heart != Hearts.CARROT:
-		var old_heart_value = 2
-		var new_heart_value = 3
-		var old_health = current_health
-		var old_max_health = num_hearts * old_heart_value
-		current_heart = Hearts.CARROT
-		# Keep num_hearts the same, just change heart value
-		# Option 1: Fill all hearts after upgrade
-		#current_health = num_hearts * new_heart_value
-		# Option 2: Preserve missing health proportionally (uncomment below if you want this)
-		var health_ratio = float(old_health) / float(old_max_health)
-		current_health = int(round(health_ratio * (num_hearts * new_heart_value)))
-		update_hp()
-		damaged.emit()
-
-# Always update HUD with current heart type
-func update_hp():
-	var hud = null
-	for node in get_tree().get_nodes_in_group("player_hud"):
-		hud = node
-		break
-	if hud:
-		var heart : int
-		match current_heart:
-			Hearts.TOMATO :
-				heart = 0
-			Hearts.CARROT :
-				heart = 1
-		hud.update_hp(current_health, get_max_health(), heart, num_hearts)
 
 
 var items : Array[String] = []
@@ -367,3 +336,32 @@ func heal(amount : int) -> void:
 	if current_health > get_max_health():
 		current_health = get_max_health()
 	damaged.emit()
+
+
+func upgrade_hearts_to_carrot():
+	if current_heart != Hearts.CARROT:
+		var old_heart_value = 2
+		var new_heart_value = 3
+		var old_health = current_health
+		var old_max_health = num_hearts * old_heart_value
+		current_heart = Hearts.CARROT
+		var health_ratio = float(old_health) / float(old_max_health)
+		current_health = int(round(health_ratio * (num_hearts * new_heart_value)))
+		update_hp()
+		damaged.emit()
+
+
+# Always update HUD with current heart type
+func update_hp():
+	var hud = null
+	for node in get_tree().get_nodes_in_group("player_hud"):
+		hud = node
+		break
+	if hud:
+		var heart : int
+		match current_heart:
+			Hearts.TOMATO :
+				heart = 0
+			Hearts.CARROT :
+				heart = 1
+		hud.update_hp(current_health, get_max_health(), heart, num_hearts)

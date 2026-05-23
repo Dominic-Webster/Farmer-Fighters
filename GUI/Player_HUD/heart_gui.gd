@@ -5,9 +5,9 @@ class_name HeartGUI
 
 var heart_num : int = 2
 
-
 var value : int = 2
 var heart_type : int = 0 # 0 = TOMATO, 1 = CARROT
+
 
 func set_heart(_value: int, _heart_type: Variant = null) -> void:
 	value = _value

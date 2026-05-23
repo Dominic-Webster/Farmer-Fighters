@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c1gu1ttm8abr4"]
+
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_n1b55"]
+[ext_resource type="Script" uid="uid://bsgcprnsoa1bl" path="res://Items/Lettuce/Lettuce.gd" id="1_ykj8q"]
+[ext_resource type="Texture2D" uid="uid://bf7ckh541a306" path="res://Items/Lettuce/lettuce.png" id="2_ykj8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0m5s"]
+size = Vector2(118, 119.5)
+
+[sub_resource type="Animation" id="Animation_ykj8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o0m5s"]
+resource_name = "hover"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbkqf"]
+_data = {
+&"RESET": SubResource("Animation_ykj8q"),
+&"hover": SubResource("Animation_o0m5s")
+}
+
+[node name="Lettuce" type="Node2D" unique_id=1142936693]
+script = ExtResource("1_ykj8q")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1727722601]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 60)
+scale = Vector2(4, 4)
+texture = ExtResource("1_n1b55")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1900667824]
+rotation = 0.0028855298
+scale = Vector2(3, 3)
+texture = ExtResource("2_ykj8q")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=579938345]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2139104030]
+shape = SubResource("RectangleShape2D_o0m5s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1902603634]
+libraries/ = SubResource("AnimationLibrary_lbkqf")
+autoplay = &"hover"
