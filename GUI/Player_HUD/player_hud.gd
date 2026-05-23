@@ -31,29 +31,47 @@ func _ready():
 
 
 
-func update_hp( _hp : int, _max_hp : int ) -> void:
-	update_max_hp( _max_hp )
-	for i in _max_hp:
-		update_heart( i, _hp )
-	
-	pass
+func update_hp(_hp: int, _max_hp: int, _heart_type: Variant = null, _num_hearts: int = 0) -> void:
+	# Always hide all hearts first
+	for h in hearts:
+		h.visible = false
+	var heart_value = 2
+	var max_frame = 2
+	if _heart_type != null:
+		match _heart_type:
+			0:
+				heart_value = 2 # TOMATO
+				max_frame = 2
+			1:
+				heart_value = 3 # CARROT
+				max_frame = 3
+	@warning_ignore("integer_division")
+	var heart_count = _num_hearts if _num_hearts > 0 else int(_max_hp / heart_value)
+	for i in range(heart_count):
+		update_heart(i, _hp, heart_value, _heart_type, max_frame)
+		hearts[i].visible = true
 
 
 
-func update_heart( _index : int, _hp : int ) -> void:
-	var _value : int = clampi( _hp - _index * 2, 0, 2 )
-	hearts[ _index ].value = _value
-	pass
+func update_heart(_index: int, _hp: int, heart_value := 2, _heart_type: Variant = null, _max_frame := 2) -> void:
+	var raw_value = _hp - _index * heart_value
+	var _value = clampi(raw_value, 0, heart_value)
+	# Map value to frame count
+	var frame = 0
+	if heart_value == 2:
+		# Tomato: 0=empty, 1=half, 2=full
+		frame = _value
+	elif heart_value == 3:
+		# Carrot: 0=empty, 1=1/3, 2=2/3, 3=full
+		frame = _value
+	if "set_heart" in hearts[_index]:
+		hearts[_index].set_heart(frame, _heart_type)
+	else:
+		hearts[_index].value = frame
 
 
-
-func update_max_hp( _max_hp : int ) -> void:
-	var _heart_count : int = roundi( _max_hp * 0.5 )
-	for i in hearts.size():
-		if i < _heart_count:
-			hearts[i].visible = true
-		else:
-			hearts[i].visible = false
+func update_max_hp(_max_hp: int, _heart_type: Variant = null) -> void:
+	# This function is now handled in update_hp, but kept for compatibility
 	pass
 
 

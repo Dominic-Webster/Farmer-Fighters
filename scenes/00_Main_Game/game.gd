@@ -11,7 +11,7 @@ func _ready():
 	RunManager.player = player
 	RunManager.gui = gui
 
-	gui.update_hp(player.max_health, player.max_health)
-	player.damaged.connect(func(): gui.update_hp(player.current_health, player.max_health))
+	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
+	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
 
 	RunManager.start_new_run(player)

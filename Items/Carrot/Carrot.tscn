@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://h1pvntjsi82l"]
+
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_0k62m"]
+[ext_resource type="Script" uid="uid://d0i5gfvsdmcni" path="res://Items/Carrot/carrot.gd" id="1_5hdhu"]
+[ext_resource type="Texture2D" uid="uid://cebb4uk60svmo" path="res://GUI/Player_HUD/carrot_health.png" id="2_5hdhu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqrw"]
+size = Vector2(39, 119.5)
+
+[sub_resource type="Animation" id="Animation_0k62m"]
+resource_name = "hover"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5hdhu"]
+_data = {
+&"hover": SubResource("Animation_0k62m")
+}
+
+[node name="Carrot" type="Node2D" unique_id=1971716887]
+script = ExtResource("1_5hdhu")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1230841691]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("1_0k62m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1095562804]
+scale = Vector2(4, 4)
+texture = ExtResource("2_5hdhu")
+flip_v = true
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1139872505]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1553447944]
+shape = SubResource("RectangleShape2D_ufqrw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2119459545]
+libraries/ = SubResource("AnimationLibrary_5hdhu")
+autoplay = &"hover"

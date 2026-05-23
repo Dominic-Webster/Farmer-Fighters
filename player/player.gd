@@ -12,7 +12,7 @@ signal damaged
 # ----------
 
 # Stats
-@export var max_health : int = 6
+@export var num_hearts : int = 3 # Number of hearts
 @export var damage : float = 1.0
 @export var luck : int = 1
 @export var move_speed : float = 400
@@ -27,7 +27,62 @@ var dash_unlocked = false
 @export var dash_damage : float = 0
 @export var dash_cooldown_time: float = 0.5
 
-var current_health : int
+enum Hearts {
+	TOMATO,
+	CARROT
+}
+
+# Returns the health value per heart type
+func get_heart_value() -> int:
+	match current_heart:
+		Hearts.TOMATO:
+			return 2
+		Hearts.CARROT:
+			return 3
+		_:
+			return 2
+
+
+var current_heart : Hearts = Hearts.TOMATO
+var current_health : int = 0
+
+
+func get_max_health() -> int:
+	return num_hearts * get_heart_value()
+
+
+func upgrade_hearts_to_carrot():
+	if current_heart != Hearts.CARROT:
+		var old_heart_value = 2
+		var new_heart_value = 3
+		var old_health = current_health
+		var old_max_health = num_hearts * old_heart_value
+		current_heart = Hearts.CARROT
+		# Keep num_hearts the same, just change heart value
+		# Option 1: Fill all hearts after upgrade
+		#current_health = num_hearts * new_heart_value
+		# Option 2: Preserve missing health proportionally (uncomment below if you want this)
+		var health_ratio = float(old_health) / float(old_max_health)
+		current_health = int(round(health_ratio * (num_hearts * new_heart_value)))
+		update_hp()
+		damaged.emit()
+
+# Always update HUD with current heart type
+func update_hp():
+	var hud = null
+	for node in get_tree().get_nodes_in_group("player_hud"):
+		hud = node
+		break
+	if hud:
+		var heart : int
+		match current_heart:
+			Hearts.TOMATO :
+				heart = 0
+			Hearts.CARROT :
+				heart = 1
+		hud.update_hp(current_health, get_max_health(), heart, num_hearts)
+
+
 var items : Array[String] = []
 
 # Damage cooldown
@@ -74,7 +129,7 @@ var dash_cooldown: float = 0.0
 # ---------
 
 func _ready() -> void:
-	current_health = max_health
+	current_health = get_max_health()
 	add_to_group("player")
 	#push_area.body_entered.connect(_on_push_area_body_entered)
 
@@ -309,6 +364,6 @@ func add_item_to_array(item : String) -> void:
 
 func heal(amount : int) -> void:
 	current_health += amount
-	if current_health > max_health:
-		current_health = max_health
+	if current_health > get_max_health():
+		current_health = get_max_health()
 	damaged.emit()
