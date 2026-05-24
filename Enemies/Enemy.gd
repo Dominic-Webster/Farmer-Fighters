@@ -74,7 +74,8 @@ func die():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		take_damage(area.damage, area.global_position)
-		area.queue_free()
+		if not RunManager.player.strawberry:
+			area.queue_free()
 
 
 func flash_red():

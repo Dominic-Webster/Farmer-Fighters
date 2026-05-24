@@ -11,6 +11,7 @@ func _ready() -> void:
 	speed = RunManager.player.bullet_speed
 	add_to_group("player_bullet")
 	area_entered.connect(_on_area_entered)
+	print("Scale: ", $Sprite2D.scale)
 
 
 func _process(delta):
@@ -24,4 +25,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_area_entered(area):
 	# If it hits a wall or anything solid → delete
 	if area.is_in_group("bullet_bounds"):
-		queue_free()
+		end_bullet()
+
+
+func end_bullet() -> void:
+	queue_free()

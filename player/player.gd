@@ -66,7 +66,8 @@ var can_shoot : bool = true
 enum Bullets {
 	TOMATO,
 	CABBAGE,
-	GRAPE
+	GRAPE,
+	STRAWBERRY
 }
 
 var current_bullet : Bullets = Bullets.TOMATO
@@ -74,6 +75,7 @@ var current_bullet : Bullets = Bullets.TOMATO
 var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
 var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
 var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
+var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 
 # Knockback
 @export var knockback_strength := 350
@@ -84,6 +86,7 @@ var knockback_velocity := Vector2.ZERO
 var is_flashing : bool = false
 
 var eggplant : int = 0
+var strawberry : bool = false
 
 # Dash function variables
 var is_dashing: bool = false
@@ -207,6 +210,8 @@ func shoot(direction: Vector2):
 				bullet = grape_bullet.instantiate()
 			Bullets.CABBAGE:
 				bullet = cabbage_bullet.instantiate()
+			Bullets.STRAWBERRY:
+				bullet = strawberry_bullet.instantiate()
 		
 		bullet.global_position = shoot_point.global_position
 		bullet.direction = direction
@@ -236,6 +241,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = grape_bullet.instantiate()
 			Bullets.CABBAGE:
 				bullet = cabbage_bullet.instantiate()
+			Bullets.STRAWBERRY:
+				bullet = strawberry_bullet.instantiate()
 		
 		bullet.global_position = shoot_point.global_position
 		
