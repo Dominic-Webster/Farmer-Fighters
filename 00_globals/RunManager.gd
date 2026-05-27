@@ -38,8 +38,10 @@ func start_new_run(_player : Player):
 
 func load_room(pos: Vector2i, entry_dir: String):
 	
-	# Remove old room
+	# Remove old room and free enemy bullets
 	if current_room_instance:
+		if current_room_instance.has_method("free_all_enemy_bullets"):
+			current_room_instance.free_all_enemy_bullets()
 		current_room_instance.queue_free()
 
 	# Get room layout code (lowercase for consistency)

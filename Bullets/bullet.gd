@@ -11,7 +11,6 @@ func _ready() -> void:
 	speed = RunManager.player.bullet_speed
 	add_to_group("player_bullet")
 	area_entered.connect(_on_area_entered)
-	print("Scale: ", $Sprite2D.scale)
 
 
 func _process(delta):

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 RunManager="*uid://c4ju8dq2o4gso"
 MapGenerationManager="*uid://p4e5gin2ra4n"
+ItemManager="*uid://bqlnurde36j4"
 
 [display]
 

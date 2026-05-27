@@ -154,8 +154,6 @@ func get_boss_pool() -> Array:
 	return data[current_floor]
 
 
-
-
 func _on_enemy_died():
 	enemy_count -= 1
 	
@@ -370,3 +368,32 @@ func spawn_elevator_at_center():
 	state["elevator_present"] = true
 	state["elevator_position"] = elevator.global_position
 	MapGenerationManager.room_states[pos] = state
+
+
+func spawn_random_item(spawn_position: Vector2) -> void:
+	var scene_path = ""
+	var rng = randi() % 75
+	if rng < RunManager.player.luck:
+		scene_path = ItemManager.get_random_item("rare")
+	else:
+		rng = randi() % 50
+		if rng < RunManager.player.luck:
+			scene_path = ItemManager.get_random_item("uncommon")
+		else:
+			scene_path = ItemManager.get_random_item("common")
+
+	# Fallback to default pool if all pools are empty
+	if scene_path == "":
+		scene_path = ItemManager.get_default_item()
+
+	if scene_path != "":
+		var item_scene = load(scene_path)
+		var item_instance = item_scene.instantiate()
+		add_child(item_instance)
+		item_instance.global_position = spawn_position
+
+
+# Frees all enemy bullets in the scene
+func free_all_enemy_bullets():
+	for bullet in get_tree().get_nodes_in_group("enemy_bullet"):
+		bullet.queue_free()

@@ -15,7 +15,9 @@
 		"res://Items/Radish/Radish.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Spinach/Spinach.tscn",
-		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Turnip/Turnip.tscn"
+	],
+	"uncommon": [
+		"res://Items/Strawberry/Strawberry.tscn"
 	],
 }
