@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cmj4vno55fv67"]
+
+[ext_resource type="Script" uid="uid://ynrascmyyqjw" path="res://scenes/pause_menu/pause_menu.gd" id="1_01rj1"]
+
+[node name="Pause" type="Control" unique_id=1320420105]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_01rj1")
+
+[node name="Panel" type="Panel" parent="." unique_id=1266369785]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1516829670]
+process_mode = 3
+layout_mode = 0
+offset_left = 430.0
+offset_top = 100.0
+offset_right = 1490.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 120
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=186386564]
+process_mode = 3
+layout_mode = 0
+offset_left = 534.0
+offset_top = 314.0
+offset_right = 1384.0
+offset_bottom = 863.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Resume" type="Button" parent="Buttons" unique_id=1080228763]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "RESUME"
+
+[node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "EXIT"

@@ -46,6 +46,7 @@ _data = {
 }
 
 [node name="ChipBullet" type="Area2D" unique_id=249560929]
+process_mode = 1
 collision_layer = 8
 collision_mask = 17
 script = ExtResource("1_airin")

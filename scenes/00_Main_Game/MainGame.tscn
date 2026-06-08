@@ -3,14 +3,23 @@
 [ext_resource type="Script" uid="uid://duyny1j6ln063" path="res://scenes/00_Main_Game/game.gd" id="1_fk84u"]
 [ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_ay3v6"]
 [ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="3_jsquf"]
+[ext_resource type="PackedScene" uid="uid://cmj4vno55fv67" path="res://scenes/pause_menu/Pause.tscn" id="4_ibxjl"]
 
 [node name="MainGame" type="Node2D" unique_id=1503091529]
+process_mode = 3
 script = ExtResource("1_fk84u")
 
+[node name="Pause" parent="." unique_id=1320420105 instance=ExtResource("4_ibxjl")]
+visible = false
+z_index = 1000
+
 [node name="Room" type="Node" parent="." unique_id=296417241]
+process_mode = 1
 
 [node name="Player" parent="." unique_id=1057382120 instance=ExtResource("2_ay3v6")]
+process_mode = 1
 z_index = 100
 position = Vector2(788, 418)
 
 [node name="PlayerHud" parent="." unique_id=1867377868 instance=ExtResource("3_jsquf")]
+process_mode = 1

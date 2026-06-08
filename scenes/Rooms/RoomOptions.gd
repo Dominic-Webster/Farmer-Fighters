@@ -375,7 +375,7 @@ static var ROOM_OPTIONS = {
 		"ud": {
 			"normal": [
 				"res://scenes/Rooms/Floor1/UD_Rooms/room_ud_empty.tscn",
-				"res://scenes/Rooms/Floor1/UD_Rooms/room_ud_1.tscn"
+				"res://scenes/Rooms/Floor3/UD_Rooms/room_ud_1.tscn"
 				],
 			"start": ["res://scenes/Rooms/Floor3/UD_Rooms/room_ud_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_item.tscn"],
@@ -411,11 +411,11 @@ static var ROOM_OPTIONS = {
 		"dl": {
 			"normal": [
 				"res://scenes/Rooms/Floor1/DL_Rooms/room_dl_empty.tscn",
-				"res://scenes/Rooms/Floor1/DL_Rooms/room_dl_1.tscn"
+				"res://scenes/Rooms/Floor3/DL_Rooms/room_dl_1.tscn"
 				],
 			"start": ["res://scenes/Rooms/Floor3/DL_Rooms/room_dl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor2/DL_Rooms/room_dl_boss.tscn"]
+			"boss": ["res://scenes/Rooms/Floor3/DL_Rooms/room_dl_boss.tscn"]
 		},
 		"u": {
 			"normal": [
