@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6kj82slekljw"
-path="res://.godot/imported/room_empty.png-32a547d464d8a9200703f3b07a5bd542.ctex"
+uid="uid://55nv0g7n1a5l"
+path="res://.godot/imported/f3_room1.png-f5434eaa69a4dec8d27c769922c84123.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Rooms/00_sprites/room_empty.png"
-dest_files=["res://.godot/imported/room_empty.png-32a547d464d8a9200703f3b07a5bd542.ctex"]
+source_file="res://scenes/Rooms/00_sprites/floors_3_4/f3_room1.png"
+dest_files=["res://.godot/imported/f3_room1.png-f5434eaa69a4dec8d27c769922c84123.ctex"]
 
 [params]
 
