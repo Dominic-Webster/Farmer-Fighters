@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot_at_player() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or dead or player.current_health < 1:
 		return
 	
 	anim.play("start_shoot")
