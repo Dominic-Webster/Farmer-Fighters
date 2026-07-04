@@ -1,3 +1,4 @@
+# Boosts luck
 extends Item
 class_name FourLeafClover
 

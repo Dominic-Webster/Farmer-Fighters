@@ -1,3 +1,4 @@
+# Gives player another heart
 extends Item
 class_name GoodSoil
 

@@ -1,3 +1,4 @@
+# Upgrades hearts into Carrots, and gives a health boost if already upgraded
 extends Item
 class_name Carrot
 

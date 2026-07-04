@@ -1,3 +1,4 @@
+# Transforms bullets into Cabbages, boosts damage and accuracy
 extends Item
 class_name Cabbage
 

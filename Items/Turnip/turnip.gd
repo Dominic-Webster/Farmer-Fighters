@@ -1,7 +1,9 @@
+# Unlocks dash, or boosts dash cooldown and fire rate
 extends Item
 class_name Turnip
 
 var dash_cooldown_buff : float = 0.2
+var fire_rate_buff : float = 0.02
 
 
 func _on_body_entered(_body) -> void:
@@ -17,6 +19,9 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.dash_cooldown -= dash_cooldown_buff
 			if RunManager.player.dash_cooldown < 0.01:
 				RunManager.player.dash_cooldown = 0.01
+			RunManager.player.fire_rate -= fire_rate_buff
+			if RunManager.player.fire_rate < 0.01:
+				RunManager.player.fire_rate = 0.01
 		
 		queue_free()
 		picked_up.emit(item_name, desc)

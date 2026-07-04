@@ -22,6 +22,8 @@ func show_menu() -> void:
 
 
 func hide_menu() -> void:
+	anim.play_backwards("blur")
+	await anim.animation_finished
 	visible = false
 
 

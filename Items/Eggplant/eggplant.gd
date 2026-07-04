@@ -1,3 +1,4 @@
+# Lets player shoot in more directions, then eventually upgrades damage
 extends Item
 class_name Eggplant
 

@@ -1,3 +1,4 @@
+# Boosts bullet speed
 extends Item
 class_name Fertilizer
 

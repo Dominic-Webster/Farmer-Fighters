@@ -1,3 +1,4 @@
+# Turns bullets into Strawberries (piercing), or boosts damage
 extends Item
 class_name Strawberry
 

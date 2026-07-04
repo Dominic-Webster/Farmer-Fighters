@@ -1,3 +1,4 @@
+# Boosts movement speed
 extends Item
 class_name Apple
 

@@ -1,3 +1,4 @@
+# Boosts damage
 extends Item
 class_name Broccoli
 

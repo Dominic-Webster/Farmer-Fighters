@@ -1,3 +1,4 @@
+# Turns bullets into grapes, machine gun fire
 extends Item
 class_name GrapesOfWrath
 

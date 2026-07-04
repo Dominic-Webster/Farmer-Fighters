@@ -1,3 +1,4 @@
+# Boosts damage mult
 extends Item
 class_name Lettuce
 

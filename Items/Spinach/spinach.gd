@@ -1,3 +1,4 @@
+# Boosts move speed, damage, damage mult, and bullet speed
 extends Item
 class_name Spinach
 

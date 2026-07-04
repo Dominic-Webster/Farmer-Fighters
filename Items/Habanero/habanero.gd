@@ -1,3 +1,4 @@
+# Boosts fire rate
 extends Item
 class_name Habanero
 
