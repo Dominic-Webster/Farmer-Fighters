@@ -7,8 +7,8 @@ extends Node
 
 @export var _dimensons : Vector2i = Vector2i(8, 8)
 @export var _start : Vector2i = Vector2i(-1, -1)
-@export var _critical_path_length : int = 11
-@export var _branches : Vector2i = Vector2i(2, 4)
+@export var _critical_path_length : int = 10
+@export var _branches : Vector2i = Vector2i(2, 3)
 @export var _branch_length : Vector2i = Vector2i(1, 4)
 
 var dungeon : Array = []

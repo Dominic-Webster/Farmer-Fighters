@@ -3,6 +3,7 @@ class_name Spinach
 
 var move_speed_boost : float = 100
 var damage_boost : float = 0.5
+var damage_mult_boost : float = 0.1
 var proj_speed_boost : float = 150
 
 
@@ -14,6 +15,7 @@ func _on_body_entered(_body) -> void:
 		
 		RunManager.player.move_speed += move_speed_boost
 		RunManager.player.damage += damage_boost
+		RunManager.player.damage_mult += damage_mult_boost
 		RunManager.player.bullet_speed += proj_speed_boost
 		
 		queue_free()

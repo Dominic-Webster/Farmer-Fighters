@@ -21,13 +21,13 @@ func _ready():
 
 
 func pause() -> void:
-	pause_menu.visible = true
+	pause_menu.show_menu()
 	await get_tree().process_frame 
 	get_tree().paused = true
 
 
 func unpause() -> void:
-	pause_menu.visible = false
+	pause_menu.hide_menu()
 	get_tree().paused = false
 
 
