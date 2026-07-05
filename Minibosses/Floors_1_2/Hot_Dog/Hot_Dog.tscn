@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cxiv8cckcugl8"]
+
+[ext_resource type="Script" uid="uid://bswi0d1fpcvcu" path="res://Minibosses/Floors_1_2/Hot_Dog/hot_dog.gd" id="1_e0kk2"]
+[ext_resource type="Resource" uid="uid://d2c4jd6tcg3rl" path="res://Minibosses/Floors_1_2/Hot_Dog/hot_dog.tres" id="2_wsdrb"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_1h1vx"]
+[ext_resource type="Texture2D" uid="uid://dysue6c40dlb7" path="res://Minibosses/Floors_1_2/Hot_Dog/hot_dog.png" id="4_lp2mb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lleu"]
+size = Vector2(166, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smy2q"]
+size = Vector2(187, 127)
+
+[sub_resource type="Animation" id="Animation_smy2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7gs1h"]
+resource_name = "die"
+length = 0.40000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_1lleu"]
+resource_name = "move"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smy2q"]
+_data = {
+&"RESET": SubResource("Animation_smy2q"),
+&"die": SubResource("Animation_7gs1h"),
+&"move": SubResource("Animation_1lleu")
+}
+
+[node name="HotDog" type="CharacterBody2D" unique_id=138779912]
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_e0kk2")
+enemy_data = ExtResource("2_wsdrb")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1800590051]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 60)
+scale = Vector2(6, 6)
+texture = ExtResource("3_1h1vx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773918882]
+scale = Vector2(7, 7)
+texture = ExtResource("4_lp2mb")
+hframes = 3
+vframes = 3
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=178428477]
+position = Vector2(-3, 29.5)
+shape = SubResource("RectangleShape2D_1lleu")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1285069719]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=509473690]
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_smy2q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1390452778]
+libraries/ = SubResource("AnimationLibrary_smy2q")
+autoplay = &"move"
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

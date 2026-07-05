@@ -1,14 +1,18 @@
 {
 	"1": [
-		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn"
+		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn",
+		"res://Minibosses/Floors_1_2/Hot_Dog/Hot_Dog.tscn"
 	],
 	"2": [
-		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn"
+		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn",
+		"res://Minibosses/Floors_1_2/Hot_Dog/Hot_Dog.tscn"
 	],
 	"3": [
-		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn"
+		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn",
+		"res://Minibosses/Floors_1_2/Hot_Dog/Hot_Dog.tscn"
 	],
 	"4": [
-		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn"
+		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn",
+		"res://Minibosses/Floors_1_2/Hot_Dog/Hot_Dog.tscn"
 	],
 }
