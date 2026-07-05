@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://borvbe5g6ioh1"
-path="res://.godot/imported/cheese_puffs.png-2b9f534d9b562a9a8497b27aa4466525.ctex"
+uid="uid://nvq6ci7ustkn"
+path="res://.godot/imported/cheese_puff_bullet.png-1f49d73a709aa734f770a51a286d6bc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/cheese_puffs.png"
-dest_files=["res://.godot/imported/cheese_puffs.png-2b9f534d9b562a9a8497b27aa4466525.ctex"]
+source_file="res://Enemy_Bullets/Cheese_Puff_Bullets/cheese_puff_bullet.png"
+dest_files=["res://.godot/imported/cheese_puff_bullet.png-1f49d73a709aa734f770a51a286d6bc4.ctex"]
 
 [params]
 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://djjoy5mmjq0ei"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_atxmv"]
+
+[resource]
+script = ExtResource("1_atxmv")
+enemy_name = "Cheese_Puffs"
+damage = 1
+health = 15.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

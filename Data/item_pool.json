@@ -22,4 +22,12 @@
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Zucchini/Zucchini.tscn"
 	],
+	"miniboss": [
+		"res://Items/Cabbage/Cabbage.tscn",
+		"res://Items/Eggplant/Eggplant.tscn",
+		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
+		"res://Items/Scythe/Scythe.tscn",
+		"res://Items/Strawberry/Strawberry.tscn",
+		"res://Items/Zucchini/Zucchini.tscn"
+	],
 }

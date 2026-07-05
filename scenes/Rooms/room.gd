@@ -37,6 +37,7 @@ func _enter_room(dir_from : String) -> void:
 	
 	# Always respawn persistent pickup if present and not picked up
 	spawn_room_pickup(pos)
+	spawn_room_miniboss_reward(pos)
 
 	# Respawn elevator if present in this room (e.g. boss room after defeat)
 	if MapGenerationManager.room_states.has(pos):
@@ -55,7 +56,13 @@ func _enter_room(dir_from : String) -> void:
 		if MapGenerationManager.dungeon[pos.x][pos.y] == "T":
 			spawn_room_treasure(pos)
 			spawn_open_doors()
-		if MapGenerationManager.dungeon[pos.x][pos.y] == "B":
+		elif MapGenerationManager.dungeon[pos.x][pos.y] == "M":
+			load_miniboss(dir_from)
+			if enemy_count == 0:
+				spawn_open_doors()
+			else:
+				lock_doors()
+		elif MapGenerationManager.dungeon[pos.x][pos.y] == "B":
 			load_boss(dir_from)
 			lock_doors()
 		else:
@@ -74,7 +81,8 @@ func _enter_room(dir_from : String) -> void:
 func load_enemies(_player_spawn : String) -> void:
 	if (MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "S" or
 		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "B" or
-		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "T"):
+		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "T" or
+		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "M"):
 			return
 	
 	var enemy_limit = randi_range(1, 4)
@@ -138,6 +146,22 @@ func load_boss(_player_spawn : String) -> void:
 	add_child(boss)
 	enemy_count += 1
 	boss.died.connect(_on_enemy_died)
+
+func load_miniboss(_player_spawn : String) -> void:
+	var miniboss_pool = get_miniboss_pool()
+
+	if miniboss_pool == []:
+		print("No Miniboss Pool")
+		return
+
+	var scene_path = miniboss_pool[randi() % miniboss_pool.size()]
+	var scene = load(scene_path)
+	var miniboss = scene.instantiate()
+	miniboss.global_position = player_spawn_c.global_position
+	add_child(miniboss)
+	enemy_count += 1
+	miniboss.died.connect(_on_enemy_died)
+
 	
 
 
@@ -153,6 +177,18 @@ func get_boss_pool() -> Array:
 		return []
 	return data[current_floor]
 
+func get_miniboss_pool() -> Array:
+	var file = FileAccess.open("res://Data/miniboss_pool.json", FileAccess.READ)
+	if not file:
+		return []
+	var data = JSON.parse_string(file.get_as_text())
+
+	var current_floor = str(RunManager.current_floor)
+
+	if typeof(data) != TYPE_DICTIONARY or not data.has(current_floor):
+		return []
+	return data[current_floor]
+
 
 func _on_enemy_died():
 	enemy_count -= 1
@@ -160,6 +196,8 @@ func _on_enemy_died():
 	if enemy_count == 0:
 		RunManager.mark_room_cleared()
 		unlock_doors()
+		if MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "M":
+			spawn_miniboss_reward(RunManager.current_room)
 	
 		# Persistent pickup logic
 		var pos = RunManager.current_room
@@ -199,6 +237,76 @@ func spawn_room_pickup(pos: Vector2i) -> void:
 					if RunManager.gui:
 						RunManager.gui.show_item_info(iname, desc)
 				)
+
+
+func spawn_room_miniboss_reward(pos: Vector2i) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+
+	if not state.has("miniboss_reward_item_path") or (state.has("miniboss_reward_picked_up") and state["miniboss_reward_picked_up"]):
+		return
+
+	var reward_scene = load(state["miniboss_reward_item_path"])
+	if reward_scene:
+		var reward = reward_scene.instantiate()
+		reward.global_position = player_spawn_c.global_position
+		call_deferred("add_child", reward)
+		if reward.has_signal("picked_up"):
+			reward.picked_up.connect(func(iname, desc):
+				var s = MapGenerationManager.room_states.get(pos, {})
+				s["miniboss_reward_picked_up"] = true
+				MapGenerationManager.room_states[pos] = s
+				if RunManager.gui:
+					RunManager.gui.show_item_info(iname, desc)
+			)
+
+
+func spawn_miniboss_reward(pos: Vector2i) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+
+	if not state.has("miniboss_reward_item_path"):
+		var reward_item_path = get_miniboss_reward_item_scene()
+		if reward_item_path == "":
+			return
+		state["miniboss_reward_item_path"] = reward_item_path
+		state["miniboss_reward_picked_up"] = false
+		MapGenerationManager.room_states[pos] = state
+
+	if state.has("miniboss_reward_picked_up") and state["miniboss_reward_picked_up"]:
+		return
+
+	var reward_scene = load(state["miniboss_reward_item_path"])
+	if reward_scene:
+		var reward = reward_scene.instantiate()
+		reward.global_position = player_spawn_c.global_position
+		call_deferred("add_child", reward)
+		if reward.has_signal("picked_up"):
+			reward.picked_up.connect(func(iname, desc):
+				var s = MapGenerationManager.room_states.get(pos, {})
+				s["miniboss_reward_picked_up"] = true
+				MapGenerationManager.room_states[pos] = s
+				if RunManager.gui:
+					RunManager.gui.show_item_info(iname, desc)
+			)
+
+
+func get_miniboss_reward_item_scene() -> String:
+	var file = FileAccess.open("res://Data/miniboss_reward_pool.json", FileAccess.READ)
+	if not file:
+		return ""
+
+	var data = JSON.parse_string(file.get_as_text())
+	if typeof(data) != TYPE_DICTIONARY:
+		return ""
+
+	var current_floor = str(RunManager.current_floor)
+	if not data.has(current_floor):
+		return ""
+
+	var pool = data[current_floor]
+	if pool.size() == 0:
+		return ""
+
+	return pool[randi() % pool.size()]
 
 
 # Helper to get a random pickup scene from pickup_pool.json
