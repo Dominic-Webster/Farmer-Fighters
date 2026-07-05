@@ -47,6 +47,7 @@ func update_hp(_hp: int, _max_hp: int, _heart_type: Variant = null, _num_hearts:
 				max_frame = 3
 	@warning_ignore("integer_division")
 	var heart_count = _num_hearts if _num_hearts > 0 else int(_max_hp / heart_value)
+	heart_count = mini(heart_count, hearts.size())
 	for i in range(heart_count):
 		update_heart(i, _hp, heart_value, _heart_type, max_frame)
 		hearts[i].visible = true

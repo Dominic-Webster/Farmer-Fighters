@@ -16,5 +16,9 @@
 	"3": [
 		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn",
 		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn"
+	],
+	"4": [
+		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn",
+		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn"
 	]
 }

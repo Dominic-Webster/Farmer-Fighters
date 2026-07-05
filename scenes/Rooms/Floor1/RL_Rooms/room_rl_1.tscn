@@ -23,7 +23,7 @@ size = Vector2(166, 324)
 size = Vector2(1623, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnku0"]
-size = Vector2(1623, 157)
+size = Vector2(1623, 198.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ofe8"]
 size = Vector2(1920, 110)
@@ -100,7 +100,7 @@ position = Vector2(959.5, 230.5)
 shape = SubResource("RectangleShape2D_t44jh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Extra" unique_id=646431151]
-position = Vector2(960, 849)
+position = Vector2(960, 828.25)
 shape = SubResource("RectangleShape2D_gnku0")
 
 [node name="Player Spawns" type="Node2D" parent="." unique_id=332080770]

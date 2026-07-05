@@ -71,3 +71,5 @@ func set_door_art(desc : String):
 		art.texture = load("res://scenes/Door/boss_door.png")
 	if desc == "T":
 		art.texture = load("res://scenes/Door/treasure_door.png")
+	if desc == "M":
+		art.texture = load("res://scenes/Door/miniboss_door.png")

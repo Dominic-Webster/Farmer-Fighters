@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cno2j2lsoxjcc"
-path="res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"
+uid="uid://cdf5vu2jnmwyo"
+path="res://.godot/imported/salsa.png-dcf2216bfec97d66a15bc5e0fdbf5a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Door/boss_door.png"
-dest_files=["res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"]
+source_file="res://Items/Salsa/salsa.png"
+dest_files=["res://.godot/imported/salsa.png-dcf2216bfec97d66a15bc5e0fdbf5a5e.ctex"]
 
 [params]
 

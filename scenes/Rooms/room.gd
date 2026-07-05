@@ -257,6 +257,8 @@ func _set_door_art() -> void:
 		if y_pos > 0:
 			if str(MapGenerationManager.dungeon[x_pos][y_pos - 1]) == "B":
 				$Doors/DoorUp.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos][y_pos - 1]) == "M":
+				$Doors/DoorUp.set_door_art("M")
 			if str(MapGenerationManager.dungeon[x_pos][y_pos - 1]) == "T":
 				$Doors/DoorUp.set_door_art("T")
 	
@@ -265,6 +267,8 @@ func _set_door_art() -> void:
 		if x_pos < (MapGenerationManager._dimensons.x - 1):
 			if str(MapGenerationManager.dungeon[x_pos + 1][y_pos]) == "B":
 				$Doors/DoorRight.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos + 1][y_pos]) == "M":
+				$Doors/DoorRight.set_door_art("M")
 			if str(MapGenerationManager.dungeon[x_pos + 1][y_pos]) == "T":
 				$Doors/DoorRight.set_door_art("T")
 	
@@ -273,6 +277,8 @@ func _set_door_art() -> void:
 		if y_pos < (MapGenerationManager._dimensons.y - 1):
 			if str(MapGenerationManager.dungeon[x_pos][y_pos + 1]) == "B":
 				$Doors/DoorDown.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos][y_pos + 1]) == "M":
+				$Doors/DoorDown.set_door_art("M")
 			if str(MapGenerationManager.dungeon[x_pos][y_pos + 1]) == "T":
 				$Doors/DoorDown.set_door_art("T")
 	
@@ -281,6 +287,8 @@ func _set_door_art() -> void:
 		if x_pos > 0:
 			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "B":
 				$Doors/DoorLeft.set_door_art("B")
+			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "M":
+				$Doors/DoorLeft.set_door_art("M")
 			if str(MapGenerationManager.dungeon[x_pos - 1][y_pos]) == "T":
 				$Doors/DoorLeft.set_door_art("T")
 

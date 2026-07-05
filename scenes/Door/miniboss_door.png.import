@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cno2j2lsoxjcc"
-path="res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"
+uid="uid://dlmgs1sv6y3x"
+path="res://.godot/imported/miniboss_door.png-2305539eef3466213984f5c539dcf0cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Door/boss_door.png"
-dest_files=["res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"]
+source_file="res://scenes/Door/miniboss_door.png"
+dest_files=["res://.godot/imported/miniboss_door.png-2305539eef3466213984f5c539dcf0cc.ctex"]
 
 [params]
 

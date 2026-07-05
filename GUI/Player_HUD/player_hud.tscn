@@ -20,9 +20,10 @@ mouse_filter = 2
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 430.0
-offset_bottom = 60.0
-theme_override_constants/h_separation = 110
+offset_right = 828.0
+offset_bottom = 234.0
+theme_override_constants/h_separation = 90
+theme_override_constants/v_separation = 90
 
 [node name="ItemInfo" type="Panel" parent="Control" unique_id=585260264]
 layout_mode = 0

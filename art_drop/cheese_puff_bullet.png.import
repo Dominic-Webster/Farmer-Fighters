@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cno2j2lsoxjcc"
-path="res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"
+uid="uid://nvq6ci7ustkn"
+path="res://.godot/imported/cheese_puff_bullet.png-306cde13c1982e92b88a918993732c33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Door/boss_door.png"
-dest_files=["res://.godot/imported/boss_door.png-cc8b09335d65fce7918df5aebe7310ed.ctex"]
+source_file="res://art_drop/cheese_puff_bullet.png"
+dest_files=["res://.godot/imported/cheese_puff_bullet.png-306cde13c1982e92b88a918993732c33.ctex"]
 
 [params]
 

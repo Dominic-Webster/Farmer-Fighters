@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdf5vu2jnmwyo"
-path="res://.godot/imported/salsa.png-e04873e6a9dcc0b5d4ae45600ba5f575.ctex"
+uid="uid://borvbe5g6ioh1"
+path="res://.godot/imported/cheese_puffs.png-2b9f534d9b562a9a8497b27aa4466525.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/salsa.png"
-dest_files=["res://.godot/imported/salsa.png-e04873e6a9dcc0b5d4ae45600ba5f575.ctex"]
+source_file="res://art_drop/cheese_puffs.png"
+dest_files=["res://.godot/imported/cheese_puffs.png-2b9f534d9b562a9a8497b27aa4466525.ctex"]
 
 [params]
 

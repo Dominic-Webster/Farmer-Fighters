@@ -85,7 +85,11 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 					if marker == "C":
 						dungeon[current.x][current.y] = "B"
 					else:
-						dungeon[current.x][current.y] = "T"
+						#dungeon[current.x][current.y] = "T"
+						if randi_range(1, 3) == 1:
+							dungeon[current.x][current.y] = "M"
+						else:
+							dungeon[current.x][current.y] = "T"
 				
 				if _generate_path(current, length - 1, marker):
 					return true

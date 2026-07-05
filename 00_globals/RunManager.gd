@@ -23,7 +23,7 @@ var current_floor : int = 1
 # Testing
 var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
 var test_item_2 = "res://Items/Zucchini/Zucchini.tscn"
-var test_item_3 = "res://Items/Cabbage/Cabbage.tscn"
+var test_item_3 = "res://Items/Good_Soil/Good_Soil.tscn"
 var test_item_4 = "res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn"
 
 
@@ -64,6 +64,8 @@ func load_room(pos: Vector2i, entry_dir: String):
 		room_type = "item"
 	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "B":
 		room_type = "boss"
+	elif str(MapGenerationManager.dungeon[pos.x][pos.y]) == "M":
+		room_type = "miniboss"
 
 	# Get room options for current floor, code, and type
 	var options = RoomOptions.get_options(current_floor, code, room_type)
@@ -155,8 +157,15 @@ func mark_room_cleared() -> void:
 	}
 
 
+# --------------
+# DEV OPTIONS
+# --------------
+
 func _unhandled_input(event: InputEvent) -> void:
-	load_item(event)
+	if event.is_action_pressed("view_stats"):
+		print_stats()
+	else:
+		load_item(event)
 
 
 func load_item(event: InputEvent) -> void:
@@ -185,3 +194,18 @@ func load_item(event: InputEvent) -> void:
 	var item_instance = item_scene.instantiate()
 	room.add_child(item_instance)
 	item_instance.global_position = room.player_spawn_c.global_position
+
+
+func print_stats() -> void:
+	print("----------")
+	print("Player Stats")
+	print("Health: ", player.current_health, "/", player.get_max_health())
+	print("Damage: ", player.damage)
+	print("Damage Mult: ", player.damage_mult)
+	print("Calculated Total Damage: ", player.damage * player.damage_mult)
+	print("Luck: ", player.luck)
+	print("Move Speed: ", player.move_speed)
+	print("Accuracy: ", player.accuracy)
+	print("Fire Rate: ", player.fire_rate)
+	print("Bullet Speed: ", player.bullet_speed)
+	print("----------")
