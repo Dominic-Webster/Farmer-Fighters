@@ -23,7 +23,7 @@ var current_floor : int = 1
 # Testing
 var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
 var test_item_2 = "res://Items/Zucchini/Zucchini.tscn"
-var test_item_3 = "res://Items/Good_Soil/Good_Soil.tscn"
+var test_item_3 = "res://Items/Corn/Corn.tscn"
 var test_item_4 = "res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn"
 
 

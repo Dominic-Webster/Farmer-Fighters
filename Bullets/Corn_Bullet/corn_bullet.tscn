@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c41xod0x3l6a6"]
+
+[ext_resource type="Script" uid="uid://duk028qykpnnn" path="res://Bullets/Corn_Bullet/corn_bullet.gd" id="1_eltx1"]
+[ext_resource type="Texture2D" uid="uid://o2pa6n4s03sn" path="res://Bullets/Corn_Bullet/corn_bullet.png" id="2_k4vqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ld6a"]
+size = Vector2(20, 43)
+
+[sub_resource type="Animation" id="Animation_njfts"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ql7ly"]
+resource_name = "spin"
+length = 0.20000334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i0tb"]
+_data = {
+&"RESET": SubResource("Animation_njfts"),
+&"spin": SubResource("Animation_ql7ly")
+}
+
+[node name="CabbageBullet" type="Area2D" unique_id=1569631330]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_eltx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1496456518]
+z_index = 200
+scale = Vector2(3, 3)
+texture = ExtResource("2_k4vqd")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686158556]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8ld6a")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=690758443]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=930686216]
+libraries/ = SubResource("AnimationLibrary_2i0tb")
+autoplay = &"spin"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

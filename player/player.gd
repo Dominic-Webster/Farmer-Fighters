@@ -67,6 +67,7 @@ var can_shoot : bool = true
 enum Bullets {
 	TOMATO,
 	CABBAGE,
+	CORN,
 	GRAPE,
 	STRAWBERRY
 }
@@ -76,6 +77,7 @@ var current_bullet : Bullets = Bullets.TOMATO
 var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
 var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
 var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
+var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 
 # Knockback
@@ -226,6 +228,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = grape_bullet.instantiate()
 		Bullets.CABBAGE:
 			bullet = cabbage_bullet.instantiate()
+		Bullets.CORN:
+			bullet = corn_bullet.instantiate()
 		Bullets.STRAWBERRY:
 			bullet = strawberry_bullet.instantiate()
 
@@ -252,6 +256,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = grape_bullet.instantiate()
 			Bullets.CABBAGE:
 				bullet = cabbage_bullet.instantiate()
+			Bullets.CORN:
+				bullet = corn_bullet.instantiate()
 			Bullets.STRAWBERRY:
 				bullet = strawberry_bullet.instantiate()
 		
