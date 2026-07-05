@@ -20,6 +20,7 @@ signal damaged
 @export var fire_rate : float = 0.3
 @export var bullet_speed : float = 800
 @export var accuracy : Vector2 = Vector2(-0.05, 0.05)
+@export var tri_shot_spread_degrees : float = 12.0
 
 # Dash Stats
 var dash_unlocked = false
@@ -87,6 +88,7 @@ var is_flashing : bool = false
 
 var eggplant : int = 0
 var strawberry : bool = false
+var zucchini : bool = false
 
 # Dash function variables
 var is_dashing: bool = false
@@ -202,26 +204,35 @@ func shoot(direction: Vector2):
 		direction.x += randf_range(accuracy.x, accuracy.y)
 		direction.y += randf_range(accuracy.x, accuracy.y)
 		
-		var bullet
-		match current_bullet:
-			Bullets.TOMATO:
-				bullet = tomato_bullet.instantiate()
-			Bullets.GRAPE:
-				bullet = grape_bullet.instantiate()
-			Bullets.CABBAGE:
-				bullet = cabbage_bullet.instantiate()
-			Bullets.STRAWBERRY:
-				bullet = strawberry_bullet.instantiate()
-		
-		bullet.global_position = shoot_point.global_position
-		bullet.direction = direction
-		
-		RunManager.current_room_instance.add_child(bullet)
+		if zucchini:
+			spawn_bullet(direction)
+			spawn_bullet(create_offset(direction, -1))
+			spawn_bullet(create_offset(direction, 1))
+		else:
+			spawn_bullet(direction)
 		
 		timer.wait_time = fire_rate
 		timer.start()
 		await timer.timeout
 		can_shoot = true
+
+
+func spawn_bullet(direction: Vector2) -> void:
+	var bullet
+	match current_bullet:
+		Bullets.TOMATO:
+			bullet = tomato_bullet.instantiate()
+		Bullets.GRAPE:
+			bullet = grape_bullet.instantiate()
+		Bullets.CABBAGE:
+			bullet = cabbage_bullet.instantiate()
+		Bullets.STRAWBERRY:
+			bullet = strawberry_bullet.instantiate()
+
+	bullet.global_position = shoot_point.global_position
+	bullet.direction = direction.normalized()
+
+	RunManager.current_room_instance.add_child(bullet)
 
 
 func eggplant_shoot(level : int) -> void:
@@ -267,12 +278,30 @@ func eggplant_shoot(level : int) -> void:
 		bullet.direction.x += randf_range(accuracy.x, accuracy.y)
 		bullet.direction.y += randf_range(accuracy.x, accuracy.y)
 		
-		RunManager.current_room_instance.add_child(bullet)
+		if zucchini:
+			spawn_bullet(bullet.direction)
+			spawn_bullet(create_offset(bullet.direction, -1))
+			spawn_bullet(create_offset(bullet.direction, 1))
+		else:
+			spawn_bullet(bullet.direction)
 	
 	timer.wait_time = fire_rate
 	timer.start()
 	await timer.timeout
 	can_shoot = true
+
+
+func create_offset(dir : Vector2, value : int) -> Vector2:
+	if dir == Vector2.ZERO:
+		return dir
+
+	var spread_radians := deg_to_rad(tri_shot_spread_degrees)
+	if value < 0:
+		spread_radians = -spread_radians
+	elif value == 0:
+		spread_radians = 0.0
+
+	return dir.rotated(spread_radians).normalized()
 
 
 func _on_hurt_box_area_entered(area) -> void:

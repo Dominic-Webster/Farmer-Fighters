@@ -18,6 +18,7 @@
 		"res://Items/Turnip/Turnip.tscn"
 	],
 	"uncommon": [
-		"res://Items/Strawberry/Strawberry.tscn"
+		"res://Items/Strawberry/Strawberry.tscn",
+		"res://Items/Zucchini/Zucchini.tscn"
 	],
 }

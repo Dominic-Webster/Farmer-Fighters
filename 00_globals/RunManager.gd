@@ -20,6 +20,12 @@ var can_trigger_doors : bool = false
 
 var current_floor : int = 1
 
+# Testing
+var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
+var test_item_2 = "res://Items/Zucchini/Zucchini.tscn"
+var test_item_3 = "res://Items/Cabbage/Cabbage.tscn"
+var test_item_4 = "res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn"
+
 
 func start_new_run(_player : Player):
 	
@@ -147,3 +153,35 @@ func mark_room_cleared() -> void:
 		"visited": true,
 		"type": "combat"
 	}
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	load_item(event)
+
+
+func load_item(event: InputEvent) -> void:
+	var scene_path := ""
+
+	if event.is_action_pressed("test_item_1"):
+		scene_path = test_item_1
+	elif event.is_action_pressed("test_item_2"):
+		scene_path = test_item_2
+	elif event.is_action_pressed("test_item_3"):
+		scene_path = test_item_3
+	elif event.is_action_pressed("test_item_4"):
+		scene_path = test_item_4
+
+	if scene_path == "":
+		return
+
+	var room := current_room_instance as Room
+	if room == null:
+		return
+
+	var item_scene = load(scene_path)
+	if item_scene == null:
+		return
+
+	var item_instance = item_scene.instantiate()
+	room.add_child(item_instance)
+	item_instance.global_position = room.player_spawn_c.global_position
