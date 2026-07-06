@@ -69,6 +69,7 @@ var can_shoot : bool = true
 enum Bullets {
 	TOMATO,
 	CABBAGE,
+	BANANA,
 	CORN,
 	GRAPE,
 	STRAWBERRY,
@@ -79,6 +80,7 @@ var current_bullet : Bullets = Bullets.TOMATO
 
 var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
 var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
+var banana_bullet = preload("res://Bullets/Banana_Bullet/banana_bullet.tscn")
 var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
 var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
 var potato_bullet = preload("res://Bullets/Potato_Bullet/potato_bullet.tscn")
@@ -92,6 +94,7 @@ var knockback_velocity := Vector2.ZERO
 # Extra
 var is_flashing : bool = false
 
+var banana : bool = false
 var eggplant : int = 0
 var strawberry : bool = false
 var zucchini : bool = false
@@ -231,6 +234,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = tomato_bullet.instantiate()
 		Bullets.GRAPE:
 			bullet = grape_bullet.instantiate()
+		Bullets.BANANA:
+			bullet = banana_bullet.instantiate()
 		Bullets.CABBAGE:
 			bullet = cabbage_bullet.instantiate()
 		Bullets.CORN:
@@ -261,6 +266,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = tomato_bullet.instantiate()
 			Bullets.GRAPE:
 				bullet = grape_bullet.instantiate()
+			Bullets.BANANA:
+				bullet = banana_bullet.instantiate()
 			Bullets.CABBAGE:
 				bullet = cabbage_bullet.instantiate()
 			Bullets.CORN:

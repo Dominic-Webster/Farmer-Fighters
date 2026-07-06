@@ -3,8 +3,11 @@ class_name Bullet
 
 @export var speed : float = 800
 @export var damage : float = 1
+@export var boomerang_turn_distance : float = 500.0
 var direction := Vector2.ZERO
 var _ended : bool = false
+var _spawn_position : Vector2 = Vector2.ZERO
+var _is_returning : bool = false
 
 const ExplosionScene = preload("res://Bullets/EXPLOSION/EXPLOSION.tscn")
 
@@ -12,11 +15,17 @@ const ExplosionScene = preload("res://Bullets/EXPLOSION/EXPLOSION.tscn")
 func _ready() -> void:
 	damage = RunManager.player.damage * RunManager.player.damage_mult
 	speed = RunManager.player.bullet_speed
+	_spawn_position = global_position
 	add_to_group("player_bullet")
 	area_entered.connect(_on_area_entered)
 
 
 func _process(delta):
+	if RunManager.player != null and RunManager.player.banana:
+		if not _is_returning and global_position.distance_to(_spawn_position) >= boomerang_turn_distance:
+			_is_returning = true
+			direction = -direction
+
 	position += direction * speed * delta
 
 
