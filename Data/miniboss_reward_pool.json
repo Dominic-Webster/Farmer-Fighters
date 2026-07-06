@@ -4,6 +4,7 @@
 		"res://Items/Carrot/Carrot.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
+		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Scythe/Scythe.tscn"
 	],
 	"2": [
@@ -11,6 +12,9 @@
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
+		"res://Items/Onion/Onion.tscn",
+		"res://Items/Plantain/Plantain.tscn",
+		"res://Items/Potato/Potato.tscn",
 		"res://Items/Strawberry/Strawberry.tscn"
 	],
 	"3": [
@@ -18,15 +22,20 @@
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
+		"res://Items/Onion/Onion.tscn",
+		"res://Items/Plantain/Plantain.tscn",
+		"res://Items/Potato/Potato.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Zucchini/Zucchini.tscn"
 	],
 	"4": [
-		"res://Items/Cabbage/Cabbage.tscn",
+		"res://Items/Cilantro/Cilantro.tscn",
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
+		"res://Items/Onion/Onion.tscn",
+		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Potato/Potato.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",

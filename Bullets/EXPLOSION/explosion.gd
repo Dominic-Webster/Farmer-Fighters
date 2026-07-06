@@ -11,7 +11,7 @@ var _did_damage : bool = false
 
 func _ready() -> void:
 	if RunManager.player != null:
-		damage = RunManager.player.explosion_damage
+		damage = RunManager.player.explosion_damage * RunManager.player.explosion_damage_mult
 	
 	animation_player.play("boom")
 	await animation_player.animation_finished
