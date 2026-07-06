@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq1kare05568g"
-path="res://.godot/imported/portobello.png-be5c183806267bfac98d545731991aa7.ctex"
+uid="uid://dh6ekx6uli0h0"
+path="res://.godot/imported/watermelon.png-fe7e99dcf4f8079d4a06e6355f99fdaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/portobello.png"
-dest_files=["res://.godot/imported/portobello.png-be5c183806267bfac98d545731991aa7.ctex"]
+source_file="res://Items/Watermelon/watermelon.png"
+dest_files=["res://.godot/imported/watermelon.png-fe7e99dcf4f8079d4a06e6355f99fdaa.ctex"]
 
 [params]
 

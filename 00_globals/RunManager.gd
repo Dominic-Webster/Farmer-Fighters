@@ -24,7 +24,9 @@ var current_floor : int = 1
 var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
 var test_item_2 = "res://Items/Morrell/Morrell.tscn"
 var test_item_3 = "res://Items/Plantain/Plantain.tscn"
-var test_item_4 = "res://Items/Cilantro/Cilantro.tscn"
+var test_item_4 = "res://Items/Portobello/Portobello.tscn"
+var test_item_5 = "res://Items/Zucchini/Zucchini.tscn"
+var test_item_6 = "res://Items/Watermelon/Watermelon.tscn"
 
 
 func start_new_run(_player : Player):
@@ -179,6 +181,10 @@ func load_item(event: InputEvent) -> void:
 		scene_path = test_item_3
 	elif event.is_action_pressed("test_item_4"):
 		scene_path = test_item_4
+	elif event.is_action_pressed("test_item_5"):
+		scene_path = test_item_5
+	elif event.is_action_pressed("test_item_6"):
+		scene_path = test_item_6
 
 	if scene_path == "":
 		return

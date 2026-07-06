@@ -75,7 +75,8 @@ enum Bullets {
 	GRAPE,
 	STRAWBERRY,
 	POTATO,
-	PLANTAIN
+	PLANTAIN,
+	WATERMELON
 }
 
 var current_bullet : Bullets = Bullets.TOMATO
@@ -88,6 +89,7 @@ var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
 var potato_bullet = preload("res://Bullets/Potato_Bullet/potato_bullet.tscn")
 var plantain_bullet = preload("res://Bullets/Plantain_Bullet/plantain_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
+var watermelon_bullet = preload("res://Bullets/Watermelon_Bullet/watermelon_bullet.tscn")
 
 # Knockback
 @export var knockback_strength := 350
@@ -98,10 +100,13 @@ var knockback_velocity := Vector2.ZERO
 var is_flashing : bool = false
 
 var boomerang : bool = false
+var bounce : int = 0
 var spiral : bool = false
 var eggplant : int = 0
 var piercing : bool = false
 var zucchini : bool = false
+var portobello : bool = false
+var tomatillo : bool = false
 var explosion : bool = false
 
 # Dash function variables
@@ -225,6 +230,16 @@ func shoot(direction: Vector2):
 		else:
 			spawn_bullet(direction)
 		
+		if tomatillo:
+			direction = -direction
+			
+			if zucchini:
+				spawn_bullet(direction)
+				spawn_bullet(create_offset(direction, -1))
+				spawn_bullet(create_offset(direction, 1))
+			else:
+				spawn_bullet(direction)
+		
 		timer.wait_time = fire_rate
 		timer.start()
 		await timer.timeout
@@ -250,6 +265,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = potato_bullet.instantiate()
 		Bullets.STRAWBERRY:
 			bullet = strawberry_bullet.instantiate()
+		Bullets.WATERMELON:
+			bullet = watermelon_bullet.instantiate()
 
 	bullet.global_position = shoot_point.global_position
 	bullet.direction = direction.normalized()
@@ -284,6 +301,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = potato_bullet.instantiate()
 			Bullets.STRAWBERRY:
 				bullet = strawberry_bullet.instantiate()
+			Bullets.WATERMELON:
+				bullet = watermelon_bullet.instantiate()
 		
 		bullet.global_position = shoot_point.global_position
 		

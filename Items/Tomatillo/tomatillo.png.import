@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh6ekx6uli0h0"
-path="res://.godot/imported/watermelon.png-045a192ce00d715df64f60b247fd098b.ctex"
+uid="uid://dpecbjnco2tdc"
+path="res://.godot/imported/tomatillo.png-623a72ebd667d5348a95f0cbfa6c37fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/watermelon.png"
-dest_files=["res://.godot/imported/watermelon.png-045a192ce00d715df64f60b247fd098b.ctex"]
+source_file="res://Items/Tomatillo/tomatillo.png"
+dest_files=["res://.godot/imported/tomatillo.png-623a72ebd667d5348a95f0cbfa6c37fe.ctex"]
 
 [params]
 
