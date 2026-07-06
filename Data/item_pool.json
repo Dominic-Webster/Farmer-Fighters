@@ -13,6 +13,7 @@
 		"res://Items/Green_Bean/Green_Bean.tscn",
 		"res://Items/Habanero/Habanero.tscn",
 		"res://Items/Lettuce/Lettuce.tscn",
+		"res://Items/Potato/Potato.tscn",
 		"res://Items/Radish/Radish.tscn",
 		"res://Items/Salsa/Salsa.tscn",
 		"res://Items/Spinach/Spinach.tscn",
@@ -22,9 +23,9 @@
 	"uncommon": [
 		"res://Items/Cilantro/Cilantro.tscn",
 		"res://Items/Corn/Corn.tscn",
+		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Onion/Onion.tscn",
 		"res://Items/Plantain/Plantain.tscn",
-		"res://Items/Potato/Potato.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Zucchini/Zucchini.tscn"
 	]

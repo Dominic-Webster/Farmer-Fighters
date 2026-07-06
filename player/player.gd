@@ -98,6 +98,7 @@ var knockback_velocity := Vector2.ZERO
 var is_flashing : bool = false
 
 var boomerang : bool = false
+var spiral : bool = false
 var eggplant : int = 0
 var piercing : bool = false
 var zucchini : bool = false
