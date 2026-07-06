@@ -20,6 +20,7 @@
 	],
 	"uncommon": [
 		"res://Items/Corn/Corn.tscn",
+		"res://Items/Potato/Potato.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Zucchini/Zucchini.tscn"
 	]

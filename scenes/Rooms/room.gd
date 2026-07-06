@@ -115,6 +115,10 @@ func load_enemies(_player_spawn : String) -> void:
 		enemy.died.connect(_on_enemy_died)
 
 
+func spawn_explosion_effect(explosion: Node) -> void:
+	add_child(explosion)
+
+
 # Helper to get the enemy pool for the current floor (for now, always floor1)
 func get_enemy_pool() -> Array:
 	var file = FileAccess.open("res://Data/enemy_pool.json", FileAccess.READ)

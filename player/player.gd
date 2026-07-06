@@ -22,6 +22,8 @@ signal damaged
 @export var accuracy : Vector2 = Vector2(-0.05, 0.05)
 @export var tri_shot_spread_degrees : float = 12.0
 
+@export var explosion_damage : float = 2.0
+
 # Dash Stats
 var dash_unlocked = false
 @export var dash_speed : float = 2500
@@ -69,7 +71,8 @@ enum Bullets {
 	CABBAGE,
 	CORN,
 	GRAPE,
-	STRAWBERRY
+	STRAWBERRY,
+	POTATO
 }
 
 var current_bullet : Bullets = Bullets.TOMATO
@@ -78,6 +81,7 @@ var tomato_bullet = preload("res://Bullets/Tomato_Bullet/tomato_bullet.tscn")
 var grape_bullet = preload("res://Bullets/Grape_Bullet/grape_bullet.tscn")
 var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
 var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
+var potato_bullet = preload("res://Bullets/Potato_Bullet/potato_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 
 # Knockback
@@ -91,6 +95,7 @@ var is_flashing : bool = false
 var eggplant : int = 0
 var strawberry : bool = false
 var zucchini : bool = false
+var potato : bool = false
 
 # Dash function variables
 var is_dashing: bool = false
@@ -230,6 +235,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = cabbage_bullet.instantiate()
 		Bullets.CORN:
 			bullet = corn_bullet.instantiate()
+		Bullets.POTATO:
+			bullet = potato_bullet.instantiate()
 		Bullets.STRAWBERRY:
 			bullet = strawberry_bullet.instantiate()
 
@@ -258,6 +265,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = cabbage_bullet.instantiate()
 			Bullets.CORN:
 				bullet = corn_bullet.instantiate()
+			Bullets.POTATO:
+				bullet = potato_bullet.instantiate()
 			Bullets.STRAWBERRY:
 				bullet = strawberry_bullet.instantiate()
 		
