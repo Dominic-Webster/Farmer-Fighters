@@ -22,9 +22,9 @@ var current_floor : int = 1
 
 # Testing
 var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
-var test_item_2 = "res://Items/Zucchini/Zucchini.tscn"
+var test_item_2 = "res://Items/Strawberry/Strawberry.tscn"
 var test_item_3 = "res://Items/Banana/Banana.tscn"
-var test_item_4 = "res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn"
+var test_item_4 = "res://Items/Potato/Potato.tscn"
 
 
 func start_new_run(_player : Player):

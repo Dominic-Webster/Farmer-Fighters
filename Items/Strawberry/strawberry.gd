@@ -11,9 +11,9 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.STRAWBERRY
 		
-		if RunManager.player.strawberry == false:
+		if RunManager.player.piercing == false:
 			desc = "Piercing Bullets"
-			RunManager.player.strawberry = true
+			RunManager.player.piercing = true
 		else:
 			desc = "+ Damage"
 			RunManager.player.damage += damage_buff

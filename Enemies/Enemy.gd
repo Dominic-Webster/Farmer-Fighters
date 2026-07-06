@@ -74,7 +74,7 @@ func die():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		take_damage(area.damage, area.global_position)
-		if not RunManager.player.strawberry:
+		if not RunManager.player.piercing:
 			if area.has_method("end_bullet"):
 				area.end_bullet()
 			else:

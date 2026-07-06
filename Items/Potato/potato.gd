@@ -11,11 +11,11 @@ func _on_body_entered(_body) -> void:
 		item_name = "Potato"
 		RunManager.player.current_bullet = RunManager.player.Bullets.POTATO
 		
-		if RunManager.player.items.has("Potato"):
+		if RunManager.player.explosion == true:
 			desc = "+ Explosion Damage"
 			RunManager.player.explosion_damage += explosion_damage_boost
 		else:
-			RunManager.player.potato = true
+			RunManager.player.explosion = true
 			desc = "EXPLOSIVE POTATOES"
 			RunManager.player.fire_rate += fire_rate_debuff
 		

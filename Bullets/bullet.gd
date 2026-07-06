@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func _process(delta):
-	if RunManager.player != null and RunManager.player.banana:
+	if RunManager.player != null and RunManager.player.boomerang:
 		if not _is_returning and global_position.distance_to(_spawn_position) >= boomerang_turn_distance:
 			_is_returning = true
 			direction = -direction
@@ -44,7 +44,7 @@ func end_bullet() -> void:
 		return
 	_ended = true
 
-	if RunManager.player != null and RunManager.player.potato:
+	if RunManager.player != null and RunManager.player.explosion:
 		_spawn_explosion()
 	else:
 		queue_free()

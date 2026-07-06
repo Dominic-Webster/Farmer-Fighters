@@ -94,11 +94,11 @@ var knockback_velocity := Vector2.ZERO
 # Extra
 var is_flashing : bool = false
 
-var banana : bool = false
+var boomerang : bool = false
 var eggplant : int = 0
-var strawberry : bool = false
+var piercing : bool = false
 var zucchini : bool = false
-var potato : bool = false
+var explosion : bool = false
 
 # Dash function variables
 var is_dashing: bool = false
