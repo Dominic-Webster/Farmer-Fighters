@@ -1,6 +1,7 @@
 {
 	"1": [
 		"res://Enemies/Floor1/Chips/Chips.tscn",
+		"res://Enemies/Floor1/Corn_Dog/Corn_Dog.tscn",
 		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
 		"res://Enemies/Floor1/Soda/Soda.tscn",
 		"res://Enemies/Floor1/Purple_Chips/Purple_Chips.tscn",
@@ -8,6 +9,7 @@
 	],
 	"2": [
 		"res://Enemies/Floor1/Chips/Chips.tscn",
+		"res://Enemies/Floor1/Corn_Dog/Corn_Dog.tscn",
 		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
 		"res://Enemies/Floor1/Soda/Soda.tscn",
 		"res://Enemies/Floor1/Purple_Chips/Purple_Chips.tscn",
