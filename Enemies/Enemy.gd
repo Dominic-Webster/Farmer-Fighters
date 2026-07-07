@@ -20,6 +20,12 @@ var is_dead : bool = false
 
 var knockback_velocity := Vector2.ZERO
 
+enum STATUS {
+	SLOW
+}
+
+var status_effects : Array[STATUS] = []
+
 
 func _ready():
 	if not enemy_data == null:
@@ -74,6 +80,10 @@ func die():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_bullet"):
 		take_damage(area.damage, area.global_position)
+		
+		if RunManager.player.slow_bullets == true:
+			apply_status("slow")
+		
 		if RunManager.player and not RunManager.player.piercing:
 			if area.has_method("end_bullet"):
 				area.end_bullet()
@@ -90,3 +100,13 @@ func flash_red():
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1) # back to normal
 	is_flashing = false
+
+
+func apply_status(status : String):
+	var to_apply : STATUS
+	match status:
+		"slow":
+			to_apply = STATUS.SLOW
+	
+	if not status_effects.has(to_apply):
+		status_effects.append(to_apply)

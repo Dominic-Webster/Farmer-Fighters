@@ -1,15 +1,15 @@
-# Boosts movement speed
+# Boosts Projectile Speed
 extends Item
-class_name Apple
+class_name Basil
 
-var speed_boost : float = 125.0
+var proj_speed_boost : float = 200
 
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
-		item_name = "Apple"
-		desc = "+ Move Speed"
+		item_name = "Basil"
+		desc = "+ Projectile Speed"
 		RunManager.player.add_item_to_array(item_name)
-		RunManager.player.move_speed += speed_boost
+		RunManager.player.bullet_speed += proj_speed_boost
 		queue_free()
 		picked_up.emit(item_name, desc)

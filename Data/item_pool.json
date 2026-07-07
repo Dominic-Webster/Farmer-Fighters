@@ -1,8 +1,10 @@
 {
 	"common": [
 		"res://Items/4_Leaf_Clover/4_Leaf_Clover.tscn",
+		"res://Items/Acorn/Acorn.tscn",
 		"res://Items/Apple/Apple.tscn",
 		"res://Items/Banana/Banana.tscn",
+		"res://Items/Basil/Basil.tscn",
 		"res://Items/Broccoli/Broccoli.tscn",
 		"res://Items/Cabbage/Cabbage.tscn",
 		"res://Items/Carrot/Carrot.tscn",
@@ -13,6 +15,8 @@
 		"res://Items/Green_Bean/Green_Bean.tscn",
 		"res://Items/Habanero/Habanero.tscn",
 		"res://Items/Lettuce/Lettuce.tscn",
+		"res://Items/Mint/Mint.tscn",
+		"res://Items/Orange/Orange.tscn",
 		"res://Items/Potato/Potato.tscn",
 		"res://Items/Radish/Radish.tscn",
 		"res://Items/Salsa/Salsa.tscn",
@@ -20,6 +24,7 @@
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Tomatillo/Tomatillo.tscn",
 		"res://Items/Turnip/Turnip.tscn",
+		"res://Items/Water/Water.tscn",
 		"res://Items/Watermelon/Watermelon.tscn"
 	],
 	"uncommon": [
@@ -30,6 +35,7 @@
 		"res://Items/Da_Pickle/Da_Pickle.tscn",
 		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Portobello/Portobello.tscn",
+		"res://Items/Raspberry/Raspberry.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Zucchini/Zucchini.tscn"
 	]

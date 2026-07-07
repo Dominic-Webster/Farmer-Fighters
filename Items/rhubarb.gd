@@ -1,15 +1,15 @@
-# Boosts movement speed
+# Boosts Damage Mult
 extends Item
-class_name Apple
+class_name Rhubarb
 
-var speed_boost : float = 125.0
+var damage_mult_boost : float = 0.5
 
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
-		item_name = "Apple"
-		desc = "+ Move Speed"
+		item_name = "Rhubarb"
+		desc = "+ Damage Mult"
 		RunManager.player.add_item_to_array(item_name)
-		RunManager.player.move_speed += speed_boost
+		RunManager.player.damage_mult += damage_mult_boost
 		queue_free()
 		picked_up.emit(item_name, desc)

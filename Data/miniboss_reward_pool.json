@@ -6,6 +6,7 @@
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Plantain/Plantain.tscn",
+		"res://Items/Raspberry/Raspberry.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Watermelon/Watermelon.tscn"
 	],
@@ -18,6 +19,7 @@
 		"res://Items/Onion/Onion.tscn",
 		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Potato/Potato.tscn",
+		"res://Items/Raspberry/Raspberry.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Watermelon/Watermelon.tscn"
 	],
@@ -30,6 +32,7 @@
 		"res://Items/Onion/Onion.tscn",
 		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Potato/Potato.tscn",
+		"res://Items/Raspberry/Raspberry.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Zucchini/Zucchini.tscn",
@@ -45,6 +48,7 @@
 		"res://Items/Da_Pickle/Da_Pickle.tscn",
 		"res://Items/Plantain/Plantain.tscn",
 		"res://Items/Potato/Potato.tscn",
+		"res://Items/Raspberry/Raspberry.tscn",
 		"res://Items/Scythe/Scythe.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
 		"res://Items/Zucchini/Zucchini.tscn",

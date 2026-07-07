@@ -109,6 +109,8 @@ var portobello : bool = false
 var tomatillo : bool = false
 var explosion : bool = false
 
+var slow_bullets : bool = true
+
 # Dash function variables
 var is_dashing: bool = false
 var dash_direction: Vector2 = Vector2.ZERO
