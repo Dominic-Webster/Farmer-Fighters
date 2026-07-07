@@ -176,6 +176,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "RESUME"
 
+[node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "NEW GAME"
+
 [node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
 process_mode = 3
 layout_mode = 2

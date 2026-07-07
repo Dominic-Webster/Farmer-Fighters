@@ -452,3 +452,43 @@ func update_hp():
 			Hearts.CARROT :
 				heart = 1
 		hud.update_hp(current_health, get_max_health(), heart, num_hearts)
+
+
+func reset_player() -> void:
+	num_hearts = 3
+	damage = 1.0
+	damage_mult = 1.0
+	luck = 1
+	move_speed = 400
+	fire_rate = 0.3
+	bullet_speed = 800
+	accuracy = Vector2(-0.05, 0.05)
+	
+	explosion_damage = 2.0
+	explosion_damage_mult = 1.0
+	
+	# Dash Stats
+	dash_unlocked = false
+	dash_speed = 2500
+	dash_duration = 0.1
+	dash_damage = 0
+	dash_cooldown_time = 0.5
+	
+	current_heart = Hearts.TOMATO
+	current_health = get_max_health()
+	
+	items = []
+	
+	current_bullet = Bullets.TOMATO
+	
+	boomerang = false
+	bounce = 0
+	spiral = false
+	eggplant = 0
+	piercing = false
+	zucchini = false
+	portobello = false
+	tomatillo = false
+	explosion = false
+	
+	slow_bullets = false
