@@ -1,7 +1,6 @@
 extends Enemy
 class_name Worm
 
-
 var direction: Vector2 = Vector2.RIGHT
 
 

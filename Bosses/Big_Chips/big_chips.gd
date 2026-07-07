@@ -13,7 +13,6 @@ var action_timer : float = randf_range(action_delay.x, action_delay.y)
 
 var dead : bool = false
 
-
 func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
@@ -62,6 +61,8 @@ func die():
 		anim.play("die")
 		await anim.animation_finished
 		visible = false
+		
+		RunManager.spawn_heart()
 		
 		# Tell the room to spawn the elevator and handle persistence
 		await get_parent().spawn_elevator_at_center()

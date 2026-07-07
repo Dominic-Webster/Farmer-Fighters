@@ -19,6 +19,7 @@
 		"res://Items/Orange/Orange.tscn",
 		"res://Items/Potato/Potato.tscn",
 		"res://Items/Radish/Radish.tscn",
+		"res://Items/Rhubarb/Rhubarb.tscn",
 		"res://Items/Salsa/Salsa.tscn",
 		"res://Items/Spinach/Spinach.tscn",
 		"res://Items/Strawberry/Strawberry.tscn",
@@ -30,6 +31,7 @@
 	"uncommon": [
 		"res://Items/Cilantro/Cilantro.tscn",
 		"res://Items/Corn/Corn.tscn",
+		"res://Items/Garlic/Garlic.tscn",
 		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Onion/Onion.tscn",
 		"res://Items/Da_Pickle/Da_Pickle.tscn",

@@ -14,6 +14,7 @@
 		"res://Items/Cabbage/Cabbage.tscn",
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
+		"res://Items/Garlic/Garlic.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Onion/Onion.tscn",
@@ -24,9 +25,9 @@
 		"res://Items/Watermelon/Watermelon.tscn"
 	],
 	"3": [
-		"res://Items/Cabbage/Cabbage.tscn",
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
+		"res://Items/Garlic/Garlic.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Onion/Onion.tscn",
@@ -42,6 +43,7 @@
 		"res://Items/Cilantro/Cilantro.tscn",
 		"res://Items/Corn/Corn.tscn",
 		"res://Items/Eggplant/Eggplant.tscn",
+		"res://Items/Garlic/Garlic.tscn",
 		"res://Items/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Morrell/Morrell.tscn",
 		"res://Items/Onion/Onion.tscn",

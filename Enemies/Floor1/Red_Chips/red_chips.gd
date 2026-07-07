@@ -1,7 +1,7 @@
 extends Enemy
 class_name RedChips
 
-@export var jump_speed : float = 250.0
+# move_speed is jump speed
 @export var jump_delay : Vector2 = Vector2(0.7, 1.5)
 
 var jumping : bool = false
@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# Currently jumping
 	if jumping:
-		velocity = jump_direction * jump_speed + knockback_velocity
+		velocity = jump_direction * move_speed + knockback_velocity
 		move_and_slide()
 		
 		return

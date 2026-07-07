@@ -103,10 +103,16 @@ func flash_red():
 
 
 func apply_status(status : String):
-	var to_apply : STATUS
 	match status:
 		"slow":
-			to_apply = STATUS.SLOW
-	
-	if not status_effects.has(to_apply):
-		status_effects.append(to_apply)
+			if not status_effects.has(STATUS.SLOW):
+				status_effects.append(STATUS.SLOW)
+				move_speed /= 2
+
+
+func remove_status(status : String):
+	match status:
+		"slow":
+			if status_effects.has(STATUS.SLOW):
+				status_effects.erase(STATUS.SLOW)
+				move_speed *= 2
