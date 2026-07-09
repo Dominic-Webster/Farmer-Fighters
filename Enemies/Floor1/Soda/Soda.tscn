@@ -67,6 +67,7 @@ _data = {
 }
 
 [node name="Soda" type="CharacterBody2D" unique_id=383500422]
+scale = Vector2(0.85, 0.85)
 collision_layer = 4
 collision_mask = 20
 script = ExtResource("1_y853g")

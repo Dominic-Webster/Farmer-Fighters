@@ -3,6 +3,9 @@ extends Node
 
 var difficulty : String
 
+@warning_ignore("unused_signal")
+signal ended
+
 
 @export var room_parent : Node   # Assign this in your main scene
 
@@ -21,7 +24,7 @@ var can_trigger_doors : bool = false
 var current_floor : int = 1
 
 # Testing
-var test_item_1 = "res://Items/Eggplant/Eggplant.tscn"
+var test_item_1 = "res://Items/Mirror/Mirror.tscn"
 var test_item_2 = "res://Items/Morrell/Morrell.tscn"
 var test_item_3 = "res://Items/Da_Pickle/Da_Pickle.tscn"
 var test_item_4 = "res://Items/Basil/Basil.tscn"
@@ -191,6 +194,8 @@ func load_item(event: InputEvent) -> void:
 
 	if event.is_action_pressed("test_item_1"):
 		scene_path = test_item_1
+		#player.inverse_controls = !player.inverse_controls
+		#player.dash_unlocked = !player.dash_unlocked
 	elif event.is_action_pressed("test_item_2"):
 		scene_path = test_item_2
 	elif event.is_action_pressed("test_item_3"):

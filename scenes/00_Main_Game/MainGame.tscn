@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duyny1j6ln063" path="res://scenes/00_Main_Game/game.gd" id="1_fk84u"]
 [ext_resource type="PackedScene" uid="uid://dxehpbkc50swe" path="res://player/Player.tscn" id="2_ay3v6"]
+[ext_resource type="PackedScene" uid="uid://darwxserd8bku" path="res://scenes/end_menu/End.tscn" id="2_nvtwa"]
 [ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="3_jsquf"]
 [ext_resource type="PackedScene" uid="uid://cmj4vno55fv67" path="res://scenes/pause_menu/Pause.tscn" id="4_ibxjl"]
 
@@ -9,7 +10,11 @@
 process_mode = 3
 script = ExtResource("1_fk84u")
 
-[node name="Pause" parent="." unique_id=1320420105 instance=ExtResource("4_ibxjl")]
+[node name="End" parent="." unique_id=1320420105 instance=ExtResource("2_nvtwa")]
+visible = false
+z_index = 1000
+
+[node name="Pause" parent="." unique_id=763442299 instance=ExtResource("4_ibxjl")]
 visible = false
 z_index = 1000
 

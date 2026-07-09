@@ -6,6 +6,7 @@ class_name Player
 # -------
 
 signal damaged
+signal died
 
 # ----------
 # Variables
@@ -108,6 +109,7 @@ var zucchini : bool = false
 var portobello : bool = false
 var tomatillo : bool = false
 var explosion : bool = false
+var inverse_controls : bool = false
 
 var slow_bullets : bool = false
 
@@ -134,6 +136,9 @@ func _physics_process(_delta):
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = direction.normalized()
+	
+	if inverse_controls == true:
+		direction *= -1
 	
 	# Dash logic
 	if dash_cooldown > 0.0:
@@ -169,6 +174,10 @@ func update_sprite_facing():
 	var move_dir = Vector2.ZERO
 	move_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	move_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	
+	if inverse_controls == true:
+		move_dir *= -1
+	
 	move_dir = move_dir.normalized()
 
 	var face_dir = shoot_dir if shoot_dir != Vector2.ZERO else move_dir
@@ -207,6 +216,9 @@ func get_shoot_direction() -> Vector2:
 	
 	dir.x = Input.get_action_strength("shoot_right") - Input.get_action_strength("shoot_left")
 	dir.y = Input.get_action_strength("shoot_down") - Input.get_action_strength("shoot_up")
+	
+	if inverse_controls == true:
+		dir *= -1
 	
 	return dir.normalized()
 
@@ -399,7 +411,8 @@ func take_damage(amount : int):
 
 
 func player_died():
-	queue_free()
+	died.emit()
+	#queue_free()
 
 
 func flash_red():

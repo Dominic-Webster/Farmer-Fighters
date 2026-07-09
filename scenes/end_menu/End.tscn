@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cmj4vno55fv67"]
+[gd_scene format=3 uid="uid://darwxserd8bku"]
 
-[ext_resource type="Script" uid="uid://ynrascmyyqjw" path="res://scenes/pause_menu/pause_menu.gd" id="1_01rj1"]
-[ext_resource type="Texture2D" uid="uid://ck3oc10gcoin1" path="res://scenes/pause_menu/pause_box.png" id="2_g524l"]
+[ext_resource type="Script" uid="uid://btxh5x5l88tyf" path="res://scenes/end_menu/end_menu.gd" id="1_duvpb"]
+[ext_resource type="Texture2D" uid="uid://jjrd3rxlwinh" path="res://scenes/end_menu/pause_box.png" id="2_at3tt"]
 
 [sub_resource type="Animation" id="Animation_esln1"]
 length = 0.001
@@ -88,7 +88,7 @@ _data = {
 &"blur": SubResource("Animation_8cbc5")
 }
 
-[node name="Pause" type="Control" unique_id=1320420105]
+[node name="End" type="Control" unique_id=1320420105]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -97,7 +97,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_01rj1")
+script = ExtResource("1_duvpb")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=823289743]
 layout_mode = 0
@@ -107,7 +107,7 @@ offset_right = 400.0
 offset_bottom = 80.0
 scale = Vector2(30, 25)
 mouse_filter = 2
-texture = ExtResource("2_g524l")
+texture = ExtResource("2_at3tt")
 
 [node name="Label" type="Label" parent="." unique_id=1516829670]
 process_mode = 3
@@ -117,7 +117,7 @@ offset_top = 100.0
 offset_right = 1490.0
 offset_bottom = 265.0
 theme_override_font_sizes/font_size = 120
-text = "Paused"
+text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -131,12 +131,6 @@ offset_bottom = 863.0
 mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 1
-
-[node name="Resume" type="Button" parent="Buttons" unique_id=1080228763]
-process_mode = 3
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "RESUME"
 
 [node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
 process_mode = 3

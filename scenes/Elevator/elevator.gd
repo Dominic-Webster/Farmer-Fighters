@@ -53,6 +53,10 @@ func _elevator_transition(player):
 	MapGenerationManager.create_new_map()
 	# Remove old room (handled by load_room)
 	RunManager.current_room = MapGenerationManager._start
-	RunManager.load_room(MapGenerationManager._start, "C")
-	# Show player in new room
-	player.visible = true
+	
+	if RunManager.current_floor == 5:
+		RunManager.ended.emit()
+	else:
+		RunManager.load_room(MapGenerationManager._start, "C")
+		# Show player in new room
+		player.visible = true

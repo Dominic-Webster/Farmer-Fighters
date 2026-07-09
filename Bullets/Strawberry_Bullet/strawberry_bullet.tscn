@@ -45,6 +45,7 @@ _data = {
 }
 
 [node name="StrawberryBullet" type="Area2D" unique_id=1306859251]
+scale = Vector2(0.75, 0.75)
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_s5puh")

@@ -5,15 +5,21 @@ extends Node2D
 @onready var player : Player = $Player
 @onready var gui : PlayerHud = $PlayerHud
 @onready var pause_menu : PauseMenu = $Pause
+@onready var end_menu : EndMenu = $End
 
 
 func _ready():
+	get_tree().paused = false
 	RunManager.room_parent = room_parent
 	RunManager.player = player
 	RunManager.gui = gui
 	
+	RunManager.ended.connect(_run_ended)
+	
 	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
 	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
+	player.died.connect(_player_died)
+	player.visible = true
 	
 	RunManager.start_new_run(player)
 	
@@ -37,3 +43,15 @@ func _input(event):
 		pause()
 	elif event.is_action_pressed("pause"):
 		unpause()
+
+
+func _player_died():
+	end_menu.show_menu("You Died")
+	await get_tree().process_frame 
+	get_tree().paused = true
+
+
+func _run_ended():
+	end_menu.show_menu("You Win!")
+	await get_tree().process_frame 
+	get_tree().paused = true
