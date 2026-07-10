@@ -24,7 +24,7 @@ var can_trigger_doors : bool = false
 var current_floor : int = 1
 
 # Testing
-var test_item_1 = "res://Items/Mirror/Mirror.tscn"
+var test_item_1 = "res://Items/Peach/Peach.tscn"
 var test_item_2 = "res://Items/Morrell/Morrell.tscn"
 var test_item_3 = "res://Items/Da_Pickle/Da_Pickle.tscn"
 var test_item_4 = "res://Items/Basil/Basil.tscn"
@@ -185,8 +185,8 @@ func spawn_heart() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("view_stats"):
 		print_stats()
-	#else:
-		#load_item(event)
+	else:
+		load_item(event)
 
 
 func load_item(event: InputEvent) -> void:

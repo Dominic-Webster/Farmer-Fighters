@@ -75,6 +75,7 @@ enum Bullets {
 	CORN,
 	GRAPE,
 	STRAWBERRY,
+	PEACH,
 	POTATO,
 	PLANTAIN,
 	WATERMELON
@@ -88,6 +89,7 @@ var banana_bullet = preload("res://Bullets/Banana_Bullet/banana_bullet.tscn")
 var cabbage_bullet = preload("res://Bullets/Cabbage_Bullet/cabbage_bullet.tscn")
 var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
 var potato_bullet = preload("res://Bullets/Potato_Bullet/potato_bullet.tscn")
+var peach_bullet = preload("res://Bullets/Peach_Bullet/peach_bullet.tscn")
 var plantain_bullet = preload("res://Bullets/Plantain_Bullet/plantain_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 var watermelon_bullet = preload("res://Bullets/Watermelon_Bullet/watermelon_bullet.tscn")
@@ -277,6 +279,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = corn_bullet.instantiate()
 		Bullets.POTATO:
 			bullet = potato_bullet.instantiate()
+		Bullets.PEACH:
+			bullet = peach_bullet.instantiate()
 		Bullets.STRAWBERRY:
 			bullet = strawberry_bullet.instantiate()
 		Bullets.WATERMELON:
@@ -313,6 +317,8 @@ func eggplant_shoot(level : int) -> void:
 				bullet = corn_bullet.instantiate()
 			Bullets.POTATO:
 				bullet = potato_bullet.instantiate()
+			Bullets.PEACH:
+				bullet = peach_bullet.instantiate()
 			Bullets.STRAWBERRY:
 				bullet = strawberry_bullet.instantiate()
 			Bullets.WATERMELON:

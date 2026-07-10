@@ -1,14 +1,14 @@
 extends Enemy
-class_name Worm
+class_name Nugget
 
 var direction: Vector2 = Vector2.RIGHT
 
 
 func _physics_process(_delta: float) -> void:
 	if direction.x > 0:
-		sprite.flip_h = false
-	else:
 		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 	velocity = direction * move_speed
 
