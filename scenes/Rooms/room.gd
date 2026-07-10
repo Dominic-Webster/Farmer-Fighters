@@ -204,23 +204,24 @@ func _on_enemy_died():
 			spawn_miniboss_reward(RunManager.current_room)
 	
 		# Persistent pickup logic
-		var pos = RunManager.current_room
-		var state = MapGenerationManager.room_states.get(pos, {})
-		if not state.has("pickup_picked_up") or not state["pickup_picked_up"]:
-			# Only roll if not already present
-			if not state.has("pickup_item_path"):
-				var player = RunManager.player
-				var luck : int = 1
-				if player != null and "luck" in player:
-					luck = player.luck
-				var roll = randi_range(1, 25)
-				if roll <= luck:
-					var pickup_scene = get_random_pickup_scene()
-					if pickup_scene:
-						state["pickup_item_path"] = pickup_scene.resource_path
-						state["pickup_picked_up"] = false
-						MapGenerationManager.room_states[pos] = state
-						spawn_room_pickup(pos)
+		if MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "B":
+			var pos = RunManager.current_room
+			var state = MapGenerationManager.room_states.get(pos, {})
+			if not state.has("pickup_picked_up") or not state["pickup_picked_up"]:
+				# Only roll if not already present
+				if not state.has("pickup_item_path"):
+					var player = RunManager.player
+					var luck : int = 1
+					if player != null and "luck" in player:
+						luck = player.luck
+					var roll = randi_range(1, 25)
+					if roll <= luck:
+						var pickup_scene = get_random_pickup_scene()
+						if pickup_scene:
+							state["pickup_item_path"] = pickup_scene.resource_path
+							state["pickup_picked_up"] = false
+							MapGenerationManager.room_states[pos] = state
+							spawn_room_pickup(pos)
 
 
 # Spawns a persistent pickup for the room if it exists and is not picked up

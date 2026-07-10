@@ -8,30 +8,36 @@ class_name Player
 signal damaged
 signal died
 
+# ------
+# Data
+# ------
+
+@export var data : PlayerData
+
 # ----------
 # Variables
 # ----------
 
 # Stats
-@export var num_hearts : int = 3 # Number of hearts
-@export var damage : float = 1.0
-@export var damage_mult : float = 1.0
-@export var luck : int = 1
-@export var move_speed : float = 400
-@export var fire_rate : float = 0.3
-@export var bullet_speed : float = 800
-@export var accuracy : Vector2 = Vector2(-0.05, 0.05)
+var num_hearts : int = 3 # Number of hearts
+var damage : float = 1.0
+var damage_mult : float = 1.0
+var luck : int = 1
+var move_speed : float = 400
+var fire_rate : float = 0.3
+var bullet_speed : float = 800
+var accuracy : Vector2 = Vector2(-0.05, 0.05)
 @export var tri_shot_spread_degrees : float = 12.0
 
-@export var explosion_damage : float = 2.0
-@export var explosion_damage_mult : float = 1.0
+var explosion_damage : float = 2.0
+var explosion_damage_mult : float = 1.0
 
 # Dash Stats
 var dash_unlocked = false
-@export var dash_speed : float = 2500
-@export var dash_duration : float = 0.1
-@export var dash_damage : float = 0
-@export var dash_cooldown_time: float = 0.5
+var dash_speed : float = 2500
+var dash_duration : float = 0.1
+var dash_damage : float = 0
+var dash_cooldown_time: float = 0.5
 
 enum Hearts {
 	TOMATO,
@@ -95,8 +101,8 @@ var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bull
 var watermelon_bullet = preload("res://Bullets/Watermelon_Bullet/watermelon_bullet.tscn")
 
 # Knockback
-@export var knockback_strength := 350
-@export var knockback_decay := 800
+var knockback_strength := 350
+var knockback_decay := 800
 var knockback_velocity := Vector2.ZERO
 
 # Extra
@@ -130,7 +136,75 @@ var dash_cooldown: float = 0.0
 func _ready() -> void:
 	current_health = get_max_health()
 	add_to_group("player")
-	#push_area.body_entered.connect(_on_push_area_body_entered)
+	load_data()
+
+
+func load_data() -> void:
+	if data == null:
+		return
+	
+	num_hearts = data.num_hearts
+	damage = data.damage
+	damage_mult = data.damage_mult
+	luck = data.luck
+	move_speed = data.move_speed
+	fire_rate = data.fire_rate
+	bullet_speed = data.bullet_speed
+	accuracy = data.accuracy
+	
+	explosion_damage = data.explosion_damage
+	explosion_damage_mult = data.explosion_damage_mult
+	
+	dash_unlocked = data.dash_unlocked
+	dash_speed = data.dash_speed
+	dash_duration = data.dash_duration
+	dash_damage = data.dash_damage
+	dash_cooldown_time = data.dash_cooldown_time
+	
+	
+	match data.starting_heart:
+		data.Hearts.TOMATO:
+			current_heart = Hearts.TOMATO
+		data.Hearts.CARROT:
+			current_heart = Hearts.CARROT
+	
+	match data.starting_bullet:
+		data.Bullets.TOMATO:
+			current_bullet = Bullets.TOMATO
+		data.Bullets.CABBAGE:
+			current_bullet = Bullets.CABBAGE
+		data.Bullets.BANANA:
+			current_bullet = Bullets.BANANA
+		data.Bullets.CORN:
+			current_bullet = Bullets.CORN
+		data.Bullets.GRAPE:
+			current_bullet = Bullets.GRAPE
+		data.Bullets.STRAWBERRY:
+			current_bullet = Bullets.STRAWBERRY
+		data.Bullets.PEACH:
+			current_bullet = Bullets.PEACH
+		data.Bullets.PLANTAIN:
+			current_bullet = Bullets.PLANTAIN
+		data.Bullets.WATERMELON:
+			current_bullet = Bullets.WATERMELON
+		data.Bullets.POTATO:
+			current_bullet = Bullets.POTATO
+	
+	knockback_strength = data.knockback_strength
+	knockback_decay = data.knockback_decay
+	
+	boomerang = data.boomerang
+	bounce = data.bounce
+	spiral = data.spiral
+	eggplant = data.eggplant
+	piercing = data.piercing
+	zucchini = data.zucchini
+	portobello = data.portobello
+	tomatillo = data.tomatillo
+	explosion = data.explosion
+	inverse_controls = data.inverse_controls
+	
+	slow_bullets = data.slow_bullets
 
 
 func _physics_process(_delta):
@@ -474,41 +548,12 @@ func update_hp():
 
 
 func reset_player() -> void:
-	num_hearts = 3
-	damage = 1.0
-	damage_mult = 1.0
-	luck = 1
-	move_speed = 400
-	fire_rate = 0.3
-	bullet_speed = 800
-	accuracy = Vector2(-0.05, 0.05)
+	scale = Vector2(0.75, 0.75)
 	
-	explosion_damage = 2.0
-	explosion_damage_mult = 1.0
-	
-	# Dash Stats
-	dash_unlocked = false
-	dash_speed = 2500
-	dash_duration = 0.1
-	dash_damage = 0
-	dash_cooldown_time = 0.5
-	
-	current_heart = Hearts.TOMATO
-	current_health = get_max_health()
+	load_data()
 	
 	items = []
 	
-	current_bullet = Bullets.TOMATO
+	current_health = get_max_health()
 	
-	boomerang = false
-	bounce = 0
-	spiral = false
-	eggplant = 0
-	piercing = false
-	zucchini = false
-	portobello = false
-	tomatillo = false
-	explosion = false
-	inverse_controls = false
-	
-	slow_bullets = false
+	damaged.emit()

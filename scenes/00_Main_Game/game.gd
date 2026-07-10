@@ -20,6 +20,7 @@ func _ready():
 	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
 	player.died.connect(_player_died)
 	player.visible = true
+	player.damaged.emit()
 	
 	RunManager.start_new_run(player)
 	
