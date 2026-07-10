@@ -58,5 +58,5 @@ func _elevator_transition(player):
 		RunManager.ended.emit()
 	else:
 		RunManager.load_room(MapGenerationManager._start, "C")
-		# Show player in new room
-		player.visible = true
+	# Show player in new room
+	player.visible = true

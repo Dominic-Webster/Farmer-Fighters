@@ -503,5 +503,6 @@ func reset_player() -> void:
 	portobello = false
 	tomatillo = false
 	explosion = false
+	inverse_controls = false
 	
 	slow_bullets = false
