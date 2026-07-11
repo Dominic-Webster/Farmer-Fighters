@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dy3lpfnjic7tt"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_0hfik"]
-[ext_resource type="Texture2D" uid="uid://crv8h4bhf6op6" path="res://Items/Potato/potato.png" id="2_1n118"]
+[ext_resource type="Texture2D" uid="uid://crv8h4bhf6op6" path="res://Items/Common/Potato/potato.png" id="2_1n118"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
 radius = 15.033297

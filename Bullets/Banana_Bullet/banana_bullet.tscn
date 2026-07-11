@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq7wwewdjlass"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_mus0u"]
-[ext_resource type="Texture2D" uid="uid://cnca0moxnokl4" path="res://Items/Banana/Banana.png" id="2_xjqss"]
+[ext_resource type="Texture2D" uid="uid://cnca0moxnokl4" path="res://Items/Common/Banana/Banana.png" id="2_xjqss"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
 radius = 17.0

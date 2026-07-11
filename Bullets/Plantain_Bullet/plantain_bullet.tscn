@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctsivptpr56m3"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_vhyg1"]
-[ext_resource type="Texture2D" uid="uid://cesoe4ida2bo7" path="res://Items/Plantain/Plantain.png" id="2_tbi0j"]
+[ext_resource type="Texture2D" uid="uid://cesoe4ida2bo7" path="res://Items/Uncommon/Plantain/Plantain.png" id="2_tbi0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
 radius = 18.027756

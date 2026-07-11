@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://db2crd6is4kcq"]
+
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_ridtc"]
+[ext_resource type="Script" uid="uid://nktfa8xmuniq" path="res://Items/Common/Eggplant/eggplant.gd" id="1_rwuye"]
+[ext_resource type="Texture2D" uid="uid://fcyinoffgqar" path="res://Items/Common/Eggplant/Eggplant.png" id="2_rwuye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2bg1"]
+size = Vector2(92, 88)
+
+[sub_resource type="Animation" id="Animation_p2bg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0bt88"]
+resource_name = "hover"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21dfd"]
+_data = {
+&"RESET": SubResource("Animation_p2bg1"),
+&"hover": SubResource("Animation_0bt88")
+}
+
+[node name="Eggplant" type="Node2D" unique_id=1208738605]
+script = ExtResource("1_rwuye")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=845877703]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 40)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_ridtc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1824881800]
+scale = Vector2(5, 5)
+texture = ExtResource("2_rwuye")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=423187792]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=932515748]
+shape = SubResource("RectangleShape2D_p2bg1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=318164828]
+libraries/ = SubResource("AnimationLibrary_21dfd")
+autoplay = &"hover"

@@ -24,12 +24,12 @@ var can_trigger_doors : bool = false
 var current_floor : int = 1
 
 # Testing
-var test_item_1 = "res://Items/Lemon/Lemon.tscn"
-var test_item_2 = "res://Items/Lime/Lime.tscn"
-var test_item_3 = "res://Items/Da_Pickle/Da_Pickle.tscn"
-var test_item_4 = "res://Items/Basil/Basil.tscn"
-var test_item_5 = "res://Items/Zucchini/Zucchini.tscn"
-var test_item_6 = "res://Items/Rhubarb/Rhubarb.tscn"
+var test_item_1 = "res://Items/Uncommon/Lemon/Lemon.tscn"
+var test_item_2 = "res://Items/Uncommon/Lime/Lime.tscn"
+var test_item_3 = "res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn"
+var test_item_4 = "res://Items/Common/Basil/Basil.tscn"
+var test_item_5 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
+var test_item_6 = "res://Items/Uncommon/Rhubarb/Rhubarb.tscn"
 
 var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 

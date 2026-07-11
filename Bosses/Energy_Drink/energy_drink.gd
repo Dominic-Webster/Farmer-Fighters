@@ -60,6 +60,9 @@ func _physics_process(_delta: float) -> void:
 			velocity = random_dir * move_speed + knockback_velocity
 			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
 			move_and_slide()
+			
+			if is_on_wall():
+				random_dir *= -1
 		
 		State.CHARGE_UP:
 			# Wait for the charge_up animation to finish

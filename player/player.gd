@@ -113,9 +113,11 @@ var bounce : int = 0
 var spiral : bool = false
 var eggplant : int = 0
 var piercing : bool = false
-var zucchini : bool = false
+var tri_shot : bool = false
+var quad_shot : bool = false
+var five_shot : bool = false
 var portobello : bool = false
-var tomatillo : bool = false
+var backshot : bool = false
 var explosion : bool = false
 var inverse_controls : bool = false
 
@@ -198,9 +200,11 @@ func load_data() -> void:
 	spiral = data.spiral
 	eggplant = data.eggplant
 	piercing = data.piercing
-	zucchini = data.zucchini
+	tri_shot = data.tri_shot
+	quad_shot = data.quad_shot
+	five_shot = data.five_shot
 	portobello = data.portobello
-	tomatillo = data.tomatillo
+	backshot = data.backshot
 	explosion = data.explosion
 	inverse_controls = data.inverse_controls
 	
@@ -313,17 +317,17 @@ func shoot(direction: Vector2):
 		direction.x += randf_range(accuracy.x, accuracy.y)
 		direction.y += randf_range(accuracy.x, accuracy.y)
 		
-		if zucchini:
+		if tri_shot:
 			spawn_bullet(direction)
 			spawn_bullet(create_offset(direction, -1))
 			spawn_bullet(create_offset(direction, 1))
 		else:
 			spawn_bullet(direction)
 		
-		if tomatillo:
+		if backshot:
 			direction = -direction
 			
-			if zucchini:
+			if tri_shot:
 				spawn_bullet(direction)
 				spawn_bullet(create_offset(direction, -1))
 				spawn_bullet(create_offset(direction, 1))
@@ -421,7 +425,7 @@ func eggplant_shoot(level : int) -> void:
 		bullet.direction.x += randf_range(accuracy.x, accuracy.y)
 		bullet.direction.y += randf_range(accuracy.x, accuracy.y)
 		
-		if zucchini:
+		if tri_shot:
 			spawn_bullet(bullet.direction)
 			spawn_bullet(create_offset(bullet.direction, -1))
 			spawn_bullet(create_offset(bullet.direction, 1))

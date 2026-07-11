@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpltajcxbq8nc"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_iwxbs"]
-[ext_resource type="Texture2D" uid="uid://dh6ekx6uli0h0" path="res://Items/Watermelon/watermelon.png" id="2_4jbcy"]
+[ext_resource type="Texture2D" uid="uid://dh6ekx6uli0h0" path="res://Items/Common/Watermelon/watermelon.png" id="2_4jbcy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
 radius = 12.5

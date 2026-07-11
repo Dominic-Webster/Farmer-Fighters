@@ -53,10 +53,21 @@ var starting_bullet : Bullets = Bullets.TOMATO
 @export var spiral : bool = false
 @export var eggplant : int = 0
 @export var piercing : bool = false
-@export var zucchini : bool = false
+@export var tri_shot : bool = false
+@export var quad_shot : bool = false
+@export var five_shot : bool = false
 @export var portobello : bool = false
-@export var tomatillo : bool = false
+@export var backshot : bool = false
 @export var explosion : bool = false
 @export var inverse_controls : bool = false
 
 @export var slow_bullets : bool = false
+
+# Companions
+#@export var cow_unlocked : bool = false
+#@export var cow_damage : float = 2
+#@export var cow_speed : float = 400
+
+#@export var chicken_unlocked : bool = false
+#@export var chicken_damage : float = 2
+#@export var chicken_speed : float = 400

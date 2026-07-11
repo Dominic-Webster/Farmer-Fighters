@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnvgvmuwp2oqt"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_y7171"]
-[ext_resource type="Texture2D" uid="uid://kky1xu1lfyot" path="res://Items/Peach/peach.png" id="2_w323p"]
+[ext_resource type="Texture2D" uid="uid://kky1xu1lfyot" path="res://Items/Common/Peach/peach.png" id="2_w323p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
 radius = 15.033297
@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_r38nn"]
 resource_name = "spin"
-length = 0.40000334
+length = 0.80000335
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -32,7 +32,7 @@ tracks/0/path = NodePath("Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6, 0.8000001),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.5707963267948966, 3.141592653589793, 4.71238898038469, 6.283185307179586]

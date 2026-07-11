@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://diyqw45tk34f6"]
 
 [ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_s5puh"]
-[ext_resource type="Texture2D" uid="uid://cx3v3nx40i57v" path="res://Items/Strawberry/strawberry.png" id="2_vwkh4"]
+[ext_resource type="Texture2D" uid="uid://cx3v3nx40i57v" path="res://Items/Common/Strawberry/strawberry.png" id="2_vwkh4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebmw3"]
 radius = 28.0
