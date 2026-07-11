@@ -2,7 +2,7 @@
 extends Item
 class_name FourLeafClover
 
-var luck_boost : int = 2
+var luck_boost : int = 3
 
 
 func _on_body_entered(_body) -> void:
