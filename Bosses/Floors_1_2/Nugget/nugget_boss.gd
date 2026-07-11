@@ -1,5 +1,5 @@
 extends Enemy
-class_name BlueBear
+class_name NuggetBoss
 
 @export var start_delay : Vector2 = Vector2(0.2, 0.4)
 var start_timer : float = randf_range(start_delay.x, start_delay.y)
@@ -22,7 +22,16 @@ func _physics_process(_delta: float) -> void:
 	switch_timer -= _delta
 	if switch_timer <= 0:
 		switch_timer = randf_range(switch_time.x, switch_time.y)
-		direction = Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1)).normalized()
+		match randi_range(1, 4):
+			1:
+				direction = Vector2.UP
+			2:
+				direction = Vector2.DOWN
+			3:
+				direction = Vector2.RIGHT
+			4:
+				direction = Vector2.LEFT
+		#direction = Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1)).normalized()
 		# Prevent zero direction
 		if direction == Vector2.ZERO:
 			direction = Vector2(1, 0)
@@ -43,6 +52,8 @@ func _physics_process(_delta: float) -> void:
 		direction *= -1
 
 
+const ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
+
 func die():
 	if not is_dead:
 		died.emit()
@@ -52,4 +63,11 @@ func die():
 		anim.stop()
 		anim.play("die")
 		await anim.animation_finished
+		visible = false
+		
+		RunManager.spawn_heart()
+
+		# Tell the room to spawn the elevator and handle persistence
+		await get_parent().spawn_elevator_at_center()
+
 		queue_free()

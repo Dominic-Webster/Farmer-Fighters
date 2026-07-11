@@ -113,6 +113,7 @@ var bounce : int = 0
 var spiral : bool = false
 var eggplant : int = 0
 var piercing : bool = false
+var dual_shot : bool = false
 var tri_shot : bool = false
 var quad_shot : bool = false
 var five_shot : bool = false
@@ -200,6 +201,7 @@ func load_data() -> void:
 	spiral = data.spiral
 	eggplant = data.eggplant
 	piercing = data.piercing
+	dual_shot = data.dual_shot
 	tri_shot = data.tri_shot
 	quad_shot = data.quad_shot
 	five_shot = data.five_shot

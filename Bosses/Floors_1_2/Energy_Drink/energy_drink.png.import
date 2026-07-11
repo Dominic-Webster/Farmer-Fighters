@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0kuxq512tg7"
-path="res://.godot/imported/big_chips.png-1e838f31331b0a6eca593477c38aa65e.ctex"
+uid="uid://c3er65nhx75yn"
+path="res://.godot/imported/energy_drink.png-789ded6ecedb7650174d049b6a746dee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bosses/Big_Chips/big_chips.png"
-dest_files=["res://.godot/imported/big_chips.png-1e838f31331b0a6eca593477c38aa65e.ctex"]
+source_file="res://Bosses/Floors_1_2/Energy_Drink/energy_drink.png"
+dest_files=["res://.godot/imported/energy_drink.png-789ded6ecedb7650174d049b6a746dee.ctex"]
 
 [params]
 

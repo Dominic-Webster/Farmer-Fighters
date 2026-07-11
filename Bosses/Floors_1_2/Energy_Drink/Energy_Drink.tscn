@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://wf8rahyy8nwb"]
 
-[ext_resource type="Script" uid="uid://cn4yfkdrb7n75" path="res://Bosses/Energy_Drink/energy_drink.gd" id="1_1f0s4"]
+[ext_resource type="Script" uid="uid://cn4yfkdrb7n75" path="res://Bosses/Floors_1_2/Energy_Drink/energy_drink.gd" id="1_1f0s4"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_2qk05"]
-[ext_resource type="Texture2D" uid="uid://c3er65nhx75yn" path="res://Bosses/Energy_Drink/energy_drink.png" id="2_2qk05"]
-[ext_resource type="Resource" uid="uid://1vqvc6ffcd16" path="res://Bosses/Energy_Drink/energy_drink.tres" id="2_khb88"]
+[ext_resource type="Texture2D" uid="uid://c3er65nhx75yn" path="res://Bosses/Floors_1_2/Energy_Drink/energy_drink.png" id="2_2qk05"]
+[ext_resource type="Resource" uid="uid://1vqvc6ffcd16" path="res://Bosses/Floors_1_2/Energy_Drink/energy_drink.tres" id="2_khb88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khb88"]
 size = Vector2(140, 152)

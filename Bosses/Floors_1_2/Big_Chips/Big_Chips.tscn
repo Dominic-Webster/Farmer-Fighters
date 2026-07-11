@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://wh6j83wmrfbc"]
 
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_b1lpy"]
-[ext_resource type="Script" uid="uid://b2g6r6v1t810x" path="res://Bosses/Big_Chips/big_chips.gd" id="1_ikunv"]
+[ext_resource type="Script" uid="uid://b2g6r6v1t810x" path="res://Bosses/Floors_1_2/Big_Chips/big_chips.gd" id="1_ikunv"]
 [ext_resource type="PackedScene" uid="uid://bfjhfktcpo8es" path="res://Enemy_Bullets/Chip_Bullets/chip_bullet.tscn" id="2_2xjdo"]
-[ext_resource type="Resource" uid="uid://pnn24von0bn7" path="res://Bosses/Big_Chips/big_chips.tres" id="2_i4rw4"]
-[ext_resource type="Texture2D" uid="uid://bi0kuxq512tg7" path="res://Bosses/Big_Chips/big_chips.png" id="2_j16m5"]
+[ext_resource type="Resource" uid="uid://pnn24von0bn7" path="res://Bosses/Floors_1_2/Big_Chips/big_chips.tres" id="2_i4rw4"]
+[ext_resource type="Texture2D" uid="uid://bi0kuxq512tg7" path="res://Bosses/Floors_1_2/Big_Chips/big_chips.png" id="2_j16m5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikunv"]
 size = Vector2(196, 162.4375)

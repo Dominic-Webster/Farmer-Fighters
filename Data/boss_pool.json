@@ -1,14 +1,15 @@
 {
 	"1": [
-		"res://Bosses/Energy_Drink/Energy_Drink.tscn"
+		"res://Bosses/Floors_1_2/Energy_Drink/Energy_Drink.tscn",
+		"res://Bosses/Floors_1_2/Nugget/Nugget_Boss.tscn"
 	],
 	"2": [
-		"res://Bosses/Big_Chips/Big_Chips.tscn"
+		"res://Bosses/Floors_1_2/Big_Chips/Big_Chips.tscn"
 	],
 	"3": [
-		"res://Bosses/Big_Chips/Big_Chips.tscn"
+		"res://Bosses/Floors_1_2/Nugget/Nugget_Boss.tscn"
 	],
 	"4": [
-		"res://Bosses/Big_Chips/Big_Chips.tscn"
+		"res://Bosses/Floors_1_2/Energy_Drink/Energy_Drink.tscn"
 	],
 }

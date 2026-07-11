@@ -11,9 +11,9 @@ func _on_body_entered(_body) -> void:
 		item_name = "Zucchini"
 		RunManager.player.add_item_to_array(item_name)
 		
-		if RunManager.player.zucchini == false:
+		if RunManager.player.tri_shot == false:
 			desc = "Tri-Shot"
-			RunManager.player.zucchini = true
+			RunManager.player.tri_shot = true
 			RunManager.player.fire_rate += fire_rate_debuff
 		else:
 			desc = "+ Damage"

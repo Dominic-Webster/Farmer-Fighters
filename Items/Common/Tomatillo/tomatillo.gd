@@ -9,9 +9,9 @@ func _on_body_entered(_body) -> void:
 		item_name = "Tomatillo"
 		RunManager.player.add_item_to_array(item_name)
 		
-		if RunManager.player.tomatillo == false:
+		if RunManager.player.backshot == false:
 			desc = "Extra Bullet"
-			RunManager.player.tomatillo = true
+			RunManager.player.backshot = true
 		else:
 			desc = "+ Move Speed"
 			RunManager.player.move_speed += move_speed_buff
