@@ -67,6 +67,7 @@ _data = {
 }
 
 [node name="HotDog" type="CharacterBody2D" unique_id=138779912]
+scale = Vector2(0.8, 0.8)
 collision_layer = 4
 collision_mask = 20
 script = ExtResource("1_e0kk2")

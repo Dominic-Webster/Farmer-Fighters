@@ -7,6 +7,11 @@ var start_timer : float = randf_range(start_delay.x, start_delay.y)
 # Store the last direction to move in while player is dashing
 var last_direction: Vector2 = Vector2.ZERO
 
+func _ready():
+	super._ready()
+	if RunManager.current_floor > 1:
+		max_health += 5
+
 
 func _physics_process(_delta: float) -> void:
 	if player == null:

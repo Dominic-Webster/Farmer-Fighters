@@ -13,6 +13,12 @@ var action_timer : float = randf_range(action_delay.x, action_delay.y)
 var dead : bool = false
 
 
+func _ready():
+	super._ready()
+	if RunManager.current_floor > 1:
+		max_health += 5
+
+
 func _physics_process(_delta: float) -> void:
 	if player == null:
 		return

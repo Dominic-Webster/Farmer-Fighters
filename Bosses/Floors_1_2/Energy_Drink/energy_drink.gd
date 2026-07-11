@@ -93,8 +93,6 @@ func _physics_process(_delta: float) -> void:
 				return
 
 
-const ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
-
 func die():
 	if not is_dead:
 		died.emit()
