@@ -31,8 +31,6 @@ var test_item_4 = "res://Items/Common/Basil/Basil.tscn"
 var test_item_5 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
 var test_item_6 = "res://Items/Uncommon/Rhubarb/Rhubarb.tscn"
 
-var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
-
 
 func start_new_run(_player : Player):
 	
@@ -163,19 +161,19 @@ func mark_room_cleared() -> void:
 		"type": "combat"
 	}
 
-
-func spawn_heart() -> void:
-	var room := current_room_instance as Room
-	if room == null:
-		return
-
-	var item_scene = heart_scene
-	if item_scene == null:
-		return
-
-	var item_instance = item_scene.instantiate()
-	room.add_child(item_instance)
-	item_instance.global_position = room.player_spawn_c.global_position
+#var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
+#func spawn_heart() -> void:
+	#var room := current_room_instance as Room
+	#if room == null:
+		#return
+#
+	#var item_scene = heart_scene
+	#if item_scene == null:
+		#return
+#
+	#var item_instance = item_scene.instantiate()
+	#room.add_child(item_instance)
+	#item_instance.global_position = room.player_spawn_c.global_position
 
 
 # --------------

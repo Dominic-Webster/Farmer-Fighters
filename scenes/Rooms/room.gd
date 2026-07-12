@@ -11,6 +11,7 @@ class_name Room
 @onready var spawn_pools : Node2D = $SpawnPools
 @onready var bullet_bounds : Node2D = $BulletBounds
 
+var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 
 var enemy_count : int = 0
 
@@ -38,6 +39,7 @@ func _enter_room(dir_from : String) -> void:
 	# Always respawn persistent pickup if present and not picked up
 	spawn_room_pickup(pos)
 	spawn_room_miniboss_reward(pos)
+	spawn_room_heart(pos)
 
 	# Respawn elevator if present in this room (e.g. boss room after defeat)
 	if MapGenerationManager.room_states.has(pos):
@@ -117,6 +119,26 @@ func load_enemies(_player_spawn : String) -> void:
 
 func spawn_explosion_effect(explosion: Node) -> void:
 	add_child(explosion)
+
+
+func add_persistent_spawn(scene_path:String, pos:Vector2):
+	var room_pos = RunManager.current_room
+	
+	if !MapGenerationManager.room_states.has(room_pos):
+		MapGenerationManager.room_states[room_pos] = {}
+	
+	var state = MapGenerationManager.room_states[room_pos]
+	
+	if !state.has("persistent_spawns"):
+		state["persistent_spawns"] = []
+	
+	state["persistent_spawns"].append({
+		"scene":scene_path,
+		"position":pos,
+		"picked_up":false
+	})
+	
+	MapGenerationManager.room_states[room_pos] = state
 
 
 # Helper to get the enemy pool for the current floor (for now, always floor1)
@@ -263,6 +285,42 @@ func spawn_room_miniboss_reward(pos: Vector2i) -> void:
 				if RunManager.gui:
 					RunManager.gui.show_item_info(iname, desc)
 			)
+
+
+func spawn_room_heart(pos: Vector2i) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+	
+	if !state.get("heart_present", false):
+		return
+	
+	if state.get("heart_picked_up", false):
+		return
+	
+	var heart = heart_scene.instantiate()
+	add_child(heart)
+	heart.global_position = player_spawn_c.global_position
+	
+	if heart.has_signal("picked_up"):
+		heart.picked_up.connect(func(iname, desc):
+			var s = MapGenerationManager.room_states.get(pos, {})
+			s["heart_picked_up"] = true
+			MapGenerationManager.room_states[pos] = s
+			if RunManager.gui:
+					RunManager.gui.show_item_info(iname, desc)
+		)
+
+
+func spawn_heart() -> void:
+	var pos = RunManager.current_room
+	var state = MapGenerationManager.room_states.get(pos, {})
+	
+	if state.get("heart_picked_up", false):
+		return
+	
+	state["heart_present"] = true
+	MapGenerationManager.room_states[pos] = state
+	
+	spawn_room_heart(pos)
 
 
 func spawn_miniboss_reward(pos: Vector2i) -> void:

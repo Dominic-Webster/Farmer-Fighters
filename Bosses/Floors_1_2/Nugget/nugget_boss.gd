@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 	switch_timer -= _delta
 	if switch_timer <= 0:
 		switch_timer = randf_range(switch_time.x, switch_time.y)
-		match randi_range(1, 4):
+		match randi_range(1, 5):
 			1:
 				direction = Vector2.UP
 			2:
@@ -31,6 +31,8 @@ func _physics_process(_delta: float) -> void:
 				direction = Vector2.RIGHT
 			4:
 				direction = Vector2.LEFT
+			5:
+				direction = (player.global_position - global_position).normalized()
 		#direction = Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1)).normalized()
 		# Prevent zero direction
 		if direction == Vector2.ZERO:
@@ -52,8 +54,6 @@ func _physics_process(_delta: float) -> void:
 		direction *= -1
 
 
-const ElevatorScene = preload("res://scenes/Elevator/Elevator.tscn")
-
 func die():
 	if not is_dead:
 		died.emit()
@@ -65,7 +65,7 @@ func die():
 		await anim.animation_finished
 		visible = false
 		
-		RunManager.spawn_heart()
+		get_parent().spawn_heart()
 
 		# Tell the room to spawn the elevator and handle persistence
 		await get_parent().spawn_elevator_at_center()
