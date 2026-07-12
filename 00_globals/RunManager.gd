@@ -24,7 +24,7 @@ var can_trigger_doors : bool = false
 var current_floor : int = 1
 
 # Testing
-var test_item_1 = "res://Items/Uncommon/Lemon/Lemon.tscn"
+var test_item_1 = "res://Items/Common/Carrot/Carrot.tscn"
 var test_item_2 = "res://Items/Uncommon/Lime/Lime.tscn"
 var test_item_3 = "res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn"
 var test_item_4 = "res://Items/Common/Basil/Basil.tscn"
@@ -183,8 +183,8 @@ func mark_room_cleared() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("view_stats"):
 		print_stats()
-	#else:
-		#load_item(event)
+	else:
+		load_item(event)
 
 
 func load_item(event: InputEvent) -> void:

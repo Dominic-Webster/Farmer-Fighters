@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crkqead1q8ka1" path="res://GUI/Player_HUD/Tomato_health.png" id="2_s2x5a"]
 
 [node name="HeartGui" type="Control" unique_id=801388645]
+modulate = Color(1, 1, 1, 0.88235295)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
