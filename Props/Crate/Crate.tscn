@@ -26,7 +26,7 @@ texture = ExtResource("1_ripeh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1797825712]
 shape = SubResource("RectangleShape2D_twtwc")
 
-[node name="BulletBounds" type="Area2D" parent="." unique_id=1935464801]
+[node name="BulletBounds" type="Area2D" parent="." unique_id=1935464801 groups=["\"bullet_bounds\""]]
 collision_layer = 16
 collision_mask = 10
 

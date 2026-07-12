@@ -7,7 +7,7 @@
 radius = 11.0
 
 [node name="GrapeBullet" type="Area2D" unique_id=170760366]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(1.1, 1.1)
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_qx7jc")

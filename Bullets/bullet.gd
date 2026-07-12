@@ -91,9 +91,14 @@ func _bounce_from_wall(wall_name: String) -> void:
 		"Left", "Right":
 			new_direction.x = -new_direction.x
 			new_direction = new_direction.rotated(-angle_offset)
+		#"Crate", "Crate2", "Crate3":
+			#new_direction *= -1
+			#new_direction = new_direction.rotated(-angle_offset)
 		_:
-			end_bullet()
-			return
+			new_direction *= -1
+			new_direction = new_direction.rotated(-angle_offset)
+			#end_bullet()
+			#return
 
 	direction = new_direction.normalized()
 	global_position += direction * 4.0
