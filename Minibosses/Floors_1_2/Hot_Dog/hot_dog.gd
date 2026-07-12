@@ -19,6 +19,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if start_timer > 0:
 		start_timer -= _delta
+		velocity = Vector2.ZERO
 	else:
 		var direction = (player.global_position - global_position).normalized()
 		var move_velocity

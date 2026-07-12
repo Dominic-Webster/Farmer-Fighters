@@ -471,6 +471,9 @@ func _on_hurt_box_area_entered(area) -> void:
 		
 		if area.is_in_group("enemy_bullet"):
 			area.queue_free()
+		
+		if "start_timer" in enemy:
+			enemy.start_timer = 0.5
 
 
 func _on_push_area_body_entered(body):
