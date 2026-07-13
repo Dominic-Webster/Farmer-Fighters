@@ -30,7 +30,9 @@ func _enter_room(dir_from : String) -> void:
 			player.global_position = player_spawn_d.global_position
 		"L":
 			player.global_position = player_spawn_l.global_position
-		
+	
+	spawn_companions()
+	
 	var pos = RunManager.current_room
 	
 	_set_door_art()
@@ -78,6 +80,15 @@ func _enter_room(dir_from : String) -> void:
 #func _input(_event: InputEvent) -> void:
 	#if Input.is_action_pressed("opendoor"):
 		#unlock_doors()
+
+
+func spawn_companions() -> void:
+	var player = RunManager.player
+	
+	if player.cow_unlocked:
+		var cow = preload("res://Companions/Cow/Cow.tscn").instantiate()
+		add_child(cow)
+		cow.global_position = player.global_position
 
 
 func load_enemies(_player_spawn : String) -> void:

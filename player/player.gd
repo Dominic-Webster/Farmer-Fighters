@@ -122,6 +122,11 @@ var backshot : bool = false
 var explosion : bool = false
 var inverse_controls : bool = false
 
+var companion_dmg_mult : float = 1.0
+var cow_unlocked : bool = false
+var cow_damage : float = 2.0
+var cow_speed : float = 250.0
+
 var slow_bullets : bool = false
 
 # Dash function variables
@@ -209,6 +214,11 @@ func load_data() -> void:
 	backshot = data.backshot
 	explosion = data.explosion
 	inverse_controls = data.inverse_controls
+	
+	companion_dmg_mult = data.companion_dmg_mult
+	cow_unlocked = data.cow_unlocked
+	cow_damage = data.cow_damage
+	cow_speed = data.cow_speed
 	
 	slow_bullets = data.slow_bullets
 

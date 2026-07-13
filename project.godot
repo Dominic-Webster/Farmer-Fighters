@@ -162,6 +162,7 @@ test_item_6={
 2d_physics/layer_6="Items"
 2d_physics/layer_7="Props"
 2d_physics/layer_8="PushArea"
+2d_physics/layer_9="Companion"
 
 [physics]
 

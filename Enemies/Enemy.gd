@@ -89,6 +89,9 @@ func _on_hurt_box_area_entered(area):
 				area.end_bullet()
 			else:
 				area.queue_free()
+	
+	if area.is_in_group("companion"):
+		take_damage(area.get_parent().damage, area.global_position)
 
 
 func flash_red():
