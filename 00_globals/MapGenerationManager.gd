@@ -1,6 +1,8 @@
 # Map Generation Manager
 extends Node
 
+signal new_floor
+
 # ---------
 # Variables
 # ---------
@@ -32,6 +34,7 @@ func create_new_map() -> void:
 	_generate_path(_start, _critical_path_length, "C")
 	_generate_branches()
 	_print_dungeon()
+	new_floor.emit()
 
 
 func clear_map() -> void:

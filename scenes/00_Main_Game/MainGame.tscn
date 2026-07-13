@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://darwxserd8bku" path="res://scenes/end_menu/End.tscn" id="2_nvtwa"]
 [ext_resource type="PackedScene" uid="uid://jxq3pujc3yo" path="res://GUI/Player_HUD/player_hud.tscn" id="3_jsquf"]
 [ext_resource type="PackedScene" uid="uid://cmj4vno55fv67" path="res://scenes/pause_menu/Pause.tscn" id="4_ibxjl"]
+[ext_resource type="AudioStream" uid="uid://e81hu3r7u1eq" path="res://Audio/Theme1.wav" id="6_i7fc2"]
 
 [node name="MainGame" type="Node2D" unique_id=1503091529]
 process_mode = 3
@@ -28,3 +29,6 @@ position = Vector2(788, 418)
 
 [node name="PlayerHud" parent="." unique_id=1867377868 instance=ExtResource("3_jsquf")]
 process_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1997147440]
+stream = ExtResource("6_i7fc2")

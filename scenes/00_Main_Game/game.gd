@@ -6,6 +6,7 @@ extends Node2D
 @onready var gui : PlayerHud = $PlayerHud
 @onready var pause_menu : PauseMenu = $Pause
 @onready var end_menu : EndMenu = $End
+@onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 	RunManager.gui = gui
 	
 	RunManager.ended.connect(_run_ended)
+	MapGenerationManager.new_floor.connect(_play_song)
 	
 	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
 	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
@@ -44,6 +46,14 @@ func _input(event):
 		pause()
 	elif event.is_action_pressed("pause"):
 		unpause()
+
+
+#func _play_song(num : int) -> void:
+	#if num == 1:
+		#audio_player.play()
+
+func _play_song() -> void:
+	audio_player.play()
 
 
 func _player_died():
