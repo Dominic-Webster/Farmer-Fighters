@@ -1,6 +1,9 @@
 extends Resource
 class_name PlayerData
 
+
+@export var name : String
+
 # Stats
 @export var num_hearts : int = 3 # Number of hearts
 @export var damage : float = 1.0
@@ -41,7 +44,7 @@ enum Bullets {
 	WATERMELON
 }
 
-var starting_bullet : Bullets = Bullets.TOMATO
+@export var starting_bullet : Bullets = Bullets.TOMATO
 
 # Knockback
 @export var knockback_strength := 350

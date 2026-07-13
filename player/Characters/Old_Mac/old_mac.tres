@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://bbx1gw6dults6"]
+
+[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_0wsqi"]
+
+[resource]
+script = ExtResource("1_0wsqi")
+name = "Old Mac"
+num_hearts = 2
+fire_rate = 0.35
+bullet_speed = 750.0
+accuracy = Vector2(-0.06, 0.06)
+cow_unlocked = true
+cow_damage = 3.0
+cow_speed = 350.0
+metadata/_custom_type_script = "uid://bsn7ulm18jpch"

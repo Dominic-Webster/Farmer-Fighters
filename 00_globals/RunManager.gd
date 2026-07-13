@@ -184,8 +184,8 @@ func mark_room_cleared() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("view_stats"):
 		print_stats()
-	else:
-		load_item(event)
+	#else:
+		#load_item(event)
 
 
 func load_item(event: InputEvent) -> void:

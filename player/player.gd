@@ -18,6 +18,8 @@ signal died
 # Variables
 # ----------
 
+var char_name : String = "Farmer"
+
 # Stats
 var num_hearts : int = 3 # Number of hearts
 var damage : float = 1.0
@@ -150,6 +152,8 @@ func _ready() -> void:
 func load_data() -> void:
 	if data == null:
 		return
+	
+	char_name = data.name
 	
 	num_hearts = data.num_hearts
 	damage = data.damage
