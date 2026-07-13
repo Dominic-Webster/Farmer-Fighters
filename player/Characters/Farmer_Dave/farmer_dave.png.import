@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjjkws1amp5y2"
-path="res://.godot/imported/temp_farmer2.png-47462ddf57c818252e7df52618e303ae.ctex"
+path="res://.godot/imported/farmer_dave.png-8bad76a123febf6db2d277941d01bddd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/temp_farmer2.png"
-dest_files=["res://.godot/imported/temp_farmer2.png-47462ddf57c818252e7df52618e303ae.ctex"]
+source_file="res://player/Characters/Farmer_Dave/farmer_dave.png"
+dest_files=["res://.godot/imported/farmer_dave.png-8bad76a123febf6db2d277941d01bddd.ctex"]
 
 [params]
 

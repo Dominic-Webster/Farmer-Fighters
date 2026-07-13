@@ -3,6 +3,7 @@ class_name PlayerData
 
 
 @export var name : String
+@export var spritesheet : Texture2D
 
 # Stats
 @export var num_hearts : int = 3 # Number of hearts

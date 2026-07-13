@@ -154,6 +154,7 @@ func load_data() -> void:
 		return
 	
 	char_name = data.name
+	sprite.texture = data.spritesheet
 	
 	num_hearts = data.num_hearts
 	damage = data.damage

@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://pjhelbe4a3wx"]
 
 [ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_yvt25"]
+[ext_resource type="Texture2D" uid="uid://cjjkws1amp5y2" path="res://player/Characters/Farmer_Dave/farmer_dave.png" id="2_kov0a"]
 
 [resource]
 script = ExtResource("1_yvt25")
 name = "Farmer Dave"
+spritesheet = ExtResource("2_kov0a")
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"

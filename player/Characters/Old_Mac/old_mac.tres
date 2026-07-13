@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://bbx1gw6dults6"]
 
 [ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_0wsqi"]
+[ext_resource type="Texture2D" uid="uid://jp87gipoydfr" path="res://player/Characters/Old_Mac/old_mac.png" id="2_lbyqs"]
 
 [resource]
 script = ExtResource("1_0wsqi")
 name = "Old Mac"
+spritesheet = ExtResource("2_lbyqs")
 num_hearts = 2
 fire_rate = 0.35
 bullet_speed = 750.0
