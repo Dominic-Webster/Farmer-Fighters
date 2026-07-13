@@ -9,7 +9,11 @@ func _on_body_entered(_body) -> void:
 		item_name = "Tomatillo"
 		RunManager.player.add_item_to_array(item_name)
 		
-		if RunManager.player.backshot == false:
+		if RunManager.player.eggplant > 0 and RunManager.player.dual_shot == false:
+			desc = "Dual Shot"
+			RunManager.player.dual_shot = true
+			RunManager.player.backshot = true
+		elif RunManager.player.backshot == false:
 			desc = "Extra Bullet"
 			RunManager.player.backshot = true
 		else:

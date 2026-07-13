@@ -61,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 			knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
 			move_and_slide()
 			
-			if is_on_wall():
+			if is_on_wall() or is_on_ceiling() or is_on_floor():
 				random_dir *= -1
 		
 		State.CHARGE_UP:

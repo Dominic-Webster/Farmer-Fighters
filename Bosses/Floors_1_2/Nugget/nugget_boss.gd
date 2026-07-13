@@ -51,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-	if is_on_wall():
+	if is_on_wall() or is_on_ceiling() or is_on_floor():
 		direction *= -1
 
 

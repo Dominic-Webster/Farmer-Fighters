@@ -18,11 +18,13 @@
 	"3": [
 		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn",
 		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn",
-		"res://Enemies/Floor3/Worm/Worm.tscn"
+		"res://Enemies/Floor3/Worm/Worm.tscn",
+		"res://Enemies/Floor3/Worm2/Worm2.tscn"
 	],
 	"4": [
 		"res://Enemies/Floor3/Red_Bear/Red_Bear.tscn",
 		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn",
-		"res://Enemies/Floor3/Worm/Worm.tscn"
+		"res://Enemies/Floor3/Worm/Worm.tscn",
+		"res://Enemies/Floor3/Worm2/Worm2.tscn"
 	]
 }

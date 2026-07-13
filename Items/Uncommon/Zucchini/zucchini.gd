@@ -15,6 +15,15 @@ func _on_body_entered(_body) -> void:
 			desc = "Tri-Shot"
 			RunManager.player.tri_shot = true
 			RunManager.player.fire_rate += fire_rate_debuff
+		elif RunManager.player.quad_shot == false:
+			desc = "Quad-Shot"
+			RunManager.player.quad_shot = true
+			RunManager.player.fire_rate += fire_rate_light_debuff
+			RunManager.player.damage += 0.1
+		elif RunManager.player.five_shot == false:
+			desc = "Five-Shot"
+			RunManager.player.five_shot = true
+			RunManager.player.damage += 0.1
 		else:
 			desc = "+ Damage"
 			RunManager.player.damage += damage_buff

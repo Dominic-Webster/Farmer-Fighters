@@ -103,6 +103,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_370nw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=773918882]
+self_modulate = Color(1, 1, 1, 0.8627451)
 scale = Vector2(7, 7)
 texture = ExtResource("2_igesq")
 hframes = 3
