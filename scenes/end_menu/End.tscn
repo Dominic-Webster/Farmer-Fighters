@@ -135,13 +135,19 @@ alignment = 1
 [node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 80
 text = "NEW GAME"
+
+[node name="Main_Menu" type="Button" parent="Buttons" unique_id=2002558602]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "RETURN TO MENU"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 80
 text = "EXIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527086498]

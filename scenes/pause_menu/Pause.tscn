@@ -125,9 +125,9 @@ vertical_alignment = 1
 process_mode = 3
 layout_mode = 0
 offset_left = 534.0
-offset_top = 314.0
+offset_top = 277.0
 offset_right = 1384.0
-offset_bottom = 863.0
+offset_bottom = 908.0
 mouse_filter = 2
 theme_override_constants/separation = 50
 alignment = 1
@@ -135,19 +135,25 @@ alignment = 1
 [node name="Resume" type="Button" parent="Buttons" unique_id=1080228763]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 75
 text = "RESUME"
 
 [node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 75
 text = "NEW GAME"
+
+[node name="Main_Menu" type="Button" parent="Buttons" unique_id=1816661877]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "RETURN TO MENU"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
 process_mode = 3
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 75
 text = "EXIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527086498]

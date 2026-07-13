@@ -4,6 +4,7 @@ class_name PauseMenu
 @onready var resume_button : Button = $Buttons/Resume
 @onready var new_game_button : Button = $Buttons/New_Game
 @onready var exit_button : Button = $Buttons/Exit
+@onready var menu_button : Button = $Buttons/Main_Menu
 @onready var anim : AnimationPlayer = $AnimationPlayer
 
 
@@ -11,9 +12,11 @@ func _ready() -> void:
 	visible = false
 	resume_button.pressed.connect(_on_resume_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
+	menu_button.pressed.connect(_on_menu_pressed)
 	new_game_button.pressed.connect(_on_new_game_pressed)
 	resume_button.mouse_entered.connect(_on_resume_hovered)
 	exit_button.mouse_entered.connect(_on_exit_hovered)
+	menu_button.mouse_entered.connect(_on_menu_hovered)
 	new_game_button.mouse_entered.connect(_on_new_game_hovered)
 
 
@@ -49,8 +52,17 @@ func _on_exit_pressed():
 	#get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 
 
+func _on_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+
 func _on_resume_hovered() -> void:
 	resume_button.grab_focus()
+
+
+func _on_menu_hovered() -> void:
+	menu_button.grab_focus()
 
 
 func _on_new_game_hovered() -> void:

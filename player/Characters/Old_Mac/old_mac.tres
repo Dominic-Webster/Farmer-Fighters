@@ -11,6 +11,7 @@ num_hearts = 2
 fire_rate = 0.35
 bullet_speed = 750.0
 accuracy = Vector2(-0.06, 0.06)
+companion_dmg_mult = 1.25
 cow_unlocked = true
 cow_damage = 3.0
 cow_speed = 350.0
