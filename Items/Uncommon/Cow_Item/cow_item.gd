@@ -13,7 +13,6 @@ func _on_body_entered(_body) -> void:
 		
 		if RunManager.player.cow_unlocked == true:
 			desc = "Cow Leveled Up!"
-			RunManager.player.add_item_to_array(item_name)
 			
 			RunManager.player.cow_damage += cow_dmg_boost
 			RunManager.player.companion_dmg_mult += comp_dmg_mult_boost
@@ -21,8 +20,8 @@ func _on_body_entered(_body) -> void:
 		
 		else:
 			desc = "Cow Unlocked!"
-			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.cow_unlocked = true
 		
+		RunManager.player.add_item_to_array(item_name)
 		queue_free()
 		picked_up.emit(item_name, desc)

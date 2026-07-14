@@ -30,6 +30,8 @@ func _physics_process(_delta: float) -> void:
 	if switch_timer <= 0:
 		switch_timer = randf_range(switch_time.x, switch_time.y)
 		direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		if(randi_range(1, 5) == 1):
+			direction = (RunManager.player.global_position - global_position).normalized()
 		# Prevent zero direction
 		if direction == Vector2.ZERO:
 			direction = Vector2(1, 0)

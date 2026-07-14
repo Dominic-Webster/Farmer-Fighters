@@ -13,6 +13,8 @@ signal ended
 var room_history := {}
 const RoomOptions = preload("res://scenes/Rooms/RoomOptions.gd")
 
+var player_data : PlayerData
+
 var player : Player
 var gui : PlayerHud = null
 var current_room : Vector2i = Vector2i(0, 0)

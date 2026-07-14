@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://u7o183vmchil"]
+
+[ext_resource type="Script" uid="uid://cs75vwythx44m" path="res://Items/Uncommon/Haybale/haybale.gd" id="1_hxeut"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_ljtio"]
+[ext_resource type="Texture2D" uid="uid://dxwpkvaolfc4w" path="res://Items/Uncommon/Haybale/haybale.png" id="3_evhsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibbre"]
+size = Vector2(114, 71.25)
+
+[sub_resource type="Animation" id="Animation_i5kx3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_6o8rh"]
+resource_name = "hover"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, -5.0, 5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78cqc"]
+_data = {
+&"RESET": SubResource("Animation_i5kx3"),
+&"hover": SubResource("Animation_6o8rh")
+}
+
+[node name="Haybale" type="Node2D" unique_id=786608009]
+script = ExtResource("1_hxeut")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=610624321]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 30)
+scale = Vector2(3.2, 2.7)
+texture = ExtResource("2_ljtio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=876969543]
+scale = Vector2(3, 3)
+texture = ExtResource("3_evhsq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=978351043]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=926377484]
+position = Vector2(2, 5)
+shape = SubResource("RectangleShape2D_ibbre")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=187874803]
+libraries/ = SubResource("AnimationLibrary_78cqc")
+autoplay = &"hover"

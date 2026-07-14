@@ -144,9 +144,13 @@ var dash_cooldown: float = 0.0
 # ---------
 
 func _ready() -> void:
-	current_health = get_max_health()
 	add_to_group("player")
+	
+	if RunManager.player_data != null:
+		data = RunManager.player_data
+	
 	load_data()
+	current_health = get_max_health()
 
 
 func load_data() -> void:
