@@ -3,11 +3,13 @@ class_name CharacterSelect
 
 @onready var dave_button : Button = $HBoxContainer/Dave
 @onready var mac_button : Button = $HBoxContainer/Mac
+@onready var jane_button : Button = $HBoxContainer/Jane
 @onready var play_button : Button = $VBoxContainer/Play
 @onready var back_button : Button = $Back
 
 @export var dave_data : PlayerData
 @export var mac_data : PlayerData
+@export var jane_data : PlayerData
 
 var selected_data : PlayerData
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_pressed)
 	dave_button.pressed.connect(_on_dave_pressed)
 	mac_button.pressed.connect(_on_mac_pressed)
+	jane_button.pressed.connect(_on_jane_pressed)
 	
 	dave_button.grab_focus()
 	selected_data = dave_data
@@ -43,3 +46,8 @@ func _on_dave_pressed() -> void:
 func _on_mac_pressed() -> void:
 	mac_button.grab_focus()
 	selected_data = mac_data
+
+
+func _on_jane_pressed() -> void:
+	jane_button.grab_focus()
+	selected_data = jane_data

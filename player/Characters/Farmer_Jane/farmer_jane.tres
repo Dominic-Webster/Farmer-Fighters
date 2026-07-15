@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://dl3nwyy1rh5r6"]
+
+[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_vu45l"]
+[ext_resource type="Texture2D" uid="uid://4ctjb3eabipj" path="res://player/Characters/Farmer_Jane/farmer_jane.png" id="2_gw0v5"]
+
+[resource]
+script = ExtResource("1_vu45l")
+name = "Farmer Jane"
+spritesheet = ExtResource("2_gw0v5")
+num_hearts = 4
+damage = 3.0
+damage_mult = 1.5
+fire_rate = 1.2
+bullet_speed = 650.0
+accuracy = Vector2(-0.03, 0.03)
+explosion_damage = 3.0
+starting_heart = 1
+starting_bullet = 1
+metadata/_custom_type_script = "uid://bsn7ulm18jpch"

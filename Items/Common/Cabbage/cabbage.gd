@@ -9,7 +9,7 @@ var accuracy_buff : float = 0.02
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Cabbage"
-		if RunManager.player.items.has("Cabbage"):
+		if RunManager.player.items.has("Cabbage") or RunManager.player.current_bullet == RunManager.player.Bullets.CABBAGE:
 			desc = "+ Damage"
 		else:
 			desc = "Bullets become Cabbages"

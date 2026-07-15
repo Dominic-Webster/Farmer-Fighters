@@ -2,7 +2,7 @@
 extends Item
 class_name Scythe
 
-var dash_damage_buff : float = 1
+var dash_damage_buff : float = 2
 var damage_mult_buff : float = 0.1
 
 
