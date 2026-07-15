@@ -128,6 +128,10 @@ var companion_dmg_mult : float = 1.0
 var cow_unlocked : bool = false
 var cow_damage : float = 2.0
 var cow_speed : float = 250.0
+var chicken_unlocked : bool = false
+var chicken_damage : float = 2.0
+var chicken_fire_rate : float = 0.8
+var chicken_bullet_speed : float = 500
 
 var slow_bullets : bool = false
 
@@ -228,6 +232,10 @@ func load_data() -> void:
 	cow_unlocked = data.cow_unlocked
 	cow_damage = data.cow_damage
 	cow_speed = data.cow_speed
+	chicken_unlocked = data.chicken_unlocked
+	chicken_damage = data.chicken_damage
+	chicken_fire_rate = data.chicken_fire_rate
+	chicken_bullet_speed = data.chicken_bullet_speed
 	
 	slow_bullets = data.slow_bullets
 

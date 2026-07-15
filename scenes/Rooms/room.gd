@@ -31,8 +31,6 @@ func _enter_room(dir_from : String) -> void:
 		"L":
 			player.global_position = player_spawn_l.global_position
 	
-	spawn_companions()
-	
 	var pos = RunManager.current_room
 	
 	_set_door_art()
@@ -75,6 +73,8 @@ func _enter_room(dir_from : String) -> void:
 				spawn_open_doors()
 			else:
 				lock_doors()
+	
+	spawn_companions()
 
 
 #func _input(_event: InputEvent) -> void:
@@ -89,6 +89,12 @@ func spawn_companions() -> void:
 		var cow = preload("res://Companions/Cow/Cow.tscn").instantiate()
 		add_child(cow)
 		cow.global_position = player.global_position
+	if player.chicken_unlocked:
+		var chicken = preload("res://Companions/Chicken/Chicken.tscn").instantiate()
+		add_child(chicken)
+		chicken.global_position = player.global_position
+		if player.global_position == player_spawn_d.global_position or player.global_position == player_spawn_t.global_position:
+			chicken.global_position.x += 50
 
 
 func load_enemies(_player_spawn : String) -> void:
@@ -590,4 +596,6 @@ func spawn_random_item(spawn_position: Vector2) -> void:
 # Frees all enemy bullets in the scene
 func free_all_enemy_bullets():
 	for bullet in get_tree().get_nodes_in_group("enemy_bullet"):
+		bullet.queue_free()
+	for bullet in get_tree().get_nodes_in_group("comp_bullet"):
 		bullet.queue_free()

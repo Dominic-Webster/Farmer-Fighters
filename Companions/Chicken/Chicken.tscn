@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://ccpfkjx8jg1lv"]
+
+[ext_resource type="Script" uid="uid://b0nmf061lt3rb" path="res://Companions/Chicken/chicken.gd" id="1_tusuq"]
+[ext_resource type="PackedScene" uid="uid://7pv0qs26y8nd" path="res://Bullets/EGG_BULLET/egg_bullet.tscn" id="2_grwpn"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_qrxqy"]
+[ext_resource type="Texture2D" uid="uid://dp5utdwruf83c" path="res://Companions/Chicken/Chicken.png" id="3_tusuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4uxc"]
+size = Vector2(69, 48.75)
+
+[sub_resource type="Animation" id="Animation_0kvjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyCollision:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31.25]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o2okf"]
+resource_name = "move"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.17453292519943295, 0.0, 0.17453292519943295, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lr06g"]
+_data = {
+&"RESET": SubResource("Animation_0kvjk"),
+&"move": SubResource("Animation_o2okf")
+}
+
+[node name="Chicken" type="CharacterBody2D" unique_id=1103316024]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource("1_tusuq")
+bullet_scene = ExtResource("2_grwpn")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1406212024]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(5, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("2_qrxqy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1473797294]
+scale = Vector2(5, 5)
+texture = ExtResource("3_tusuq")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=564410117]
+position = Vector2(5.5, 31.25)
+shape = SubResource("RectangleShape2D_t4uxc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1915590939]
+libraries/ = SubResource("AnimationLibrary_lr06g")
+autoplay = &"move"
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=149829196]

@@ -66,10 +66,15 @@ enum Bullets {
 @export var explosion : bool = false
 @export var inverse_controls : bool = false
 
+# Companions
 @export var companion_dmg_mult : float = 1.0
 @export var cow_unlocked : bool = false
 @export var cow_damage : float = 2.0
 @export var cow_speed : float = 250
+@export var chicken_unlocked : bool = false
+@export var chicken_damage : float = 2.0
+@export var chicken_fire_rate : float = 0.8
+@export var chicken_bullet_speed : float = 500
 
 @export var slow_bullets : bool = false
 
