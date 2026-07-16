@@ -66,7 +66,10 @@ func die():
 		await anim.animation_finished
 		visible = false
 		
-		get_parent().spawn_heart()
+		if RunManager.player_damaged_this_floor == true:
+			get_parent().spawn_heart()
+		else:
+			get_parent().spawn_miniboss_reward(RunManager.current_room)
 
 		# Tell the room to spawn the elevator and handle persistence
 		await get_parent().spawn_elevator_at_center()

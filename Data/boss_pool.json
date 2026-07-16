@@ -15,4 +15,8 @@
 		"res://Bosses/Floors_1_2/Big_Chips/Big_Chips.tscn",
 		"res://Bosses/Floors_1_2/Energy_Drink/Energy_Drink.tscn"
 	],
+	"5": [
+		"res://Bosses/Floors_1_2/Burger/Burger.tscn",
+		"res://Bosses/Floors_1_2/Energy_Drink/Energy_Drink.tscn"
+	],
 }

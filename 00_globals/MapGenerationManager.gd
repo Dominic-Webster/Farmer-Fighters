@@ -10,7 +10,7 @@ signal new_floor
 @export var _dimensons : Vector2i = Vector2i(8, 8)
 @export var _start : Vector2i = Vector2i(-1, -1)
 @export var _critical_path_length : int = 10
-@export var _branches : Vector2i = Vector2i(2, 3)
+@export var _branches : Vector2i = Vector2i(1, 2)
 @export var _branch_length : Vector2i = Vector2i(1, 4)
 
 var dungeon : Array = []
@@ -106,6 +106,8 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 
 func _generate_branches() -> void:
 	var max_branches : int = randi_range(_branches.x, _branches.y)
+	if randi_range(1, 4) == 1:
+		max_branches += 1
 	var branches_created : int = 0
 	var candidate : Vector2i
 	

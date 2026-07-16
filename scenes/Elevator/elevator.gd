@@ -50,11 +50,12 @@ func _elevator_transition(player):
 	await anim.animation_finished
 	# Generate new map and move player to start room
 	RunManager.current_floor += 1
+	RunManager.player_damaged_this_floor = false
 	MapGenerationManager.create_new_map()
 	# Remove old room (handled by load_room)
 	RunManager.current_room = MapGenerationManager._start
 	
-	if RunManager.current_floor == 5:
+	if RunManager.current_floor == 6:
 		RunManager.ended.emit()
 	else:
 		RunManager.load_room(MapGenerationManager._start, "C")

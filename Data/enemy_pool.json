@@ -26,5 +26,12 @@
 		"res://Enemies/Floor3/Blue_Bear/Blue_Bear.tscn",
 		"res://Enemies/Floor3/Worm/Worm.tscn",
 		"res://Enemies/Floor3/Worm2/Worm2.tscn"
-	]
+	],
+	"5": [
+		"res://Enemies/Floor1/Chips/Chips.tscn",
+		"res://Enemies/Floor1/Corn_Dog/Corn_Dog.tscn",
+		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
+		"res://Enemies/Floor1/Soda/Soda.tscn",
+		"res://Enemies/Floor1/Red_Chips/Red_Chips.tscn"
+	],
 }

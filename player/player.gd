@@ -520,6 +520,7 @@ func take_damage(amount : int):
 		current_health -= amount
 		flash_red()
 		damaged.emit()
+		RunManager.player_damaged_this_floor = true
 		if current_health < 1:
 			player_died()
 		await get_tree().create_timer(0.5).timeout

@@ -25,6 +25,8 @@ var can_trigger_doors : bool = false
 
 var current_floor : int = 1
 
+var player_damaged_this_floor : bool = false
+
 
 # Testing
 var test_item_1 = "res://Items/Uncommon/Chicken_Item/Chicken_Item.tscn"
