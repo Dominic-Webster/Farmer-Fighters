@@ -9,13 +9,13 @@ func _on_body_entered(_body) -> void:
 		item_name = "Portobello"
 		RunManager.player.add_item_to_array(item_name)
 		
-		if RunManager.player.portobello == false:
-			desc = "Wavy Bullets"
-			RunManager.player.portobello = true
-			RunManager.player.damage_mult *= damage_mult_buff
-		else:
+		if RunManager.player.spiral == true or RunManager.player.portobello == true:
 			desc = "+ Damage Mult"
 			RunManager.player.damage_mult *= damage_mult_buff
+		else:
+			desc = "Wavy Bullets"
+			RunManager.player.portobello = true
+			RunManager.player.damage_mult += 0.5
 		
 		queue_free()
 		picked_up.emit(item_name, desc)

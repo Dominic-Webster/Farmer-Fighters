@@ -1,0 +1,254 @@
+[gd_scene format=3 uid="uid://ugaq5o8ufs1b"]
+
+[ext_resource type="Script" uid="uid://kxng4domwe2t" path="res://Enemies/Floor5/ToxicBarrel/toxic_barrel.gd" id="1_fbfsi"]
+[ext_resource type="PackedScene" uid="uid://biufpd26rjobt" path="res://Enemy_Bullets/Toxic_Bullets/toxic_bullet.tscn" id="2_hm75e"]
+[ext_resource type="Resource" uid="uid://cw1pg5ijecjbb" path="res://Enemies/Floor5/ToxicBarrel/toxic_barrel.tres" id="3_sax5q"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="4_ptc5s"]
+[ext_resource type="Texture2D" uid="uid://3cm1n6i6pi20" path="res://Enemies/Floor5/ToxicBarrel/toxic_barrel.png" id="5_kjisv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3ijf"]
+size = Vector2(117.64703, 117.64707)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sksyr"]
+size = Vector2(121.17646, 161.17645)
+
+[sub_resource type="Animation" id="Animation_j17qh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.85, 0.85)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n3ijf"]
+resource_name = "die"
+length = 0.40000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_vl38m"]
+resource_name = "end_shoot"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5.25, 5.25), Vector2(5, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.23529412, 0.74509805, 0.27450982, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sksyr"]
+resource_name = "move"
+length = 1.3333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646259971647, 0.0, 0.08726646259971647, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.85, 0.85), Vector2(0.83, 0.83), Vector2(0.85, 0.85), Vector2(0.87, 0.87), Vector2(0.85, 0.85)]
+}
+
+[sub_resource type="Animation" id="Animation_3sa1c"]
+resource_name = "start_shoot"
+length = 0.13333668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(5.25, 5.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.23529412, 0.74509805, 0.27450982, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sksyr"]
+_data = {
+&"RESET": SubResource("Animation_j17qh"),
+&"die": SubResource("Animation_n3ijf"),
+&"end_shoot": SubResource("Animation_vl38m"),
+&"move": SubResource("Animation_sksyr"),
+&"start_shoot": SubResource("Animation_3sa1c")
+}
+
+[node name="ToxicBarrel" type="CharacterBody2D" unique_id=383500422]
+scale = Vector2(0.85, 0.85)
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_fbfsi")
+bullet_scene = ExtResource("2_hm75e")
+enemy_data = ExtResource("3_sax5q")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1993102962]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 70)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("4_ptc5s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1748490601]
+scale = Vector2(5, 5)
+texture = ExtResource("5_kjisv")
+hframes = 3
+vframes = 3
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1635206547]
+position = Vector2(-1.1764705, 31.76472)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_n3ijf")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=131989526]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=613276619]
+position = Vector2(-0.4117729, 6.470589)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_sksyr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1980954169]
+libraries/ = SubResource("AnimationLibrary_sksyr")
+autoplay = &"move"
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=335392709]
+position = Vector2(0, -47.058826)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

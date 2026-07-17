@@ -28,10 +28,9 @@
 		"res://Enemies/Floor3/Worm2/Worm2.tscn"
 	],
 	"5": [
-		"res://Enemies/Floor1/Chips/Chips.tscn",
-		"res://Enemies/Floor1/Corn_Dog/Corn_Dog.tscn",
-		"res://Enemies/Floor1/Dark_Soda/Dark_Soda.tscn",
-		"res://Enemies/Floor1/Soda/Soda.tscn",
-		"res://Enemies/Floor1/Red_Chips/Red_Chips.tscn"
+		"res://Enemies/Floor5/BlueToxicBarrel/BlueToxicBarrel.tscn",
+		"res://Enemies/Floor5/OrangeToxicBarrel/OrangeToxicBarrel.tscn",
+		"res://Enemies/Floor5/RedToxicBarrel/RedToxicBarrel.tscn",
+		"res://Enemies/Floor5/ToxicBarrel/ToxicBarrel.tscn"
 	],
 }
