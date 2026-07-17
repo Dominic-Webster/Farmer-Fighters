@@ -39,7 +39,7 @@ var test_item_6 = "res://Items/Uncommon/Rhubarb/Rhubarb.tscn"
 
 func start_new_run(_player : Player):
 	
-	current_floor = 1
+	current_floor = 3
 	
 	MapGenerationManager.create_new_map()
 	current_room = MapGenerationManager._start

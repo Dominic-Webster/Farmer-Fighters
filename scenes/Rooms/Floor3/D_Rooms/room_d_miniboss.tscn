@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dl4ffu6prlcvs"]
+[gd_scene format=3 uid="uid://belfci2omcu35"]
 
-[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_udobr"]
-[ext_resource type="Texture2D" uid="uid://rw8aunvg1ln1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_boss.png" id="2_udobr"]
-[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_fvqak"]
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_00sva"]
+[ext_resource type="Texture2D" uid="uid://cjen7mxn1sms1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_miniboss.png" id="2_00sva"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_seegm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11q5h"]
 size = Vector2(1920, 153)
@@ -31,12 +31,12 @@ size = Vector2(100, 880)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf48e"]
 size = Vector2(104, 880)
 
-[node name="d_boss" type="Node2D" unique_id=479718819]
-script = ExtResource("1_udobr")
+[node name="d_item" type="Node2D" unique_id=479718819]
+script = ExtResource("1_00sva")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("2_udobr")
+texture = ExtResource("2_00sva")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -111,23 +111,11 @@ position = Vector2(200, 540)
 
 [node name="SpawnPool_Down" type="Node2D" parent="SpawnPools" unique_id=398670227]
 
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=807883491]
-position = Vector2(529, 439)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=229990121]
-position = Vector2(819, 443)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1037918523]
-position = Vector2(1104, 445)
-
-[node name="EnemySpawn11" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1325314565]
-position = Vector2(1392, 443)
-
 [node name="SpawnPool_Left" type="Node2D" parent="SpawnPools" unique_id=1265848682]
 
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 
-[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("3_fvqak")]
+[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("3_seegm")]
 position = Vector2(960, 980)
 rotation = 3.1415927
 direction = 2

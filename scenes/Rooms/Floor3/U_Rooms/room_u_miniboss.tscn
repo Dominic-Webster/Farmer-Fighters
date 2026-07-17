@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://duyfsafnfvrln"]
+[gd_scene format=3 uid="uid://dfsu8o86twrs3"]
 
-[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_sxbyd"]
-[ext_resource type="Texture2D" uid="uid://rw8aunvg1ln1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_boss.png" id="2_sxbyd"]
-[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_v4j0b"]
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_hni2h"]
+[ext_resource type="Texture2D" uid="uid://cjen7mxn1sms1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_miniboss.png" id="2_hni2h"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_hk65t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
 size = Vector2(895, 153)
@@ -31,12 +31,12 @@ size = Vector2(100, 880)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3h7eg"]
 size = Vector2(104, 880)
 
-[node name="u_boss" type="Node2D" unique_id=479718819]
-script = ExtResource("1_sxbyd")
+[node name="u_item" type="Node2D" unique_id=479718819]
+script = ExtResource("1_hni2h")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("2_sxbyd")
+texture = ExtResource("2_hni2h")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -105,7 +105,7 @@ position = Vector2(200, 540)
 
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 
-[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("3_v4j0b")]
+[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("3_hk65t")]
 position = Vector2(960, 100)
 
 [node name="BulletBounds" type="Node2D" parent="." unique_id=993304013]
@@ -149,18 +149,6 @@ debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
 [node name="SpawnPools" type="Node2D" parent="." unique_id=1504738956]
 
 [node name="SpawnPool_Up" type="Node2D" parent="SpawnPools" unique_id=618549223]
-
-[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=647123079]
-position = Vector2(531, 628)
-
-[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1043360328]
-position = Vector2(821, 632)
-
-[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=108038622]
-position = Vector2(1106, 634)
-
-[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1864940526]
-position = Vector2(1394, 632)
 
 [node name="SpawnPool_Right" type="Node2D" parent="SpawnPools" unique_id=1588479887]
 

@@ -1,11 +1,8 @@
-[gd_scene format=3 uid="uid://dl4ffu6prlcvs"]
+[gd_scene format=3 uid="uid://cjqg8fgjigx1b"]
 
-[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_udobr"]
-[ext_resource type="Texture2D" uid="uid://rw8aunvg1ln1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_boss.png" id="2_udobr"]
-[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_fvqak"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_11q5h"]
-size = Vector2(1920, 153)
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_q7jt6"]
+[ext_resource type="Texture2D" uid="uid://cjen7mxn1sms1" path="res://scenes/Rooms/00_sprites/floors_3_4/f3_room_miniboss.png" id="2_q7jt6"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_3v0c8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
 size = Vector2(895, 153)
@@ -19,24 +16,24 @@ size = Vector2(166, 776)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dcmp"]
 size = Vector2(166, 776)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai6ib"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cunl6"]
 size = Vector2(1920, 110)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkru"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv4ny"]
 size = Vector2(1920, 105)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xjf7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yfgh"]
 size = Vector2(100, 880)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf48e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ai70"]
 size = Vector2(104, 880)
 
-[node name="d_boss" type="Node2D" unique_id=479718819]
-script = ExtResource("1_udobr")
+[node name="ud_item" type="Node2D" unique_id=479718819]
+script = ExtResource("1_q7jt6")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("2_udobr")
+texture = ExtResource("2_q7jt6")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
@@ -47,8 +44,12 @@ collision_layer = 16
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top" unique_id=1032411535]
-position = Vector2(960, 66.5)
-shape = SubResource("RectangleShape2D_11q5h")
+position = Vector2(447.5, 66.5)
+shape = SubResource("RectangleShape2D_endo3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Top" unique_id=959034463]
+position = Vector2(1471.5, 66.5)
+shape = SubResource("RectangleShape2D_6jc54")
 
 [node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=17589378]
 position = Vector2(1, 938)
@@ -97,75 +98,66 @@ position = Vector2(1720, 540)
 
 [node name="PlayerSpawnD" type="Marker2D" parent="Player Spawns" unique_id=375498285]
 self_modulate = Color(0, 1, 0, 1)
-position = Vector2(960, 829)
+position = Vector2(959, 827)
 
 [node name="PlayerSpawnL" type="Marker2D" parent="Player Spawns" unique_id=284417141]
 self_modulate = Color(0, 1, 0, 1)
 position = Vector2(200, 540)
 
-[node name="SpawnPools" type="Node2D" parent="." unique_id=1659199399]
-
-[node name="SpawnPool_Up" type="Node2D" parent="SpawnPools" unique_id=1469186389]
-
-[node name="SpawnPool_Right" type="Node2D" parent="SpawnPools" unique_id=478453243]
-
-[node name="SpawnPool_Down" type="Node2D" parent="SpawnPools" unique_id=398670227]
-
-[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=807883491]
-position = Vector2(529, 439)
-
-[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=229990121]
-position = Vector2(819, 443)
-
-[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1037918523]
-position = Vector2(1104, 445)
-
-[node name="EnemySpawn11" type="Marker2D" parent="SpawnPools/SpawnPool_Down" unique_id=1325314565]
-position = Vector2(1392, 443)
-
-[node name="SpawnPool_Left" type="Node2D" parent="SpawnPools" unique_id=1265848682]
-
 [node name="Doors" type="Node2D" parent="." unique_id=1263460266]
 
-[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("3_fvqak")]
+[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("3_3v0c8")]
+position = Vector2(960, 100)
+
+[node name="DoorDown" parent="Doors" unique_id=2119313407 instance=ExtResource("3_3v0c8")]
 position = Vector2(960, 980)
 rotation = 3.1415927
 direction = 2
 
-[node name="BulletBounds" type="Node2D" parent="." unique_id=124641967]
+[node name="BulletBounds" type="Node2D" parent="." unique_id=1424872462]
 
-[node name="Top" type="Area2D" parent="BulletBounds" unique_id=1191118391]
+[node name="Top" type="Area2D" parent="BulletBounds" unique_id=2114650414]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Top" unique_id=1417875388]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Top" unique_id=76251618]
 position = Vector2(960, 44.5)
-shape = SubResource("RectangleShape2D_ai6ib")
+shape = SubResource("RectangleShape2D_cunl6")
 debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
 
-[node name="Bottom" type="Area2D" parent="BulletBounds" unique_id=108605525]
+[node name="Bottom" type="Area2D" parent="BulletBounds" unique_id=279895643]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Bottom" unique_id=947806253]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Bottom" unique_id=825667966]
 position = Vector2(960, 1032.5)
-shape = SubResource("RectangleShape2D_hmkru")
+shape = SubResource("RectangleShape2D_bv4ny")
 debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
 
-[node name="Left" type="Area2D" parent="BulletBounds" unique_id=2064852125]
+[node name="Left" type="Area2D" parent="BulletBounds" unique_id=1608044687]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Left" unique_id=556969308]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Left" unique_id=27448283]
 position = Vector2(50, 540)
-shape = SubResource("RectangleShape2D_0xjf7")
+shape = SubResource("RectangleShape2D_2yfgh")
 debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
 
-[node name="Right" type="Area2D" parent="BulletBounds" unique_id=506080064]
+[node name="Right" type="Area2D" parent="BulletBounds" unique_id=342531124]
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Right" unique_id=41955183]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Right" unique_id=246635968]
 position = Vector2(1868, 540)
-shape = SubResource("RectangleShape2D_xf48e")
+shape = SubResource("RectangleShape2D_6ai70")
 debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="SpawnPools" type="Node2D" parent="." unique_id=2080251690]
+
+[node name="SpawnPool_Up" type="Node2D" parent="SpawnPools" unique_id=162764626]
+
+[node name="SpawnPool_Right" type="Node2D" parent="SpawnPools" unique_id=919769902]
+
+[node name="SpawnPool_Down" type="Node2D" parent="SpawnPools" unique_id=51478399]
+
+[node name="SpawnPool_Left" type="Node2D" parent="SpawnPools" unique_id=51978485]
