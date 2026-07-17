@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://d2tg11ji7lvyw"]
+[gd_scene format=3 uid="uid://58dr4oae78f6"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_ncpw3"]
-[ext_resource type="Texture2D" uid="uid://cjw7vant7cy6f" path="res://scenes/Rooms/00_sprites/Toxic/toxic_item_room.png" id="2_ncpw3"]
+[ext_resource type="Texture2D" uid="uid://m3y3v6esm2jx" path="res://scenes/Rooms/00_sprites/Toxic/f5_room_item.png" id="2_ncpw3"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_80pa0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]

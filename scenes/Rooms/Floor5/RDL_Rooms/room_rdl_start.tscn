@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ddv7vymyt6g0u"]
+[gd_scene format=3 uid="uid://cciu5vt6n7ggm"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_1loai"]
 [ext_resource type="Texture2D" uid="uid://fbhmwib5v5r0" path="res://scenes/Rooms/00_sprites/Toxic/toxic_start_room.png" id="2_1loai"]

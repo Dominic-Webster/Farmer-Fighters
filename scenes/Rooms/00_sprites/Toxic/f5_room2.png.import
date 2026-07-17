@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjw7vant7cy6f"
-path="res://.godot/imported/toxic_item_room.png-4d2a7ec0553c086574a5c94bab7cab65.ctex"
+uid="uid://dxux5rw4rrjte"
+path="res://.godot/imported/f5_room2.png-f0f614803e05a5385ff7c8d80098322e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Rooms/00_sprites/Toxic/toxic_item_room.png"
-dest_files=["res://.godot/imported/toxic_item_room.png-4d2a7ec0553c086574a5c94bab7cab65.ctex"]
+source_file="res://scenes/Rooms/00_sprites/Toxic/f5_room2.png"
+dest_files=["res://.godot/imported/f5_room2.png-f0f614803e05a5385ff7c8d80098322e.ctex"]
 
 [params]
 

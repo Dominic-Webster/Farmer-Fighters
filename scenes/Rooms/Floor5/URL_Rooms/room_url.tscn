@@ -1,0 +1,280 @@
+[gd_scene format=3 uid="uid://sfmr6gjkxi37"]
+
+[ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_lju7x"]
+[ext_resource type="Texture2D" uid="uid://dxux5rw4rrjte" path="res://scenes/Rooms/00_sprites/Toxic/f5_room2.png" id="2_lju7x"]
+[ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_wlxn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
+size = Vector2(895, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jc54"]
+size = Vector2(897, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwkgx"]
+size = Vector2(1920, 153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m62on"]
+size = Vector2(166, 323)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_impox"]
+size = Vector2(166, 323)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dcmp"]
+size = Vector2(166, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bj1m"]
+size = Vector2(1920, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gg5y"]
+size = Vector2(1920, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d71h1"]
+size = Vector2(100, 880)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucae2"]
+size = Vector2(104, 880)
+
+[node name="url_start_2" type="Node2D" unique_id=479718819]
+script = ExtResource("1_lju7x")
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
+scale = Vector2(4, 4)
+texture = ExtResource("2_lju7x")
+centered = false
+
+[node name="Walls" type="Node2D" parent="." unique_id=98348940]
+
+[node name="Top" type="StaticBody2D" parent="Walls" unique_id=949202282]
+position = Vector2(1, 9)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top" unique_id=1032411535]
+position = Vector2(447.5, 66.5)
+shape = SubResource("RectangleShape2D_endo3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Top" unique_id=959034463]
+position = Vector2(1471.5, 66.5)
+shape = SubResource("RectangleShape2D_6jc54")
+
+[node name="Bottom" type="StaticBody2D" parent="Walls" unique_id=17589378]
+position = Vector2(1, 938)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom" unique_id=920918920]
+position = Vector2(960, 66.5)
+shape = SubResource("RectangleShape2D_iwkgx")
+
+[node name="Left" type="StaticBody2D" parent="Walls" unique_id=1548441894]
+position = Vector2(-4, 946)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left" unique_id=1101910015]
+position = Vector2(69, -179.5)
+shape = SubResource("RectangleShape2D_m62on")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Left" unique_id=622444905]
+position = Vector2(69, -632)
+shape = SubResource("RectangleShape2D_impox")
+
+[node name="Right" type="StaticBody2D" parent="Walls" unique_id=372076269]
+position = Vector2(1786, 946)
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right" unique_id=1021384621]
+position = Vector2(69, -180)
+shape = SubResource("RectangleShape2D_3dcmp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/Right" unique_id=315593283]
+position = Vector2(69, -632)
+shape = SubResource("RectangleShape2D_impox")
+
+[node name="Player Spawns" type="Node2D" parent="." unique_id=332080770]
+
+[node name="PlayerSpawnC" type="Marker2D" parent="Player Spawns" unique_id=1571906042]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 540)
+
+[node name="PlayerSpawnT" type="Marker2D" parent="Player Spawns" unique_id=290097644]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 200)
+
+[node name="PlayerSpawnR" type="Marker2D" parent="Player Spawns" unique_id=1368949892]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(1717, 486)
+
+[node name="PlayerSpawnD" type="Marker2D" parent="Player Spawns" unique_id=375498285]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(960, 829)
+
+[node name="PlayerSpawnL" type="Marker2D" parent="Player Spawns" unique_id=284417141]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(195, 478)
+
+[node name="Doors" type="Node2D" parent="." unique_id=1263460266]
+
+[node name="DoorUp" parent="Doors" unique_id=911366584 instance=ExtResource("3_wlxn0")]
+position = Vector2(960, 100)
+
+[node name="DoorRight" parent="Doors" unique_id=1660162846 instance=ExtResource("3_wlxn0")]
+position = Vector2(1824, 540)
+rotation = 1.5707964
+direction = 1
+
+[node name="DoorLeft" parent="Doors" unique_id=11583183 instance=ExtResource("3_wlxn0")]
+position = Vector2(96, 540)
+rotation = -1.5707964
+direction = 3
+
+[node name="BulletBounds" type="Node2D" parent="." unique_id=891049569]
+
+[node name="Top" type="Area2D" parent="BulletBounds" unique_id=566718456]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Top" unique_id=1608089634]
+position = Vector2(960, 44.5)
+shape = SubResource("RectangleShape2D_8bj1m")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Bottom" type="Area2D" parent="BulletBounds" unique_id=727412078]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Bottom" unique_id=293698651]
+position = Vector2(960, 1032.5)
+shape = SubResource("RectangleShape2D_3gg5y")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Left" type="Area2D" parent="BulletBounds" unique_id=1562774684]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Left" unique_id=1870533093]
+position = Vector2(50, 540)
+shape = SubResource("RectangleShape2D_d71h1")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="Right" type="Area2D" parent="BulletBounds" unique_id=538442935]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletBounds/Right" unique_id=1611425688]
+position = Vector2(1868, 540)
+shape = SubResource("RectangleShape2D_ucae2")
+debug_color = Color(0.78431374, 0.43137255, 0.09803922, 0.41960785)
+
+[node name="SpawnPools" type="Node2D" parent="." unique_id=110731208]
+
+[node name="SpawnPool_Up" type="Node2D" parent="SpawnPools" unique_id=1105858342]
+
+[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=998142943]
+position = Vector2(237, 439)
+
+[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1915305583]
+position = Vector2(1677, 441)
+
+[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1741155033]
+position = Vector2(239, 628)
+
+[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=2330241]
+position = Vector2(531, 628)
+
+[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1622781402]
+position = Vector2(821, 632)
+
+[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=353107922]
+position = Vector2(1106, 634)
+
+[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1408710945]
+position = Vector2(1394, 632)
+
+[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1311214314]
+position = Vector2(1679, 630)
+
+[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1287819781]
+position = Vector2(237, 824)
+
+[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=2052665331]
+position = Vector2(529, 824)
+
+[node name="EnemySpawn11" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=871219848]
+position = Vector2(819, 828)
+
+[node name="EnemySpawn12" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=1033575854]
+position = Vector2(1104, 830)
+
+[node name="EnemySpawn13" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=124369507]
+position = Vector2(1392, 828)
+
+[node name="EnemySpawn14" type="Marker2D" parent="SpawnPools/SpawnPool_Up" unique_id=704342112]
+position = Vector2(1677, 826)
+
+[node name="SpawnPool_Right" type="Node2D" parent="SpawnPools" unique_id=1206029188]
+
+[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=571431957]
+position = Vector2(237, 244)
+
+[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1117362414]
+position = Vector2(529, 244)
+
+[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1088650822]
+position = Vector2(819, 248)
+
+[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1510155046]
+position = Vector2(237, 439)
+
+[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=238779444]
+position = Vector2(529, 439)
+
+[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=915294619]
+position = Vector2(239, 628)
+
+[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=1332298909]
+position = Vector2(531, 628)
+
+[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=275927533]
+position = Vector2(237, 824)
+
+[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=2106547170]
+position = Vector2(529, 824)
+
+[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Right" unique_id=533520175]
+position = Vector2(819, 828)
+
+[node name="SpawnPool_Down" type="Node2D" parent="SpawnPools" unique_id=247995319]
+
+[node name="SpawnPool_Left" type="Node2D" parent="SpawnPools" unique_id=2136394733]
+
+[node name="EnemySpawn" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=421598819]
+position = Vector2(1104, 250)
+
+[node name="EnemySpawn2" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=911109087]
+position = Vector2(1392, 248)
+
+[node name="EnemySpawn3" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=926659918]
+position = Vector2(1677, 246)
+
+[node name="EnemySpawn4" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=308049831]
+position = Vector2(1392, 443)
+
+[node name="EnemySpawn5" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=556004455]
+position = Vector2(1677, 441)
+
+[node name="EnemySpawn6" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=880722987]
+position = Vector2(1394, 632)
+
+[node name="EnemySpawn7" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1461981220]
+position = Vector2(1679, 630)
+
+[node name="EnemySpawn8" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=640631002]
+position = Vector2(1104, 830)
+
+[node name="EnemySpawn9" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1026731671]
+position = Vector2(1392, 828)
+
+[node name="EnemySpawn10" type="Marker2D" parent="SpawnPools/SpawnPool_Left" unique_id=1009381904]
+position = Vector2(1677, 826)
