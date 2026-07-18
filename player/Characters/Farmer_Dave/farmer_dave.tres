@@ -7,5 +7,4 @@
 script = ExtResource("1_yvt25")
 name = "Farmer Dave"
 spritesheet = ExtResource("2_kov0a")
-damage = 50.0
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"
