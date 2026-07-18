@@ -8,12 +8,10 @@
 		"res://Bosses/Floors_1_2/Burger/Burger.tscn"
 	],
 	"3": [
-		"res://Bosses/Floors_1_2/Nugget/Nugget_Boss.tscn",
-		"res://Bosses/Floors_1_2/Burger/Burger.tscn"
+		"res://Bosses/Floors_3_4/Cookie_Box/Cookie_Box.tscn"
 	],
 	"4": [
-		"res://Bosses/Floors_1_2/Big_Chips/Big_Chips.tscn",
-		"res://Bosses/Floors_1_2/Energy_Drink/Energy_Drink.tscn"
+		"res://Bosses/Floors_3_4/Cookie_Box/Cookie_Box.tscn"
 	],
 	"5": [
 		"res://Bosses/Floor5/BarrelBoss/BarrelBoss.tscn"
