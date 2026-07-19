@@ -39,7 +39,7 @@ var test_item_6 = "res://Items/Common/Rhubarb/Rhubarb.tscn"
 
 func start_new_run(_player : Player):
 	
-	current_floor = 4
+	current_floor = 1
 	player_damaged_this_floor = false
 	
 	MapGenerationManager.create_new_map()
