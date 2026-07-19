@@ -5,7 +5,6 @@
 		"res://Items/Common/Eggplant/Eggplant.tscn",
 		"res://Items/Common/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Common/Watermelon/Watermelon.tscn",
-		"res://Items/Uncommon/Morrell/Morrell.tscn",
 		"res://Items/Uncommon/Plantain/Plantain.tscn",
 		"res://Items/Uncommon/Raspberry/Raspberry.tscn",
 		"res://Items/Uncommon/Scythe/Scythe.tscn"
@@ -19,7 +18,6 @@
 		"res://Items/Common/Watermelon/Watermelon.tscn",
 		"res://Items/Uncommon/Corn/Corn.tscn",
 		"res://Items/Uncommon/Garlic/Garlic.tscn",
-		"res://Items/Uncommon/Morrell/Morrell.tscn",
 		"res://Items/Uncommon/Onion/Onion.tscn",
 		"res://Items/Uncommon/Plantain/Plantain.tscn",
 		"res://Items/Uncommon/Raspberry/Raspberry.tscn"
@@ -48,7 +46,6 @@
 		"res://Items/Uncommon/Cilantro/Cilantro.tscn",
 		"res://Items/Uncommon/Cow_Item/Cow_Item.tscn",
 		"res://Items/Uncommon/Garlic/Garlic.tscn",
-		"res://Items/Uncommon/Morrell/Morrell.tscn",
 		"res://Items/Uncommon/Onion/Onion.tscn",
 		"res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn",
 		"res://Items/Uncommon/Raspberry/Raspberry.tscn",
