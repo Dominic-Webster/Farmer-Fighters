@@ -10,6 +10,8 @@ var player : Player
 
 @export var enemy_data : EnemyData
 
+var weight : int = 1
+
 var move_speed : float = 150
 var damage : int = 1
 var max_health : float = 3

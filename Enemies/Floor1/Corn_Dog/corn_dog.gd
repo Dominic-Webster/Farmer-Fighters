@@ -8,6 +8,12 @@ var start_timer : float = randf_range(start_delay.x, start_delay.y)
 var last_direction: Vector2 = Vector2.ZERO
 
 
+func _ready():
+	super._ready()
+	if RunManager.current_floor == 1:
+		weight = 2
+
+
 func _physics_process(_delta: float) -> void:
 	if player == null:
 		return

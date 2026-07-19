@@ -24,6 +24,10 @@ var action_timer : float = randf_range(action_delay.x, action_delay.y)
 var dead : bool = false
 
 
+func _ready():
+	super._ready()
+	weight = 2
+
 
 func _physics_process(_delta: float) -> void:
 	if player == null:

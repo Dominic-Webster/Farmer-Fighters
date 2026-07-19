@@ -120,8 +120,8 @@ func load_enemies(_player_spawn : String) -> void:
 			var enemy = scene.instantiate()
 			enemy.global_position = spawn.global_position
 			add_child(enemy)
-			enemy_count += 1
-			enemy.died.connect(_on_enemy_died)
+			enemy_count += enemy.weight
+			enemy.died.connect(func(): _on_enemy_died(enemy))
 	
 	# load one enemy just in case
 	if enemy_count == 0 and spawn_points.size() > 0:
@@ -130,8 +130,8 @@ func load_enemies(_player_spawn : String) -> void:
 		var enemy = scene.instantiate()
 		enemy.global_position = spawn_points[0].global_position
 		add_child(enemy)
-		enemy_count += 1
-		enemy.died.connect(_on_enemy_died)
+		enemy_count += enemy.weight
+		enemy.died.connect(func(): _on_enemy_died(enemy))
 
 
 func spawn_explosion_effect(explosion: Node) -> void:
@@ -188,7 +188,7 @@ func load_boss(_player_spawn : String) -> void:
 	boss.global_position = spawn_points[spawn].global_position
 	add_child(boss)
 	enemy_count += 1
-	boss.died.connect(_on_enemy_died)
+	boss.died.connect(func(): _on_enemy_died(boss))
 
 func load_miniboss(_player_spawn : String) -> void:
 	var miniboss_pool = get_miniboss_pool()
@@ -203,7 +203,7 @@ func load_miniboss(_player_spawn : String) -> void:
 	miniboss.global_position = player_spawn_c.global_position
 	add_child(miniboss)
 	enemy_count += 1
-	miniboss.died.connect(_on_enemy_died)
+	miniboss.died.connect(func(): _on_enemy_died(miniboss))
 
 	
 
@@ -233,8 +233,8 @@ func get_miniboss_pool() -> Array:
 	return data[current_floor]
 
 
-func _on_enemy_died():
-	enemy_count -= 1
+func _on_enemy_died(enemy : Enemy):
+	enemy_count -= enemy.weight
 	
 	if enemy_count == 0:
 		RunManager.mark_room_cleared()
@@ -243,7 +243,7 @@ func _on_enemy_died():
 			spawn_miniboss_reward(RunManager.current_room)
 	
 		# Persistent pickup logic
-		if MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "B":
+		if MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "B" and MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "M":
 			var pos = RunManager.current_room
 			var state = MapGenerationManager.room_states.get(pos, {})
 			if not state.has("pickup_picked_up") or not state["pickup_picked_up"]:
