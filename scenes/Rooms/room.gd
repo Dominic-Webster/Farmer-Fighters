@@ -14,6 +14,12 @@ class_name Room
 var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 
 var enemy_count : int = 0
+var _room_persistent_spawn_ids := {
+	"combat_reward": "combat_reward",
+	"treasure": "treasure",
+	"miniboss_reward": "miniboss_reward",
+	"boss_heart": "boss_heart",
+}
 
 
 func _enter_room(dir_from : String) -> void:
@@ -36,10 +42,8 @@ func _enter_room(dir_from : String) -> void:
 	_set_door_art()
 	_load_bullet_bounds()
 	
-	# Always respawn persistent pickup if present and not picked up
-	spawn_room_pickup(pos)
-	spawn_room_miniboss_reward(pos)
-	spawn_room_heart(pos)
+	# Respawn all persistent room objects that were previously registered.
+	spawn_persistent_objects(pos)
 
 	# Respawn elevator if present in this room (e.g. boss room after defeat)
 	if MapGenerationManager.room_states.has(pos):
@@ -138,7 +142,7 @@ func spawn_explosion_effect(explosion: Node) -> void:
 	add_child(explosion)
 
 
-func add_persistent_spawn(scene_path:String, pos:Vector2):
+func add_persistent_spawn(spawn_id: String, scene_path: String, pos: Vector2, picked_up: bool = false) -> void:
 	var room_pos = RunManager.current_room
 	
 	if !MapGenerationManager.room_states.has(room_pos):
@@ -148,14 +152,84 @@ func add_persistent_spawn(scene_path:String, pos:Vector2):
 	
 	if !state.has("persistent_spawns"):
 		state["persistent_spawns"] = []
-	
-	state["persistent_spawns"].append({
-		"scene":scene_path,
-		"position":pos,
-		"picked_up":false
-	})
+
+	var persistent_spawns: Array = state["persistent_spawns"]
+	var existing_index := -1
+	for i in range(persistent_spawns.size()):
+		if persistent_spawns[i].get("id", "") == spawn_id:
+			existing_index = i
+			break
+
+	var spawn_data := {
+		"id": spawn_id,
+		"scene": scene_path,
+		"position": pos,
+		"picked_up": picked_up,
+	}
+
+	if existing_index >= 0:
+		spawn_data["picked_up"] = persistent_spawns[existing_index].get("picked_up", false) or picked_up
+		persistent_spawns[existing_index] = spawn_data
+	else:
+		persistent_spawns.append(spawn_data)
 	
 	MapGenerationManager.room_states[room_pos] = state
+
+
+func spawn_persistent_objects(pos: Vector2i) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+	var persistent_spawns: Array = state.get("persistent_spawns", [])
+
+	for spawn_data in persistent_spawns:
+		spawn_persistent_object(pos, spawn_data)
+
+
+func spawn_persistent_spawn(pos: Vector2i, spawn_id: String) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+	var persistent_spawns: Array = state.get("persistent_spawns", [])
+
+	for spawn_data in persistent_spawns:
+		if spawn_data.get("id", "") == spawn_id:
+			spawn_persistent_object(pos, spawn_data)
+			return
+
+
+func spawn_persistent_object(pos: Vector2i, spawn_data: Dictionary) -> void:
+	if spawn_data.get("picked_up", false):
+		return
+
+	var scene_path := str(spawn_data.get("scene", ""))
+	if scene_path == "":
+		return
+
+	var scene = load(scene_path)
+	if scene == null:
+		return
+
+	var instance = scene.instantiate()
+	var spawn_position = spawn_data.get("position", player_spawn_c.global_position)
+	instance.global_position = spawn_position
+	call_deferred("add_child", instance)
+
+	if instance.has_signal("picked_up") and spawn_data.has("id"):
+		var spawn_id := str(spawn_data["id"])
+		instance.picked_up.connect(func(iname, desc):
+			mark_persistent_spawn_picked_up(pos, spawn_id)
+			if RunManager.gui:
+				RunManager.gui.show_item_info(iname, desc)
+		)
+
+
+func mark_persistent_spawn_picked_up(pos: Vector2i, spawn_id: String) -> void:
+	var state = MapGenerationManager.room_states.get(pos, {})
+	var persistent_spawns: Array = state.get("persistent_spawns", [])
+
+	for i in range(persistent_spawns.size()):
+		if persistent_spawns[i].get("id", "") == spawn_id:
+			persistent_spawns[i]["picked_up"] = true
+			state["persistent_spawns"] = persistent_spawns
+			MapGenerationManager.room_states[pos] = state
+			return
 
 
 # Helper to get the enemy pool for the current floor (for now, always floor1)
@@ -189,6 +263,7 @@ func load_boss(_player_spawn : String) -> void:
 	add_child(boss)
 	enemy_count += 1
 	boss.died.connect(func(): _on_enemy_died(boss))
+
 
 func load_miniboss(_player_spawn : String) -> void:
 	var miniboss_pool = get_miniboss_pool()
@@ -245,128 +320,44 @@ func _on_enemy_died(enemy : Enemy):
 		# Persistent pickup logic
 		if MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "B" and MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] != "M":
 			var pos = RunManager.current_room
-			var state = MapGenerationManager.room_states.get(pos, {})
-			if not state.has("pickup_picked_up") or not state["pickup_picked_up"]:
-				# Only roll if not already present
-				if not state.has("pickup_item_path"):
-					var player = RunManager.player
-					var luck : int = 1
-					if player != null and "luck" in player:
-						luck = player.luck
-					var roll = randi_range(1, 25)
-					if roll <= luck:
-						var pickup_scene = get_random_pickup_scene()
-						if pickup_scene:
-							state["pickup_item_path"] = pickup_scene.resource_path
-							state["pickup_picked_up"] = false
-							MapGenerationManager.room_states[pos] = state
-							spawn_room_pickup(pos)
+			var player = RunManager.player
+			var luck : int = 1
+			if player != null and "luck" in player:
+				luck = player.luck
+			var roll = randi_range(1, 25)
+			if roll <= luck:
+				var pickup_scene = get_random_pickup_scene()
+				if pickup_scene:
+					add_persistent_spawn(_room_persistent_spawn_ids["combat_reward"], pickup_scene.resource_path, player_spawn_c.global_position)
+					spawn_room_pickup(pos)
 
 
 # Spawns a persistent pickup for the room if it exists and is not picked up
 func spawn_room_pickup(pos: Vector2i) -> void:
-	var state = MapGenerationManager.room_states.get(pos, {})
-
-	if state.has("pickup_item_path") and (not state.has("pickup_picked_up") or not state["pickup_picked_up"]):
-		var pickup_scene = load(state["pickup_item_path"])
-		if pickup_scene:
-			var pickup = pickup_scene.instantiate()
-			pickup.global_position = player_spawn_c.global_position
-			call_deferred("add_child", pickup)
-			if pickup.has_signal("picked_up"):
-				pickup.picked_up.connect(func(iname, desc):
-					var s = MapGenerationManager.room_states.get(pos, {})
-					s["pickup_picked_up"] = true
-					MapGenerationManager.room_states[pos] = s
-					if RunManager.gui:
-						RunManager.gui.show_item_info(iname, desc)
-				)
+	spawn_persistent_spawn(pos, _room_persistent_spawn_ids["combat_reward"])
 
 
 func spawn_room_miniboss_reward(pos: Vector2i) -> void:
-	var state = MapGenerationManager.room_states.get(pos, {})
-
-	if not state.has("miniboss_reward_item_path") or (state.has("miniboss_reward_picked_up") and state["miniboss_reward_picked_up"]):
-		return
-
-	var reward_scene = load(state["miniboss_reward_item_path"])
-	if reward_scene:
-		var reward = reward_scene.instantiate()
-		reward.global_position = player_spawn_c.global_position
-		call_deferred("add_child", reward)
-		if reward.has_signal("picked_up"):
-			reward.picked_up.connect(func(iname, desc):
-				var s = MapGenerationManager.room_states.get(pos, {})
-				s["miniboss_reward_picked_up"] = true
-				MapGenerationManager.room_states[pos] = s
-				if RunManager.gui:
-					RunManager.gui.show_item_info(iname, desc)
-			)
+	spawn_persistent_spawn(pos, _room_persistent_spawn_ids["miniboss_reward"])
 
 
 func spawn_room_heart(pos: Vector2i) -> void:
-	var state = MapGenerationManager.room_states.get(pos, {})
-	
-	if !state.get("heart_present", false):
-		return
-	
-	if state.get("heart_picked_up", false):
-		return
-	
-	var heart = heart_scene.instantiate()
-	add_child(heart)
-	heart.global_position = player_spawn_c.global_position
-	
-	if heart.has_signal("picked_up"):
-		heart.picked_up.connect(func(iname, desc):
-			var s = MapGenerationManager.room_states.get(pos, {})
-			s["heart_picked_up"] = true
-			MapGenerationManager.room_states[pos] = s
-			if RunManager.gui:
-					RunManager.gui.show_item_info(iname, desc)
-		)
+	spawn_persistent_spawn(pos, _room_persistent_spawn_ids["boss_heart"])
 
 
 func spawn_heart() -> void:
 	var pos = RunManager.current_room
-	var state = MapGenerationManager.room_states.get(pos, {})
-	
-	if state.get("heart_picked_up", false):
-		return
-	
-	state["heart_present"] = true
-	MapGenerationManager.room_states[pos] = state
-	
+	add_persistent_spawn(_room_persistent_spawn_ids["boss_heart"], heart_scene.resource_path, player_spawn_c.global_position)
 	spawn_room_heart(pos)
 
 
 func spawn_miniboss_reward(pos: Vector2i) -> void:
-	var state = MapGenerationManager.room_states.get(pos, {})
-
-	if not state.has("miniboss_reward_item_path"):
-		var reward_item_path = get_miniboss_reward_item_scene()
-		if reward_item_path == "":
-			return
-		state["miniboss_reward_item_path"] = reward_item_path
-		state["miniboss_reward_picked_up"] = false
-		MapGenerationManager.room_states[pos] = state
-
-	if state.has("miniboss_reward_picked_up") and state["miniboss_reward_picked_up"]:
+	var reward_item_path = get_miniboss_reward_item_scene()
+	if reward_item_path == "":
 		return
+	add_persistent_spawn(_room_persistent_spawn_ids["miniboss_reward"], reward_item_path, player_spawn_c.global_position)
 
-	var reward_scene = load(state["miniboss_reward_item_path"])
-	if reward_scene:
-		var reward = reward_scene.instantiate()
-		reward.global_position = player_spawn_c.global_position
-		call_deferred("add_child", reward)
-		if reward.has_signal("picked_up"):
-			reward.picked_up.connect(func(iname, desc):
-				var s = MapGenerationManager.room_states.get(pos, {})
-				s["miniboss_reward_picked_up"] = true
-				MapGenerationManager.room_states[pos] = s
-				if RunManager.gui:
-					RunManager.gui.show_item_info(iname, desc)
-			)
+	spawn_room_miniboss_reward(pos)
 
 
 func get_miniboss_reward_item_scene() -> String:
@@ -490,39 +481,19 @@ func _load_bullet_bounds() -> void:
 
 # Spawns the treasure item for this room, tracking persistence and pickup
 func spawn_room_treasure(pos: Vector2i) -> void:
-	# Ensure room_states entry exists
-	if not MapGenerationManager.room_states.has(pos):
-		MapGenerationManager.room_states[pos] = {}
-	
-	var state = MapGenerationManager.room_states[pos]
-	
-	# If item was picked up, do not spawn
-	if state.has("treasure_picked_up") and state["treasure_picked_up"]:
+	var state = MapGenerationManager.room_states.get(pos, {})
+
+	if state.has("persistent_spawns"):
+		for spawn_data in state["persistent_spawns"]:
+			if spawn_data.get("id", "") == _room_persistent_spawn_ids["treasure"]:
+				return
+
+	var item_scene = get_random_item_scene()
+	if item_scene == null:
 		return
-	
-	# If item_path not set, pick a random one and store it
-	var item_scene
-	if not state.has("treasure_item_path"):
-		item_scene = get_random_item_scene()
-		state["treasure_item_path"] = item_scene.resource_path
-		MapGenerationManager.room_states[pos] = state
-	else:
-		item_scene = load(state["treasure_item_path"])
-	
-	# Instance and spawn the item
-	var item = item_scene.instantiate()
-	item.global_position = player_spawn_c.global_position
-	add_child(item)
-	
-	# Connect picked_up signal to mark as picked up and show HUD info
-	if item.has_signal("picked_up"):
-		item.picked_up.connect(func(iname, desc):
-			var s = MapGenerationManager.room_states.get(pos, {})
-			s["treasure_picked_up"] = true
-			MapGenerationManager.room_states[pos] = s
-			if RunManager.gui:
-				RunManager.gui.show_item_info(iname, desc)
-			)
+
+	add_persistent_spawn(_room_persistent_spawn_ids["treasure"], item_scene.resource_path, player_spawn_c.global_position)
+	spawn_persistent_spawn(pos, _room_persistent_spawn_ids["treasure"])
 
 
 func get_random_item_scene():
