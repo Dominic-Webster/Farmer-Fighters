@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dsjsiw4rtbvld"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_eg707"]
+
+[resource]
+script = ExtResource("1_eg707")
+enemy_name = "Cookie Box"
+damage = 1
+health = 55.0
+move_speed = 500.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

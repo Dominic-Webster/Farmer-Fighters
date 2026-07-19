@@ -29,17 +29,17 @@ var player_damaged_this_floor : bool = false
 
 
 # Testing
-var test_item_1 = "res://Items/Uncommon/Chicken_Item/Chicken_Item.tscn"
-var test_item_2 = "res://Items/Uncommon/Cow_Item/Cow_Item.tscn"
+var test_item_1 = "res://Items/Uncommon/Morrell/Morrell.tscn"
+var test_item_2 = "res://Items/Common/Eggplant/Eggplant.tscn"
 var test_item_3 = "res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn"
 var test_item_4 = "res://Items/Common/Basil/Basil.tscn"
 var test_item_5 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
-var test_item_6 = "res://Items/Uncommon/Rhubarb/Rhubarb.tscn"
+var test_item_6 = "res://Items/Common/Rhubarb/Rhubarb.tscn"
 
 
 func start_new_run(_player : Player):
 	
-	current_floor = 3
+	current_floor = 4
 	player_damaged_this_floor = false
 	
 	MapGenerationManager.create_new_map()
