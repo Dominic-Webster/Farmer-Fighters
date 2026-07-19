@@ -12,10 +12,9 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_miniboss.tscn"],
 			"boss": [
-				"res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_empty.tscn",
-				"res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_2.tscn"
+				"res://scenes/Rooms/Floor2/URDL_Rooms/room_urdl_boss.tscn"
 			]
 		},
 		"urd": {
@@ -25,10 +24,9 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_miniboss.tscn"],
 			"boss": [
-				"res://scenes/Rooms/Floor1/URD_Rooms/room_urd_empty.tscn",
-				"res://scenes/Rooms/Floor1/URD_Rooms/room_urd_1.tscn",
+				"res://scenes/Rooms/Floor2/URD_Rooms/room_urd_boss.tscn"
 			]
 		},
 		"rdl": {
@@ -38,10 +36,9 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_miniboss.tscn"],
 			"boss": [
-				"res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_empty.tscn",
-				"res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_1.tscn"
+				"res://scenes/Rooms/Floor2/RDL_Rooms/room_rdl_boss.tscn"
 			]
 		},
 		"udl": {
@@ -51,10 +48,9 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_miniboss.tscn"],
 			"boss": [
-				"res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_empty.tscn",
-				"res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_1.tscn"
+				"res://scenes/Rooms/Floor2/UDL_Rooms/room_udl_boss.tscn"
 				]
 		},
 		"url": {
@@ -64,10 +60,9 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_miniboss.tscn"],
 			"boss": [
-				"res://scenes/Rooms/Floor1/URL_Rooms/room_url_empty.tscn",
-				"res://scenes/Rooms/Floor1/URL_Rooms/room_url_1.tscn"
+				"res://scenes/Rooms/Floor2/URL_Rooms/room_url_boss.tscn"
 				]
 		},
 		"ur": {
@@ -77,8 +72,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/UR_Rooms/room_ur_boss.tscn"]
 		},
 		"ud": {
 			"normal": [
@@ -87,8 +82,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/UD_Rooms/room_ud_boss.tscn"]
 		},
 		"ul": {
 			"normal": [
@@ -97,8 +92,8 @@ static var ROOM_OPTIONS = {
 			],
 			"start": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/UL_Rooms/room_ul_boss.tscn"]
 		},
 		"rd": {
 			"normal": [
@@ -107,8 +102,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/RD_Rooms/room_rd_boss.tscn"]
 		},
 		"rl": {
 			"normal": [
@@ -117,8 +112,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/RL_Rooms/room_rl_boss.tscn"]
 		},
 		"dl": {
 			"normal": [
@@ -127,8 +122,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/DL_Rooms/room_dl_boss.tscn"]
 		},
 		"u": {
 			"normal": [
@@ -137,8 +132,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/U_Rooms/room_u_boss.tscn"]
 		},
 		"r": {
 			"normal": [
@@ -147,8 +142,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/R_Rooms/room_r_boss.tscn"]
 		},
 		"d": {
 			"normal": [
@@ -157,8 +152,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/D_Rooms/room_d_boss.tscn"]
 		},
 		"l": {
 			"normal": [
@@ -167,8 +162,8 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_item.tscn"],
-			"boss": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_empty.tscn"]
+			"miniboss": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_miniboss.tscn"],
+			"boss": ["res://scenes/Rooms/Floor2/L_Rooms/room_l_boss.tscn"]
 		}
 	},
 	2: {
@@ -181,7 +176,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/URDL_Rooms/room_urdl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URDL_Rooms/room_urdl_miniboss.tscn"],
 			"boss": [
 				"res://scenes/Rooms/Floor2/URDL_Rooms/room_urdl_boss.tscn"
 			]
@@ -193,7 +188,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/URD_Rooms/room_urd_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URD_Rooms/room_urd_miniboss.tscn"],
 			"boss": [
 				"res://scenes/Rooms/Floor2/URD_Rooms/room_urd_boss.tscn"
 			]
@@ -205,7 +200,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/RDL_Rooms/room_rdl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/RDL_Rooms/room_rdl_miniboss.tscn"],
 			"boss": [
 				"res://scenes/Rooms/Floor2/RDL_Rooms/room_rdl_boss.tscn"
 			]
@@ -217,7 +212,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/UDL_Rooms/room_udl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/UDL_Rooms/room_udl_miniboss.tscn"],
 			"boss": [
 				"res://scenes/Rooms/Floor2/UDL_Rooms/room_udl_boss.tscn"
 				]
@@ -229,7 +224,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/URL_Rooms/room_url_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/URL_Rooms/room_url_miniboss.tscn"],
 			"boss": [
 				"res://scenes/Rooms/Floor2/URL_Rooms/room_url_boss.tscn"
 				]
@@ -241,7 +236,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/UR_Rooms/room_ur_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/UR_Rooms/room_ur_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/UR_Rooms/room_ur_boss.tscn"]
 		},
 		"ud": {
@@ -251,7 +246,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/UD_Rooms/room_ud_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/UD_Rooms/room_ud_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/UD_Rooms/room_ud_boss.tscn"]
 		},
 		"ul": {
@@ -261,7 +256,7 @@ static var ROOM_OPTIONS = {
 			],
 			"start": ["res://scenes/Rooms/Floor2/UL_Rooms/room_ul_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/UL_Rooms/room_ul_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/UL_Rooms/room_ul_boss.tscn"]
 		},
 		"rd": {
@@ -271,7 +266,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/RD_Rooms/room_rd_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/RD_Rooms/room_rd_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/RD_Rooms/room_rd_boss.tscn"]
 		},
 		"rl": {
@@ -281,7 +276,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/RL_Rooms/room_rl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/RL_Rooms/room_rl_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/RL_Rooms/room_rl_boss.tscn"]
 		},
 		"dl": {
@@ -291,7 +286,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/DL_Rooms/room_dl_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/DL_Rooms/room_dl_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/DL_Rooms/room_dl_boss.tscn"]
 		},
 		"u": {
@@ -301,7 +296,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/U_Rooms/room_u_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/U_Rooms/room_u_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/U_Rooms/room_u_boss.tscn"]
 		},
 		"r": {
@@ -311,7 +306,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/R_Rooms/room_r_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/R_Rooms/room_r_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/R_Rooms/room_r_boss.tscn"]
 		},
 		"d": {
@@ -321,7 +316,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/D_Rooms/room_d_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/D_Rooms/room_d_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/D_Rooms/room_d_boss.tscn"]
 		},
 		"l": {
@@ -331,7 +326,7 @@ static var ROOM_OPTIONS = {
 				],
 			"start": ["res://scenes/Rooms/Floor2/L_Rooms/room_l_start.tscn"],
 			"item": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_item.tscn"],
-			"miniboss": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_item.tscn"],
+			"miniboss": ["res://scenes/Rooms/Floor1/L_Rooms/room_l_miniboss.tscn"],
 			"boss": ["res://scenes/Rooms/Floor2/L_Rooms/room_l_boss.tscn"]
 		}
 	},
