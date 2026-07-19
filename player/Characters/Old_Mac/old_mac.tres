@@ -17,5 +17,5 @@ dash_speed = 2000.0
 companion_dmg_mult = 1.5
 cow_unlocked = true
 cow_damage = 3.5
-cow_speed = 350.0
+cow_speed = 425.0
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"
