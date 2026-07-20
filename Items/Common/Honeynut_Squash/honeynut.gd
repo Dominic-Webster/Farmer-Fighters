@@ -1,18 +1,21 @@
-# Unlocks tri-shot, or boosts damage
+# Unlocks dual-shot, or boosts damage
 extends Item
-class_name Zucchini
+class_name HoneynutSquash
 
-var damage_buff : float = 0.75
-var fire_rate_debuff : float = 0.2
-var fire_rate_light_debuff : float = 0.02
+var damage_buff : float = 0.5
+var fire_rate_debuff : float = 0.3
+var fire_rate_light_debuff : float = 0.03
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
-		item_name = "Zucchini"
+		item_name = "Honeynut Squash"
 		RunManager.player.add_item_to_array(item_name)
-		RunManager.player.dual_shot = true
 		
-		if RunManager.player.tri_shot == false:
+		if RunManager.player.dual_shot == false:
+			desc = "Dual-Shot"
+			RunManager.player.dual_shot = true
+			RunManager.player.fire_rate += fire_rate_debuff
+		elif RunManager.player.tri_shot == false:
 			desc = "Tri-Shot"
 			RunManager.player.tri_shot = true
 			RunManager.player.fire_rate += fire_rate_debuff

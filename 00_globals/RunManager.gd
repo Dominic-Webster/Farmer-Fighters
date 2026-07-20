@@ -33,7 +33,7 @@ var test_item_1 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
 var test_item_2 = "res://Items/Common/Eggplant/Eggplant.tscn"
 var test_item_3 = "res://Items/Common/Tomatillo/Tomatillo.tscn"
 var test_item_4 = "res://Items/Common/Banana/Banana.tscn"
-var test_item_5 = "res://Items/Common/Strawberry/Strawberry.tscn"
+var test_item_5 = "res://Items/Common/Honeynut_Squash/Honeynut_Squash.tscn"
 var test_item_6 = "res://Items/Uncommon/Cucumber/Cucumber.tscn"
 
 
@@ -189,8 +189,8 @@ func mark_room_cleared() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("view_stats"):
 		print_stats()
-	else:
-		load_item(event)
+	#else:
+		#load_item(event)
 
 
 func load_item(event: InputEvent) -> void:
