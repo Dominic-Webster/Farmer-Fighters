@@ -2,6 +2,7 @@ extends Area2D
 class_name Explosion
 
 @export var damage : float = 2.0
+@export var use_player_damage : bool = true
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
@@ -10,7 +11,7 @@ var _did_damage : bool = false
 
 
 func _ready() -> void:
-	if RunManager.player != null:
+	if use_player_damage and RunManager.player != null:
 		damage = RunManager.player.explosion_damage * RunManager.player.explosion_damage_mult
 	
 	animation_player.play("boom")

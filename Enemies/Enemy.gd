@@ -80,18 +80,6 @@ func die():
 
 
 func _on_hurt_box_area_entered(area):
-	if area.is_in_group("player_bullet"):
-		take_damage(area.damage, area.global_position)
-		
-		if RunManager.player.slow_bullets == true:
-			apply_status("slow")
-		
-		if RunManager.player and not RunManager.player.piercing:
-			if area.has_method("end_bullet"):
-				area.end_bullet()
-			else:
-				area.queue_free()
-	
 	if area.is_in_group("companion"):
 		take_damage(area.get_parent().damage, area.global_position)
 

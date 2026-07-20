@@ -57,6 +57,7 @@ enum Bullets {
 @export var spiral : bool = false
 @export var eggplant : int = 0
 @export var piercing : bool = false
+@export var homing : bool = false
 @export var dual_shot : bool = false
 @export var tri_shot : bool = false
 @export var quad_shot : bool = false

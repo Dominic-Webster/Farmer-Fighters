@@ -29,12 +29,12 @@ var player_damaged_this_floor : bool = false
 
 
 # Testing
-var test_item_1 = "res://Items/Uncommon/Morrell/Morrell.tscn"
+var test_item_1 = "res://Items/Common/Portobello/Portobello.tscn"
 var test_item_2 = "res://Items/Common/Eggplant/Eggplant.tscn"
-var test_item_3 = "res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn"
-var test_item_4 = "res://Items/Common/Basil/Basil.tscn"
-var test_item_5 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
-var test_item_6 = "res://Items/Common/Rhubarb/Rhubarb.tscn"
+var test_item_3 = "res://Items/Common/Watermelon/Watermelon.tscn"
+var test_item_4 = "res://Items/Common/Banana/Banana.tscn"
+var test_item_5 = "res://Items/Common/Strawberry/Strawberry.tscn"
+var test_item_6 = "res://Items/Uncommon/Cucumber/Cucumber.tscn"
 
 
 func start_new_run(_player : Player):

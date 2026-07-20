@@ -2,7 +2,7 @@
 extends Item
 class_name Strawberry
 
-var damage_buff : float = 0.25
+var damage_buff : float = 0.75
 var accuracy_buff : float = 0.005
 
 func _on_body_entered(_body) -> void:

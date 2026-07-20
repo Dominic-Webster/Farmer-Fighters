@@ -114,6 +114,7 @@ var boomerang : bool = false
 var bounce : int = 0
 var spiral : bool = false
 var eggplant : int = 0
+var homing : bool = false
 var piercing : bool = false
 var dual_shot : bool = false
 var tri_shot : bool = false
@@ -218,6 +219,7 @@ func load_data() -> void:
 	bounce = data.bounce
 	spiral = data.spiral
 	eggplant = data.eggplant
+	homing = data.homing
 	piercing = data.piercing
 	dual_shot = data.dual_shot
 	tri_shot = data.tri_shot
