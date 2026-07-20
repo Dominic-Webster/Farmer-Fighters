@@ -345,25 +345,24 @@ func shoot(direction: Vector2):
 		can_shoot = false
 		
 		# Accuracy
-		direction.x += randf_range(accuracy.x, accuracy.y)
-		direction.y += randf_range(accuracy.x, accuracy.y)
-		
-		if tri_shot:
-			spawn_bullet(direction)
-			spawn_bullet(create_offset(direction, -1))
-			spawn_bullet(create_offset(direction, 1))
-		else:
-			spawn_bullet(direction)
+		# Determine shot directions based on unlocked shot types
+		var shot_count = get_shot_count()
+		var dirs = get_shot_directions(direction, shot_count)
+		for bdir in dirs:
+			var d = bdir
+			# Accuracy per bullet
+			d.x += randf_range(accuracy.x, accuracy.y)
+			d.y += randf_range(accuracy.x, accuracy.y)
+			spawn_bullet(d)
 		
 		if backshot:
 			direction = -direction
-			
-			if tri_shot:
-				spawn_bullet(direction)
-				spawn_bullet(create_offset(direction, -1))
-				spawn_bullet(create_offset(direction, 1))
-			else:
-				spawn_bullet(direction)
+			var back_dirs = get_shot_directions(direction, get_shot_count())
+			for bdir in back_dirs:
+				var bd = bdir
+				bd.x += randf_range(accuracy.x, accuracy.y)
+				bd.y += randf_range(accuracy.x, accuracy.y)
+				spawn_bullet(bd)
 		
 		timer.wait_time = fire_rate
 		timer.start()
@@ -401,68 +400,63 @@ func spawn_bullet(direction: Vector2) -> void:
 	RunManager.current_room_instance.add_child(bullet)
 
 
+func get_shot_count() -> int:
+	if five_shot:
+		return 5
+	if quad_shot:
+		return 4
+	if tri_shot:
+		return 3
+	if dual_shot:
+		return 2
+	return 1
+
+
+func get_shot_directions(direction: Vector2, count: int) -> Array:
+	var dirs : Array = []
+	if direction == Vector2.ZERO:
+		dirs.append(direction)
+		return dirs
+
+	for i in range(count):
+		var idx := float(i) - float(count - 1) / 2.0
+		var angle_deg := idx * tri_shot_spread_degrees
+		dirs.append(direction.rotated(deg_to_rad(angle_deg)).normalized())
+
+	return dirs
+
+
 func eggplant_shoot(level : int) -> void:
 	can_shoot = false
-	var amount : int
-	if level == 1:
-		amount = 4
-	else:
-		amount = 8
-	
+	var amount : int = 4 if level == 1 else 8
+
 	for i in range(amount):
-		var bullet
-		match current_bullet:
-			Bullets.TOMATO:
-				bullet = tomato_bullet.instantiate()
-			Bullets.GRAPE:
-				bullet = grape_bullet.instantiate()
-			Bullets.BANANA:
-				bullet = banana_bullet.instantiate()
-			Bullets.PLANTAIN:
-				bullet = plantain_bullet.instantiate()
-			Bullets.CABBAGE:
-				bullet = cabbage_bullet.instantiate()
-			Bullets.CORN:
-				bullet = corn_bullet.instantiate()
-			Bullets.POTATO:
-				bullet = potato_bullet.instantiate()
-			Bullets.PEACH:
-				bullet = peach_bullet.instantiate()
-			Bullets.STRAWBERRY:
-				bullet = strawberry_bullet.instantiate()
-			Bullets.WATERMELON:
-				bullet = watermelon_bullet.instantiate()
-		
-		bullet.global_position = shoot_point.global_position
-		
+		var base_dir := Vector2.ZERO
 		match i:
 			0:
-				bullet.direction = Vector2.UP
+				base_dir = Vector2.UP
 			1:
-				bullet.direction = Vector2.RIGHT
+				base_dir = Vector2.RIGHT
 			2:
-				bullet.direction = Vector2.DOWN
+				base_dir = Vector2.DOWN
 			3:
-				bullet.direction = Vector2.LEFT
+				base_dir = Vector2.LEFT
 			4:
-				bullet.direction = Vector2(1, 1).normalized()
+				base_dir = Vector2(1, 1).normalized()
 			5:
-				bullet.direction = Vector2(1, -1).normalized()
+				base_dir = Vector2(1, -1).normalized()
 			6:
-				bullet.direction = Vector2(-1, -1).normalized()
+				base_dir = Vector2(-1, -1).normalized()
 			7:
-				bullet.direction = Vector2(-1, 1).normalized()
-		# Accuracy
-		bullet.direction.x += randf_range(accuracy.x, accuracy.y)
-		bullet.direction.y += randf_range(accuracy.x, accuracy.y)
-		
-		if tri_shot:
-			spawn_bullet(bullet.direction)
-			spawn_bullet(create_offset(bullet.direction, -1))
-			spawn_bullet(create_offset(bullet.direction, 1))
-		else:
-			spawn_bullet(bullet.direction)
-	
+				base_dir = Vector2(-1, 1).normalized()
+
+		var dirs = get_shot_directions(base_dir, get_shot_count())
+		for d in dirs:
+			var dd = d
+			dd.x += randf_range(accuracy.x, accuracy.y)
+			dd.y += randf_range(accuracy.x, accuracy.y)
+			spawn_bullet(dd)
+
 	timer.wait_time = fire_rate
 	timer.start()
 	await timer.timeout
