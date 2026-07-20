@@ -268,7 +268,10 @@ func _handle_enemy_hit(area: Area2D) -> void:
 		if not _is_returning:
 			_update_target()
 
-	if piercing or bounce > 0 or boomerang or spiral:
+	#if piercing or bounce > 0 or boomerang or spiral:
+		#return
+	
+	if piercing:
 		return
 
 	end_bullet()
@@ -285,9 +288,9 @@ func _bounce_from_wall(wall_name: String) -> void:
 		"Left", "Right":
 			new_direction.x = -new_direction.x
 			new_direction = new_direction.rotated(-angle_offset)
-		#"Crate", "Crate2", "Crate3":
-			#new_direction *= -1
-			#new_direction = new_direction.rotated(-angle_offset)
+		"Crate", "Crate2", "Crate3":
+			new_direction *= -1
+			new_direction = new_direction.rotated(-angle_offset)
 		_:
 			new_direction *= -1
 			new_direction = new_direction.rotated(-angle_offset)

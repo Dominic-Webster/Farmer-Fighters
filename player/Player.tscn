@@ -40,7 +40,7 @@ shape = SubResource("RectangleShape2D_ulp21")
 [node name="Timer" type="Timer" parent="." unique_id=2064562530]
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=615748774]
-collision_mask = 12
+collision_mask = 524
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1755343782]
 position = Vector2(0, 32)

@@ -483,7 +483,7 @@ func create_offset(dir : Vector2, value : int) -> Vector2:
 
 
 func _on_hurt_box_area_entered(area) -> void:
-	if area.is_in_group("enemy") or area.is_in_group("enemy_bullet"):
+	if area.is_in_group("enemy") or area.is_in_group("enemy_bullet") or area.is_in_group("hazard"):
 		var dir = (global_position - area.global_position).normalized()
 		knockback_velocity = dir * knockback_strength
 		

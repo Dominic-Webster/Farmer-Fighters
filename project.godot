@@ -168,6 +168,7 @@ back={
 2d_physics/layer_7="Props"
 2d_physics/layer_8="PushArea"
 2d_physics/layer_9="Companion"
+2d_physics/layer_10="Hazards"
 
 [physics]
 

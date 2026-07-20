@@ -29,7 +29,7 @@ var player_damaged_this_floor : bool = false
 
 
 # Testing
-var test_item_1 = "res://Items/Common/Portobello/Portobello.tscn"
+var test_item_1 = "res://Items/Common/Fertilizer/Fertilizer.tscn"
 var test_item_2 = "res://Items/Common/Eggplant/Eggplant.tscn"
 var test_item_3 = "res://Items/Common/Watermelon/Watermelon.tscn"
 var test_item_4 = "res://Items/Common/Banana/Banana.tscn"
