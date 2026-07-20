@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://dina1dtady2h2"]
+
+[ext_resource type="Script" uid="uid://bx2w2p04vl6lr" path="res://Enemies/Floor3/Candy_Corn/candy_corn.gd" id="1_2iy21"]
+[ext_resource type="Resource" uid="uid://c4fsqkja2p8ql" path="res://Enemies/Floor3/Candy_Corn/candy_corn.tres" id="2_hf2tf"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_cg62a"]
+[ext_resource type="Texture2D" uid="uid://bud7eew0vuw0w" path="res://Enemies/Floor3/Candy_Corn/Candy_Corn.png" id="4_xq6ed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wemoi"]
+size = Vector2(69, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q64cm"]
+size = Vector2(72, 97)
+
+[sub_resource type="Animation" id="Animation_2iy21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hf2tf"]
+resource_name = "build_up"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 7), Vector2(9, 9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xq6ed"]
+resource_name = "charge"
+length = 0.16667001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(9, 9), Vector2(7, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_q64cm"]
+resource_name = "die"
+length = 0.46667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_wemoi"]
+resource_name = "move"
+length = 0.93333673
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.7, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.08726646259971647, 0.0, 0.08726646259971647, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q64cm"]
+_data = {
+&"RESET": SubResource("Animation_2iy21"),
+&"build_up": SubResource("Animation_hf2tf"),
+&"charge": SubResource("Animation_xq6ed"),
+&"die": SubResource("Animation_q64cm"),
+&"move": SubResource("Animation_wemoi")
+}
+
+[node name="CandyCorn" type="CharacterBody2D" unique_id=1226932169]
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_2iy21")
+enemy_data = ExtResource("2_hf2tf")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1252719575]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 50)
+scale = Vector2(3, 3)
+texture = ExtResource("3_cg62a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891934141]
+self_modulate = Color(1, 1, 1, 0.8627451)
+scale = Vector2(7, 7)
+texture = ExtResource("4_xq6ed")
+hframes = 3
+vframes = 4
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1042546436]
+position = Vector2(-1.5, 33.5)
+shape = SubResource("RectangleShape2D_wemoi")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=853728641]
+position = Vector2(1, 0)
+collision_layer = 4
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=638886840]
+position = Vector2(-1, 5.5)
+shape = SubResource("RectangleShape2D_q64cm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1909410684]
+libraries/ = SubResource("AnimationLibrary_q64cm")
+autoplay = &"move"
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
