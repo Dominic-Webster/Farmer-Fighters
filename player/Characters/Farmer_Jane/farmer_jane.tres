@@ -7,10 +7,9 @@
 script = ExtResource("1_vu45l")
 name = "Farmer Jane"
 spritesheet = ExtResource("2_gw0v5")
-num_hearts = 4
 damage = 3.0
 damage_mult = 1.5
-move_speed = 375.0
+move_speed = 350.0
 fire_rate = 1.2
 bullet_speed = 650.0
 accuracy = Vector2(-0.03, 0.03)

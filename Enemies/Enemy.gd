@@ -80,8 +80,17 @@ func die():
 
 
 func _on_hurt_box_area_entered(area):
-	if area.is_in_group("companion"):
-		take_damage(area.get_parent().damage, area.global_position)
+	if area.is_in_group("companion") or area.is_in_group("comp_bullet"):
+		var damage_amount: float = 0.0
+		var damage_source = area
+
+		if "damage" in damage_source:
+			damage_amount = damage_source.damage
+		elif damage_source.get_parent() != null and "damage" in damage_source.get_parent():
+			damage_amount = damage_source.get_parent().damage
+
+		if damage_amount > 0:
+			take_damage(damage_amount, area.global_position)
 
 
 func flash_red():

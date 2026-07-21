@@ -109,6 +109,8 @@ func load_enemies(_player_spawn : String) -> void:
 			return
 	
 	var enemy_limit = randi_range(1, 4)
+	if RunManager.current_floor > 3:
+		enemy_limit += 1
 	
 	var enemy_pool = get_enemy_pool()
 	
