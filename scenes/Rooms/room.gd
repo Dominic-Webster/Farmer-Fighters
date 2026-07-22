@@ -12,6 +12,7 @@ class_name Room
 @onready var bullet_bounds : Node2D = $BulletBounds
 
 var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
+const PICKUP_SPAWN_OFFSET := Vector2(0, -48)
 
 var enemy_count : int = 0
 var _room_persistent_spawn_ids := {
@@ -211,7 +212,7 @@ func spawn_persistent_object(pos: Vector2i, spawn_data: Dictionary) -> void:
 
 	var instance = scene.instantiate()
 	var spawn_position = spawn_data.get("position", player_spawn_c.global_position)
-	instance.global_position = spawn_position
+	instance.global_position = spawn_position + PICKUP_SPAWN_OFFSET
 	call_deferred("add_child", instance)
 
 	if instance.has_signal("picked_up") and spawn_data.has("id"):
@@ -539,14 +540,13 @@ func spawn_elevator_at_center():
 	var center = viewport.get_visible_rect().size / 2
 	elevator.global_position = center
 	elevator.load_in()
-	await get_tree().process_frame # Ensure elevator is in scene tree
-	await elevator.lower()
-	# Save elevator state for persistence
 	var pos = RunManager.current_room
 	var state = MapGenerationManager.room_states.get(pos, {})
 	state["elevator_present"] = true
 	state["elevator_position"] = elevator.global_position
 	MapGenerationManager.room_states[pos] = state
+	await get_tree().process_frame # Ensure elevator is in scene tree
+	await elevator.lower()
 
 
 func spawn_random_item(spawn_position: Vector2) -> void:
@@ -569,7 +569,7 @@ func spawn_random_item(spawn_position: Vector2) -> void:
 		var item_scene = load(scene_path)
 		var item_instance = item_scene.instantiate()
 		add_child(item_instance)
-		item_instance.global_position = spawn_position
+		item_instance.global_position = spawn_position + PICKUP_SPAWN_OFFSET
 
 
 # Frees all enemy bullets in the scene
