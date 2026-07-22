@@ -121,6 +121,18 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SeedLabel" type="Label" parent="." unique_id=2142985921]
+process_mode = 3
+layout_mode = 0
+offset_left = 424.0
+offset_top = 203.0
+offset_right = 1484.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 80
+text = "Seed: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=186386564]
 process_mode = 3
 layout_mode = 0

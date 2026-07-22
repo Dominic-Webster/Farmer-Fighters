@@ -8,6 +8,7 @@ var run_save : RunSave = RunSave.new()
 @onready var menu_button : Button = $Buttons/Main_Menu
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var label : Label = $Label
+@onready var seed_label : Label = $SeedLabel
 
 
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 func show_menu(_title : String) -> void:
 	if _title != "":
 		label.text = _title
+	seed_label.text = "Seed: " + str(RunManager.run_seed)
 	visible = true
 	anim.play("blur")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
