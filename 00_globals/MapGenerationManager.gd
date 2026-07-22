@@ -28,6 +28,7 @@ func create_new_map() -> void:
 	dungeon.clear()
 	_branch_candidates.clear()
 	RunManager.room_history.clear()
+	_start = Vector2i(-1, -1)
 	
 	_initialize_dungeon()
 	_place_entrance()
@@ -50,9 +51,9 @@ func _initialize_dungeon() -> void:
 
 func _place_entrance() -> void:
 	if _start.x < 0 or _start.x >= _dimensons.x:
-		_start.x = randi_range(0, _dimensons.x - 1)
+		_start.x = RunManager.rng.randi_range(0, _dimensons.x - 1)
 	if _start.y < 0 or _start.y >= _dimensons.y:
-		_start.y = randi_range(0, _dimensons.y - 1)
+		_start.y = RunManager.rng.randi_range(0, _dimensons.y - 1)
 	dungeon[_start.x][_start.y] = "S"
 
 
@@ -62,7 +63,7 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 	
 	var current : Vector2i = from
 	var direction : Vector2i
-	match randi_range(0, 3):
+	match RunManager.rng.randi_range(0, 3):
 		0:
 			direction = Vector2i.UP
 		1:
@@ -88,9 +89,9 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 					if marker == "C":
 						dungeon[current.x][current.y] = "B"
 					else:
-						if randi_range(1, 20) == 1:
+						if RunManager.rng.randi_range(1, 20) == 1:
 							dungeon[current.x][current.y] = marker
-						elif randi_range(1, 4) == 1:
+						elif RunManager.rng.randi_range(1, 4) == 1:
 							dungeon[current.x][current.y] = "M"
 						else:
 							dungeon[current.x][current.y] = "T"
@@ -107,15 +108,15 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 
 
 func _generate_branches() -> void:
-	var max_branches : int = randi_range(_branches.x, _branches.y)
-	if randi_range(1, 4) == 1:
+	var max_branches : int = RunManager.rng.randi_range(_branches.x, _branches.y)
+	if RunManager.rng.randi_range(1, 4) == 1:
 		max_branches += 1
 	var branches_created : int = 0
 	var candidate : Vector2i
 	
 	while branches_created < max_branches and _branch_candidates.size():
-		candidate = _branch_candidates[randi_range(0, _branch_candidates.size() - 1)]
-		if _generate_path(candidate, randi_range(_branch_length.x, _branch_length.y), str(branches_created + 1)):
+		candidate = _branch_candidates[RunManager.rng.randi_range(0, _branch_candidates.size() - 1)]
+		if _generate_path(candidate, RunManager.rng.randi_range(_branch_length.x, _branch_length.y), str(branches_created + 1)):
 			branches_created += 1
 		else:
 			_branch_candidates.erase(candidate)

@@ -31,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_play_pressed() -> void:
+	RunSave.new().clear_save()
 	RunManager.player_data = selected_data
 	get_tree().change_scene_to_file("res://scenes/00_Main_Game/MainGame.tscn")
 

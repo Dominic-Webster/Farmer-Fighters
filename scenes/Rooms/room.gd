@@ -108,7 +108,7 @@ func load_enemies(_player_spawn : String) -> void:
 		MapGenerationManager.dungeon[RunManager.current_room.x][RunManager.current_room.y] == "M"):
 			return
 	
-	var enemy_limit = randi_range(1, 4)
+	var enemy_limit = RunManager.rng.randi_range(1, 4)
 	if RunManager.current_floor > 3:
 		enemy_limit += 1
 	
@@ -120,18 +120,19 @@ func load_enemies(_player_spawn : String) -> void:
 	
 	var spawn_points = get_spawn_points(_player_spawn)
 	for spawn in spawn_points:
-		if randi_range(1, 3) == 1 and enemy_count < enemy_limit:
-			var scene_path = enemy_pool[randi() % enemy_pool.size()]
+		if RunManager.rng.randi_range(1, 3) == 1 and enemy_count < enemy_limit:
+			var scene_path = enemy_pool[RunManager.rng.randi() % enemy_pool.size()]
 			var scene = load(scene_path)
 			var enemy = scene.instantiate()
 			enemy.global_position = spawn.global_position
-			add_child(enemy)
-			enemy_count += enemy.weight
-			enemy.died.connect(func(): _on_enemy_died(enemy))
+			if enemy_count + enemy.weight <= enemy_limit:
+				add_child(enemy)
+				enemy_count += enemy.weight
+				enemy.died.connect(func(): _on_enemy_died(enemy))
 	
 	# load one enemy just in case
 	if enemy_count == 0 and spawn_points.size() > 0:
-		var scene_path = enemy_pool[randi() % enemy_pool.size()]
+		var scene_path = enemy_pool[RunManager.rng.randi() % enemy_pool.size()]
 		var scene = load(scene_path)
 		var enemy = scene.instantiate()
 		enemy.global_position = spawn_points[0].global_position
@@ -257,8 +258,10 @@ func load_boss(_player_spawn : String) -> void:
 		return
 	
 	var spawn_points = get_spawn_points(_player_spawn)
-	var spawn = randi_range(0, spawn_points.size() - 1)
-	var scene_path = boss_pool[randi() % boss_pool.size()]
+	if spawn_points.is_empty():
+		spawn_points = [player_spawn_c]
+	var spawn = RunManager.rng.randi_range(0, spawn_points.size() - 1)
+	var scene_path = boss_pool[RunManager.rng.randi() % boss_pool.size()]
 	var scene = load(scene_path)
 	var boss = scene.instantiate()
 	boss.global_position = spawn_points[spawn].global_position
@@ -274,7 +277,7 @@ func load_miniboss(_player_spawn : String) -> void:
 		print("No Miniboss Pool")
 		return
 
-	var scene_path = miniboss_pool[randi() % miniboss_pool.size()]
+	var scene_path = miniboss_pool[RunManager.rng.randi() % miniboss_pool.size()]
 	var scene = load(scene_path)
 	var miniboss = scene.instantiate()
 	miniboss.global_position = player_spawn_c.global_position
@@ -326,7 +329,7 @@ func _on_enemy_died(enemy : Enemy):
 			var luck : int = 1
 			if player != null and "luck" in player:
 				luck = player.luck
-			var roll = randi_range(1, 25)
+			var roll = RunManager.rng.randi_range(1, 25)
 			if roll <= luck:
 				var pickup_scene = get_random_pickup_scene()
 				if pickup_scene:
@@ -379,7 +382,7 @@ func get_miniboss_reward_item_scene() -> String:
 	if pool.size() == 0:
 		return ""
 
-	return pool[randi() % pool.size()]
+	return pool[RunManager.rng.randi() % pool.size()]
 
 
 # Helper to get a random pickup scene from pickup_pool.json
@@ -393,7 +396,7 @@ func get_random_pickup_scene():
 	var pool = data["common"]
 	if pool.size() == 0:
 		return null
-	var item_path = pool[randi() % pool.size()]
+	var item_path = pool[RunManager.rng.randi() % pool.size()]
 	return load(item_path)
 
 
@@ -502,16 +505,19 @@ func get_random_item_scene():
 	var file = FileAccess.open("res://Data/item_pool.json", FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	var pool
-	if randi_range(1, 30) + RunManager.player.luck < 25:
+	if RunManager.rng.randi_range(1, 30) + RunManager.player.luck < 25:
 		pool = data["common"]
 	else:
 		pool = data["uncommon"]
-	var item_path = pool[randi() % pool.size()]
+	var item_path = pool[RunManager.rng.randi() % pool.size()]
 	return load(item_path)
 
 
 # Returns the spawn points for the given entry direction ("U", "R", "D", "L")
 func get_spawn_points(entry_dir: String) -> Array:
+	if entry_dir == "C":
+		return [player_spawn_c]
+
 	var pool_name = "SpawnPool_"
 	match entry_dir:
 		"U": pool_name += "Up"
@@ -521,7 +527,7 @@ func get_spawn_points(entry_dir: String) -> Array:
 		_: return []
 	if spawn_pools.has_node(pool_name):
 		return spawn_pools.get_node(pool_name).get_children()
-	return []
+	return [player_spawn_c]
 
 
 func spawn_elevator_at_center():
@@ -545,12 +551,12 @@ func spawn_elevator_at_center():
 
 func spawn_random_item(spawn_position: Vector2) -> void:
 	var scene_path = ""
-	var rng = randi() % 75
-	if rng < RunManager.player.luck:
+	var roll = RunManager.rng.randi() % 75
+	if roll < RunManager.player.luck:
 		scene_path = ItemManager.get_random_item("rare")
 	else:
-		rng = randi() % 50
-		if rng < RunManager.player.luck:
+		roll = RunManager.rng.randi() % 50
+		if roll < RunManager.player.luck:
 			scene_path = ItemManager.get_random_item("uncommon")
 		else:
 			scene_path = ItemManager.get_random_item("common")

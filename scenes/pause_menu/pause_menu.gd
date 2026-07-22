@@ -1,6 +1,8 @@
 extends Control
 class_name PauseMenu
 
+var run_save : RunSave = RunSave.new()
+
 @onready var resume_button : Button = $Buttons/Resume
 @onready var new_game_button : Button = $Buttons/New_Game
 @onready var exit_button : Button = $Buttons/Exit
@@ -41,6 +43,7 @@ func _on_resume_pressed():
 func _on_new_game_pressed():
 	hide_menu()
 	get_tree().paused = false
+	run_save.clear_save()
 	
 	RunManager.player.reset_player()
 	
@@ -48,11 +51,13 @@ func _on_new_game_pressed():
 
 
 func _on_exit_pressed():
+	run_save.save_run()
 	get_tree().quit()
 	#get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 
 
 func _on_menu_pressed():
+	run_save.save_run()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 

@@ -1,6 +1,8 @@
 # Game
 extends Node2D
 
+var run_save : RunSave = RunSave.new()
+
 @onready var room_parent : Node = $Room
 @onready var player : Player = $Player
 @onready var gui : PlayerHud = $PlayerHud
@@ -23,8 +25,17 @@ func _ready():
 	player.died.connect(_player_died)
 	player.visible = true
 	player.damaged.emit()
-	
-	RunManager.start_new_run(player)
+
+	if RunManager.pending_run_data.is_empty():
+		RunManager.start_new_run(player)
+	else:
+		if run_save.apply_run_data(RunManager.pending_run_data):
+			await RunManager.load_room(RunManager.current_room, RunManager.current_entry_dir)
+			gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
+		else:
+			RunManager.start_new_run(player)
+
+	RunManager.pending_run_data.clear()
 	
 	pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
 

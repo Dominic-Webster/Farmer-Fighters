@@ -6,6 +6,9 @@ var difficulty : String
 @warning_ignore("unused_signal")
 signal ended
 
+var run_seed : int = 0
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 @export var room_parent : Node   # Assign this in your main scene
 
@@ -18,7 +21,9 @@ var player_data : PlayerData
 var player : Player
 var gui : PlayerHud = null
 var current_room : Vector2i = Vector2i(0, 0)
+var current_entry_dir : String = "C"
 var current_room_instance : Node = null
+var pending_run_data : Dictionary = {}
 
 var is_transitioning : bool = false
 var can_trigger_doors : bool = false
@@ -38,9 +43,15 @@ var test_item_6 = "res://Items/Uncommon/Cucumber/Cucumber.tscn"
 
 
 func start_new_run(_player : Player):
+	pending_run_data.clear()
 	
 	current_floor = 1
 	player_damaged_this_floor = false
+	
+	run_seed = int(Time.get_unix_time_from_system() * 1000000.0) ^ Time.get_ticks_usec()
+	#run_seed = 12345
+	rng.seed = run_seed
+	print("Run seed: ", run_seed)
 	
 	MapGenerationManager.create_new_map()
 	current_room = MapGenerationManager._start
@@ -53,7 +64,12 @@ func start_new_run(_player : Player):
 	load_room(current_room, "C")
 
 
+func start_loaded_run(run_data: Dictionary) -> void:
+	pending_run_data = run_data.duplicate(true)
+
+
 func load_room(pos: Vector2i, entry_dir: String):
+	current_entry_dir = entry_dir
 	
 	# Remove old room and free enemy bullets
 	if current_room_instance:
@@ -93,7 +109,7 @@ func load_room(pos: Vector2i, entry_dir: String):
 	if room_history.has(pos_key):
 		scene_path = room_history[pos_key]
 	else:
-		scene_path = options[randi() % options.size()]
+		scene_path = options[rng.randi() % options.size()]
 		room_history[pos_key] = scene_path
 	var scene = load(scene_path)
 	var room = scene.instantiate()

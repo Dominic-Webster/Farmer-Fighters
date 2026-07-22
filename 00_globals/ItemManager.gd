@@ -18,7 +18,7 @@ func _ready() -> void:
 # Get a random item from the default pool
 func get_default_item() -> String:
 	if default_pool.size() > 0:
-		return default_pool[randi() % default_pool.size()]
+		return default_pool[RunManager.rng.randi() % default_pool.size()]
 	return ""
 
 
@@ -31,7 +31,7 @@ func load_item_pools():
 
 func get_random_item(rarity : String) -> String:
 	if item_pools.has(rarity) and item_pools[rarity].size() > 0:
-		var idx = randi() % item_pools[rarity].size()
+		var idx = RunManager.rng.randi() % item_pools[rarity].size()
 		var item = item_pools[rarity][idx]
 		item_pools[rarity].remove_at(idx)
 		return item

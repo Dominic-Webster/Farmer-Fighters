@@ -31,10 +31,16 @@ offset_bottom = 863.0
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Play" type="Button" parent="Buttons" unique_id=741895842]
+[node name="New_Game" type="Button" parent="Buttons" unique_id=741895842]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "PLAY"
+text = "NEW GAME"
+
+[node name="Continue" type="Button" parent="Buttons" unique_id=271720641]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "CONTINUE"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1515949391]
 layout_mode = 2
