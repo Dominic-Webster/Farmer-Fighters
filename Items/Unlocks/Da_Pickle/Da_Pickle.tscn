@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b8s64mkw1jfp1"]
 
-[ext_resource type="Script" uid="uid://futot16tnerc" path="res://Items/Uncommon/Da_Pickle/da_pickle.gd" id="1_mmgsc"]
+[ext_resource type="Script" uid="uid://futot16tnerc" path="res://Items/Unlocks/Da_Pickle/da_pickle.gd" id="1_mmgsc"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_htqqw"]
-[ext_resource type="Texture2D" uid="uid://dbbkeono4cyo8" path="res://Items/Uncommon/Da_Pickle/pickle.png" id="3_33i8v"]
+[ext_resource type="Texture2D" uid="uid://dbbkeono4cyo8" path="res://Items/Unlocks/Da_Pickle/pickle.png" id="3_33i8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c1e3"]
 size = Vector2(97, 103.5)

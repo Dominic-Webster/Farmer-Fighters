@@ -503,15 +503,16 @@ func spawn_room_treasure(pos: Vector2i) -> void:
 
 
 func get_random_item_scene():
-	var file = FileAccess.open("res://Data/item_pool.json", FileAccess.READ)
-	var data = JSON.parse_string(file.get_as_text())
-	var pool
 	if RunManager.rng.randi_range(1, 30) + RunManager.player.luck < 25:
-		pool = data["common"]
+		var common_item_path = ItemManager.get_random_item("common")
+		if common_item_path != "":
+			return load(common_item_path)
 	else:
-		pool = data["uncommon"]
-	var item_path = pool[RunManager.rng.randi() % pool.size()]
-	return load(item_path)
+		var uncommon_item_path = ItemManager.get_random_item("uncommon")
+		if uncommon_item_path != "":
+			return load(uncommon_item_path)
+
+	return null
 
 
 # Returns the spawn points for the given entry direction ("U", "R", "D", "L")

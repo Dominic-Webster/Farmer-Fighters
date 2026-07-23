@@ -1,3 +1,13 @@
 {
-	"brocolli_picked_up" : 0
+	"version": 1,
+	"pickup_counts": {
+		"broccoli": 0,
+		"salsa": 0,
+		"zucchini": 0
+	},
+	"item_unlocks": {
+		"cauliflower": false,
+		"da pickle": false,
+		"tomatillo": false
+	}
 }

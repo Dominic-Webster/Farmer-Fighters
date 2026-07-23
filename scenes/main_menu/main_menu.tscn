@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://26crlnyqwmbm"]
 
 [ext_resource type="Script" uid="uid://shtxl7hqv8gx" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_0ebjn"]
 
 [node name="MainMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -11,16 +12,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fsom3")
 
-[node name="Label" type="Label" parent="." unique_id=413630640]
-layout_mode = 0
-offset_left = 430.0
-offset_top = 100.0
-offset_right = 1490.0
-offset_bottom = 265.0
-theme_override_font_sizes/font_size = 120
-text = "FARMER FIGHTERS"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=389036936]
+self_modulate = Color(0.67206675, 0.67206675, 0.67206675, 1)
+scale = Vector2(8, 8)
+texture = ExtResource("2_0ebjn")
+centered = false
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=913419990]
 layout_mode = 0
@@ -42,7 +38,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "CONTINUE"
 
-[node name="Exit" type="Button" parent="Buttons" unique_id=1515949391]
+[node name="Back" type="Button" parent="Buttons" unique_id=1515949391]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
-text = "EXIT"
+text = "BACK"

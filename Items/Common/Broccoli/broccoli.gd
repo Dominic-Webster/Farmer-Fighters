@@ -11,5 +11,9 @@ func _on_body_entered(_body) -> void:
 		desc = "+ Damage"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.damage += damage_boost
+		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("broccoli")
+		
 		queue_free()
 		picked_up.emit(item_name, desc)

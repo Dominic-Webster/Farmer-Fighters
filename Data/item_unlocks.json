@@ -1,0 +1,26 @@
+{
+	"cauliflower": {
+		"display_name": "Cauliflower",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "broccoli",
+		"required_pickups": 3,
+		"rarity": "common",
+		"scene_path": "res://Items/Unlocks/Cauliflower/Cauliflower.tscn"
+	},
+	"tomatillo": {
+		"display_name": "Tomatillo",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "zucchini",
+		"required_pickups": 5,
+		"rarity": "common",
+		"scene_path": "res://Items/Unlocks/Tomatillo/Tomatillo.tscn"
+	},
+	"da pickle": {
+		"display_name": "DA PICKLE",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "salsa",
+		"required_pickups": 3,
+		"rarity": "uncommon",
+		"scene_path": "res://Items/Unlocks/Da_Pickle/Da_Pickle.tscn"
+	}
+}

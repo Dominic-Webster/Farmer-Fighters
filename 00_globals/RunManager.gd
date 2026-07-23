@@ -34,12 +34,12 @@ var player_damaged_this_floor : bool = false
 
 
 # Testing
-var test_item_1 = "res://Items/Uncommon/Corn/Corn.tscn"
+var test_item_1 = "res://Items/Common/Broccoli/Broccoli.tscn"
 var test_item_2 = "res://Items/Common/Eggplant/Eggplant.tscn"
-var test_item_3 = "res://Items/Common/Tomatillo/Tomatillo.tscn"
-var test_item_4 = "res://Items/Common/Banana/Banana.tscn"
+var test_item_3 = "res://Items/Unlocks/Tomatillo/Tomatillo.tscn"
+var test_item_4 = "res://Items/Common/Salsa/Salsa.tscn"
 var test_item_5 = "res://Items/Common/Honeynut_Squash/Honeynut_Squash.tscn"
-var test_item_6 = "res://Items/Uncommon/Cucumber/Cucumber.tscn"
+var test_item_6 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
 
 
 func start_new_run(_player : Player):
@@ -204,9 +204,12 @@ func mark_room_cleared() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("view_stats"):
-		print_stats()
-	#else:
-		#load_item(event)
+		#print_stats()
+		if MetaManager != null:
+			MetaManager.reset_progress_to_base()
+			print("META RESET")
+	else:
+		load_item(event)
 
 
 func load_item(event: InputEvent) -> void:

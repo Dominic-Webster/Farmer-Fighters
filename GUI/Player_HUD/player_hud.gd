@@ -6,6 +6,10 @@ class_name PlayerHud
 @onready var item_info_name : Label = $Control/ItemInfo/ItemName
 @onready var item_info_desc : Label = $Control/ItemInfo/ItemDesc
 @onready var item_info_timer : Timer = $ItemInfoTimer
+@onready var unlock_info : Panel = $Control/UnlockInfo
+@onready var unlock_info_name : Label = $Control/UnlockInfo/Name
+@onready var unlock_info_desc : Label = $Control/UnlockInfo/Desc
+@onready var unlock_info_timer : Timer = $UnlockInfoTimer
 
 @export var heart_scene : PackedScene
 var hearts : Array[HeartGUI] = []
@@ -14,9 +18,13 @@ var hearts : Array[HeartGUI] = []
 
 func _ready():
 	item_info.visible = false
+	unlock_info.visible = false
 	item_info_timer.wait_time = 2.0
 	item_info_timer.one_shot = true
 	item_info_timer.timeout.connect(hide_item_info)
+	unlock_info_timer.wait_time = 3.0
+	unlock_info_timer.one_shot = true
+	unlock_info_timer.timeout.connect(hide_unlock_info)
 	# Remove any existing children
 	for child in health.get_children():
 		child.queue_free()
@@ -84,3 +92,14 @@ func show_item_info(iname : String, desc : String) -> void:
 
 func hide_item_info() -> void:
 	item_info.visible = false
+
+
+func show_unlock_info(iname : String, desc : String) -> void:
+	unlock_info_name.text = iname
+	unlock_info_desc.text = desc
+	unlock_info.visible = true
+	unlock_info_timer.start()
+
+
+func hide_unlock_info() -> void:
+	unlock_info.visible = false

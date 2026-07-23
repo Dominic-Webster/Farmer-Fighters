@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Farmer Fighters"
-run/main_scene="uid://26crlnyqwmbm"
+run/main_scene="uid://bad4udbl1y0oy"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RunManager="*uid://c4ju8dq2o4gso"
 MapGenerationManager="*uid://p4e5gin2ra4n"
 ItemManager="*uid://bqlnurde36j4"
+MetaManager="*res://00_globals/MetaManager.gd"
 
 [display]
 

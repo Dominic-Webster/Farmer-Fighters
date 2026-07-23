@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://i8kbefcfgjmt"]
 
-[ext_resource type="Script" uid="uid://cfkefntn2aa8" path="res://Items/Common/Tomatillo/tomatillo.gd" id="1_te1jy"]
+[ext_resource type="Script" uid="uid://cfkefntn2aa8" path="res://Items/Unlocks/Tomatillo/tomatillo.gd" id="1_te1jy"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_5nsf3"]
-[ext_resource type="Texture2D" uid="uid://dpecbjnco2tdc" path="res://Items/Common/Tomatillo/tomatillo.png" id="3_ke0v0"]
+[ext_resource type="Texture2D" uid="uid://dpecbjnco2tdc" path="res://Items/Unlocks/Tomatillo/tomatillo.png" id="3_ke0v0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qc6il"]
 size = Vector2(86, 101)

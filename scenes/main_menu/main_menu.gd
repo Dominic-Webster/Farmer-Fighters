@@ -5,24 +5,24 @@ var run_save : RunSave = RunSave.new()
 
 @onready var play_button : Button = $Buttons/New_Game
 @onready var continue_button : Button = $Buttons/Continue
-@onready var exit_button : Button = $Buttons/Exit
+@onready var back_button : Button = $Buttons/Back
 
 
 func _ready() -> void:
 	continue_button.visible = run_save.has_save()
 	play_button.pressed.connect(_on_play_pressed)
 	continue_button.pressed.connect(_on_continue_pressed)
-	exit_button.pressed.connect(_on_exit_pressed)
+	back_button.pressed.connect(_on_back_pressed)
 	play_button.mouse_entered.connect(_on_play_hovered)
 	continue_button.mouse_entered.connect(_on_continue_hovered)
-	exit_button.mouse_entered.connect(_on_exit_hovered)
+	back_button.mouse_entered.connect(_on_back_hovered)
 	
 	play_button.grab_focus()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/PLAY/play_menu.tscn")
 
 
 func _on_play_pressed():
@@ -46,9 +46,9 @@ func _on_continue_hovered() -> void:
 	continue_button.grab_focus()
 
 
-func _on_exit_pressed():
-	get_tree().quit()
+func _on_back_pressed():
+	get_tree().change_scene_to_file("res://scenes/PLAY/play_menu.tscn")
 
 
-func _on_exit_hovered() -> void:
-	exit_button.grab_focus()
+func _on_back_hovered() -> void:
+	back_button.grab_focus()

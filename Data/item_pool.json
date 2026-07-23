@@ -26,7 +26,6 @@
 		"res://Items/Common/Salsa/Salsa.tscn",
 		"res://Items/Common/Spinach/Spinach.tscn",
 		"res://Items/Common/Strawberry/Strawberry.tscn",
-		"res://Items/Common/Tomatillo/Tomatillo.tscn",
 		"res://Items/Common/Turnip/Turnip.tscn",
 		"res://Items/Common/Water/Water.tscn",
 		"res://Items/Common/Watermelon/Watermelon.tscn"
@@ -44,7 +43,6 @@
 		"res://Items/Uncommon/Mirror/Mirror.tscn",
 		"res://Items/Uncommon/Morrell/Morrell.tscn",
 		"res://Items/Uncommon/Onion/Onion.tscn",
-		"res://Items/Uncommon/Da_Pickle/Da_Pickle.tscn",
 		"res://Items/Uncommon/Plantain/Plantain.tscn",
 		"res://Items/Uncommon/Raspberry/Raspberry.tscn",
 		"res://Items/Uncommon/Scythe/Scythe.tscn",

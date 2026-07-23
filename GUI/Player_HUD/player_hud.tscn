@@ -53,4 +53,35 @@ theme_override_font_sizes/font_size = 25
 text = "Item Description"
 horizontal_alignment = 1
 
+[node name="UnlockInfo" type="Panel" parent="Control" unique_id=855968912]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 610.0
+offset_top = 135.0
+offset_right = 1310.0
+offset_bottom = 435.0
+
+[node name="Name" type="Label" parent="Control/UnlockInfo" unique_id=1710925582]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 683.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 50
+text = "Item Unlocked"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="Control/UnlockInfo" unique_id=862107640]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 103.0
+offset_right = 684.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 35
+text = "This Item"
+horizontal_alignment = 1
+
 [node name="ItemInfoTimer" type="Timer" parent="." unique_id=1960749794]
+
+[node name="UnlockInfoTimer" type="Timer" parent="." unique_id=1690788609]

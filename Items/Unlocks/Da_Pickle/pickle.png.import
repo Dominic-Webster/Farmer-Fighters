@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpecbjnco2tdc"
-path="res://.godot/imported/tomatillo.png-67f45d3f67f045cb4926e936c283887f.ctex"
+uid="uid://dbbkeono4cyo8"
+path="res://.godot/imported/pickle.png-2f40d8da5dc20f61f4ec25872311279c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Common/Tomatillo/tomatillo.png"
-dest_files=["res://.godot/imported/tomatillo.png-67f45d3f67f045cb4926e936c283887f.ctex"]
+source_file="res://Items/Unlocks/Da_Pickle/pickle.png"
+dest_files=["res://.godot/imported/pickle.png-2f40d8da5dc20f61f4ec25872311279c.ctex"]
 
 [params]
 
