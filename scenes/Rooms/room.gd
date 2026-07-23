@@ -315,6 +315,9 @@ func get_miniboss_pool() -> Array:
 
 
 func _on_enemy_died(enemy : Enemy):
+	if MetaManager != null:
+		MetaManager.record_enemy_kill()
+
 	enemy_count -= enemy.weight
 	
 	if enemy_count == 0:
@@ -503,14 +506,10 @@ func spawn_room_treasure(pos: Vector2i) -> void:
 
 
 func get_random_item_scene():
-	if RunManager.rng.randi_range(1, 30) + RunManager.player.luck < 25:
-		var common_item_path = ItemManager.get_random_item("common")
-		if common_item_path != "":
-			return load(common_item_path)
-	else:
-		var uncommon_item_path = ItemManager.get_random_item("uncommon")
-		if uncommon_item_path != "":
-			return load(uncommon_item_path)
+	var item_path := ItemManager.get_random_item_by_luck(RunManager.player.luck)
+
+	if item_path != "":
+		return load(item_path)
 
 	return null
 
@@ -551,20 +550,7 @@ func spawn_elevator_at_center():
 
 
 func spawn_random_item(spawn_position: Vector2) -> void:
-	var scene_path = ""
-	var roll = RunManager.rng.randi() % 75
-	if roll < RunManager.player.luck:
-		scene_path = ItemManager.get_random_item("rare")
-	else:
-		roll = RunManager.rng.randi() % 50
-		if roll < RunManager.player.luck:
-			scene_path = ItemManager.get_random_item("uncommon")
-		else:
-			scene_path = ItemManager.get_random_item("common")
-
-	# Fallback to default pool if all pools are empty
-	if scene_path == "":
-		scene_path = ItemManager.get_default_item()
+	var scene_path = ItemManager.get_random_item_by_luck(RunManager.player.luck, true)
 
 	if scene_path != "":
 		var item_scene = load(scene_path)

@@ -15,6 +15,20 @@
 		"rarity": "common",
 		"scene_path": "res://Items/Unlocks/Tomatillo/Tomatillo.tscn"
 	},
+	"pineapple": {
+		"display_name": "Pineapple",
+		"unlock_title": "Item Unlocked!",
+		"required_enemy_kills": 100,
+		"rarity": "rare",
+		"scene_path": "res://Items/Unlocks/Pineapple/Pineapple.tscn"
+	},
+	"cherry": {
+		"display_name": "Cherry",
+		"unlock_title": "Item Unlocked!",
+		"required_enemy_kills": 250,
+		"rarity": "rare",
+		"scene_path": "res://Items/Unlocks/Cherry/Cherry.tscn"
+	},
 	"da pickle": {
 		"display_name": "DA PICKLE",
 		"unlock_title": "Item Unlocked!",

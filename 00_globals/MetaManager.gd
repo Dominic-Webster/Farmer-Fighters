@@ -79,6 +79,15 @@ func record_item_pickup(item_id: String) -> void:
 	save_meta_data()
 
 
+func record_enemy_kill(amount: int = 1) -> void:
+	if amount <= 0:
+		return
+
+	meta_data["enemy_kills"] = int(meta_data.get("enemy_kills", 0)) + amount
+	_reconcile_unlocks(true)
+	save_meta_data()
+
+
 func is_item_unlocked(item_id: String) -> bool:
 	var item_unlocks: Dictionary = meta_data.get("item_unlocks", {})
 	return bool(item_unlocks.get(item_id, false))
@@ -125,14 +134,26 @@ func refresh_item_pools() -> void:
 
 func _reconcile_unlocks(show_notification: bool) -> void:
 	var pickup_counts: Dictionary = meta_data.get("pickup_counts", {})
+	var enemy_kills := int(meta_data.get("enemy_kills", 0))
 	for unlock_id in item_unlock_definitions.keys():
 		var unlock_definition = item_unlock_definitions.get(unlock_id, {})
 		var source_item := str(unlock_definition.get("source_item", ""))
 		var required_pickups = int(unlock_definition.get("required_pickups", 0))
-		if source_item == "" or required_pickups <= 0:
+		var required_enemy_kills = int(unlock_definition.get("required_enemy_kills", 0))
+
+		if required_pickups <= 0 and required_enemy_kills <= 0:
 			continue
 
-		if int(pickup_counts.get(source_item, 0)) >= required_pickups:
+		var meets_pickup_requirement := true
+		if required_pickups > 0:
+			if source_item == "":
+				meets_pickup_requirement = false
+			else:
+				meets_pickup_requirement = int(pickup_counts.get(source_item, 0)) >= required_pickups
+
+		var meets_kill_requirement := required_enemy_kills <= 0 or enemy_kills >= required_enemy_kills
+
+		if meets_pickup_requirement and meets_kill_requirement:
 			_set_item_unlocked(unlock_id, show_notification)
 
 
@@ -152,6 +173,7 @@ func _load_base_meta_data() -> Dictionary:
 	if file == null:
 		return {
 			"version": 1,
+			"enemy_kills": 0,
 			"pickup_counts": {},
 			"item_unlocks": {}
 		}
@@ -162,6 +184,7 @@ func _load_base_meta_data() -> Dictionary:
 	if typeof(parsed) != TYPE_DICTIONARY:
 		return {
 			"version": 1,
+			"enemy_kills": 0,
 			"pickup_counts": {},
 			"item_unlocks": {}
 		}
@@ -172,6 +195,7 @@ func _load_base_meta_data() -> Dictionary:
 func _normalize_meta_data(raw_meta: Dictionary) -> Dictionary:
 	var normalized := {
 		"version": int(raw_meta.get("version", 1)),
+		"enemy_kills": int(raw_meta.get("enemy_kills", 0)),
 		"pickup_counts": {},
 		"item_unlocks": {},
 	}
@@ -190,6 +214,7 @@ func _merge_meta_data(base_meta: Dictionary, saved_meta: Dictionary) -> Dictiona
 	var normalized_saved := _normalize_meta_data(saved_meta)
 
 	merged["version"] = int(normalized_saved.get("version", merged.get("version", 1)))
+	merged["enemy_kills"] = int(normalized_saved.get("enemy_kills", merged.get("enemy_kills", 0)))
 
 	var merged_pickup_counts: Dictionary = merged.get("pickup_counts", {})
 	for pickup_key in normalized_saved.get("pickup_counts", {}).keys():

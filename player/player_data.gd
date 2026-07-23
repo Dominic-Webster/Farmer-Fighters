@@ -56,6 +56,7 @@ enum Bullets {
 @export var bounce : int = 0
 @export var spiral : bool = false
 @export var eggplant : int = 0
+@export var cherry : bool = false
 @export var piercing : bool = false
 @export var homing : bool = false
 @export var dual_shot : bool = false

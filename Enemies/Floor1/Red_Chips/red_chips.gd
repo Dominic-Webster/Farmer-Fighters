@@ -79,6 +79,7 @@ func die():
 		anim.stop()
 		anim.play("die")
 		await anim.animation_finished
+		cherry_shot()
 		queue_free()
 
 

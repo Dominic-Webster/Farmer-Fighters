@@ -2,6 +2,8 @@
 extends Node
 
 const ITEM_POOL_PATH := "res://Data/item_pool.json"
+const RARE_ROLL_SIDES := 80
+const UNCOMMON_ROLL_SIDES := 50
 
 var default_pool = [
 	"res://Items/Broccoli/broccoli.tscn",
@@ -46,6 +48,26 @@ func get_random_item(rarity : String) -> String:
 		item_pools[rarity].remove_at(idx)
 		return item
 	return ""
+
+
+func get_random_item_by_luck(luck: int, use_default_fallback: bool = false) -> String:
+	var scene_path := ""
+	var roll = RunManager.rng.randi() % RARE_ROLL_SIDES
+	if roll < luck:
+		scene_path = get_random_item("rare")
+
+	if scene_path == "":
+		roll = RunManager.rng.randi() % UNCOMMON_ROLL_SIDES
+		if roll < luck:
+			scene_path = get_random_item("uncommon")
+
+	if scene_path == "":
+		scene_path = get_random_item("common")
+
+	if scene_path == "" and use_default_fallback:
+		scene_path = get_default_item()
+
+	return scene_path
 
 
 func add_item_to_pool(rarity : String, item : String) -> void:

@@ -118,3 +118,53 @@ func remove_status(status : String):
 			if status_effects.has(STATUS.SLOW):
 				status_effects.erase(STATUS.SLOW)
 				move_speed *= 2
+
+
+func cherry_shot() -> void:
+	if RunManager == null or RunManager.current_room_instance == null:
+		return
+	
+	if RunManager.player == null or RunManager.player.cherry == false:
+		return
+	
+	var cherry_bullet_scene: PackedScene = load("res://Bullets/Cherry_Bullet/cherry_bullet.tscn")
+	if cherry_bullet_scene == null:
+		push_warning("Failed to load cherry bullet scene")
+		return
+
+	var shot_count := _get_player_shot_count(RunManager.player)
+	var directions := [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	
+	for direction in directions:
+		var spread_directions := _get_spread_directions(direction, shot_count, RunManager.player.tri_shot_spread_degrees)
+		for spread_direction in spread_directions:
+			var player_bullet = cherry_bullet_scene.instantiate()
+			player_bullet.global_position = global_position
+			player_bullet.direction = spread_direction
+			RunManager.current_room_instance.add_child(player_bullet)
+
+
+func _get_player_shot_count(current_player: Player) -> int:
+	if current_player.five_shot:
+		return 5
+	if current_player.quad_shot:
+		return 4
+	if current_player.tri_shot:
+		return 3
+	if current_player.dual_shot:
+		return 2
+	return 1
+
+
+func _get_spread_directions(direction: Vector2, count: int, spread_degrees: float) -> Array[Vector2]:
+	var dirs: Array[Vector2] = []
+	if direction == Vector2.ZERO:
+		dirs.append(direction)
+		return dirs
+
+	for i in range(count):
+		var idx := float(i) - float(count - 1) / 2.0
+		var angle_deg := idx * spread_degrees
+		dirs.append(direction.rotated(deg_to_rad(angle_deg)).normalized())
+
+	return dirs

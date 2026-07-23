@@ -1,5 +1,6 @@
 {
 	"version": 1,
+	"enemy_kills": 0,
 	"pickup_counts": {
 		"broccoli": 0,
 		"salsa": 0,
@@ -7,7 +8,9 @@
 	},
 	"item_unlocks": {
 		"cauliflower": false,
+		"cherry": false,
 		"da pickle": false,
-		"tomatillo": false
+		"tomatillo": false,
+		"pineapple": false
 	}
 }

@@ -136,6 +136,7 @@ func serialize_player(player: Player) -> Dictionary:
 		"bounce": player.bounce,
 		"spiral": player.spiral,
 		"eggplant": player.eggplant,
+		"cherry": player.cherry,
 		"homing": player.homing,
 		"piercing": player.piercing,
 		"dual_shot": player.dual_shot,
@@ -189,6 +190,7 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.bounce = int(player_state.get("bounce", player.bounce))
 	player.spiral = bool(player_state.get("spiral", player.spiral))
 	player.eggplant = int(player_state.get("eggplant", player.eggplant))
+	player.cherry = bool(player_state.get("cherry", player.cherry))
 	player.homing = bool(player_state.get("homing", player.homing))
 	player.piercing = bool(player_state.get("piercing", player.piercing))
 	player.dual_shot = bool(player_state.get("dual_shot", player.dual_shot))

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cb17i0wgqhm01"]
+
+[ext_resource type="Script" uid="uid://5up256ti0xho" path="res://Bullets/bullet.gd" id="1_bfmq0"]
+[ext_resource type="Texture2D" uid="uid://cuefiionu3vst" path="res://Bullets/Cherry_Bullet/Cherry_Bullet.png" id="2_oxx53"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwr43"]
+radius = 12.0415945
+
+[sub_resource type="Animation" id="Animation_oxx53"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tpukt"]
+resource_name = "spin"
+length = 0.5333367
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707963267948966, 3.141592653589793, 4.71238898038469, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ts0kq"]
+_data = {
+&"RESET": SubResource("Animation_oxx53"),
+&"spin": SubResource("Animation_tpukt")
+}
+
+[node name="CherryBullet" type="Area2D" unique_id=549408345]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_bfmq0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=157192279]
+z_index = 200
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_oxx53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=297469633]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_hwr43")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=151592783]
+rect = Rect2(-6, -5, 12, 13)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1325319389]
+libraries/ = SubResource("AnimationLibrary_ts0kq")
+autoplay = &"spin"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
