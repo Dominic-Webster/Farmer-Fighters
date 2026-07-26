@@ -34,7 +34,7 @@ func _on_body_entered(_body) -> void:
 		
 		RunManager.player.num_hearts += 1
 		RunManager.player.current_health = RunManager.player.get_max_health()
-		RunManager.player.damaged.emit()
+		RunManager.player.healed.emit()
 		
 		queue_free()
 		picked_up.emit(item_name, desc)

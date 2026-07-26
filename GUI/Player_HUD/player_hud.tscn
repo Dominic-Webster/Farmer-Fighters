@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dpjw6cni41odq" path="res://GUI/Player_HUD/player_hud.gd" id="1_xhte5"]
 [ext_resource type="PackedScene" uid="uid://dfubkg2426icd" path="res://GUI/Player_HUD/heart_gui.tscn" id="2_gian7"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_1pbxj"]
+[ext_resource type="FontFile" uid="uid://bi6bbssteihrw" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.otf" id="4_agyfd"]
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1867377868]
 script = ExtResource("1_xhte5")
@@ -38,7 +40,10 @@ offset_left = 20.0
 offset_top = 11.0
 offset_right = 413.0
 offset_bottom = 66.0
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_1pbxj")
+theme_override_font_sizes/font_size = 22
 text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -46,10 +51,11 @@ vertical_alignment = 1
 [node name="ItemDesc" type="Label" parent="Control/ItemInfo" unique_id=513845258]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 80.0
+offset_top = 94.0
 offset_right = 412.0
 offset_bottom = 208.0
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("4_agyfd")
+theme_override_font_sizes/font_size = 20
 text = "Item Description"
 horizontal_alignment = 1
 
@@ -67,7 +73,10 @@ offset_left = 20.0
 offset_top = 11.0
 offset_right = 683.0
 offset_bottom = 92.0
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("3_1pbxj")
+theme_override_font_sizes/font_size = 45
 text = "Item Unlocked"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,10 +84,13 @@ vertical_alignment = 1
 [node name="Desc" type="Label" parent="Control/UnlockInfo" unique_id=862107640]
 layout_mode = 0
 offset_left = 19.0
-offset_top = 103.0
+offset_top = 116.0
 offset_right = 684.0
 offset_bottom = 255.0
-theme_override_font_sizes/font_size = 35
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_1pbxj")
+theme_override_font_sizes/font_size = 25
 text = "This Item"
 horizontal_alignment = 1
 

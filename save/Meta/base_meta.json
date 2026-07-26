@@ -4,11 +4,13 @@
 	"pickup_counts": {
 		"broccoli": 0,
 		"salsa": 0,
+		"water": 0,
 		"zucchini": 0
 	},
 	"item_unlocks": {
 		"cauliflower": false,
 		"cherry": false,
+		"good_soil": false,
 		"da pickle": false,
 		"tomatillo": false,
 		"pineapple": false

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btxh5x5l88tyf" path="res://scenes/end_menu/end_menu.gd" id="1_duvpb"]
 [ext_resource type="Texture2D" uid="uid://jjrd3rxlwinh" path="res://scenes/end_menu/pause_box.png" id="2_at3tt"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_at3tt"]
 
 [sub_resource type="Animation" id="Animation_esln1"]
 length = 0.001
@@ -116,7 +117,10 @@ offset_left = 430.0
 offset_top = 100.0
 offset_right = 1490.0
 offset_bottom = 265.0
-theme_override_font_sizes/font_size = 120
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_font_sizes/font_size = 80
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -128,7 +132,10 @@ offset_left = 424.0
 offset_top = 203.0
 offset_right = 1484.0
 offset_bottom = 368.0
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_font_sizes/font_size = 40
 text = "Seed: "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -146,21 +153,39 @@ alignment = 1
 
 [node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
 process_mode = 3
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "NEW GAME"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_font_sizes/font_size = 60
+text = "New Game"
 
 [node name="Main_Menu" type="Button" parent="Buttons" unique_id=2002558602]
 process_mode = 3
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "RETURN TO MENU"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_font_sizes/font_size = 60
+text = "Return To Menu"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
 process_mode = 3
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "EXIT"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527086498]
 libraries/ = SubResource("AnimationLibrary_38a3a")

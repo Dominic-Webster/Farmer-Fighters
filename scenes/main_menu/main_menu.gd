@@ -26,7 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/Character_Select/Character_Select.tscn")
+	get_tree().change_scene_to_file("res://scenes/Character_Select/Old_Character_Select.tscn")
 
 
 func _on_play_hovered() -> void:

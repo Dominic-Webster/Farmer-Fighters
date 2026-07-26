@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://shtxl7hqv8gx" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_0ebjn"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_ob46e"]
 
 [node name="MainMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -28,17 +29,35 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="New_Game" type="Button" parent="Buttons" unique_id=741895842]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "NEW GAME"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ob46e")
+theme_override_font_sizes/font_size = 80
+text = "New Game"
 
 [node name="Continue" type="Button" parent="Buttons" unique_id=271720641]
 visible = false
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "CONTINUE"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ob46e")
+theme_override_font_sizes/font_size = 80
+text = "Continue"
 
 [node name="Back" type="Button" parent="Buttons" unique_id=1515949391]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "BACK"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ob46e")
+theme_override_font_sizes/font_size = 80
+text = "Back"

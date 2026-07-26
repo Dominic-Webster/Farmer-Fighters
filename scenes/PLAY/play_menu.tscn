@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckbnff0qivnbd" path="res://scenes/PLAY/play_menu.gd" id="1_boyu3"]
 [ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_fx40q"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_gai1t"]
 
 [node name="PlayMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -23,26 +24,44 @@ offset_left = 430.0
 offset_top = 100.0
 offset_right = 1490.0
 offset_bottom = 265.0
-theme_override_font_sizes/font_size = 100
-text = "FARMER FIGHTERS"
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = 20
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_gai1t")
+theme_override_font_sizes/font_size = 120
+text = "Farmer
+Fighters"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=913419990]
 layout_mode = 0
-offset_left = 534.0
-offset_top = 314.0
-offset_right = 1384.0
-offset_bottom = 863.0
+offset_left = 544.0
+offset_top = 500.0
+offset_right = 1394.0
+offset_bottom = 886.0
 theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Play" type="Button" parent="Buttons" unique_id=741895842]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "PLAY"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_gai1t")
+theme_override_font_sizes/font_size = 80
+text = "Play"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1515949391]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "EXIT"
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_gai1t")
+theme_override_font_sizes/font_size = 80
+text = "Exit"

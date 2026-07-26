@@ -7,6 +7,14 @@
 		"rarity": "common",
 		"scene_path": "res://Items/Unlocks/Cauliflower/Cauliflower.tscn"
 	},
+	"good_soil": {
+		"display_name": "Good Soil",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "water",
+		"required_pickups": 5,
+		"rarity": "rare",
+		"scene_path": "res://Items/Unlocks/Good_Soil/Good_Soil.tscn"
+	},
 	"tomatillo": {
 		"display_name": "Tomatillo",
 		"unlock_title": "Item Unlocked!",

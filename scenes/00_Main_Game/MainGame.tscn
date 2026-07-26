@@ -22,6 +22,8 @@ z_index = 1000
 [node name="Room" type="Node" parent="." unique_id=296417241]
 process_mode = 1
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1845271062]
+
 [node name="Player" parent="." unique_id=1057382120 instance=ExtResource("2_ay3v6")]
 process_mode = 1
 z_index = 100

@@ -18,7 +18,11 @@ func _on_body_entered(_body) -> void:
 		desc = "+ Health"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.num_hearts += 1
-		RunManager.player.current_health = RunManager.player.get_max_health()
-		RunManager.player.damaged.emit()
+		RunManager.player.current_health += health_boost
+		RunManager.player.healed.emit()
+		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("water")
+		
 		queue_free()
 		picked_up.emit(item_name, desc)

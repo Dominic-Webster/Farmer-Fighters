@@ -5,10 +5,16 @@ var run_save : RunSave = RunSave.new()
 
 @onready var room_parent : Node = $Room
 @onready var player : Player = $Player
+@onready var camera : Camera2D = $Camera2D
 @onready var gui : PlayerHud = $PlayerHud
 @onready var pause_menu : PauseMenu = $Pause
 @onready var end_menu : EndMenu = $End
 @onready var audio_player : AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+@export var shake_duration: float = 0.12
+@export var shake_strength: float = 4.0
+
+var shake_time_left: float = 0.0
 
 
 func _ready():
@@ -22,10 +28,15 @@ func _ready():
 	
 	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
 	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
+	player.healed.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
 	player.died.connect(_player_died)
 	player.visible = true
-	player.damaged.emit()
-
+	player.healed.emit()
+	
+	camera.make_current()
+	camera.position = get_viewport().get_visible_rect().size * 0.5
+	player.damaged.connect(_on_player_damaged)
+	
 	if RunManager.pending_run_data.is_empty():
 		RunManager.start_new_run(player)
 	else:
@@ -38,6 +49,18 @@ func _ready():
 	RunManager.pending_run_data.clear()
 	
 	pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+func _process(delta: float) -> void:
+	if shake_time_left > 0.0:
+		shake_time_left = maxf(shake_time_left - delta, 0.0)
+		var intensity := shake_strength * (shake_time_left / shake_duration)
+		camera.offset = Vector2(
+			randf_range(-intensity, intensity),
+			randf_range(-intensity, intensity)
+		)
+	else:
+		camera.offset = Vector2.ZERO
 
 
 func pause() -> void:
@@ -65,6 +88,10 @@ func _input(event):
 
 func _play_song() -> void:
 	audio_player.play()
+
+
+func _on_player_damaged() -> void:
+	shake_time_left = shake_duration
 
 
 func _player_died():

@@ -6,6 +6,7 @@ class_name Player
 # -------
 
 signal damaged
+signal healed #Use this to avoid screen shake when not needed
 signal died
 
 # ------
@@ -521,7 +522,7 @@ func take_damage(amount : int):
 		RunManager.player_damaged_this_floor = true
 		if current_health < 1:
 			player_died()
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.75).timeout
 		can_take_damage = true
 
 
@@ -550,7 +551,7 @@ func heal(amount : int) -> void:
 	current_health += amount
 	if current_health > get_max_health():
 		current_health = get_max_health()
-	damaged.emit()
+	healed.emit()
 
 
 func upgrade_hearts_to_carrot():

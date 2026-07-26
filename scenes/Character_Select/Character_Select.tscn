@@ -1,14 +1,13 @@
-[gd_scene format=3 uid="uid://dko2sa2o5i1o0"]
+[gd_scene format=3 uid="uid://o28cc1ei3lk7"]
 
-[ext_resource type="Script" uid="uid://pxr7d5cq4qrg" path="res://scenes/Character_Select/character_select.gd" id="1_dri4s"]
-[ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Farmer_Dave_Icon.png" id="1_ebie3"]
+[ext_resource type="Script" uid="uid://cb07kfwhqc1oa" path="res://scenes/Character_Select/character_select.gd" id="1_dri4s"]
 [ext_resource type="Resource" uid="uid://pjhelbe4a3wx" path="res://player/Characters/Farmer_Dave/farmer_dave.tres" id="2_0fkeu"]
-[ext_resource type="Texture2D" uid="uid://du5k5cj6wsqhe" path="res://scenes/Character_Select/Old_Mac_Icon.png" id="2_dri4s"]
+[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="2_1624o"]
 [ext_resource type="Resource" uid="uid://bbx1gw6dults6" path="res://player/Characters/Old_Mac/old_mac.tres" id="3_1624o"]
 [ext_resource type="Resource" uid="uid://dl3nwyy1rh5r6" path="res://player/Characters/Farmer_Jane/farmer_jane.tres" id="4_1624o"]
-[ext_resource type="Texture2D" uid="uid://dig8bqjrg1qg0" path="res://scenes/Character_Select/Farmer_Jane_Icon.png" id="7_tncad"]
+[ext_resource type="Texture2D" uid="uid://d1kdaojyavmte" path="res://scenes/Character_Select/Backdrop.png" id="6_1624o"]
 
-[node name="CharacterSelect" type="Control" unique_id=895362948]
+[node name="CharacterSelect" type="Control" unique_id=1886480089]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,59 +15,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dri4s")
-dave_data = ExtResource("2_0fkeu")
-mac_data = ExtResource("3_1624o")
-jane_data = ExtResource("4_1624o")
+characters = Array[ExtResource("2_1624o")]([ExtResource("2_0fkeu"), ExtResource("3_1624o"), ExtResource("4_1624o")])
 
-[node name="Label" type="Label" parent="." unique_id=1412376285]
+[node name="Background" type="TextureRect" parent="." unique_id=1414015131]
 layout_mode = 0
-offset_left = 430.0
-offset_top = 67.0
-offset_right = 1490.0
-offset_bottom = 232.0
-theme_override_font_sizes/font_size = 120
-text = "Character Select"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=137629294]
-layout_mode = 0
-offset_left = 181.0
-offset_top = 301.0
-offset_right = 375.0
-offset_bottom = 363.0
+offset_right = 40.0
+offset_bottom = 40.0
 scale = Vector2(8, 8)
-alignment = 1
+texture = ExtResource("6_1624o")
 
-[node name="Dave" type="Button" parent="HBoxContainer" unique_id=2076425336]
-layout_mode = 2
-icon = ExtResource("1_ebie3")
-
-[node name="Mac" type="Button" parent="HBoxContainer" unique_id=2818465]
-layout_mode = 2
-icon = ExtResource("2_dri4s")
-
-[node name="Jane" type="Button" parent="HBoxContainer" unique_id=2105189088]
-layout_mode = 2
-icon = ExtResource("7_tncad")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=275319963]
+[node name="Title" type="Label" parent="." unique_id=1537372104]
 layout_mode = 0
-offset_left = 757.0
-offset_top = 873.0
-offset_right = 1157.0
-offset_bottom = 1073.0
+offset_right = 40.0
+offset_bottom = 23.0
 
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=1735672887]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "PLAY"
-
-[node name="Back" type="Button" parent="." unique_id=1317887610]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=133994383]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 50.0
-offset_right = 292.0
-offset_bottom = 195.0
-theme_override_font_sizes/font_size = 100
-text = " Back "
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=950210506]
+layout_mode = 2
+
+[node name="CharacterSpriteHolder" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1402759436]
+layout_mode = 2
+
+[node name="CharacterSprite" type="TextureRect" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=1457368889]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 1.0
+offset_bottom = 4.0
+
+[node name="LockIcon" type="TextureRect" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=2013335672]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 1.0
+offset_bottom = 4.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=629087635]
+
+[node name="CharacterName" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1553168797]
+layout_mode = 2
+
+[node name="CharacterDescription" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=1952681305]
+layout_mode = 2
+
+[node name="UnlockInfo" type="Label" parent="CenterContainer/VBoxContainer" unique_id=928261217]
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1515423490]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer" unique_id=1937772229]
+layout_mode = 2
+
+[node name="DamageLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer" unique_id=1216663113]
+layout_mode = 2
+
+[node name="LeftButton" type="TextureButton" parent="." unique_id=105965642]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RightButton" type="TextureButton" parent="." unique_id=2045243472]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectButton" type="Button" parent="." unique_id=1313515137]
+layout_mode = 0
+offset_left = 1498.0
+offset_top = 836.0
+offset_right = 1820.0
+offset_bottom = 954.0
+theme_override_font_sizes/font_size = 80
+text = " SELECT "
+
+[node name="BackButton" type="Button" parent="." unique_id=71424979]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 897.0
+offset_right = 223.0
+offset_bottom = 988.0
+theme_override_font_sizes/font_size = 60
+text = " BACK "

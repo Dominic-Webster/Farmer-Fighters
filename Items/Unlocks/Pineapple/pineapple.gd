@@ -1,6 +1,6 @@
 # Boosts damage
 extends Item
-class_name Cauliflower
+class_name Pineapple
 
 var damage_boost : float = 2.0
 var damage_mult_boost : float = 1.5

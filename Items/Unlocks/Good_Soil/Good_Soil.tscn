@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c4frd87qg0uv5"]
 
-[ext_resource type="Script" uid="uid://dltsrlcpdp6mv" path="res://Items/Common/Good_Soil/good_soil.gd" id="1_3ho1m"]
+[ext_resource type="Script" uid="uid://dltsrlcpdp6mv" path="res://Items/Unlocks/Good_Soil/good_soil.gd" id="1_3ho1m"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_il5u7"]
-[ext_resource type="Texture2D" uid="uid://dneq003omf7l0" path="res://Items/Common/Good_Soil/Good_Soil.png" id="3_3ho1m"]
+[ext_resource type="Texture2D" uid="uid://dneq003omf7l0" path="res://Items/Unlocks/Good_Soil/Good_Soil.png" id="3_3ho1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aa5h3"]
 size = Vector2(109, 60)
