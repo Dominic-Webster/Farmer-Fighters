@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du5k5cj6wsqhe"
-path="res://.godot/imported/Old_Mac_Icon.png-988ea3863ea8b7449d1b984603c9cf35.ctex"
+uid="uid://cc0qmb22wxfsu"
+path="res://.godot/imported/Farmer_Dave_Icon.png-57a0b80c61d5a33d5a64d91106af8b0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Character_Select/Old_Mac_Icon.png"
-dest_files=["res://.godot/imported/Old_Mac_Icon.png-988ea3863ea8b7449d1b984603c9cf35.ctex"]
+source_file="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png"
+dest_files=["res://.godot/imported/Farmer_Dave_Icon.png-57a0b80c61d5a33d5a64d91106af8b0a.ctex"]
 
 [params]
 

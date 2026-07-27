@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://cm03sux1ouuxw"]
+
+[ext_resource type="Texture2D" uid="uid://dig8bqjrg1qg0" path="res://scenes/Character_Select/Character_Icons/Farmer_Jane_Icon.png" id="1_p6sbn"]
+[ext_resource type="Resource" uid="uid://dl3nwyy1rh5r6" path="res://player/Characters/Farmer_Jane/farmer_jane.tres" id="2_knpue"]
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="3_087ui"]
+
+[resource]
+script = ExtResource("3_087ui")
+icon = ExtResource("1_p6sbn")
+player_data = ExtResource("2_knpue")
+description = "A fighter who utilizes slow yet damaging bullets"
+unlock_text = "Have 5 Hearts in a Run"
+metadata/_custom_type_script = "uid://8pds4nkc82ma"

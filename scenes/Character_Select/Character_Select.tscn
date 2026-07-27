@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://o28cc1ei3lk7"]
 
 [ext_resource type="Script" uid="uid://cb07kfwhqc1oa" path="res://scenes/Character_Select/character_select.gd" id="1_dri4s"]
-[ext_resource type="Resource" uid="uid://pjhelbe4a3wx" path="res://player/Characters/Farmer_Dave/farmer_dave.tres" id="2_0fkeu"]
-[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="2_1624o"]
-[ext_resource type="Resource" uid="uid://bbx1gw6dults6" path="res://player/Characters/Old_Mac/old_mac.tres" id="3_1624o"]
-[ext_resource type="Resource" uid="uid://dl3nwyy1rh5r6" path="res://player/Characters/Farmer_Jane/farmer_jane.tres" id="4_1624o"]
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="2_iypma"]
+[ext_resource type="Resource" uid="uid://b2dekxkhpqmk" path="res://scenes/Character_Select/Character_Info/farmer_dave.tres" id="3_0fkeu"]
+[ext_resource type="Resource" uid="uid://ctgo222f3622t" path="res://scenes/Character_Select/Character_Info/old_mac.tres" id="4_2inxf"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="5_0fkeu"]
+[ext_resource type="Resource" uid="uid://cm03sux1ouuxw" path="res://scenes/Character_Select/Character_Info/farmer_jane.tres" id="5_7q623"]
 [ext_resource type="Texture2D" uid="uid://d1kdaojyavmte" path="res://scenes/Character_Select/Backdrop.png" id="6_1624o"]
+[ext_resource type="Texture2D" uid="uid://buqulbb3vi2ty" path="res://scenes/Character_Select/carrot_button.png" id="6_ic0qd"]
+[ext_resource type="Texture2D" uid="uid://brmyn5l3fjnpq" path="res://scenes/Character_Select/carrot_button_pressed.png" id="7_lsqdn"]
+[ext_resource type="Texture2D" uid="uid://bu45cjsdr1qn4" path="res://scenes/Character_Select/carrot_button_hover.png" id="8_2inxf"]
+[ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png" id="8_7q623"]
+[ext_resource type="Texture2D" uid="uid://b6l5aa4hobex3" path="res://scenes/Character_Select/Lock.png" id="9_8dj70"]
 
 [node name="CharacterSelect" type="Control" unique_id=1886480089]
 layout_mode = 3
@@ -15,7 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dri4s")
-characters = Array[ExtResource("2_1624o")]([ExtResource("2_0fkeu"), ExtResource("3_1624o"), ExtResource("4_1624o")])
+characters = Array[ExtResource("2_iypma")]([ExtResource("3_0fkeu"), ExtResource("4_2inxf"), ExtResource("5_7q623")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=1414015131]
 layout_mode = 0
@@ -24,44 +30,68 @@ offset_bottom = 40.0
 scale = Vector2(8, 8)
 texture = ExtResource("6_1624o")
 
-[node name="Title" type="Label" parent="." unique_id=1537372104]
+[node name="Title" type="Label" parent="." unique_id=220779136]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 430.0
+offset_top = 67.0
+offset_right = 1490.0
+offset_bottom = 232.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.7137255)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("5_0fkeu")
+theme_override_font_sizes/font_size = 80
+text = "Character Select"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=133994383]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 747.5
+offset_top = 240.0
+offset_right = 832.5
+offset_bottom = 402.0
+scale = Vector2(5, 5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=950210506]
 layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="CharacterSpriteHolder" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1402759436]
+[node name="CharacterSpriteHolder" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=136505568]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="CharacterSprite" type="TextureRect" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=1457368889]
-layout_mode = 0
-offset_top = 4.0
-offset_right = 1.0
-offset_bottom = 4.0
+layout_mode = 2
+texture = ExtResource("8_7q623")
+stretch_mode = 3
 
 [node name="LockIcon" type="TextureRect" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=2013335672]
-layout_mode = 0
-offset_top = 4.0
-offset_right = 1.0
-offset_bottom = 4.0
+visible = false
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+layout_mode = 2
+texture = ExtResource("9_8dj70")
+stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CharacterSpriteHolder" unique_id=629087635]
 
 [node name="CharacterName" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1553168797]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.30980393)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_0fkeu")
+theme_override_font_sizes/font_size = 10
+text = "Farmer Dave"
 
-[node name="CharacterDescription" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=1952681305]
+[node name="CharacterDescription" type="Label" parent="CenterContainer/VBoxContainer" unique_id=907672818]
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-
-[node name="UnlockInfo" type="Label" parent="CenterContainer/VBoxContainer" unique_id=928261217]
-layout_mode = 2
+theme_override_fonts/font = ExtResource("5_0fkeu")
+theme_override_font_sizes/font_size = 5
+text = "A versatile fighter with well-rounded stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="StatsContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1515423490]
 layout_mode = 2
@@ -74,22 +104,43 @@ layout_mode = 2
 
 [node name="LeftButton" type="TextureButton" parent="." unique_id=105965642]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 80.0
+offset_top = 500.0
+offset_right = 112.0
+offset_bottom = 510.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("6_ic0qd")
+texture_pressed = ExtResource("7_lsqdn")
+texture_hover = ExtResource("8_2inxf")
+texture_focused = ExtResource("8_2inxf")
+flip_h = true
 
 [node name="RightButton" type="TextureButton" parent="." unique_id=2045243472]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 1680.0
+offset_top = 500.0
+offset_right = 1712.0
+offset_bottom = 510.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("6_ic0qd")
+texture_pressed = ExtResource("7_lsqdn")
+texture_hover = ExtResource("8_2inxf")
+texture_focused = ExtResource("8_2inxf")
 
 [node name="SelectButton" type="Button" parent="." unique_id=1313515137]
 layout_mode = 0
-offset_left = 1498.0
-offset_top = 836.0
-offset_right = 1820.0
-offset_bottom = 954.0
-theme_override_font_sizes/font_size = 80
-text = " SELECT "
+offset_left = 1518.0
+offset_top = 880.0
+offset_right = 1848.0
+offset_bottom = 998.0
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_disabled_color = Color(2.2278876, 2.2278876, 2.2278876, 0.5019608)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_0fkeu")
+theme_override_font_sizes/font_size = 60
+text = " Select "
 
 [node name="BackButton" type="Button" parent="." unique_id=71424979]
 layout_mode = 0
@@ -97,5 +148,10 @@ offset_left = 59.0
 offset_top = 897.0
 offset_right = 223.0
 offset_bottom = 988.0
-theme_override_font_sizes/font_size = 60
-text = " BACK "
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_0fkeu")
+theme_override_font_sizes/font_size = 50
+text = " Back "

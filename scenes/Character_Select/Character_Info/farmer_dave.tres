@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://b2dekxkhpqmk"]
+
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="1_2oxbe"]
+[ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png" id="1_o8314"]
+[ext_resource type="Resource" uid="uid://pjhelbe4a3wx" path="res://player/Characters/Farmer_Dave/farmer_dave.tres" id="3_8hddb"]
+
+[resource]
+script = ExtResource("1_2oxbe")
+icon = ExtResource("1_o8314")
+player_data = ExtResource("3_8hddb")
+description = "A versatile fighter with well-rounded stats"
+unlocked = true
+metadata/_custom_type_script = "uid://8pds4nkc82ma"
