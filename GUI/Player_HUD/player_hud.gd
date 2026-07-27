@@ -24,6 +24,10 @@ func _ready():
 	unlock_info_timer.wait_time = 3.0
 	unlock_info_timer.one_shot = true
 	unlock_info_timer.timeout.connect(hide_unlock_info)
+	item_choice_take_button.focus_mode = Control.FOCUS_ALL
+	item_choice_abandon_button.focus_mode = Control.FOCUS_ALL
+	item_choice_take_button.focus_neighbor_right = item_choice_abandon_button.get_path()
+	item_choice_abandon_button.focus_neighbor_left = item_choice_take_button.get_path()
 	if not item_choice_take_button.pressed.is_connected(_on_item_choice_take_pressed):
 		item_choice_take_button.pressed.connect(_on_item_choice_take_pressed)
 	if not item_choice_abandon_button.pressed.is_connected(_on_item_choice_abandon_pressed):
@@ -96,6 +100,7 @@ func show_item_info(iname : String, desc : String, item : Item = null) -> void:
 	item_choice.visible = true
 	if RunManager.player != null and "set_movement_locked" in RunManager.player:
 		RunManager.player.set_movement_locked(true)
+	item_choice_take_button.call_deferred("grab_focus")
 
 
 func hide_item_info() -> void:

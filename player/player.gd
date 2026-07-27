@@ -249,7 +249,6 @@ func load_data() -> void:
 func _physics_process(_delta):
 	if movement_locked:
 		velocity = Vector2.ZERO
-		update_sprite_facing()
 		move_and_slide()
 		return
 
@@ -349,7 +348,7 @@ func get_shoot_direction() -> Vector2:
 
 
 func shoot(direction: Vector2):
-	if not can_shoot:
+	if not can_shoot or movement_locked:
 		return
 		
 	# Eggplant
