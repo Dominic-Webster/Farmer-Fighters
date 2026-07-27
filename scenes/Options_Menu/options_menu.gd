@@ -24,12 +24,38 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_pressed)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") or event.is_action_pressed("back"):
+		if reset_save_panel.visible == false:
+			get_tree().change_scene_to_file("res://scenes/PLAY/play_menu.tscn")
+		else:
+			reset_save_panel.visible = false
+			_re_enable()
+
+
+func _re_enable() -> void:
+	audio_button.disabled = false
+	audio_button.focus_mode = Control.FOCUS_ALL
+	reset_save_button.disabled = false
+	reset_save_button.focus_mode = Control.FOCUS_ALL
+	back_button.disabled = false
+	back_button.focus_mode = Control.FOCUS_ALL
+
+
 func _on_reset_hovered() -> void:
 	reset_save_button.grab_focus()
 
 
 func _on_reset_pressed() -> void:
 	reset_save_panel.visible = true
+	
+	audio_button.disabled = true
+	audio_button.focus_mode = Control.FOCUS_NONE
+	reset_save_button.disabled = true
+	reset_save_button.focus_mode = Control.FOCUS_NONE
+	back_button.disabled = true
+	back_button.focus_mode = Control.FOCUS_NONE
+	
 	reset_option_text.text = "Are you sure you want to reset your save?"
 	no_reset_button.visible = true
 	yes_reset_button.visible = true
@@ -50,6 +76,8 @@ func _on_yes_reset_pressed() -> void:
 	
 	await get_tree().create_timer(1.0).timeout
 	
+	_re_enable()
+	
 	reset_save_panel.visible = false
 	reset_save_button.grab_focus()
 
@@ -60,6 +88,7 @@ func _on_no_reset_hovered() -> void:
 
 func _on_no_reset_pressed() -> void:
 	reset_save_panel.visible = false
+	_re_enable()
 	reset_save_button.grab_focus()
 
 

@@ -41,6 +41,11 @@ func _ready() -> void:
 	set_current_character()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") or event.is_action_pressed("back"):
+		get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+
 func _sync_character_unlocks() -> void:
 	if MetaManager == null:
 		return
