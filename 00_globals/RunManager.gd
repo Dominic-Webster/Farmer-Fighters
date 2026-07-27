@@ -47,6 +47,8 @@ func start_new_run(_player : Player):
 	
 	current_floor = 1
 	player_damaged_this_floor = false
+	if ItemManager != null:
+		ItemManager.load_item_pools()
 	
 	run_seed = int(Time.get_unix_time_from_system() * 1000000.0) ^ Time.get_ticks_usec()
 	#run_seed = 12345
@@ -208,8 +210,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if MetaManager != null:
 			MetaManager.reset_progress_to_base()
 			print("META RESET")
-	#else:
-		#load_item(event)
+	else:
+		load_item(event)
 
 
 func load_item(event: InputEvent) -> void:

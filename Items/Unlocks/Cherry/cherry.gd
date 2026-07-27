@@ -4,17 +4,22 @@ class_name Cherry
 
 var damage_buff : float = 1.5
 
+
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.cherry == false:
+		return "Enemies shoot Player Bullets on death"
+
+	return "+1.5 Damage"
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Cherry"
 		RunManager.player.add_item_to_array(item_name)
 		
 		if RunManager.player.cherry == false:
-			desc = "Enemies shoot Player Bullets on death"
 			RunManager.player.cherry = true
 		else:
-			desc = "+ Damage"
 			RunManager.player.damage += damage_buff
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

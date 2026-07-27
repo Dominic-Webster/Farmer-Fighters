@@ -8,10 +8,13 @@ var damage_mult_nerf : float = 0.5
 var damage_nerf : float = 0.25
 
 
+func get_item_desc() -> String:
+	return "+800 Bullet Speed\n0.2 Fire Rate Buff\n-0.25 Damage Mult\nx0.5 Damage Mult"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Raspberry"
-		desc = "More Bullets"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.bullet_speed += proj_speed_boost
 		RunManager.player.damage_mult *= damage_mult_nerf
@@ -25,4 +28,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.damage = 0.25
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

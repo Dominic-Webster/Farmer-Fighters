@@ -7,12 +7,18 @@ var chicken_dmg_boost : float = 1.0
 var chicken_fire_rate_boost : float = 0.1
 
 
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.chicken_unlocked == true:
+		return "+1 Chicken Damage\n0.1 Chicken Fire Rate Buff\n+0.25 Companion Damage Mult"
+
+	return "Unlock Chicken Companion"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Chicken"
 		
 		if RunManager.player.chicken_unlocked == true:
-			desc = "Chicken Leveled Up!"
 			
 			RunManager.player.chicken_damage += chicken_dmg_boost
 			RunManager.player.companion_dmg_mult += comp_dmg_mult_boost
@@ -21,9 +27,8 @@ func _on_body_entered(_body) -> void:
 				RunManager.player.chicken_fire_rate = 0.05
 		
 		else:
-			desc = "Chicken Unlocked!"
 			RunManager.player.chicken_unlocked = true
 		
 		RunManager.player.add_item_to_array(item_name)
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

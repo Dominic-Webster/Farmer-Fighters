@@ -6,12 +6,15 @@ var luck_boost : int = 1
 var move_speed_boost : float = 75
 
 
+func get_item_desc() -> String:
+	return "+75 Movement Speed\n+1 Luck"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Orange"
-		desc = "+ Movement Speed"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.luck += luck_boost
 		RunManager.player.move_speed += move_speed_boost
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

@@ -214,13 +214,30 @@ func spawn_persistent_object(pos: Vector2i, spawn_data: Dictionary) -> void:
 	var spawn_position = spawn_data.get("position", player_spawn_c.global_position)
 	instance.global_position = spawn_position + PICKUP_SPAWN_OFFSET
 	call_deferred("add_child", instance)
+	_connect_item_popup(instance, pos, spawn_data)
 
-	if instance.has_signal("picked_up") and spawn_data.has("id"):
-		var spawn_id := str(spawn_data["id"])
-		instance.picked_up.connect(func(iname, desc):
+
+func _connect_item_popup(instance: Node, pos: Vector2i, spawn_data: Dictionary = {}) -> void:
+	if instance == null:
+		return
+
+	if instance.has_signal("pickup_requested") and RunManager.gui:
+		instance.pickup_requested.connect(func(item):
+			if is_instance_valid(item):
+				RunManager.gui.show_item_info(item.item_name, item.desc, item)
+		)
+
+	if not spawn_data.has("id"):
+		return
+
+	var spawn_id := str(spawn_data["id"])
+	if instance.has_signal("picked_up"):
+		instance.picked_up.connect(func(_iname, _desc):
 			mark_persistent_spawn_picked_up(pos, spawn_id)
-			if RunManager.gui:
-				RunManager.gui.show_item_info(iname, desc)
+		)
+	if instance.has_signal("abandoned"):
+		instance.abandoned.connect(func(_iname, _desc):
+			mark_persistent_spawn_picked_up(pos, spawn_id)
 		)
 
 
@@ -557,6 +574,7 @@ func spawn_random_item(spawn_position: Vector2) -> void:
 		var item_instance = item_scene.instantiate()
 		add_child(item_instance)
 		item_instance.global_position = spawn_position + PICKUP_SPAWN_OFFSET
+		_connect_item_popup(item_instance, RunManager.current_room)
 
 
 # Frees all enemy bullets in the scene

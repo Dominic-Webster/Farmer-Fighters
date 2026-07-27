@@ -6,10 +6,16 @@ var dash_duration_buff : float = 0.05
 var accuracy_buff : float = 0.01
 
 
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.dash_unlocked == false:
+		return "Unlock Dash\n+0.01 Dash Duration"
+	
+	return "+0.05 Dash Duration\n0.01 Accuracy Buff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Green Bean"
-		desc = "Dash (+ Duration)"
 		RunManager.player.add_item_to_array(item_name)
 		
 		if RunManager.player.dash_unlocked == false:
@@ -21,4 +27,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.accuracy.y -= accuracy_buff
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

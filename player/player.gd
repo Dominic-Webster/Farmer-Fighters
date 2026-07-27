@@ -76,6 +76,7 @@ var can_take_damage : bool = true
 @onready var shoot_point : Marker2D = $ShootPoint
 @onready var sprite : Sprite2D = $Sprite2D
 var can_shoot : bool = true
+var movement_locked : bool = false
 
 enum Bullets {
 	TOMATO,
@@ -246,6 +247,12 @@ func load_data() -> void:
 
 
 func _physics_process(_delta):
+	if movement_locked:
+		velocity = Vector2.ZERO
+		update_sprite_facing()
+		move_and_slide()
+		return
+
 	var direction = Vector2.ZERO
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -280,6 +287,10 @@ func _physics_process(_delta):
 	update_sprite_facing()
 
 	move_and_slide()
+
+
+func set_movement_locked(locked: bool) -> void:
+	movement_locked = locked
 
 
 # Helper to set sprite frame/flip based on shoot or move direction

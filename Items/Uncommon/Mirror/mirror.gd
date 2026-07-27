@@ -8,9 +8,15 @@ var damage_mult_boost : float = 0.5
 var luck_boost : int = 2
 
 
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.inverse_controls == true:
+		return "Fortune favors the Bold..."
+
+	return "Strength at a price..."
+
+
 func _ready() -> void:
-	add_to_group("item")
-	area2d.body_entered.connect(_on_body_entered)
+	super._ready()
 	if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
 		health_boost = 3
 
@@ -19,11 +25,6 @@ func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Mirror"
 		RunManager.player.add_item_to_array(item_name)
-		
-		if RunManager.player.inverse_controls == true:
-			desc = "Fortune favors you"
-		else:
-			desc = "Strength at a price..."
 		
 		RunManager.player.inverse_controls = !RunManager.player.inverse_controls
 		
@@ -37,4 +38,4 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.healed.emit()
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

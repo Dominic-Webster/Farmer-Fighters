@@ -6,7 +6,14 @@ var damage_boost : float = 0.5
 var damage_mult_boost : float = 0.5
 
 var fire_rate_debuff : float = 0.2
-var damage_mult_debuff : float = 0.1
+var damage_mult_debuff : float = 0.25
+
+
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.homing == true:
+		return "+0.5 Damage\n+0.5 Damage Mult"
+
+	return "Unlock Homing Bullets\n-0.25 Damage Mult\n0.2 Fire Rate Debuff"
 
 
 func _on_body_entered(_body) -> void:
@@ -14,11 +21,9 @@ func _on_body_entered(_body) -> void:
 		item_name = "Cucumber"
 		
 		if RunManager.player.homing == true:
-			desc = "+ Damage"
 			RunManager.player.damage += damage_boost
 			RunManager.player.damage_mult += damage_mult_boost
 		else:
-			desc = "Homing Bullets"
 			RunManager.player.homing = true
 			RunManager.player.fire_rate += fire_rate_debuff
 			RunManager.player.damage_mult -= damage_mult_debuff
@@ -27,4 +32,4 @@ func _on_body_entered(_body) -> void:
 		
 		RunManager.player.add_item_to_array(item_name)
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

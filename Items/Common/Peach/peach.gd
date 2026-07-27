@@ -6,14 +6,18 @@ var damage_buff : float = 0.25
 var accuracy_buff : float = 0.02
 
 
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.current_bullet == RunManager.player.Bullets.PEACH:
+		return "+0.25 Damage\n+2 Damage Mult\n0.02 Accuracy Buff"
+	
+	return "Bullets become Peaches\n+0.25 Damage\n+2 Damage Mult\n0.02 Accuracy Buff\nFire Rate/Bullet Speed Debuff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Peach"
 		
 		if RunManager.player.current_bullet == RunManager.player.Bullets.PEACH:
-			desc = "+ Damage"
-		else:
-			desc = "Bullets become Peaches"
 			RunManager.player.current_bullet = RunManager.player.Bullets.PEACH
 			
 			RunManager.player.bullet_speed *= 0.25
@@ -25,8 +29,6 @@ func _on_body_entered(_body) -> void:
 				RunManager.player.fire_rate += 0.01
 			else:
 				RunManager.player.fire_rate *= 2.0
-			
-		RunManager.player.add_item_to_array(item_name)
 		
 		RunManager.player.damage += damage_buff
 		RunManager.player.damage_mult += damage_mult_buff
@@ -39,5 +41,6 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.accuracy.y < 0:
 			RunManager.player.accuracy.y = 0
 		
+		RunManager.player.add_item_to_array(item_name)
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

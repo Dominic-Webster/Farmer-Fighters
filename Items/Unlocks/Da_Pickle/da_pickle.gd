@@ -12,10 +12,13 @@ var bounce_boost : int = 1
 var luck_boost : int = 2
 
 
+func get_item_desc() -> String:
+	return "+ Stats"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "DA PICKLE"
-		desc = "+ Stats"
 		RunManager.player.add_item_to_array(item_name)
 		
 		RunManager.player.move_speed += move_speed_boost
@@ -30,4 +33,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.fire_rate = 0.01
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btxh5x5l88tyf" path="res://scenes/end_menu/end_menu.gd" id="1_duvpb"]
 [ext_resource type="Texture2D" uid="uid://jjrd3rxlwinh" path="res://scenes/end_menu/pause_box.png" id="2_at3tt"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_at3tt"]
+[ext_resource type="FontFile" uid="uid://bi6bbssteihrw" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.otf" id="4_dased"]
 
 [sub_resource type="Animation" id="Animation_esln1"]
 length = 0.001
@@ -134,7 +135,7 @@ offset_right = 1484.0
 offset_bottom = 368.0
 theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("3_at3tt")
+theme_override_fonts/font = ExtResource("4_dased")
 theme_override_font_sizes/font_size = 40
 text = "Seed: "
 horizontal_alignment = 1

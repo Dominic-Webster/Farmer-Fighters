@@ -2,10 +2,11 @@ extends CanvasLayer
 class_name PlayerHud
 
 @onready var health : HFlowContainer = $Control/Health
-@onready var item_info : Panel = $Control/ItemInfo
-@onready var item_info_name : Label = $Control/ItemInfo/ItemName
-@onready var item_info_desc : Label = $Control/ItemInfo/ItemDesc
-@onready var item_info_timer : Timer = $ItemInfoTimer
+@onready var item_choice : Panel = $Control/ItemChoice
+@onready var item_choice_name : Label = $Control/ItemChoice/Name
+@onready var item_choice_desc : Label = $Control/ItemChoice/Desc
+@onready var item_choice_take_button : Button = $Control/ItemChoice/HBoxContainer/Take
+@onready var item_choice_abandon_button : Button = $Control/ItemChoice/HBoxContainer/Abandon
 @onready var unlock_info : Panel = $Control/UnlockInfo
 @onready var unlock_info_name : Label = $Control/UnlockInfo/Name
 @onready var unlock_info_desc : Label = $Control/UnlockInfo/Desc
@@ -14,17 +15,19 @@ class_name PlayerHud
 @export var heart_scene : PackedScene
 var hearts : Array[HeartGUI] = []
 @export var max_hearts : int = 50 # Default, can be set in editor
+var current_item : Item = null
 
 
 func _ready():
-	item_info.visible = false
 	unlock_info.visible = false
-	item_info_timer.wait_time = 2.0
-	item_info_timer.one_shot = true
-	item_info_timer.timeout.connect(hide_item_info)
+	item_choice.visible = false
 	unlock_info_timer.wait_time = 3.0
 	unlock_info_timer.one_shot = true
 	unlock_info_timer.timeout.connect(hide_unlock_info)
+	if not item_choice_take_button.pressed.is_connected(_on_item_choice_take_pressed):
+		item_choice_take_button.pressed.connect(_on_item_choice_take_pressed)
+	if not item_choice_abandon_button.pressed.is_connected(_on_item_choice_abandon_pressed):
+		item_choice_abandon_button.pressed.connect(_on_item_choice_abandon_pressed)
 	# Remove any existing children
 	for child in health.get_children():
 		child.queue_free()
@@ -83,15 +86,39 @@ func update_max_hp(_max_hp: int, _heart_type: Variant = null) -> void:
 	pass
 
 
-func show_item_info(iname : String, desc : String) -> void:
-	item_info_name.text = iname
-	item_info_desc.text = desc
-	item_info.visible = true
-	item_info_timer.start()
+func show_item_info(iname : String, desc : String, item : Item = null) -> void:
+	current_item = item
+	if item != null:
+		iname = item.get_item_name()
+		desc = item.get_item_desc()
+	item_choice_name.text = iname
+	item_choice_desc.text = desc
+	item_choice.visible = true
+	if RunManager.player != null and "set_movement_locked" in RunManager.player:
+		RunManager.player.set_movement_locked(true)
 
 
 func hide_item_info() -> void:
-	item_info.visible = false
+	current_item = null
+	item_choice.visible = false
+	if RunManager.player != null and "set_movement_locked" in RunManager.player:
+		RunManager.player.set_movement_locked(false)
+
+
+func _on_item_choice_take_pressed() -> void:
+	var item := current_item
+	if is_instance_valid(item):
+		item.desc = item.get_item_desc()
+	hide_item_info()
+	if is_instance_valid(item):
+		item.call("_on_body_entered", RunManager.player)
+
+
+func _on_item_choice_abandon_pressed() -> void:
+	var item := current_item
+	hide_item_info()
+	if is_instance_valid(item):
+		item.abandon_item()
 
 
 func show_unlock_info(iname : String, desc : String) -> void:

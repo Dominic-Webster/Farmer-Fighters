@@ -6,13 +6,16 @@ var damage_buff : float = 1
 var accuracy_buff : float = 0.02
 
 
+func get_item_desc() -> String:
+	if RunManager.player.current_bullet == RunManager.player.Bullets.CABBAGE:
+		return "+1 Damage\n0.02 Accuracy Buff\nFire Rate Debuff"
+	
+	return "Bullets become Cabbages\n+1 Damage\n0.02 Accuracy Buff\nFire Rate Debuff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Cabbage"
-		if RunManager.player.items.has("Cabbage") or RunManager.player.current_bullet == RunManager.player.Bullets.CABBAGE:
-			desc = "+ Damage"
-		else:
-			desc = "Bullets become Cabbages"
 		
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.CABBAGE
@@ -35,4 +38,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.accuracy.y = 0
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

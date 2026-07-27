@@ -7,10 +7,13 @@ var fire_rate_buff : float = 0.35
 var accuracy_debuff : float = 0.05
 
 
+func get_item_desc() -> String:
+	return "Bullets become Grapes\n0.35 Fire Rate Buff\n-0.5 Damage\n0.05 Accuracy Debuff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Grapes Of Wrath"
-		desc = "Bullets become Grapes"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.GRAPE
 		
@@ -26,4 +29,4 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.accuracy.y += accuracy_debuff
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

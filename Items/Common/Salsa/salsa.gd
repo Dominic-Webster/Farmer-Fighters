@@ -8,10 +8,13 @@ var damage_mult_boost : float = 0.25
 var fire_rate_boost : float = 0.05
 
 
+func get_item_desc() -> String:
+	return "+75 Movement Speed\n+0.25 Damage\n+0.25 Damage Mult\n0.05 Fire Rate Buff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Salsa"
-		desc = "+ Stats"
 		RunManager.player.add_item_to_array(item_name)
 		
 		RunManager.player.move_speed += move_speed_boost
@@ -25,4 +28,4 @@ func _on_body_entered(_body) -> void:
 			MetaManager.record_item_pickup("salsa")
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

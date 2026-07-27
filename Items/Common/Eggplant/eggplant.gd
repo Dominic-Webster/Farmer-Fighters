@@ -3,7 +3,14 @@ extends Item
 class_name Eggplant
 
 var fire_rate_nerf : float = 0.1
-var damage_buff : float = 0.2
+var damage_buff : float = 0.5
+
+
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.eggplant < 2:
+		return "More Bullets\n0.1 Fire Rate Debuff"
+	
+	return "+0.5 Damage"
 
 
 func _on_body_entered(_body) -> void:
@@ -21,16 +28,14 @@ func _on_body_entered(_body) -> void:
 				RunManager.player.dual_shot = true
 		
 		if RunManager.player.eggplant < 2:
-			desc = "More Bullets!"
 			RunManager.player.add_item_to_array(item_name)
 			
 			RunManager.player.fire_rate += fire_rate_nerf
 			
 			RunManager.player.eggplant += 1
 		else:
-			desc = "+ Damage"
 			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.damage += damage_buff
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

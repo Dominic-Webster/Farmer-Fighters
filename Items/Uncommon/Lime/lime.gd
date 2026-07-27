@@ -6,10 +6,13 @@ var speed_debuff : float = 0.9
 var scale_increase : float = 0.15
 var damage_buff : float = 0.5
 
+
+func get_item_desc() -> String:
+	return "+0.5 Damage\nSize Increase\nx0.9 Movement Speed"
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Lime"
-		desc = "Bigger... Stronger..."
 		RunManager.player.add_item_to_array(item_name)
 		
 		RunManager.player.move_speed *= speed_debuff
@@ -23,4 +26,4 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.scale = Vector2(1.25, 1.25)
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

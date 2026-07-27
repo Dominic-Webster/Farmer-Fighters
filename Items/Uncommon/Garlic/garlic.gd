@@ -2,7 +2,14 @@
 extends Item
 class_name Garlic
 
-var damage_buff : float = 0.5
+var damage_buff : float = 0.75
+
+
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.slow_bullets == true:
+		return "+0.75 Damage"
+
+	return "Bullets Slow Enemies"
 
 
 func _on_body_entered(_body) -> void:
@@ -10,12 +17,10 @@ func _on_body_entered(_body) -> void:
 		item_name = "Garlic"
 		
 		if RunManager.player.slow_bullets == true:
-			desc = "+ Damage"
 			RunManager.player.damage += damage_buff
 		else:
-			desc = "Bullets Slow Enemies"
 			RunManager.player.slow_bullets = true
 		
 		RunManager.player.add_item_to_array(item_name)
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

@@ -11,12 +11,18 @@ var fire_rate_debuff : float = 0.4
 var fire_rate_light_debuff : float = 0.05
 
 
+func get_item_desc() -> String:
+	if RunManager.player != null and RunManager.player.items.has("Corn"):
+		return "+1.5 Damage\n+100 Bullet Speed\n0.05 Fire Rate Debuff"
+
+	return "Bullets become Corn\n+2.5 Damage Mult\n0.04 Accuracy Buff\n0.4 Fire Rate Debuff"
+
+
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Corn"
 		
 		if RunManager.player.items.has("Corn"):
-			desc = "+ Damage"
 			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.current_bullet = RunManager.player.Bullets.CORN
 			
@@ -25,7 +31,6 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.bullet_speed += proj_speed_light_buff
 		
 		else:
-			desc = "Bullets become Corn"
 			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.current_bullet = RunManager.player.Bullets.CORN
 			
@@ -42,4 +47,4 @@ func _on_body_entered(_body) -> void:
 				RunManager.player.accuracy.y = 0
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())

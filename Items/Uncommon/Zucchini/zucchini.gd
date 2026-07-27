@@ -2,9 +2,21 @@
 extends Item
 class_name Zucchini
 
-var damage_buff : float = 0.75
+var damage_buff : float = 1.0
 var fire_rate_debuff : float = 0.2
 var fire_rate_light_debuff : float = 0.02
+
+
+func get_item_desc() -> String:
+	if RunManager.player != null:
+		if RunManager.player.tri_shot == false:
+			return "Unlock Tri-Shot\n0.2 Fire Rate Debuff"
+		if RunManager.player.quad_shot == false:
+			return "Unlock Quad-Shot\n+0.1 Damage\n0.02 Fire Rate Debuff"
+		if RunManager.player.five_shot == false:
+			return "Unlock Five-Shot\n+0.1 Damage"
+
+	return "+1 Damage\n0.02 Fire Rate Debuff"
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
@@ -13,20 +25,16 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.dual_shot = true
 		
 		if RunManager.player.tri_shot == false:
-			desc = "Tri-Shot"
 			RunManager.player.tri_shot = true
 			RunManager.player.fire_rate += fire_rate_debuff
 		elif RunManager.player.quad_shot == false:
-			desc = "Quad-Shot"
 			RunManager.player.quad_shot = true
 			RunManager.player.fire_rate += fire_rate_light_debuff
 			RunManager.player.damage += 0.1
 		elif RunManager.player.five_shot == false:
-			desc = "Five-Shot"
 			RunManager.player.five_shot = true
 			RunManager.player.damage += 0.1
 		else:
-			desc = "+ Damage"
 			RunManager.player.damage += damage_buff
 			RunManager.player.fire_rate += fire_rate_light_debuff
 		
@@ -34,4 +42,4 @@ func _on_body_entered(_body) -> void:
 			MetaManager.record_item_pickup("zucchini")
 		
 		queue_free()
-		picked_up.emit(item_name, desc)
+		picked_up.emit(item_name, get_item_desc())
