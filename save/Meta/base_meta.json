@@ -7,6 +7,10 @@
 		"water": 0,
 		"zucchini": 0
 	},
+	"character_unlocks": {
+		"old_mac": false,
+		"farmer_jane": false
+	},
 	"item_unlocks": {
 		"cauliflower": false,
 		"cherry": false,

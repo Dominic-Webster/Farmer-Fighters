@@ -34,6 +34,8 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.luck += luck_boost
 		
 		RunManager.player.num_hearts += 1
+		if MetaManager != null:
+			MetaManager.record_run_hearts(RunManager.player.num_hearts)
 		RunManager.player.current_health = RunManager.player.get_max_health()
 		RunManager.player.healed.emit()
 		

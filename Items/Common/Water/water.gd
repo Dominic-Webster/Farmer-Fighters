@@ -20,6 +20,8 @@ func _on_body_entered(_body) -> void:
 		item_name = "Water"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.num_hearts += 1
+		if MetaManager != null:
+			MetaManager.record_run_hearts(RunManager.player.num_hearts)
 		RunManager.player.current_health += health_boost
 		RunManager.player.healed.emit()
 		

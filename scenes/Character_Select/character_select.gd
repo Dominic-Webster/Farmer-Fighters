@@ -17,6 +17,10 @@ var selected_index : int = 0
 func _ready() -> void:
 	if characters.size() == 0:
 		return
+
+	_sync_character_unlocks()
+	if MetaManager != null and not MetaManager.meta_changed.is_connected(_on_meta_changed):
+		MetaManager.meta_changed.connect(_on_meta_changed)
 	
 	select_button.grab_focus()
 	
@@ -30,6 +34,21 @@ func _ready() -> void:
 	right_button.pressed.connect(_on_right_pressed)
 	left_button.pressed.connect(_on_left_pressed)
 	
+	set_current_character()
+
+
+func _sync_character_unlocks() -> void:
+	if MetaManager == null:
+		return
+
+	for character in characters:
+		if character == null or character.unlock_id == "":
+			continue
+		character.unlocked = MetaManager.is_character_unlocked(character.unlock_id)
+
+
+func _on_meta_changed() -> void:
+	_sync_character_unlocks()
 	set_current_character()
 
 

@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bbqassiy0wd3v"]
+
+[ext_resource type="Script" uid="uid://b5tju7bwj1rll" path="res://scenes/Options_Menu/options_menu.gd" id="1_qa7ea"]
+[ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_icb34"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_7m5gh"]
+
+[node name="OptionsMenu" type="Control" unique_id=554405392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qa7ea")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=389036936]
+self_modulate = Color(0.45568937, 0.69945055, 0.20047545, 1)
+scale = Vector2(8, 8)
+texture = ExtResource("2_icb34")
+centered = false
+
+[node name="Title" type="Label" parent="." unique_id=1068826567]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 67.0
+offset_right = 1490.0
+offset_bottom = 232.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.7137255)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 100
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=913419990]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 203.0
+offset_right = 1388.0
+offset_bottom = 953.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Audio" type="Button" parent="Buttons" unique_id=741895842]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 80
+text = "Audio"
+
+[node name="Reset_Save" type="Button" parent="Buttons" unique_id=271720641]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 80
+text = "Reset Save"
+
+[node name="Back" type="Button" parent="Buttons" unique_id=1515949391]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 80
+text = "Back"
+
+[node name="Reset_Save_Option" type="Control" parent="." unique_id=1678911287]
+visible = false
+anchors_preset = 0
+offset_left = 315.0
+offset_top = 227.0
+offset_right = 1583.0
+offset_bottom = 898.0
+
+[node name="ColorRect" type="ColorRect" parent="Reset_Save_Option" unique_id=109365731]
+layout_mode = 0
+offset_right = 1269.0
+offset_bottom = 662.0
+color = Color(0, 0.34862033, 0.11494597, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Reset_Save_Option" unique_id=1856471851]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 107.0
+offset_right = 1115.0
+offset_bottom = 580.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="Reset_Save_Option/VBoxContainer" unique_id=143227880]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 70
+text = "Are you sure you want to reset your save?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Reset_Save_Option/VBoxContainer" unique_id=1247586550]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Yes" type="Button" parent="Reset_Save_Option/VBoxContainer/HBoxContainer" unique_id=423220290]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 40
+text = "Yes, I'm Sure"
+
+[node name="No" type="Button" parent="Reset_Save_Option/VBoxContainer/HBoxContainer" unique_id=1126186031]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 40
+text = "No"

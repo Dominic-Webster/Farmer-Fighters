@@ -245,6 +245,9 @@ func load_data() -> void:
 	
 	slow_bullets = data.slow_bullets
 
+	if MetaManager != null:
+		MetaManager.record_run_hearts(num_hearts)
+
 
 func _physics_process(_delta):
 	if movement_locked:

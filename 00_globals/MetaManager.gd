@@ -1,6 +1,8 @@
 # Meta Manager
 extends Node
 
+signal meta_changed
+
 const BASE_META_PATH := "res://save/Meta/base_meta.json"
 const ITEM_UNLOCKS_PATH := "res://Data/item_unlocks.json"
 const SAVE_DIR := "user://save/Meta"
@@ -34,6 +36,7 @@ func load_meta_data() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		_reconcile_unlocks(false)
 		save_meta_data()
+		meta_changed.emit()
 		return
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -49,6 +52,7 @@ func load_meta_data() -> void:
 	_reconcile_unlocks(false)
 
 	_save_if_needed()
+	meta_changed.emit()
 
 
 func save_meta_data() -> void:
@@ -66,6 +70,7 @@ func reset_progress_to_base() -> void:
 	meta_data = _load_base_meta_data()
 	save_meta_data()
 	refresh_item_pools()
+	meta_changed.emit()
 
 
 func record_item_pickup(item_id: String) -> void:
@@ -77,6 +82,21 @@ func record_item_pickup(item_id: String) -> void:
 	meta_data["pickup_counts"] = pickup_counts
 	_reconcile_unlocks(true)
 	save_meta_data()
+	meta_changed.emit()
+
+
+func record_run_hearts(heart_count: int) -> void:
+	if heart_count >= 5:
+		_set_character_unlocked("farmer_jane")
+
+
+func is_character_unlocked(character_id: String) -> bool:
+	var character_unlocks: Dictionary = meta_data.get("character_unlocks", {})
+	return bool(character_unlocks.get(character_id, false))
+
+
+func unlock_character(character_id: String) -> void:
+	_set_character_unlocked(character_id)
 
 
 func record_enemy_kill(amount: int = 1) -> void:
@@ -97,7 +117,7 @@ func unlock_item(item_id: String) -> void:
 	_set_item_unlocked(item_id, true)
 
 
-func _set_item_unlocked(item_id: String, show_notification: bool) -> void:
+func _set_item_unlocked(item_id: String, _show_notification: bool) -> void:
 	if item_id == "" or is_item_unlocked(item_id):
 		return
 
@@ -106,12 +126,30 @@ func _set_item_unlocked(item_id: String, show_notification: bool) -> void:
 	meta_data["item_unlocks"] = item_unlocks
 	save_meta_data()
 	refresh_item_pools()
+	meta_changed.emit()
 
-	if show_notification and RunManager != null and RunManager.gui != null:
-		var unlock_definition = get_item_unlock_definition(item_id)
-		var unlock_title = str(unlock_definition.get("unlock_title", "Item Unlocked!"))
-		var display_name = str(unlock_definition.get("display_name", item_id.capitalize()))
-		RunManager.gui.show_unlock_info(unlock_title, display_name)
+
+func _set_character_unlocked(character_id: String) -> void:
+	if character_id == "" or is_character_unlocked(character_id):
+		return
+
+	var character_unlocks: Dictionary = meta_data.get("character_unlocks", {})
+	character_unlocks[character_id] = true
+	meta_data["character_unlocks"] = character_unlocks
+	save_meta_data()
+	if RunManager != null and RunManager.gui != null:
+		RunManager.gui.show_unlock_info("Character Unlocked", _get_character_display_name(character_id))
+	meta_changed.emit()
+
+
+func _get_character_display_name(character_id: String) -> String:
+	match character_id:
+		"old_mac":
+			return "Old Mac"
+		"farmer_jane":
+			return "Farmer Jane"
+		_:
+			return character_id.replace("_", " ").capitalize()
 
 
 func get_item_unlock_definition(item_id: String) -> Dictionary:
@@ -156,6 +194,14 @@ func _reconcile_unlocks(show_notification: bool) -> void:
 		if meets_pickup_requirement and meets_kill_requirement:
 			_set_item_unlocked(unlock_id, show_notification)
 
+	_reconcile_character_unlocks(pickup_counts)
+
+
+func _reconcile_character_unlocks(pickup_counts: Dictionary) -> void:
+	var companion_pickups := int(pickup_counts.get("cow_item", 0)) + int(pickup_counts.get("chicken_item", 0))
+	if companion_pickups >= 3:
+		_set_character_unlocked("old_mac")
+
 
 func _get_unlocked_item_ids() -> Array:
 	var unlocked_items: Array = []
@@ -175,6 +221,7 @@ func _load_base_meta_data() -> Dictionary:
 			"version": 1,
 			"enemy_kills": 0,
 			"pickup_counts": {},
+			"character_unlocks": {},
 			"item_unlocks": {}
 		}
 
@@ -186,6 +233,7 @@ func _load_base_meta_data() -> Dictionary:
 			"version": 1,
 			"enemy_kills": 0,
 			"pickup_counts": {},
+			"character_unlocks": {},
 			"item_unlocks": {}
 		}
 
@@ -197,6 +245,7 @@ func _normalize_meta_data(raw_meta: Dictionary) -> Dictionary:
 		"version": int(raw_meta.get("version", 1)),
 		"enemy_kills": int(raw_meta.get("enemy_kills", 0)),
 		"pickup_counts": {},
+		"character_unlocks": {},
 		"item_unlocks": {},
 	}
 
@@ -205,6 +254,7 @@ func _normalize_meta_data(raw_meta: Dictionary) -> Dictionary:
 		pickup_counts["broccoli"] = int(raw_meta.get("brocolli_picked_up", 0))
 
 	normalized["pickup_counts"] = pickup_counts.duplicate(true)
+	normalized["character_unlocks"] = raw_meta.get("character_unlocks", {}).duplicate(true)
 	normalized["item_unlocks"] = raw_meta.get("item_unlocks", {}).duplicate(true)
 	return normalized
 
@@ -225,6 +275,11 @@ func _merge_meta_data(base_meta: Dictionary, saved_meta: Dictionary) -> Dictiona
 	for unlock_key in normalized_saved.get("item_unlocks", {}).keys():
 		merged_item_unlocks[unlock_key] = bool(normalized_saved["item_unlocks"][unlock_key])
 	merged["item_unlocks"] = merged_item_unlocks
+
+	var merged_character_unlocks: Dictionary = merged.get("character_unlocks", {})
+	for unlock_key in normalized_saved.get("character_unlocks", {}).keys():
+		merged_character_unlocks[unlock_key] = bool(normalized_saved["character_unlocks"][unlock_key])
+	merged["character_unlocks"] = merged_character_unlocks
 
 	return merged
 

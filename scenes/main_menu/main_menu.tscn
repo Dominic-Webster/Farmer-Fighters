@@ -21,10 +21,10 @@ centered = false
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=913419990]
 layout_mode = 0
-offset_left = 534.0
-offset_top = 314.0
-offset_right = 1384.0
-offset_bottom = 863.0
+offset_left = 538.0
+offset_top = 203.0
+offset_right = 1388.0
+offset_bottom = 953.0
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -50,6 +50,17 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_ob46e")
 theme_override_font_sizes/font_size = 80
 text = "Continue"
+
+[node name="Options" type="Button" parent="Buttons" unique_id=763494608]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_ob46e")
+theme_override_font_sizes/font_size = 80
+text = "Options"
 
 [node name="Back" type="Button" parent="Buttons" unique_id=1515949391]
 custom_minimum_size = Vector2(0, 150)

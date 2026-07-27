@@ -18,6 +18,8 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
 			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.num_hearts += 1
+			if MetaManager != null:
+				MetaManager.record_run_hearts(RunManager.player.num_hearts)
 			RunManager.player.current_health = RunManager.player.get_max_health()
 			RunManager.player.healed.emit()
 			queue_free()

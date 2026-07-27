@@ -210,3 +210,6 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.chicken_fire_rate = float(player_state.get("chicken_fire_rate", player.chicken_fire_rate))
 	player.chicken_bullet_speed = float(player_state.get("chicken_bullet_speed", player.chicken_bullet_speed))
 	player.slow_bullets = bool(player_state.get("slow_bullets", player.slow_bullets))
+
+	if MetaManager != null:
+		MetaManager.record_run_hearts(player.num_hearts)
