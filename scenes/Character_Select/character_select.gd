@@ -5,6 +5,10 @@ extends Control
 @onready var char_desc : Label = $CenterContainer/VBoxContainer/CharacterDescription
 @onready var lock_icon : TextureRect = $CenterContainer/VBoxContainer/CharacterSpriteHolder/LockIcon
 
+@onready var health_text : Label = $CenterContainer/VBoxContainer/StatsContainer/HealthLabel
+@onready var damage_text : Label = $CenterContainer/VBoxContainer/StatsContainer/DamageLabel
+@onready var speed_text : Label = $CenterContainer/VBoxContainer/StatsContainer/SpeedLabel
+
 @onready var left_button : TextureButton = $LeftButton
 @onready var right_button : TextureButton = $RightButton
 @onready var back_button : Button = $BackButton
@@ -60,10 +64,19 @@ func set_current_character() -> void:
 		icon.modulate = Color(0.332, 0.332, 0.332, 1.0)
 		char_desc.text = characters[selected_index].unlock_text
 		lock_icon.visible = true
+		health_text.visible = false
+		damage_text.visible = false
+		speed_text.visible = false
 	else:
 		icon.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		char_desc.text = characters[selected_index].description
 		lock_icon.visible = false
+		health_text.visible = true
+		health_text.text = "Health: " + characters[selected_index].health
+		damage_text.visible = true
+		damage_text.text = "Damage: " + characters[selected_index].damage
+		speed_text.visible = true
+		speed_text.text = "Speed: " + characters[selected_index].speed
 	
 	set_select_button()
 

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bu45cjsdr1qn4" path="res://scenes/Character_Select/carrot_button_hover.png" id="8_2inxf"]
 [ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png" id="8_7q623"]
 [ext_resource type="Texture2D" uid="uid://b6l5aa4hobex3" path="res://scenes/Character_Select/Lock.png" id="9_8dj70"]
+[ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="10_eygiu"]
 
 [node name="CharacterSelect" type="Control" unique_id=1886480089]
 layout_mode = 3
@@ -47,14 +48,14 @@ vertical_alignment = 1
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=133994383]
 layout_mode = 0
 offset_left = 747.5
-offset_top = 240.0
+offset_top = 230.0
 offset_right = 832.5
-offset_bottom = 402.0
+offset_bottom = 358.0
 scale = Vector2(5, 5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=950210506]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 5
 alignment = 1
 
 [node name="CharacterSpriteHolder" type="PanelContainer" parent="CenterContainer/VBoxContainer" unique_id=136505568]
@@ -98,9 +99,24 @@ layout_mode = 2
 
 [node name="HealthLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer" unique_id=1937772229]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_eygiu")
+theme_override_font_sizes/font_size = 8
+text = "Health: ***"
+horizontal_alignment = 1
 
 [node name="DamageLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer" unique_id=1216663113]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("10_eygiu")
+theme_override_font_sizes/font_size = 8
+text = "Damage: ***"
+horizontal_alignment = 1
+
+[node name="SpeedLabel" type="Label" parent="CenterContainer/VBoxContainer/StatsContainer" unique_id=926266934]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_eygiu")
+theme_override_font_sizes/font_size = 8
+text = "Speed: ***"
+horizontal_alignment = 1
 
 [node name="LeftButton" type="TextureButton" parent="." unique_id=105965642]
 layout_mode = 0

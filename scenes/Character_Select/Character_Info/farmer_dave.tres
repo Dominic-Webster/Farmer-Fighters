@@ -8,6 +8,9 @@
 script = ExtResource("1_2oxbe")
 icon = ExtResource("1_o8314")
 player_data = ExtResource("3_8hddb")
+health = "***"
+damage = "***"
+speed = "***"
 description = "A versatile fighter with well-rounded stats"
 unlocked = true
 metadata/_custom_type_script = "uid://8pds4nkc82ma"

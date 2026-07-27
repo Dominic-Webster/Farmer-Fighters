@@ -8,6 +8,9 @@
 script = ExtResource("2_55ogc")
 icon = ExtResource("1_55ogc")
 player_data = ExtResource("2_wu7q1")
+health = "**"
+damage = "**"
+speed = "**"
 unlock_id = "old_mac"
 description = "A fighter who favors companions over bullets"
 unlock_text = "Find Companions 3 Times"

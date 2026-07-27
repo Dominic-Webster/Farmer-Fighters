@@ -8,6 +8,9 @@
 script = ExtResource("3_087ui")
 icon = ExtResource("1_p6sbn")
 player_data = ExtResource("2_knpue")
+health = "*****"
+damage = "*****"
+speed = "*"
 unlock_id = "farmer_jane"
 description = "A fighter who utilizes slow yet damaging bullets"
 unlock_text = "Have 5 Hearts in a Run"
