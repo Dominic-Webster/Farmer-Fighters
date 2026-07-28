@@ -2,6 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bbyvusb025etf" path="res://scenes/Almanac/item_ui.gd" id="1_4eobd"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(1, 1, 1, 0.0352941)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 0.890196, 0.227451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="ItemUi" type="Control" unique_id=1881964649]
 layout_mode = 3
 anchors_preset = 15
@@ -13,5 +25,19 @@ script = ExtResource("1_4eobd")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=126645835]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 110.0
+offset_bottom = 110.0
+scale = Vector2(1.5, 1.5)
+
+[node name="FocusFrame" type="Panel" parent="." unique_id=2147283646]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_focus")
