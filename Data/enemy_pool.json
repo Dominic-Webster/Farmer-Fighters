@@ -36,4 +36,7 @@
 		"res://Enemies/Floor5/RedToxicBarrel/RedToxicBarrel.tscn",
 		"res://Enemies/Floor5/ToxicBarrel/ToxicBarrel.tscn"
 	],
+	"6": [
+		"res://Enemies/Floor5/RedToxicBarrel/RedToxicBarrel.tscn"
+	],
 }
