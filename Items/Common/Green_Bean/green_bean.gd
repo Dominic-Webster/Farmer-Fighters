@@ -26,5 +26,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.accuracy.x += accuracy_buff
 			RunManager.player.accuracy.y -= accuracy_buff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("green_bean")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

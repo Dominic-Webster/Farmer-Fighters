@@ -15,6 +15,10 @@ func get_item_desc() -> String:
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Carrot"
+
+		if MetaManager != null:
+			MetaManager.record_item_pickup("carrot")
+
 		if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
 			RunManager.player.add_item_to_array(item_name)
 			RunManager.player.num_hearts += 1

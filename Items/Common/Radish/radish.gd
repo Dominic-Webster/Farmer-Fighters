@@ -25,5 +25,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.dash_speed += dash_speed_buff
 			RunManager.player.move_speed += move_speed_buff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("radish")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

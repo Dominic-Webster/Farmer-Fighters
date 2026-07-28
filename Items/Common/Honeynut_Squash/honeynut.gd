@@ -43,5 +43,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.damage += damage_buff
 			RunManager.player.fire_rate += fire_rate_light_debuff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("honeynut_squash")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

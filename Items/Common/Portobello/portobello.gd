@@ -23,5 +23,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.portobello = true
 			RunManager.player.damage_mult += 0.5
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("portobello")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

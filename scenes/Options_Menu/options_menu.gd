@@ -1,5 +1,7 @@
 extends Control
 
+var run_save : RunSave = RunSave.new()
+
 @onready var audio_button : Button = $Buttons/Audio
 @onready var reset_save_button : Button = $Buttons/Reset_Save
 @onready var back_button : Button = $Buttons/Back
@@ -69,6 +71,9 @@ func _on_yes_reset_hovered() -> void:
 func _on_yes_reset_pressed() -> void:
 	if MetaManager != null:
 		MetaManager.reset_progress_to_base()
+	run_save.clear_save()
+	if RunManager != null:
+		RunManager.pending_run_data.clear()
 	
 	no_reset_button.visible = false
 	yes_reset_button.visible = false

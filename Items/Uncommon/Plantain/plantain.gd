@@ -22,6 +22,9 @@ func _on_body_entered(_body) -> void:
 		else:
 			RunManager.player.boomerang = true
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("plantain")
+
 		RunManager.player.add_item_to_array(item_name)
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

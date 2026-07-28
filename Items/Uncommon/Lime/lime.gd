@@ -25,5 +25,8 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.scale > Vector2(1.25, 1.25):
 			RunManager.player.scale = Vector2(1.25, 1.25)
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("lime")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

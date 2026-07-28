@@ -31,5 +31,8 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.accuracy.y < 0:
 			RunManager.player.accuracy.y = 0
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("strawberry")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

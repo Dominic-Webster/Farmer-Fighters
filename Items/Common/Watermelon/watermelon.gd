@@ -22,5 +22,8 @@ func _on_body_entered(_body) -> void:
 		else:
 			RunManager.player.bounce += 1
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("watermelon")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

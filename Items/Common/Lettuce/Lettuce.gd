@@ -15,5 +15,8 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.damage_mult *= damage_mult_buff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("lettuce")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

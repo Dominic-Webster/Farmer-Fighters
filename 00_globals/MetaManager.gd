@@ -78,6 +78,7 @@ func record_item_pickup(item_id: String) -> void:
 		return
 
 	var pickup_counts: Dictionary = meta_data.get("pickup_counts", {})
+	pickup_counts = _ensure_pickup_counts(pickup_counts)
 	pickup_counts[item_id] = int(pickup_counts.get(item_id, 0)) + 1
 	meta_data["pickup_counts"] = pickup_counts
 	_reconcile_unlocks(true)
@@ -253,7 +254,7 @@ func _normalize_meta_data(raw_meta: Dictionary) -> Dictionary:
 	if pickup_counts.is_empty() and raw_meta.has("brocolli_picked_up"):
 		pickup_counts["broccoli"] = int(raw_meta.get("brocolli_picked_up", 0))
 
-	normalized["pickup_counts"] = pickup_counts.duplicate(true)
+	normalized["pickup_counts"] = _ensure_pickup_counts(pickup_counts.duplicate(true))
 	normalized["character_unlocks"] = raw_meta.get("character_unlocks", {}).duplicate(true)
 	normalized["item_unlocks"] = raw_meta.get("item_unlocks", {}).duplicate(true)
 	return normalized
@@ -269,7 +270,7 @@ func _merge_meta_data(base_meta: Dictionary, saved_meta: Dictionary) -> Dictiona
 	var merged_pickup_counts: Dictionary = merged.get("pickup_counts", {})
 	for pickup_key in normalized_saved.get("pickup_counts", {}).keys():
 		merged_pickup_counts[pickup_key] = int(normalized_saved["pickup_counts"][pickup_key])
-	merged["pickup_counts"] = merged_pickup_counts
+	merged["pickup_counts"] = _ensure_pickup_counts(merged_pickup_counts)
 
 	var merged_item_unlocks: Dictionary = merged.get("item_unlocks", {})
 	for unlock_key in normalized_saved.get("item_unlocks", {}).keys():
@@ -282,6 +283,16 @@ func _merge_meta_data(base_meta: Dictionary, saved_meta: Dictionary) -> Dictiona
 	merged["character_unlocks"] = merged_character_unlocks
 
 	return merged
+
+
+func _ensure_pickup_counts(pickup_counts: Dictionary) -> Dictionary:
+	var normalized_pickup_counts := pickup_counts.duplicate(true)
+	for item_id in AlmanacData.get_item_ids():
+		if item_id == "":
+			continue
+		if not normalized_pickup_counts.has(item_id):
+			normalized_pickup_counts[item_id] = 0
+	return normalized_pickup_counts
 
 
 func _save_if_needed() -> void:

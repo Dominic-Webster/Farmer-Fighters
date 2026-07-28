@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://shtxl7hqv8gx" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_0ebjn"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_ob46e"]
+[ext_resource type="Texture2D" uid="uid://lu2dsw7n0rxk" path="res://scenes/main_menu/almanac.png" id="4_uqeha"]
 
 [node name="MainMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -72,3 +73,15 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_ob46e")
 theme_override_font_sizes/font_size = 80
 text = "Back"
+
+[node name="Almanac" type="Button" parent="." unique_id=1721600526]
+layout_mode = 0
+offset_left = 1690.0001
+offset_top = 864.0
+offset_right = 1720.0001
+offset_bottom = 892.0
+scale = Vector2(6, 6)
+theme_override_colors/icon_focus_color = Color(1.353256, 1.353256, 1.353256, 1)
+theme_override_colors/icon_hover_color = Color(1.353256, 1.353256, 1.353256, 1)
+icon = ExtResource("4_uqeha")
+flat = true

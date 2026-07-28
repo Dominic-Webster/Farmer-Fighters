@@ -25,5 +25,8 @@ func _on_body_entered(_body) -> void:
 			RunManager.player.dash_damage += dash_damage_buff
 			RunManager.player.damage_mult += damage_mult_buff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("scythe")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

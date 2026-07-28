@@ -16,5 +16,9 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.luck += luck_boost
 		RunManager.player.move_speed += move_speed_boost
+		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("orange")
+		
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

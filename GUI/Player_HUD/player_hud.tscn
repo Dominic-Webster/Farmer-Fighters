@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dfubkg2426icd" path="res://GUI/Player_HUD/heart_gui.tscn" id="2_gian7"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_1pbxj"]
 [ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="4_agyfd"]
+[ext_resource type="Texture2D" uid="uid://dd0oc8orhsgky" path="res://GUI/Player_HUD/Active_Frame.png" id="5_srlca"]
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1867377868]
 script = ExtResource("1_xhte5")
@@ -62,8 +63,10 @@ theme_override_fonts/font = ExtResource("3_1pbxj")
 theme_override_font_sizes/font_size = 25
 text = "This Item"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ItemChoice" type="Panel" parent="Control" unique_id=1531821264]
+visible = false
 self_modulate = Color(0.62959415, 0.62959415, 0.62959415, 1)
 layout_mode = 0
 offset_left = 435.0
@@ -127,6 +130,21 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1pbxj")
 theme_override_font_sizes/font_size = 30
 text = " Abandon "
+
+[node name="ActiveItem" type="Control" parent="Control" unique_id=384551005]
+modulate = Color(1, 1, 1, 0.84313726)
+anchors_preset = 0
+offset_left = 1700.0
+offset_top = 20.0
+offset_right = 1740.0
+offset_bottom = 60.0
+scale = Vector2(5, 5)
+
+[node name="TextureRect" type="TextureRect" parent="Control/ActiveItem" unique_id=798613714]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_srlca")
 
 [node name="ItemInfoTimer" type="Timer" parent="." unique_id=1960749794]
 

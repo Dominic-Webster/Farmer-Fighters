@@ -14,5 +14,9 @@ func _on_body_entered(_body) -> void:
 		item_name = "Fertilizer"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.bullet_speed += speed_boost
+		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("fertilizer")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

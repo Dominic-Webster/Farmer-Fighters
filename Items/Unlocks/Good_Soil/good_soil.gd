@@ -24,5 +24,9 @@ func _on_body_entered(_body) -> void:
 			MetaManager.record_run_hearts(RunManager.player.num_hearts)
 		RunManager.player.current_health += health_boost
 		RunManager.player.healed.emit()
+
+		if MetaManager != null:
+			MetaManager.record_item_pickup("good_soil")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

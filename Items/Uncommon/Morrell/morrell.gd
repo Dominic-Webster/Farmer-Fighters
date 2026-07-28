@@ -21,5 +21,8 @@ func _on_body_entered(_body) -> void:
 		else:
 			RunManager.player.bullet_speed += proj_speed_buff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("morrell")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

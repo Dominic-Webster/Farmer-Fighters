@@ -13,6 +13,8 @@ func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "4 Leaf Clover"
 		RunManager.player.add_item_to_array(item_name)
+		if MetaManager != null:
+			MetaManager.record_item_pickup("4_leaf_clover")
 		RunManager.player.luck += luck_boost
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

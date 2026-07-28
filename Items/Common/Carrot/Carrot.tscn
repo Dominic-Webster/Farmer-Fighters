@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_0k62m"]
 [ext_resource type="Script" uid="uid://d0i5gfvsdmcni" path="res://Items/Common/Carrot/carrot.gd" id="1_5hdhu"]
-[ext_resource type="Texture2D" uid="uid://cebb4uk60svmo" path="res://GUI/Player_HUD/carrot_health.png" id="2_5hdhu"]
+[ext_resource type="Texture2D" uid="uid://cs1ovwk54sky1" path="res://Items/Common/Carrot/Carrot.png" id="3_3h77r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqrw"]
 size = Vector2(39, 119.5)
@@ -52,11 +52,8 @@ texture = ExtResource("1_0k62m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1095562804]
 scale = Vector2(4, 4)
-texture = ExtResource("2_5hdhu")
+texture = ExtResource("3_3h77r")
 flip_v = true
-hframes = 2
-vframes = 2
-frame = 3
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1139872505]
 collision_layer = 32

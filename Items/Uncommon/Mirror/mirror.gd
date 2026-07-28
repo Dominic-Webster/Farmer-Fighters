@@ -39,5 +39,8 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.current_health = RunManager.player.get_max_health()
 		RunManager.player.healed.emit()
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("mirror")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

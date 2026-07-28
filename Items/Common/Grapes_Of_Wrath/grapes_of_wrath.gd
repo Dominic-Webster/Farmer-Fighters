@@ -28,5 +28,8 @@ func _on_body_entered(_body) -> void:
 		RunManager.player.accuracy.x -= accuracy_debuff
 		RunManager.player.accuracy.y += accuracy_debuff
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("grapes_of_wrath")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())

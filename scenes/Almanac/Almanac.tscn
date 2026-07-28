@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bewbcv51xu0r"]
+
+[ext_resource type="Script" uid="uid://cqd17wvii030w" path="res://scenes/Almanac/almanac.gd" id="1_j1g8o"]
+[ext_resource type="Texture2D" uid="uid://d1kdaojyavmte" path="res://scenes/Character_Select/Backdrop.png" id="1_tb7qk"]
+[ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="2_xxh1u"]
+[ext_resource type="FontFile" uid="uid://cs2s8581c6s2v" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="4_spy5r"]
+
+[node name="Almanac" type="Control" unique_id=1568003165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j1g8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1870361589]
+scale = Vector2(8, 8)
+texture = ExtResource("1_tb7qk")
+centered = false
+
+[node name="Title" type="Label" parent="." unique_id=972331782]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 75.0
+offset_right = 1815.0
+offset_bottom = 240.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0.7137255)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_xxh1u")
+theme_override_font_sizes/font_size = 100
+text = "Farmers Almanac"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=1719118848]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 98.0
+offset_right = 325.0
+offset_bottom = 189.0
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_xxh1u")
+theme_override_font_sizes/font_size = 50
+text = " Back "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1305871632]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 261.0
+offset_right = 828.0
+offset_bottom = 961.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1228655631]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="ItemInfo" type="Panel" parent="." unique_id=1754398569]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 330.0
+offset_right = 1766.0
+offset_bottom = 930.0
+
+[node name="Name" type="Label" parent="ItemInfo" unique_id=1732373237]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 30.0
+offset_right = 739.0
+offset_bottom = 208.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_xxh1u")
+theme_override_font_sizes/font_size = 60
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="ItemInfo" unique_id=685397958]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 259.0
+offset_right = 727.0
+offset_bottom = 571.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 0)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("4_spy5r")
+theme_override_font_sizes/font_size = 40
+text = "Item Description and what it does"
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd0oc8orhsgky"
-path="res://.godot/imported/Active_Frame.png-089b1ef70e7d587f0cf38ab72b2fda2b.ctex"
+uid="uid://lu2dsw7n0rxk"
+path="res://.godot/imported/almanac.png-22a5af16ac4d04c261eb83c71385aee7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Active_Frame.png"
-dest_files=["res://.godot/imported/Active_Frame.png-089b1ef70e7d587f0cf38ab72b2fda2b.ctex"]
+source_file="res://scenes/main_menu/almanac.png"
+dest_files=["res://.godot/imported/almanac.png-22a5af16ac4d04c261eb83c71385aee7.ctex"]
 
 [params]
 

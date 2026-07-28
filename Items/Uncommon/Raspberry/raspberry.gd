@@ -9,7 +9,7 @@ var damage_nerf : float = 0.25
 
 
 func get_item_desc() -> String:
-	return "+800 Bullet Speed\n0.2 Fire Rate Buff\n-0.25 Damage Mult\nx0.5 Damage Mult"
+	return "+800 Bullet Speed\n0.2 Fire Rate Buff\n-0.25 Damage\nx0.5 Damage Mult"
 
 
 func _on_body_entered(_body) -> void:
@@ -27,5 +27,8 @@ func _on_body_entered(_body) -> void:
 		if RunManager.player.damage < 0.25:
 			RunManager.player.damage = 0.25
 		
+		if MetaManager != null:
+			MetaManager.record_item_pickup("raspberry")
+
 		queue_free()
 		picked_up.emit(item_name, get_item_desc())
