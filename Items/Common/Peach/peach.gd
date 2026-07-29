@@ -17,7 +17,7 @@ func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Peach"
 		
-		if RunManager.player.current_bullet == RunManager.player.Bullets.PEACH:
+		if RunManager.player.current_bullet != RunManager.player.Bullets.PEACH:
 			RunManager.player.current_bullet = RunManager.player.Bullets.PEACH
 			
 			RunManager.player.bullet_speed *= 0.25
