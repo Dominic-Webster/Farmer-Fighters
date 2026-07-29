@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lw0evaf42t2u"]
 
 [ext_resource type="Script" uid="uid://bex5d4p07hoqs" path="res://scenes/Rooms/room.gd" id="1_uc2th"]
-[ext_resource type="Texture2D" uid="uid://dmoack1rq4wut" path="res://scenes/Rooms/00_sprites/Toxic/f5_room1.png" id="2_x78cs"]
+[ext_resource type="Texture2D" uid="uid://bcwp6bpe4trls" path="res://scenes/Rooms/00_sprites/floors_6_7/f6_room_1.png" id="2_uc2th"]
 [ext_resource type="PackedScene" uid="uid://dm0pxgs0ljqy4" path="res://scenes/Door/door.tscn" id="3_fc4dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_endo3"]
@@ -33,7 +33,7 @@ script = ExtResource("1_uc2th")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=1195402309]
 scale = Vector2(4, 4)
-texture = ExtResource("2_x78cs")
+texture = ExtResource("2_uc2th")
 centered = false
 
 [node name="Walls" type="Node2D" parent="." unique_id=98348940]
