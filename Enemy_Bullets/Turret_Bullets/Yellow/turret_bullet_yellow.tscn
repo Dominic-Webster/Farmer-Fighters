@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cxa67t4jyxt6j"]
+
+[ext_resource type="Script" uid="uid://0sujw73v2p7o" path="res://Enemy_Bullets/enemy_bullet.gd" id="1_gap6j"]
+[ext_resource type="Resource" uid="uid://iyfbkjggag5u" path="res://Enemy_Bullets/Turret_Bullets/Yellow/turret_bullet_yellow.tres" id="2_wdmbt"]
+[ext_resource type="Texture2D" uid="uid://c8aj2b26ko4yr" path="res://Enemy_Bullets/Turret_Bullets/Yellow/Turret_Yellow_Bullet.png" id="3_wfxp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_airin"]
+size = Vector2(17.600002, 32.000008)
+
+[sub_resource type="Animation" id="Animation_5r8d0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_airin"]
+resource_name = "spin"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707963267948966, 3.141592653589793, 4.71238898038469, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocfhv"]
+_data = {
+&"RESET": SubResource("Animation_5r8d0"),
+&"spin": SubResource("Animation_airin")
+}
+
+[node name="TurretBullet" type="Area2D" unique_id=249560929]
+process_mode = 1
+scale = Vector2(1.25, 1.25)
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_gap6j")
+data = ExtResource("2_wdmbt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445442734]
+z_index = 200
+scale = Vector2(6, 6)
+texture = ExtResource("3_wfxp4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786075711]
+position = Vector2(0, 0.7999996)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_airin")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=224798987]
+rect = Rect2(-7.9999995, -10, 15.999999, 20)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=405109685]
+libraries/ = SubResource("AnimationLibrary_ocfhv")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

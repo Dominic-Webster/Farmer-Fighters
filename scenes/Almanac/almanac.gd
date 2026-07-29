@@ -5,6 +5,8 @@ const ALMANAC_DATA : Script = preload("res://scenes/Almanac/almanac_data.gd")
 
 @onready var back_button : Button = $BackButton
 
+@onready var collection_number : Label = $Collection
+
 @onready var scroll_container : ScrollContainer = $ScrollContainer
 
 @onready var items : GridContainer = $ScrollContainer/GridContainer
@@ -23,6 +25,7 @@ func _ready() -> void:
 	item_name.text = ""
 	item_desc.text = ""
 	_populate_items()
+	collection_number.text = "Items Found: " + str(_get_found_count()) + "/" + str(AlmanacData.ITEM_ENTRIES.size())
 	
 	back_button.mouse_entered.connect(_on_back_hovered)
 	back_button.pressed.connect(_on_back_pressed)
@@ -37,6 +40,15 @@ func _populate_items() -> void:
 
 	for entry in AlmanacData.ITEM_ENTRIES:
 		_add_item_card(entry)
+
+
+func _get_found_count() -> int:
+	var result : int = 0
+	for child in items.get_children():
+		var item_ui := child as ItemUI
+		if item_ui != null and item_ui.is_item_found():
+			result += 1
+	return result
 
 
 func _focus_first_item() -> void:
