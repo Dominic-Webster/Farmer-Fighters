@@ -33,7 +33,7 @@
 	"cherry": {
 		"display_name": "Cherry",
 		"unlock_title": "Item Unlocked!",
-		"required_enemy_kills": 250,
+		"required_enemy_kills": 500,
 		"rarity": "rare",
 		"scene_path": "res://Items/Unlocks/Cherry/Cherry.tscn"
 	},
