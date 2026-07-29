@@ -45,7 +45,7 @@ var test_item_6 = "res://Items/Uncommon/Zucchini/Zucchini.tscn"
 func start_new_run(_player : Player):
 	pending_run_data.clear()
 	
-	current_floor = 6
+	current_floor = 1
 	player_damaged_this_floor = false
 	if ItemManager != null:
 		ItemManager.load_item_pools()

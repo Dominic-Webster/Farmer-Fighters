@@ -127,6 +127,8 @@ func _set_item_unlocked(item_id: String, _show_notification: bool) -> void:
 	meta_data["item_unlocks"] = item_unlocks
 	save_meta_data()
 	refresh_item_pools()
+	if RunManager != null and RunManager.gui != null and _show_notification:
+		RunManager.gui.show_unlock_info("Item Unlocked", item_id.replace("_", " ").capitalize())
 	meta_changed.emit()
 
 
