@@ -30,6 +30,13 @@
 		"rarity": "rare",
 		"scene_path": "res://Items/Unlocks/Pineapple/Pineapple.tscn"
 	},
+	"pear": {
+		"display_name": "Pear",
+		"unlock_title": "Item Unlocked!",
+		"required_enemy_kills": 250,
+		"rarity": "common",
+		"scene_path": "res://Items/Unlocks/Pear/Pear.tscn"
+	},
 	"cherry": {
 		"display_name": "Cherry",
 		"unlock_title": "Item Unlocked!",

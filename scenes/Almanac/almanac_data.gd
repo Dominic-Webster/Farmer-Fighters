@@ -137,9 +137,16 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
+		"id": "pear",
+		"name": "Pear",
+		"desc": "+1 Damage Mult\n-0.5 Damage",
+		"texture": preload("res://Items/Unlocks/Pear/Pear.png"),
+		"category": "common"
+	},
+	{
 		"id": "plum",
 		"name": "Plum",
-		"desc": "+1 Luck. +0.35 Damage Mult. -0.25 Damage",
+		"desc": "+1 Luck\n+0.35 Damage Mult\n-0.25 Damage",
 		"texture": preload("res://Items/Common/Plum/Plum.png"),
 		"category": "common"
 	},
