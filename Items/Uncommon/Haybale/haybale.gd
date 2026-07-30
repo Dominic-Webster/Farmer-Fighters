@@ -7,7 +7,7 @@ var dmg_mult_boost : float = 1.25
 
 
 func get_item_desc() -> String:
-	if RunManager.player != null and RunManager.player.cow_unlocked == true:
+	if RunManager.player != null and (RunManager.player.cow_unlocked == true or RunManager.player.chicken_unlocked == true):
 		return "x1.5 Companion Damage Mult"
 
 	return "x1.25 Damage Mult"
