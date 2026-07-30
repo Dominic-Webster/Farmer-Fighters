@@ -2,9 +2,6 @@
 extends Item
 class_name Fish_Emulsion
 
-var health_boost : int = 2
-
-
 func get_item_desc() -> String:
 	return "Active (6): Heal One Heart"
 

@@ -44,5 +44,13 @@
 		"required_pickups": 3,
 		"rarity": "uncommon",
 		"scene_path": "res://Items/Unlocks/Da_Pickle/Da_Pickle.tscn"
+	},
+	"wheat": {
+		"display_name": "Wheat",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "acorn",
+		"required_pickups": 3,
+		"rarity": "uncommon",
+		"scene_path": "res://Items/Unlocks/Wheat/Wheat.tscn"
 	}
 }

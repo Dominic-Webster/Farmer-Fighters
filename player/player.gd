@@ -621,14 +621,27 @@ func clear_active_item() -> void:
 func use_active_item() -> void:
 	if active_item_id == "" or active_item_charges < active_item_max_charges:
 		return
-
+	
 	match active_item_id:
 		"fish_emulsion":
 			heal(get_heart_value())
 			active_item_charges = 0
 			update_active_item_hud()
+		"wheat":
+			deal_damage_to_all_enemies(3.0 * damage * damage_mult)
+			active_item_charges = 0
+			update_active_item_hud()
 		_:
 			return
+
+
+func deal_damage_to_all_enemies(amount: float) -> void:
+	if amount <= 0.0:
+		return
+
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if enemy is Enemy:
+			enemy.take_damage(amount, global_position)
 
 
 func update_active_item_hud() -> void:

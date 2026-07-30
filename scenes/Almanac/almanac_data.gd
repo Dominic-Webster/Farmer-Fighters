@@ -137,6 +137,13 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
+		"id": "plum",
+		"name": "Plum",
+		"desc": "+1 Luck. +0.35 Damage Mult. -0.25 Damage",
+		"texture": preload("res://Items/Common/Plum/Plum.png"),
+		"category": "common"
+	},
+	{
 		"id": "portobello",
 		"name": "Portobello",
 		"desc": "Wavy Bullets\n+0.5 Damage Mult",
@@ -338,6 +345,13 @@ const ITEM_ENTRIES := [
 		"name": "Zucchini",
 		"desc": "Unlock Tri-Shot\n0.2 Fire Rate Debuff",
 		"texture": preload("res://Items/Uncommon/Zucchini/zuchinni.png"),
+		"category": "uncommon"
+	},
+	{
+		"id": "wheat",
+		"name": "Wheat",
+		"desc": "Active (5): Deal x3 Damage to all Enemies",
+		"texture": preload("res://Items/Unlocks/Wheat/wheat.png"),
 		"category": "uncommon"
 	},
 	#Rare
