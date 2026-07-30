@@ -350,8 +350,14 @@ func _on_enemy_died(enemy : Enemy):
 			var pos = RunManager.current_room
 			var player = RunManager.player
 			var luck : int = 1
-			if player != null and "luck" in player:
-				luck = player.luck
+			if RunManager.player.luck < 9:
+				luck = RunManager.player.luck
+			elif RunManager.player.luck < 12:
+				luck = 9
+			elif RunManager.player.luck < 15:
+				luck = 10
+			else:
+				luck = 11
 			var roll = RunManager.rng.randi_range(1, 25)
 			if roll <= luck:
 				var pickup_scene = get_random_pickup_scene()
@@ -419,7 +425,17 @@ func get_random_pickup_scene():
 	var data = JSON.parse_string(file.get_as_text())
 	var pool
 	
-	if randi_range(1, 25) <= RunManager.player.luck:
+	var luck : int = 1
+	if RunManager.player.luck < 9:
+		luck = RunManager.player.luck
+	elif RunManager.player.luck < 12:
+		luck = 9
+	elif RunManager.player.luck < 15:
+		luck = 10
+	else:
+		luck = 11
+	
+	if randi_range(1, 25) <= luck:
 		if typeof(data) != TYPE_DICTIONARY or not data.has("uncommon"):
 			return null
 		pool = data["uncommon"]
