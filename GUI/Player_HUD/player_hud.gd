@@ -12,6 +12,10 @@ class_name PlayerHud
 @onready var unlock_info_desc : Label = $Control/UnlockInfo/Desc
 @onready var unlock_info_timer : Timer = $UnlockInfoTimer
 
+@onready var active_item : Control = $Control/ActiveItem
+@onready var active_item_art : TextureRect = $Control/ActiveItem/Frame/Art
+@onready var active_item_charge : Label = $Control/ActiveItem/Frame/Label
+
 @export var heart_scene : PackedScene
 var hearts : Array[HeartGUI] = []
 @export var max_hearts : int = 50 # Default, can be set in editor
@@ -21,6 +25,7 @@ var current_item : Item = null
 func _ready():
 	unlock_info.visible = false
 	item_choice.visible = false
+	active_item.visible = false
 	unlock_info_timer.wait_time = 3.0
 	unlock_info_timer.one_shot = true
 	unlock_info_timer.timeout.connect(hide_unlock_info)
@@ -43,6 +48,25 @@ func _ready():
 		hearts.append(heart)
 		heart.visible = false
 	pass
+
+
+func update_active_item(item_name: String, item_texture: Texture2D, charges: int, max_charges: int) -> void:
+	if item_name == "" or item_texture == null:
+		active_item.visible = false
+		active_item_charge.visible = false
+		active_item_art.texture = null
+		active_item_art.modulate = Color.WHITE
+		return
+
+	active_item.visible = true
+	active_item_art.texture = item_texture
+	if max_charges > 0 and charges < max_charges:
+		active_item_art.modulate = Color(0.65, 0.65, 0.65, 1.0)
+		active_item_charge.visible = true
+		active_item_charge.text = str(max_charges - charges)
+	else:
+		active_item_art.modulate = Color.WHITE
+		active_item_charge.visible = false
 
 
 

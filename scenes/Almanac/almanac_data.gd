@@ -257,6 +257,13 @@ const ITEM_ENTRIES := [
 		"category": "uncommon"
 	},
 	{
+		"id": "fish_emulsion",
+		"name": "Fish Emulsion",
+		"desc": "Active (6): Heal One Heart",
+		"texture": preload("res://Items/Uncommon/Fish_Emulsion/fish_emulsion_single.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "garlic",
 		"name": "Garlic",
 		"desc": "Bullets Slow Enemies",

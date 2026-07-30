@@ -188,6 +188,9 @@ func mark_room_cleared() -> void:
 	if MetaManager != null:
 		MetaManager.flush_unlock_notifications()
 
+	if player != null and player.has_method("recharge_active_item"):
+		player.recharge_active_item(1)
+
 #var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 #func spawn_heart() -> void:
 	#var room := current_room_instance as Room

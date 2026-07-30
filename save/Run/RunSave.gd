@@ -157,6 +157,12 @@ func serialize_player(player: Player) -> Dictionary:
 		"chicken_fire_rate": player.chicken_fire_rate,
 		"chicken_bullet_speed": player.chicken_bullet_speed,
 		"slow_bullets": player.slow_bullets,
+		"active_item_id": player.active_item_id,
+		"active_item_name": player.active_item_name,
+		"active_item_desc": player.active_item_desc,
+		"active_item_texture_path": player.active_item_texture_path,
+		"active_item_charges": player.active_item_charges,
+		"active_item_max_charges": player.active_item_max_charges,
 	}
 
 
@@ -212,6 +218,16 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.chicken_fire_rate = float(player_state.get("chicken_fire_rate", player.chicken_fire_rate))
 	player.chicken_bullet_speed = float(player_state.get("chicken_bullet_speed", player.chicken_bullet_speed))
 	player.slow_bullets = bool(player_state.get("slow_bullets", player.slow_bullets))
+	player.active_item_id = str(player_state.get("active_item_id", player.active_item_id))
+	player.active_item_name = str(player_state.get("active_item_name", player.active_item_name))
+	player.active_item_desc = str(player_state.get("active_item_desc", player.active_item_desc))
+	player.active_item_texture_path = str(player_state.get("active_item_texture_path", player.active_item_texture_path))
+	player.active_item_texture = null
+	if player.active_item_texture_path != "":
+		player.active_item_texture = load(player.active_item_texture_path) as Texture2D
+	player.active_item_charges = int(player_state.get("active_item_charges", player.active_item_charges))
+	player.active_item_max_charges = int(player_state.get("active_item_max_charges", player.active_item_max_charges))
+	player.update_active_item_hud()
 
 	if MetaManager != null:
 		MetaManager.record_run_hearts(player.num_hearts)

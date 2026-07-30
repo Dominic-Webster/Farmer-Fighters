@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnvi8jynhhknr"
-path="res://.godot/imported/fish_emulsion.png-608e0c3ae709db4d92c90f327132c2a6.ctex"
+path="res://.godot/imported/fish_emulsion.png-285bc36a9da9edd17298978e198ca00d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/fish_emulsion.png"
-dest_files=["res://.godot/imported/fish_emulsion.png-608e0c3ae709db4d92c90f327132c2a6.ctex"]
+source_file="res://Items/Uncommon/Fish_Emulsion/fish_emulsion.png"
+dest_files=["res://.godot/imported/fish_emulsion.png-285bc36a9da9edd17298978e198ca00d.ctex"]
 
 [params]
 

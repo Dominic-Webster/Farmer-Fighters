@@ -69,6 +69,14 @@ func get_max_health() -> int:
 
 var items : Array[String] = []
 
+var active_item_id : String = ""
+var active_item_name : String = ""
+var active_item_desc : String = ""
+var active_item_texture : Texture2D = null
+var active_item_texture_path : String = ""
+var active_item_charges : int = 0
+var active_item_max_charges : int = 0
+
 # Damage cooldown
 var can_take_damage : bool = true
 
@@ -285,6 +293,9 @@ func _physics_process(_delta):
 			is_dashing = true
 			dash_direction = direction
 			dash_time_left = dash_duration
+
+	if Input.is_action_just_pressed("active_item"):
+		use_active_item()
 
 	# Update sprite facing
 	update_sprite_facing()
@@ -572,6 +583,62 @@ func add_item_to_array(item : String) -> void:
 		items.append(item)
 
 
+func equip_active_item(item_id: String, item_name: String, item_desc: String, texture_path: String, max_charges: int, initial_charges: int = -1) -> void:
+	active_item_id = item_id
+	active_item_name = item_name
+	active_item_desc = item_desc
+	active_item_texture_path = texture_path
+	active_item_texture = null
+	if texture_path != "":
+		active_item_texture = load(texture_path) as Texture2D
+	active_item_max_charges = maxi(max_charges, 0)
+	if initial_charges < 0:
+		active_item_charges = active_item_max_charges
+	else:
+		active_item_charges = clampi(initial_charges, 0, active_item_max_charges)
+	update_active_item_hud()
+
+
+func recharge_active_item(amount: int = 1) -> void:
+	if active_item_id == "" or active_item_max_charges <= 0 or amount <= 0:
+		return
+
+	active_item_charges = mini(active_item_charges + amount, active_item_max_charges)
+	update_active_item_hud()
+
+
+func clear_active_item() -> void:
+	active_item_id = ""
+	active_item_name = ""
+	active_item_desc = ""
+	active_item_texture = null
+	active_item_texture_path = ""
+	active_item_charges = 0
+	active_item_max_charges = 0
+	update_active_item_hud()
+
+
+func use_active_item() -> void:
+	if active_item_id == "" or active_item_charges < active_item_max_charges:
+		return
+
+	match active_item_id:
+		"fish_emulsion":
+			heal(get_heart_value())
+			active_item_charges = 0
+			update_active_item_hud()
+		_:
+			return
+
+
+func update_active_item_hud() -> void:
+	if RunManager == null or RunManager.gui == null:
+		return
+
+	if RunManager.gui.has_method("update_active_item"):
+		RunManager.gui.update_active_item(active_item_name, active_item_texture, active_item_charges, active_item_max_charges)
+
+
 func heal(amount : int) -> void:
 	current_health += amount
 	if current_health > get_max_health():
@@ -622,6 +689,7 @@ func reset_player() -> void:
 	load_data()
 	
 	items = []
+	clear_active_item()
 	
 	current_health = get_max_health()
 	temp_health = 0

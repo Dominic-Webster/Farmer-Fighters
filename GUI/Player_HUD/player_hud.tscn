@@ -140,11 +140,33 @@ offset_right = 1740.0
 offset_bottom = 60.0
 scale = Vector2(5, 5)
 
-[node name="TextureRect" type="TextureRect" parent="Control/ActiveItem" unique_id=798613714]
+[node name="Frame" type="TextureRect" parent="Control/ActiveItem" unique_id=798613714]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_srlca")
+
+[node name="Art" type="TextureRect" parent="Control/ActiveItem/Frame" unique_id=1142188136]
+layout_mode = 0
+offset_left = 5.4000244
+offset_top = 4.7999983
+offset_right = 35.0
+offset_bottom = 34.6
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/ActiveItem/Frame" unique_id=1127366797]
+self_modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_top = 3.2
+offset_right = 40.0
+offset_bottom = 39.199997
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("3_1pbxj")
+theme_override_font_sizes/font_size = 20
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ItemInfoTimer" type="Timer" parent="." unique_id=1960749794]
 
