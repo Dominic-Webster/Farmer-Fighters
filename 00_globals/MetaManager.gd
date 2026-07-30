@@ -10,6 +10,8 @@ const SAVE_PATH := SAVE_DIR + "/current_meta.json"
 
 var meta_data: Dictionary = {}
 var item_unlock_definitions: Dictionary = {}
+var _pending_unlock_notifications: Array[Dictionary] = []
+var _unlock_notification_active: bool = false
 
 
 func _ready() -> void:
@@ -127,8 +129,8 @@ func _set_item_unlocked(item_id: String, _show_notification: bool) -> void:
 	meta_data["item_unlocks"] = item_unlocks
 	save_meta_data()
 	refresh_item_pools()
-	if RunManager != null and RunManager.gui != null and _show_notification:
-		RunManager.gui.show_unlock_info("Item Unlocked", item_id.replace("_", " ").capitalize())
+	if _show_notification:
+		_queue_unlock_notification("Item Unlocked", item_id.replace("_", " ").capitalize())
 	meta_changed.emit()
 
 
@@ -140,9 +142,54 @@ func _set_character_unlocked(character_id: String) -> void:
 	character_unlocks[character_id] = true
 	meta_data["character_unlocks"] = character_unlocks
 	save_meta_data()
-	if RunManager != null and RunManager.gui != null:
-		RunManager.gui.show_unlock_info("Character Unlocked", _get_character_display_name(character_id))
+	_queue_unlock_notification("Character Unlocked", _get_character_display_name(character_id))
 	meta_changed.emit()
+
+
+func flush_unlock_notifications() -> void:
+	if _unlock_notification_active:
+		return
+
+	if _pending_unlock_notifications.is_empty():
+		return
+
+	if not _can_show_unlock_notification_now():
+		return
+
+	_unlock_notification_active = true
+	while not _pending_unlock_notifications.is_empty():
+		if not _can_show_unlock_notification_now():
+			break
+
+		var _notification: Dictionary = _pending_unlock_notifications.pop_front()
+		if RunManager == null or RunManager.gui == null:
+			break
+
+		RunManager.gui.show_unlock_info(str(_notification.get("title", "Unlock")), str(_notification.get("desc", "")))
+		await RunManager.gui.unlock_info_timer.timeout
+
+	_unlock_notification_active = false
+	if not _pending_unlock_notifications.is_empty():
+		flush_unlock_notifications()
+
+
+func _queue_unlock_notification(title: String, desc: String) -> void:
+	_pending_unlock_notifications.append({
+		"title": title,
+		"desc": desc,
+	})
+	flush_unlock_notifications()
+
+
+func _can_show_unlock_notification_now() -> bool:
+	if RunManager == null or RunManager.gui == null:
+		return false
+
+	var room := RunManager.current_room_instance as Room
+	if room != null and room.enemies_exist():
+		return false
+
+	return true
 
 
 func _get_character_display_name(character_id: String) -> String:

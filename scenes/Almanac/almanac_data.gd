@@ -215,6 +215,13 @@ const ITEM_ENTRIES := [
 	},
 	#Uncommon
 	{
+		"id": "celery",
+		"name": "Celery",
+		"desc": "+0.75 Damage\n0.05 Fire Rate Buff",
+		"texture": preload("res://Items/Uncommon/Celery/celery.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "cilantro",
 		"name": "Cilantro",
 		"desc": "Explosive Bullets\n0.15 Fire Rate Debuff",

@@ -185,6 +185,9 @@ func mark_room_cleared() -> void:
 		"type": "combat"
 	}
 
+	if MetaManager != null:
+		MetaManager.flush_unlock_notifications()
+
 #var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 #func spawn_heart() -> void:
 	#var room := current_room_instance as Room

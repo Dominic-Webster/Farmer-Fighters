@@ -39,6 +39,7 @@
 		"res://Items/Common/Watermelon/Watermelon.tscn"
 	],
 	"uncommon": [
+		"res://Items/Uncommon/Celery/Celery.tscn",
 		"res://Items/Uncommon/Cilantro/Cilantro.tscn",
 		"res://Items/Uncommon/Corn/Corn.tscn",
 		"res://Items/Uncommon/Cow_Item/Cow_Item.tscn",

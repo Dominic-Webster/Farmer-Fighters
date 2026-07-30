@@ -12,7 +12,9 @@ class_name Room
 @onready var bullet_bounds : Node2D = $BulletBounds
 
 var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
+var avacado_scene : PackedScene = preload("res://PickUps/Avacado/Avacado.tscn")
 const PICKUP_SPAWN_OFFSET := Vector2(0, -48)
+const AVACADO_REPLACEMENT_CHANCE := 4
 
 var enemy_count : int = 0
 var _room_persistent_spawn_ids := {
@@ -373,7 +375,10 @@ func spawn_room_heart(pos: Vector2i) -> void:
 
 func spawn_heart() -> void:
 	var pos = RunManager.current_room
-	add_persistent_spawn(_room_persistent_spawn_ids["boss_heart"], heart_scene.resource_path, player_spawn_c.global_position)
+	var scene_path := heart_scene.resource_path
+	if avacado_scene != null and RunManager.rng.randi_range(1, AVACADO_REPLACEMENT_CHANCE) == 1:
+		scene_path = avacado_scene.resource_path
+	add_persistent_spawn(_room_persistent_spawn_ids["boss_heart"], scene_path, player_spawn_c.global_position)
 	spawn_room_heart(pos)
 
 

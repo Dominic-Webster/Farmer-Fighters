@@ -26,9 +26,9 @@ func _ready():
 	RunManager.ended.connect(_run_ended)
 	MapGenerationManager.new_floor.connect(_play_song)
 	
-	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
-	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
-	player.healed.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts))
+	gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts, player.temp_health)
+	player.damaged.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts, player.temp_health))
+	player.healed.connect(func(): gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts, player.temp_health))
 	player.died.connect(_player_died)
 	player.visible = true
 	player.healed.emit()
@@ -42,7 +42,7 @@ func _ready():
 	else:
 		if run_save.apply_run_data(RunManager.pending_run_data):
 			await RunManager.load_room(RunManager.current_room, RunManager.current_entry_dir)
-			gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts)
+			gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts, player.temp_health)
 		else:
 			RunManager.start_new_run(player)
 

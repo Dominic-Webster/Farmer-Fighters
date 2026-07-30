@@ -1,5 +1,7 @@
 {
 	"common": [
+		"res://PickUps/Avacado/Avacado.tscn",
+		"res://PickUps/Heart/Heart.tscn",
 		"res://PickUps/Heart/Heart.tscn"
 	],
 }

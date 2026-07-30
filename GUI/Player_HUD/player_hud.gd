@@ -46,7 +46,7 @@ func _ready():
 
 
 
-func update_hp(_hp: int, _max_hp: int, _heart_type: Variant = null, _num_hearts: int = 0) -> void:
+func update_hp(_hp: int, _max_hp: int, _heart_type: Variant = null, _num_hearts: int = 0, _temp_hp: int = 0) -> void:
 	# Always hide all hearts first
 	for h in hearts:
 		h.visible = false
@@ -63,13 +63,20 @@ func update_hp(_hp: int, _max_hp: int, _heart_type: Variant = null, _num_hearts:
 	@warning_ignore("integer_division")
 	var heart_count = _num_hearts if _num_hearts > 0 else int(_max_hp / heart_value)
 	heart_count = mini(heart_count, hearts.size())
+	var next_index := 0
 	for i in range(heart_count):
-		update_heart(i, _hp, heart_value, _heart_type, max_frame)
+		update_heart(i, _hp, heart_value, _heart_type, max_frame, 0)
 		hearts[i].visible = true
+		next_index += 1
+
+	var temp_icon_count := mini(int(ceil(float(_temp_hp) / 2.0)), hearts.size() - next_index)
+	for i in range(temp_icon_count):
+		update_temp_heart(next_index + i, _temp_hp, i)
+		hearts[next_index + i].visible = true
 
 
 
-func update_heart(_index: int, _hp: int, heart_value := 2, _heart_type: Variant = null, _max_frame := 2) -> void:
+func update_heart(_index: int, _hp: int, heart_value := 2, _heart_type: Variant = null, _max_frame := 2, _display_kind := 0) -> void:
 	var raw_value = _hp - _index * heart_value
 	var _value = clampi(raw_value, 0, heart_value)
 	# Map value to frame count
@@ -81,9 +88,18 @@ func update_heart(_index: int, _hp: int, heart_value := 2, _heart_type: Variant 
 		# Carrot: 0=empty, 1=1/3, 2=2/3, 3=full
 		frame = _value
 	if "set_heart" in hearts[_index]:
-		hearts[_index].set_heart(frame, _heart_type)
+		hearts[_index].set_heart(frame, _heart_type, _display_kind)
 	else:
 		hearts[_index].value = frame
+
+
+func update_temp_heart(_index: int, _temp_hp: int, _temp_index: int) -> void:
+	var raw_value = _temp_hp - _temp_index * 2
+	var _value = clampi(raw_value, 0, 2)
+	if "set_heart" in hearts[_index]:
+		hearts[_index].set_heart(_value, null, 1)
+	else:
+		hearts[_index].value = _value
 
 
 func update_max_hp(_max_hp: int, _heart_type: Variant = null) -> void:

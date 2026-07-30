@@ -60,6 +60,7 @@ func get_heart_value() -> int:
 
 var current_heart : Hearts = Hearts.TOMATO
 var current_health : int = 0
+var temp_health : int = 0
 
 
 func get_max_health() -> int:
@@ -527,16 +528,27 @@ func _on_push_area_body_entered(body):
 
 
 func take_damage(amount : int):
-	if not is_dashing and can_take_damage:
-		can_take_damage = false
-		current_health -= amount
-		flash_red()
-		damaged.emit()
+	if is_dashing or not can_take_damage or amount <= 0:
+		return
+
+	can_take_damage = false
+
+	var remaining_damage := amount
+	if temp_health > 0:
+		var temp_damage := mini(remaining_damage, temp_health)
+		temp_health -= temp_damage
+		remaining_damage -= temp_damage
+
+	if remaining_damage > 0:
+		current_health = maxi(current_health - remaining_damage, 0)
 		RunManager.player_damaged_this_floor = true
-		if current_health < 1:
-			player_died()
-		await get_tree().create_timer(0.75).timeout
-		can_take_damage = true
+
+	flash_red()
+	damaged.emit()
+	if current_health < 1:
+		player_died()
+	await get_tree().create_timer(0.75).timeout
+	can_take_damage = true
 
 
 func player_died():
@@ -567,6 +579,14 @@ func heal(amount : int) -> void:
 	healed.emit()
 
 
+func add_temp_health(amount : int) -> void:
+	if amount <= 0:
+		return
+
+	temp_health += amount
+	healed.emit()
+
+
 func upgrade_hearts_to_carrot():
 	if current_heart != Hearts.CARROT:
 		var old_heart_value = 2
@@ -593,7 +613,7 @@ func update_hp():
 				heart = 0
 			Hearts.CARROT :
 				heart = 1
-		hud.update_hp(current_health, get_max_health(), heart, num_hearts)
+		hud.update_hp(current_health, get_max_health(), heart, num_hearts, temp_health)
 
 
 func reset_player() -> void:
@@ -604,5 +624,6 @@ func reset_player() -> void:
 	items = []
 	
 	current_health = get_max_health()
+	temp_health = 0
 	
 	damaged.emit()

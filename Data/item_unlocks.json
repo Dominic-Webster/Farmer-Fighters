@@ -26,7 +26,7 @@
 	"pineapple": {
 		"display_name": "Pineapple",
 		"unlock_title": "Item Unlocked!",
-		"required_enemy_kills": 100,
+		"required_enemy_kills": 150,
 		"rarity": "rare",
 		"scene_path": "res://Items/Unlocks/Pineapple/Pineapple.tscn"
 	},

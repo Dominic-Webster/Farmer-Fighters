@@ -127,6 +127,7 @@ func serialize_player(player: Player) -> Dictionary:
 		"dash_cooldown_time": player.dash_cooldown_time,
 		"current_heart": int(player.current_heart),
 		"current_health": player.current_health,
+		"temp_health": player.temp_health,
 		"current_bullet": int(player.current_bullet),
 		"scale": player.scale,
 		"items": player.items.duplicate(),
@@ -181,6 +182,7 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.dash_cooldown_time = float(player_state.get("dash_cooldown_time", player.dash_cooldown_time))
 	player.current_heart = player_state.get("current_heart", player.current_heart) as Player.Hearts
 	player.current_health = int(player_state.get("current_health", player.current_health))
+	player.temp_health = int(player_state.get("temp_health", player.temp_health))
 	player.current_bullet = player_state.get("current_bullet", player.current_bullet) as Player.Bullets
 	player.scale = player_state.get("scale", player.scale)
 	player.items = player_state.get("items", player.items).duplicate()
