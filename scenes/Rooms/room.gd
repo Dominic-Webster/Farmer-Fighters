@@ -417,9 +417,17 @@ func get_random_pickup_scene():
 	if not file:
 		return null
 	var data = JSON.parse_string(file.get_as_text())
-	if typeof(data) != TYPE_DICTIONARY or not data.has("common"):
-		return null
-	var pool = data["common"]
+	var pool
+	
+	if randi_range(1, 25) <= RunManager.player.luck:
+		if typeof(data) != TYPE_DICTIONARY or not data.has("uncommon"):
+			return null
+		pool = data["uncommon"]
+	else:
+		if typeof(data) != TYPE_DICTIONARY or not data.has("common"):
+			return null
+		pool = data["common"]
+	
 	if pool.size() == 0:
 		return null
 	var item_path = pool[RunManager.rng.randi() % pool.size()]
