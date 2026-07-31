@@ -1,5 +1,5 @@
 extends Bullet
-class_name CornBullet
+class_name StraightBullet
 
 
 func _ready() -> void:

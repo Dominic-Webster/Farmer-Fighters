@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c41xod0x3l6a6"]
 
-[ext_resource type="Script" uid="uid://duk028qykpnnn" path="res://Bullets/Corn_Bullet/corn_bullet.gd" id="1_eltx1"]
+[ext_resource type="Script" uid="uid://duk028qykpnnn" path="res://Bullets/Corn_Bullet/straight_bullet.gd" id="1_eltx1"]
 [ext_resource type="Texture2D" uid="uid://o2pa6n4s03sn" path="res://Bullets/Corn_Bullet/corn_bullet.png" id="2_k4vqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ld6a"]
