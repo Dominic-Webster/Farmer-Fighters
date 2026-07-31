@@ -156,6 +156,8 @@ func serialize_player(player: Player) -> Dictionary:
 		"chicken_damage": player.chicken_damage,
 		"chicken_fire_rate": player.chicken_fire_rate,
 		"chicken_bullet_speed": player.chicken_bullet_speed,
+		"shovel_unlocked": player.shovel_unlocked,
+		"shovel_damage": player.shovel_damage,
 		"slow_bullets": player.slow_bullets,
 		"active_item_id": player.active_item_id,
 		"active_item_name": player.active_item_name,
@@ -217,6 +219,8 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.chicken_damage = float(player_state.get("chicken_damage", player.chicken_damage))
 	player.chicken_fire_rate = float(player_state.get("chicken_fire_rate", player.chicken_fire_rate))
 	player.chicken_bullet_speed = float(player_state.get("chicken_bullet_speed", player.chicken_bullet_speed))
+	player.shovel_unlocked = bool(player_state.get("shovel_unlocked", player.shovel_unlocked))
+	player.shovel_damage = float(player_state.get("shovel_damage", player.shovel_damage))
 	player.slow_bullets = bool(player_state.get("slow_bullets", player.slow_bullets))
 	player.active_item_id = str(player_state.get("active_item_id", player.active_item_id))
 	player.active_item_name = str(player_state.get("active_item_name", player.active_item_name))

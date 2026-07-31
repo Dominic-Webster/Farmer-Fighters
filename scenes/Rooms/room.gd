@@ -82,6 +82,7 @@ func _enter_room(dir_from : String) -> void:
 				lock_doors()
 	
 	spawn_companions()
+	spawn_rotators()
 
 
 #func _input(_event: InputEvent) -> void:
@@ -102,6 +103,18 @@ func spawn_companions() -> void:
 		chicken.global_position = player.global_position
 		if player.global_position == player_spawn_d.global_position or player.global_position == player_spawn_t.global_position:
 			chicken.global_position.x += 50
+
+
+func spawn_rotators() -> void:
+	var player = RunManager.player
+
+	if player == null:
+		return
+
+	if player.shovel_unlocked:
+		var shovel = preload("res://Bullets/00_Rotators/Shovel/0Shovel.tscn").instantiate()
+		add_child(shovel)
+		shovel.global_position = player.global_position
 
 
 func load_enemies(_player_spawn : String) -> void:

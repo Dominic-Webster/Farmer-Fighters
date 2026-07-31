@@ -193,6 +193,13 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
+		"id": "shovel",
+		"name": "Shovel",
+		"desc": "Unlock Shovel: 4 Damage",
+		"texture": preload("res://Items/Common/Shovel/Shovel.png"),
+		"category": "common"
+	},
+	{
 		"id": "spinach",
 		"name": "Spinach",
 		"desc": "+100 Movement Speed\n+0.5 Damage\n+0.1 Damage Mult\n+150 Bullet Speed",

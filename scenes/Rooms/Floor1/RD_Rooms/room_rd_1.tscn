@@ -93,7 +93,7 @@ shape = SubResource("RectangleShape2D_impox")
 
 [node name="PlayerSpawnC" type="Marker2D" parent="Player Spawns" unique_id=1571906042]
 self_modulate = Color(0, 1, 0, 1)
-position = Vector2(960, 540)
+position = Vector2(960, 400)
 
 [node name="PlayerSpawnT" type="Marker2D" parent="Player Spawns" unique_id=290097644]
 self_modulate = Color(0, 1, 0, 1)

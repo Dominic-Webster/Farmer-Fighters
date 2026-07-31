@@ -80,7 +80,7 @@ func die():
 
 
 func _on_hurt_box_area_entered(area):
-	if area.is_in_group("companion") or area.is_in_group("comp_bullet"):
+	if area.is_in_group("companion") or area.is_in_group("comp_bullet") or area.is_in_group("rotators"):
 		var damage_amount: float = 0.0
 		var damage_source = area
 

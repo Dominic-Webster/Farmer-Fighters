@@ -148,6 +148,10 @@ var chicken_damage : float = 2.0
 var chicken_fire_rate : float = 0.8
 var chicken_bullet_speed : float = 500
 
+# Rotators
+var shovel_unlocked : bool = false
+var shovel_damage : float = 4.0
+
 var slow_bullets : bool = false
 
 # Dash function variables
@@ -255,6 +259,9 @@ func load_data() -> void:
 	chicken_damage = data.chicken_damage
 	chicken_fire_rate = data.chicken_fire_rate
 	chicken_bullet_speed = data.chicken_bullet_speed
+	
+	shovel_unlocked = data.shovel_unlocked
+	shovel_damage = data.shovel_damage
 	
 	slow_bullets = data.slow_bullets
 
