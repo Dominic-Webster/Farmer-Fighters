@@ -8,7 +8,7 @@ var damage_debuff : float = 0.25
 
 
 func get_item_desc() -> String:
-	return "+1 Luck. +0.35 Damage Mult. -0.25 Damage"
+	return "+1 Luck\n+0.35 Damage Mult\n-0.25 Damage"
 
 
 func _on_body_entered(_body) -> void:
