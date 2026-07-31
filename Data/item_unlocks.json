@@ -37,6 +37,14 @@
 		"rarity": "common",
 		"scene_path": "res://Items/Unlocks/Pear/Pear.tscn"
 	},
+	"pumpkin": {
+		"display_name": "Pumpkin",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "watermmelon",
+		"required_pickups": 10,
+		"rarity": "common",
+		"scene_path": "res://Items/Unlocks/Pumpkin/Pumpkin.tscn"
+	},
 	"cherry": {
 		"display_name": "Cherry",
 		"unlock_title": "Item Unlocked!",

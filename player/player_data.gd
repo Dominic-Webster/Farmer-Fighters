@@ -42,6 +42,7 @@ enum Bullets {
 	PEACH,
 	POTATO,
 	PLANTAIN,
+	PUMPKIN,
 	WATERMELON
 }
 

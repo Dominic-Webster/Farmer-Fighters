@@ -165,6 +165,13 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
+		"id": "pumpkin",
+		"name": "Pumpkin",
+		"desc": "Bullets become Pumpkins\nFire Rate Buff\nBullet Speed Debuff\nMovement Speed Debuff",
+		"texture": preload("res://Items/Unlocks/Pumpkin/Pumpkin.png"),
+		"category": "common"
+	},
+	{
 		"id": "radish",
 		"name": "Radish",
 		"desc": "Unlock Dash\n+100 Dash Speed",
@@ -381,6 +388,13 @@ const ITEM_ENTRIES := [
 		"name": "Good_Soil",
 		"desc": "+2 Hearts",
 		"texture": preload("res://Items/Unlocks/Good_Soil/Good_Soil.png"),
+		"category": "rare"
+	},
+	{
+		"id": "gourd",
+		"name": "Gourd",
+		"desc": "+5 Damage\nMovement Speed Debuff",
+		"texture": preload("res://Items/Rare/Gourd/Gourd.png"),
 		"category": "rare"
 	},
 	{

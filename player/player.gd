@@ -97,6 +97,7 @@ enum Bullets {
 	PEACH,
 	POTATO,
 	PLANTAIN,
+	PUMPKIN,
 	WATERMELON
 }
 
@@ -110,6 +111,7 @@ var corn_bullet = preload("res://Bullets/Corn_Bullet/corn_bullet.tscn")
 var potato_bullet = preload("res://Bullets/Potato_Bullet/potato_bullet.tscn")
 var peach_bullet = preload("res://Bullets/Peach_Bullet/peach_bullet.tscn")
 var plantain_bullet = preload("res://Bullets/Plantain_Bullet/plantain_bullet.tscn")
+var pumpkin_bullet = preload("res://Bullets/Pumpkin_Bullet/pumpkin_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 var watermelon_bullet = preload("res://Bullets/Watermelon_Bullet/watermelon_bullet.tscn")
 
@@ -223,6 +225,8 @@ func load_data() -> void:
 			current_bullet = Bullets.WATERMELON
 		data.Bullets.POTATO:
 			current_bullet = Bullets.POTATO
+		data.Bullets.PUMPKIN:
+			current_bullet = Bullets.PUMPKIN
 	
 	knockback_strength = data.knockback_strength
 	knockback_decay = data.knockback_decay
@@ -417,6 +421,8 @@ func spawn_bullet(direction: Vector2) -> void:
 			bullet = potato_bullet.instantiate()
 		Bullets.PEACH:
 			bullet = peach_bullet.instantiate()
+		Bullets.PUMPKIN:
+			bullet = pumpkin_bullet.instantiate()
 		Bullets.STRAWBERRY:
 			bullet = strawberry_bullet.instantiate()
 		Bullets.WATERMELON:

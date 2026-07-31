@@ -64,6 +64,7 @@
 	],
 	"rare": [
 		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn",
-		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn"
+		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn",
+		"res://Items/Rare/Gourd/Gourd.tscn"
 	]
 }

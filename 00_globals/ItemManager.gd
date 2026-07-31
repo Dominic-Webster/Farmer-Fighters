@@ -63,6 +63,8 @@ func get_random_item_by_luck(luck: int, use_default_fallback: bool = false) -> S
 
 	if scene_path == "":
 		scene_path = get_random_item("common")
+		if scene_path == "":
+			scene_path = get_random_item("uncommon")
 
 	if scene_path == "" and use_default_fallback:
 		scene_path = get_default_item()
