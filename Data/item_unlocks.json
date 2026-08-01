@@ -60,6 +60,14 @@
 		"rarity": "uncommon",
 		"scene_path": "res://Items/Unlocks/Da_Pickle/Da_Pickle.tscn"
 	},
+	"trowel": {
+		"display_name": "Trowel",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "shovel",
+		"required_pickups": 3,
+		"rarity": "uncommon",
+		"scene_path": "res://Items/Unlocks/Trowel/Trowel.tscn"
+	},
 	"wheat": {
 		"display_name": "Wheat",
 		"unlock_title": "Item Unlocked!",

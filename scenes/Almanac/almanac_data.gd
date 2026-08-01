@@ -362,6 +362,13 @@ const ITEM_ENTRIES := [
 		"category": "uncommon"
 	},
 	{
+		"id": "trowel",
+		"name": "Trowel",
+		"desc": "Unlock Trowels: 5 Damage",
+		"texture": preload("res://Items/Unlocks/Trowel/Trowel.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "zucchini",
 		"name": "Zucchini",
 		"desc": "Unlock Tri-Shot\n0.2 Fire Rate Debuff",

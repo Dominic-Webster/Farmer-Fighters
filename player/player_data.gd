@@ -82,5 +82,9 @@ enum Bullets {
 # Rotators
 @export var shovel_unlocked : bool = false
 @export var shovel_damage : float = 4.0
+@export var garden_fork_unlocked : bool = false
+@export var garden_fork_damage : float = 5.0
+@export var trowel_unlocked : bool = false
+@export var trowel_damage : float = 5.0
 
 @export var slow_bullets : bool = false

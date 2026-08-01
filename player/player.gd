@@ -151,6 +151,10 @@ var chicken_bullet_speed : float = 500
 # Rotators
 var shovel_unlocked : bool = false
 var shovel_damage : float = 4.0
+var garden_fork_unlocked : bool = false
+var garden_fork_damage : float = 5.0
+var trowel_unlocked : bool = false
+var trowel_damage : float = 5.0
 
 var slow_bullets : bool = false
 
@@ -262,6 +266,10 @@ func load_data() -> void:
 	
 	shovel_unlocked = data.shovel_unlocked
 	shovel_damage = data.shovel_damage
+	garden_fork_unlocked = data.garden_fork_unlocked
+	garden_fork_damage = data.garden_fork_damage
+	trowel_unlocked = data.trowel_unlocked
+	trowel_damage = data.trowel_damage
 	
 	slow_bullets = data.slow_bullets
 

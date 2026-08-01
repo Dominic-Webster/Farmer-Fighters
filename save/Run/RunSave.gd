@@ -158,6 +158,10 @@ func serialize_player(player: Player) -> Dictionary:
 		"chicken_bullet_speed": player.chicken_bullet_speed,
 		"shovel_unlocked": player.shovel_unlocked,
 		"shovel_damage": player.shovel_damage,
+		"garden_fork_unlocked": player.garden_fork_unlocked,
+		"garden_fork_damage": player.garden_fork_damage,
+		"trowel_unlocked": player.trowel_unlocked,
+		"trowel_damage": player.trowel_damage,
 		"slow_bullets": player.slow_bullets,
 		"active_item_id": player.active_item_id,
 		"active_item_name": player.active_item_name,
@@ -196,6 +200,7 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.items = player_state.get("items", player.items).duplicate()
 	player.knockback_strength = int(player_state.get("knockback_strength", player.knockback_strength))
 	player.knockback_decay = int(player_state.get("knockback_decay", player.knockback_decay))
+	
 	player.boomerang = bool(player_state.get("boomerang", player.boomerang))
 	player.bounce = int(player_state.get("bounce", player.bounce))
 	player.spiral = bool(player_state.get("spiral", player.spiral))
@@ -211,6 +216,7 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.backshot = bool(player_state.get("backshot", player.backshot))
 	player.explosion = bool(player_state.get("explosion", player.explosion))
 	player.inverse_controls = bool(player_state.get("inverse_controls", player.inverse_controls))
+	# Companions
 	player.companion_dmg_mult = float(player_state.get("companion_dmg_mult", player.companion_dmg_mult))
 	player.cow_unlocked = bool(player_state.get("cow_unlocked", player.cow_unlocked))
 	player.cow_damage = float(player_state.get("cow_damage", player.cow_damage))
@@ -219,8 +225,14 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.chicken_damage = float(player_state.get("chicken_damage", player.chicken_damage))
 	player.chicken_fire_rate = float(player_state.get("chicken_fire_rate", player.chicken_fire_rate))
 	player.chicken_bullet_speed = float(player_state.get("chicken_bullet_speed", player.chicken_bullet_speed))
+	# Rotators
 	player.shovel_unlocked = bool(player_state.get("shovel_unlocked", player.shovel_unlocked))
 	player.shovel_damage = float(player_state.get("shovel_damage", player.shovel_damage))
+	player.garden_fork_unlocked = bool(player_state.get("garden_fork_unlocked", player.garden_fork_unlocked))
+	player.garden_fork_damage = float(player_state.get("garden_fork_damage", player.garden_fork_damage))
+	player.trowel_unlocked = bool(player_state.get("trowel_unlocked", player.trowel_unlocked))
+	player.trowel_damage = float(player_state.get("trowel_damage", player.trowel_damage))
+	
 	player.slow_bullets = bool(player_state.get("slow_bullets", player.slow_bullets))
 	player.active_item_id = str(player_state.get("active_item_id", player.active_item_id))
 	player.active_item_name = str(player_state.get("active_item_name", player.active_item_name))

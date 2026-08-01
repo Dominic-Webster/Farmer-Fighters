@@ -9,6 +9,7 @@ var player : Player
 var damage : float = 4.0
 @export var orbit_radius : float = 150.0
 @export var orbit_speed : float = 2.75
+@export var orbit_phase_degrees : float = 0.0
 var orbit_angle : float = 0.0
 
 
@@ -23,11 +24,8 @@ func _ready() -> void:
 
 	anim.stop()
 	sprite.rotation = 0.0
-
-	if global_position == player.global_position:
-		global_position = player.global_position + Vector2.RIGHT * orbit_radius
-
-	orbit_angle = (global_position - player.global_position).angle()
+	orbit_angle = deg_to_rad(orbit_phase_degrees)
+	global_position = player.global_position + Vector2.RIGHT.rotated(orbit_angle) * orbit_radius
 	damage = player.shovel_damage
 
 

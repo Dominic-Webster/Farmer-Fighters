@@ -107,14 +107,35 @@ func spawn_companions() -> void:
 
 func spawn_rotators() -> void:
 	var player = RunManager.player
+	
+	if player == null:
+		return
+	
+	if player.shovel_unlocked:
+		_spawn_rotator("res://Bullets/00_Rotators/Shovel/0Shovel.tscn", 0.0)
+	
+	if player.garden_fork_unlocked:
+		_spawn_rotator("res://Bullets/00_Rotators/Garden_Fork/0Garden_Fork.tscn", 180.0)
+	
+	if player.trowel_unlocked:
+		_spawn_rotator("res://Bullets/00_Rotators/Trowel/0Trowel.tscn", 90.0)
+		_spawn_rotator("res://Bullets/00_Rotators/Trowel/0Trowel.tscn", 270.0)
 
+
+func _spawn_rotator(scene_path: String, phase_degrees: float) -> void:
+	var player = RunManager.player
 	if player == null:
 		return
 
-	if player.shovel_unlocked:
-		var shovel = preload("res://Bullets/00_Rotators/Shovel/0Shovel.tscn").instantiate()
-		add_child(shovel)
-		shovel.global_position = player.global_position
+	var scene = load(scene_path)
+	if scene == null:
+		return
+
+	var rotator = scene.instantiate()
+	if "orbit_phase_degrees" in rotator:
+		rotator.orbit_phase_degrees = phase_degrees
+	add_child(rotator)
+	rotator.global_position = player.global_position
 
 
 func load_enemies(_player_spawn : String) -> void:
