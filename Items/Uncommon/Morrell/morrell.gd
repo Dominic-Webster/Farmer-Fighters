@@ -7,6 +7,9 @@ var proj_speed_buff : float = 300
 
 func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.spiral == false:
+		if RunManager.player.stream == true:
+			return "Unlock Spiral Stream"
+		
 		return "Unlock Spiral Bullets"
 
 	return "+300 Bullet Speed"

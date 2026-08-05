@@ -83,7 +83,9 @@ var can_take_damage : bool = true
 # Shooting Variables
 @onready var timer : Timer = $Timer
 @onready var shoot_point : Marker2D = $ShootPoint
+@onready var shoot_point_2 : Marker2D = $ShootPoint2
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var hurt_box : Area2D = $HurtBox
 var can_shoot : bool = true
 var movement_locked : bool = false
 
@@ -157,6 +159,20 @@ var trowel_unlocked : bool = false
 var trowel_damage : float = 5.0
 
 var slow_bullets : bool = false
+var stream : bool = false
+var stream_settings : Dictionary = {
+	"stream_max_length": 1600.0,
+	"stream_width": 20.0,
+	"stream_color": Color(0.882, 0.216, 0.196, 0.902),
+	"stream_wave_amplitude": 40.0,
+	"stream_wave_speed": 8.0,
+	"stream_wave_segments": 24,
+	"stream_wave_spatial_frequency": TAU * 2.0,
+	"stream_extend_time": 0.18,
+	"stream_spiral_speed": 4.0,
+}
+var stream_beam_scene := preload("res://Bullets/STREAM/stream_beam.tscn")
+var stream_beam: StreamBeam = null
 
 # Dash function variables
 var is_dashing: bool = false
@@ -177,6 +193,8 @@ func _ready() -> void:
 		data = RunManager.player_data
 	
 	load_data()
+	if stream:
+		_ensure_stream_beam()
 	current_health = get_max_health()
 
 
@@ -272,6 +290,7 @@ func load_data() -> void:
 	trowel_damage = data.trowel_damage
 	
 	slow_bullets = data.slow_bullets
+	stream = data.stream
 
 	if MetaManager != null:
 		MetaManager.record_run_hearts(num_hearts)
@@ -363,8 +382,15 @@ func update_sprite_facing():
 
 
 func _process(_delta):
+	if stream:
+		_ensure_stream_beam()
+		return
+
+	if stream_beam != null and is_instance_valid(stream_beam):
+		stream_beam.queue_free()
+		stream_beam = null
+
 	var shoot_dir = get_shoot_direction()
-	
 	if shoot_dir != Vector2.ZERO:
 		shoot(shoot_dir)
 
@@ -379,6 +405,35 @@ func get_shoot_direction() -> Vector2:
 		dir *= -1
 	
 	return dir.normalized()
+
+
+func _ensure_stream_beam() -> void:
+	if stream_beam != null and is_instance_valid(stream_beam):
+		stream_beam.configure(stream_settings)
+		return
+
+	if stream_beam_scene == null:
+		return
+
+	stream_beam = stream_beam_scene.instantiate() as StreamBeam
+	if stream_beam == null:
+		return
+
+	add_child(stream_beam)
+	stream_beam.initialize(self)
+	stream_beam.configure(stream_settings)
+
+
+func set_stream_color(color: Color) -> void:
+	stream_settings["stream_color"] = color
+	if stream_beam != null and is_instance_valid(stream_beam):
+		stream_beam.configure(stream_settings)
+
+
+func change_stream_width(amount : float) -> void:
+	stream_settings["stream_width"] *= amount
+	if stream_beam != null and is_instance_valid(stream_beam):
+		stream_beam.configure(stream_settings)
 
 
 func shoot(direction: Vector2):

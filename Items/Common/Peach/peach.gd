@@ -10,6 +10,9 @@ func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.current_bullet == RunManager.player.Bullets.PEACH:
 		return "+0.25 Damage\n+2 Damage Mult\n0.02 Accuracy Buff"
 	
+	if RunManager.player.stream == true:
+		return "+0.25 Damage\n+2 Damage Mult\n0.02 Accuracy Buff\nFire Rate/Bullet Speed Debuff"
+	
 	return "Bullets become Peaches\n+0.25 Damage\n+2 Damage Mult\n0.02 Accuracy Buff\nFire Rate/Bullet Speed Debuff"
 
 
@@ -29,6 +32,8 @@ func _on_body_entered(_body) -> void:
 				RunManager.player.fire_rate += 0.01
 			else:
 				RunManager.player.fire_rate *= 2.0
+		
+		RunManager.player.set_stream_color(Color(0.76, 0.444, 0.634, 0.902))
 		
 		RunManager.player.damage += damage_buff
 		RunManager.player.damage_mult += damage_mult_buff

@@ -37,6 +37,9 @@ shape = SubResource("RectangleShape2D_ulp21")
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1451360841]
 
+[node name="ShootPoint2" type="Marker2D" parent="." unique_id=832388615]
+position = Vector2(0, -22.666668)
+
 [node name="Timer" type="Timer" parent="." unique_id=2064562530]
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=615748774]

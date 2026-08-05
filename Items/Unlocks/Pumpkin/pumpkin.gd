@@ -8,6 +8,10 @@ var damage_buff : float = 0.75
 func get_item_desc() -> String:
 	if RunManager.player.current_bullet == RunManager.player.Bullets.PUMPKIN:
 		return "+0.75 Damage"
+	
+	if RunManager.player.stream == true:
+		return "Fire Rate Buff\nBullet Speed Debuff\nMovement Speed Debuff"
+	
 	return "Bullets become Pumpkins\nFire Rate Buff\nBullet Speed Debuff\nMovement Speed Debuff"
 
 
@@ -16,6 +20,7 @@ func _on_body_entered(_body) -> void:
 		item_name = "Pumpkin"
 		
 		RunManager.player.current_bullet = RunManager.player.Bullets.PUMPKIN
+		RunManager.player.set_stream_color(Color(0.922, 0.49, 0.0, 0.902))
 		
 		if RunManager.player.items.has("Pumpkin"):
 			RunManager.player.damage += damage_buff

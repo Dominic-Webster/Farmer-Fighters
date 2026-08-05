@@ -8,6 +8,9 @@ var damage_buff : float = 0.5
 
 func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.eggplant < 2:
+		if RunManager.player.stream == true:
+			return "More Streams\n0.1 Fire Rate Debuff"
+		
 		return "More Bullets\n0.1 Fire Rate Debuff"
 	
 	return "+0.5 Damage"

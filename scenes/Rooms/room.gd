@@ -44,6 +44,7 @@ func _enter_room(dir_from : String) -> void:
 	
 	_set_door_art()
 	_load_bullet_bounds()
+	_mark_stream_passthrough_colliders()
 	
 	# Respawn all persistent room objects that were previously registered.
 	spawn_persistent_objects(pos)
@@ -565,6 +566,12 @@ func _load_bullet_bounds() -> void:
 	if bullet_bounds:
 		for child in bullet_bounds.get_children():
 			child.add_to_group("bullet_bounds")
+
+
+func _mark_stream_passthrough_colliders() -> void:
+	if has_node("Walls/Extra"):
+		var extra_walls = get_node("Walls/Extra")
+		extra_walls.add_to_group("stream_passthrough")
 
 
 

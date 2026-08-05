@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nnm25xb3hpux"
-path="res://.godot/imported/Asparagus.png-f2c0e3b7bcea15afb36194b060e13e5c.ctex"
+uid="uid://duogqnweijcva"
+path="res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Asparagus.png"
-dest_files=["res://.godot/imported/Asparagus.png-f2c0e3b7bcea15afb36194b060e13e5c.ctex"]
+source_file="res://art_drop/Candy_Cane.png"
+dest_files=["res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"]
 
 [params]
 

@@ -8,6 +8,9 @@ var accuracy_buff : float = 0.005
 
 func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.piercing == false:
+		if RunManager.player.stream == true:
+			return "Piercing Stream\n0.005 Accuracy Buff"
+		
 		return "Piercing Bullets\n0.005 Accuracy Buff"
 
 	return "+0.75 Damage\n0.005 Accuracy Buff"
@@ -17,6 +20,7 @@ func _on_body_entered(_body) -> void:
 		item_name = "Strawberry"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.STRAWBERRY
+		RunManager.player.set_stream_color(Color(1.0, 0.0, 0.0, 1.0))
 		
 		if RunManager.player.piercing == false:
 			RunManager.player.piercing = true

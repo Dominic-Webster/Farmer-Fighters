@@ -243,6 +243,13 @@ const ITEM_ENTRIES := [
 	},
 	#Uncommon
 	{
+		"id": "asparagus",
+		"name": "Asparagus",
+		"desc": "Bullets become Stream\nFire Rate Buff",
+		"texture": preload("res://Items/Uncommon/Asparagus/Asparagus.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "celery",
 		"name": "Celery",
 		"desc": "+0.75 Damage\n0.05 Fire Rate Buff",

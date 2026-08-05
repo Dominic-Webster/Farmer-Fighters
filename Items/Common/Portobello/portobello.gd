@@ -9,6 +9,9 @@ func get_item_desc() -> String:
 	if RunManager.player != null and (RunManager.player.spiral == true or RunManager.player.portobello == true):
 		return "x1.5 Damage Mult"
 	
+	if RunManager.player.stream == true:
+		return "Wavy Stream\n+0.5 Damage Mult"
+	
 	return "Wavy Bullets\n+0.5 Damage Mult"
 
 

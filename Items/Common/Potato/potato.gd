@@ -10,6 +10,9 @@ func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.explosion == true:
 		return "+ Explosion Damage"
 	
+	if RunManager.player.stream == true:
+		return "Explosive Stream"
+	
 	return "EXPLOSIVE POTATOES"
 
 
@@ -17,6 +20,7 @@ func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):
 		item_name = "Potato"
 		RunManager.player.current_bullet = RunManager.player.Bullets.POTATO
+		RunManager.player.set_stream_color(Color(0.285, 0.132, 0.0, 0.902))
 		
 		if RunManager.player.explosion == true:
 			RunManager.player.explosion_damage += explosion_damage_boost

@@ -12,7 +12,10 @@ var damage_mult_debuff : float = 0.25
 func get_item_desc() -> String:
 	if RunManager.player != null and RunManager.player.homing == true:
 		return "+0.5 Damage\n+0.5 Damage Mult"
-
+	
+	if RunManager.player.stream == true:
+		return "Unlock Homing Beam\n-0.25 Damage Mult\n0.2 Fire Rate Debuff"
+	
 	return "Unlock Homing Bullets\n-0.25 Damage Mult\n0.2 Fire Rate Debuff"
 
 

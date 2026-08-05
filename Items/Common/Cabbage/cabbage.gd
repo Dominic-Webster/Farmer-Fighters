@@ -10,6 +10,9 @@ func get_item_desc() -> String:
 	if RunManager.player.current_bullet == RunManager.player.Bullets.CABBAGE:
 		return "+1 Damage\n0.02 Accuracy Buff\nFire Rate Debuff"
 	
+	if RunManager.player.stream == true:
+		return "Stream Widens\n+1 Damage\n0.02 Accuracy Buff\nFire Rate Debuff"
+	
 	return "Bullets become Cabbages\n+1 Damage\n0.02 Accuracy Buff\nFire Rate Debuff"
 
 
@@ -19,6 +22,8 @@ func _on_body_entered(_body) -> void:
 		
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.CABBAGE
+		RunManager.player.set_stream_color(Color(0.2, 0.643, 0.2, 0.902))
+		RunManager.player.change_stream_width(2.0)
 		
 		if RunManager.player.fire_rate < 0.05:
 			RunManager.player.fire_rate = 0.1

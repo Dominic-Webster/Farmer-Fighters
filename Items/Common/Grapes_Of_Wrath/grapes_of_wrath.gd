@@ -8,6 +8,9 @@ var accuracy_debuff : float = 0.05
 
 
 func get_item_desc() -> String:
+	if RunManager.player.stream == true:
+		return "0.35 Fire Rate Buff\n-0.5 Damage\n0.05 Accuracy Debuff"
+	
 	return "Bullets become Grapes\n0.35 Fire Rate Buff\n-0.5 Damage\n0.05 Accuracy Debuff"
 
 
@@ -16,6 +19,7 @@ func _on_body_entered(_body) -> void:
 		item_name = "Grapes Of Wrath"
 		RunManager.player.add_item_to_array(item_name)
 		RunManager.player.current_bullet = RunManager.player.Bullets.GRAPE
+		RunManager.player.set_stream_color(Color(0.376, 0.18, 0.886, 0.902))
 		
 		RunManager.player.fire_rate *= fire_rate_buff
 		if RunManager.player.fire_rate < 0.01:
