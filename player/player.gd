@@ -161,7 +161,7 @@ var trowel_damage : float = 5.0
 var slow_bullets : bool = false
 var stream : bool = false
 var stream_settings : Dictionary = {
-	"stream_max_length": 1600.0,
+	"stream_max_length": 5000.0,
 	"stream_width": 20.0,
 	"stream_color": Color(0.882, 0.216, 0.196, 0.902),
 	"stream_wave_amplitude": 40.0,
@@ -170,6 +170,8 @@ var stream_settings : Dictionary = {
 	"stream_wave_spatial_frequency": TAU * 2.0,
 	"stream_extend_time": 0.18,
 	"stream_spiral_speed": 4.0,
+	"stream_homing_strength": 8.0,
+	"stream_homing_range": 600.0,
 }
 var stream_beam_scene := preload("res://Bullets/STREAM/stream_beam.tscn")
 var stream_beam: StreamBeam = null
