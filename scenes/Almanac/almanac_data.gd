@@ -348,6 +348,13 @@ const ITEM_ENTRIES := [
 		"category": "uncommon"
 	},
 	{
+		"id": "oregano",
+		"name": "Oregano",
+		"desc": "Gain 2 Avacado Hearts",
+		"texture": preload("res://Items/Uncommon/Oregano/oregano.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "plantain",
 		"name": "Plantain",
 		"desc": "Bulllets Boomerang",
