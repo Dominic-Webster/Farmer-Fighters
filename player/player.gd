@@ -23,6 +23,7 @@ var char_name : String = "Farmer"
 
 # Stats
 var num_hearts : int = 3 # Number of hearts
+var starting_avacados : int = 0
 var damage : float = 1.0
 var damage_mult : float = 1.0
 var luck : int = 1
@@ -208,6 +209,8 @@ func load_data() -> void:
 	sprite.texture = data.spritesheet
 	
 	num_hearts = data.num_hearts
+	starting_avacados = data.starting_avacados
+	temp_health = starting_avacados * 2
 	damage = data.damage
 	damage_mult = data.damage_mult
 	luck = data.luck
@@ -636,7 +639,7 @@ func take_damage(amount : int):
 
 	flash_red()
 	damaged.emit()
-	if current_health < 1:
+	if current_health + temp_health < 1:
 		player_died()
 	await get_tree().create_timer(0.75).timeout
 	can_take_damage = true
@@ -785,6 +788,6 @@ func reset_player() -> void:
 	clear_active_item()
 	
 	current_health = get_max_health()
-	temp_health = 0
+	temp_health = starting_avacados * 2
 	
 	damaged.emit()

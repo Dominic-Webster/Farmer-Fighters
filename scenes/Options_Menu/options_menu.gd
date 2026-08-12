@@ -48,7 +48,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") or event.is_action_pressed("back"):
 		if reset_save_panel.visible == false:
-			get_tree().change_scene_to_file("res://scenes/PLAY/play_menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 		else:
 			reset_save_panel.visible = false
 			controls_panel.visible = false

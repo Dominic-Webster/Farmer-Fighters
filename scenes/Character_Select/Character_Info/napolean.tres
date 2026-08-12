@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://bxonguubo6kws"]
+
+[ext_resource type="Texture2D" uid="uid://c4f38811v8tr8" path="res://scenes/Character_Select/Character_Icons/Napolean_Icon.png" id="1_5k5wd"]
+[ext_resource type="Resource" uid="uid://c01qxbsnywgrr" path="res://player/Characters/Napolean/napolean.tres" id="2_e6j6u"]
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="3_fpl70"]
+
+[resource]
+script = ExtResource("3_fpl70")
+icon = ExtResource("1_5k5wd")
+player_data = ExtResource("2_e6j6u")
+health = "*"
+damage = "*****"
+speed = "***"
+unlock_id = "napolean"
+description = "A glass cannon"
+unlock_text = "Die 50  times"
+metadata/_custom_type_script = "uid://8pds4nkc82ma"

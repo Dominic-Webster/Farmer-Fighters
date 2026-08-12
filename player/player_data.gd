@@ -7,6 +7,7 @@ class_name PlayerData
 
 # Stats
 @export var num_hearts : int = 3 # Number of hearts
+@export var starting_avacados : int = 0
 @export var damage : float = 1.0
 @export var damage_mult : float = 1.0
 @export var luck : int = 1

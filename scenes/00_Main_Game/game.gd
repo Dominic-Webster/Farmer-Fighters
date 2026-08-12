@@ -95,6 +95,8 @@ func _on_player_damaged() -> void:
 
 
 func _player_died():
+	if MetaManager != null:
+		MetaManager.record_player_death()
 	end_menu.show_menu("You Died")
 	await get_tree().process_frame 
 	get_tree().paused = true
