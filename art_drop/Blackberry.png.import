@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7tpvmkru0eyy"
-path="res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"
+uid="uid://c322dbcu8ampj"
+path="res://.godot/imported/Blackberry.png-cf46733547941751ca4b7f1e837eae24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Candy_Cane.png"
-dest_files=["res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"]
+source_file="res://art_drop/Blackberry.png"
+dest_files=["res://.godot/imported/Blackberry.png-cf46733547941751ca4b7f1e837eae24.ctex"]
 
 [params]
 

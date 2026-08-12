@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7tpvmkru0eyy"
-path="res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"
+uid="uid://tku67yxolnct"
+path="res://.godot/imported/Tobacco_Leaf.png-2aaad4247d3b5aef4913dbae7b3e8ec7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Candy_Cane.png"
-dest_files=["res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"]
+source_file="res://art_drop/Tobacco_Leaf.png"
+dest_files=["res://.godot/imported/Tobacco_Leaf.png-2aaad4247d3b5aef4913dbae7b3e8ec7.ctex"]
 
 [params]
 
