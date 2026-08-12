@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://bp1fid508mne6"]
+
+[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_fju07"]
+[ext_resource type="Texture2D" uid="uid://cttppx4q3mn6c" path="res://player/Characters/Aunt_Em/Aunt_Em.png" id="2_bg22o"]
+
+[resource]
+script = ExtResource("1_fju07")
+name = "Aunt Em"
+spritesheet = ExtResource("2_bg22o")
+move_speed = 475.0
+fire_rate = 0.35
+dash_unlocked = true
+dash_speed = 3000.0
+dash_damage = 1.0
+metadata/_custom_type_script = "uid://bsn7ulm18jpch"

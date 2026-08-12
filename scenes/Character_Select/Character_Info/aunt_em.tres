@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://dlqd3vfrkk2mt"]
+
+[ext_resource type="Texture2D" uid="uid://b8eirbbipebfr" path="res://scenes/Character_Select/Character_Icons/Aunt_Em_Icon.png" id="1_2344n"]
+[ext_resource type="Resource" uid="uid://bp1fid508mne6" path="res://player/Characters/Aunt_Em/aunt_em.tres" id="2_r0ep3"]
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="3_vtrdq"]
+
+[resource]
+script = ExtResource("3_vtrdq")
+icon = ExtResource("1_2344n")
+player_data = ExtResource("2_r0ep3")
+health = "***"
+damage = "***"
+speed = "****"
+unlock_id = "aunt_em"
+description = "A fighter who utilizes their dash and speed"
+unlock_text = "Dash 50 0  times"
+metadata/_custom_type_script = "uid://8pds4nkc82ma"

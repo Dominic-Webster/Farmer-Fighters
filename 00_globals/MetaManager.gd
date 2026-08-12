@@ -93,6 +93,15 @@ func record_run_hearts(heart_count: int) -> void:
 		_set_character_unlocked("farmer_jane")
 
 
+func record_dash(amount: int = 1) -> void:
+	if amount <= 0:
+		return
+
+	meta_data["dash_count"] = int(meta_data.get("dash_count", 0)) + amount
+	_reconcile_unlocks(true)
+	save_meta_data()
+
+
 func is_character_unlocked(character_id: String) -> bool:
 	var character_unlocks: Dictionary = meta_data.get("character_unlocks", {})
 	return bool(character_unlocks.get(character_id, false))
@@ -252,6 +261,9 @@ func _reconcile_character_unlocks(pickup_counts: Dictionary) -> void:
 	if companion_pickups >= 3:
 		_set_character_unlocked("old_mac")
 
+	if int(meta_data.get("dash_count", 0)) >= 500:
+		_set_character_unlocked("aunt_em")
+
 
 func _get_unlocked_item_ids() -> Array:
 	var unlocked_items: Array = []
@@ -270,6 +282,7 @@ func _load_base_meta_data() -> Dictionary:
 		return {
 			"version": 1,
 			"enemy_kills": 0,
+			"dash_count": 0,
 			"pickup_counts": {},
 			"character_unlocks": {},
 			"item_unlocks": {}
@@ -282,6 +295,7 @@ func _load_base_meta_data() -> Dictionary:
 		return {
 			"version": 1,
 			"enemy_kills": 0,
+			"dash_count": 0,
 			"pickup_counts": {},
 			"character_unlocks": {},
 			"item_unlocks": {}
@@ -294,6 +308,7 @@ func _normalize_meta_data(raw_meta: Dictionary) -> Dictionary:
 	var normalized := {
 		"version": int(raw_meta.get("version", 1)),
 		"enemy_kills": int(raw_meta.get("enemy_kills", 0)),
+		"dash_count": int(raw_meta.get("dash_count", 0)),
 		"pickup_counts": {},
 		"character_unlocks": {},
 		"item_unlocks": {},
@@ -315,6 +330,7 @@ func _merge_meta_data(base_meta: Dictionary, saved_meta: Dictionary) -> Dictiona
 
 	merged["version"] = int(normalized_saved.get("version", merged.get("version", 1)))
 	merged["enemy_kills"] = int(normalized_saved.get("enemy_kills", merged.get("enemy_kills", 0)))
+	merged["dash_count"] = int(normalized_saved.get("dash_count", merged.get("dash_count", 0)))
 
 	var merged_pickup_counts: Dictionary = merged.get("pickup_counts", {})
 	for pickup_key in normalized_saved.get("pickup_counts", {}).keys():

@@ -333,6 +333,8 @@ func _physics_process(_delta):
 			is_dashing = true
 			dash_direction = direction
 			dash_time_left = dash_duration
+			if MetaManager != null:
+				MetaManager.record_dash()
 
 	if Input.is_action_just_pressed("active_item"):
 		use_active_item()

@@ -1,6 +1,7 @@
 {
 	"version": 1,
 	"enemy_kills": 0,
+	"dash_count": 0,
 	"pickup_counts": {
 		"broccoli": 0,
 		"salsa": 0,
@@ -9,7 +10,8 @@
 	},
 	"character_unlocks": {
 		"old_mac": false,
-		"farmer_jane": false
+		"farmer_jane": false,
+		"aunt_em": false
 	},
 	"item_unlocks": {
 		"cauliflower": false,
