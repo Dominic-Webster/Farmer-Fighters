@@ -6,7 +6,7 @@ var temp_health_boost : int = 4
 
 
 func get_item_desc() -> String:
-	return "Gain 2 Avacado Hearts"
+	return "Gain 2 Avocado Hearts"
 
 func _on_body_entered(_body) -> void:
 	if _body.is_in_group("player"):

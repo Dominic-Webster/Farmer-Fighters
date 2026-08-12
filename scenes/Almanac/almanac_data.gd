@@ -350,7 +350,7 @@ const ITEM_ENTRIES := [
 	{
 		"id": "oregano",
 		"name": "Oregano",
-		"desc": "Gain 2 Avacado Hearts",
+		"desc": "Gain 2 Avocado Hearts",
 		"texture": preload("res://Items/Uncommon/Oregano/oregano.png"),
 		"category": "uncommon"
 	},
