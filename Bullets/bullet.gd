@@ -272,6 +272,8 @@ func _handle_enemy_hit(area: Area2D) -> void:
 		#return
 	
 	if piercing:
+		if explosion:
+			_spawn_explosion(false)
 		return
 
 	end_bullet()
@@ -308,12 +310,12 @@ func end_bullet() -> void:
 	_ended = true
 
 	if explosion:
-		_spawn_explosion()
+		_spawn_explosion(true)
 	else:
 		queue_free()
 
 
-func _spawn_explosion() -> void:
+func _spawn_explosion( _despawn : bool) -> void:
 	if not is_inside_tree():
 		return
 
@@ -324,4 +326,5 @@ func _spawn_explosion() -> void:
 	if RunManager.current_room_instance != null:
 		RunManager.current_room_instance.call_deferred("spawn_explosion_effect", explsn)
 
-	call_deferred("queue_free")
+	if _despawn:
+		call_deferred("queue_free")
