@@ -36,10 +36,11 @@ vertical_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=913419990]
 layout_mode = 0
-offset_left = 538.0
-offset_top = 240.0
-offset_right = 1388.0
-offset_bottom = 990.0
+offset_left = 677.0
+offset_top = 258.0
+offset_right = 1527.0
+offset_bottom = 1208.0
+scale = Vector2(0.7, 0.7)
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -54,6 +55,18 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_7m5gh")
 theme_override_font_sizes/font_size = 80
 text = "Audio"
+
+[node name="Visuals" type="Button" parent="Buttons" unique_id=449130751]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 80
+text = "Visuals"
 
 [node name="Controls" type="Button" parent="Buttons" unique_id=1065953793]
 custom_minimum_size = Vector2(0, 150)

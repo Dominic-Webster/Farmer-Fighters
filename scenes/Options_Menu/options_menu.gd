@@ -3,6 +3,7 @@ extends Control
 var run_save : RunSave = RunSave.new()
 
 @onready var audio_button : Button = $Buttons/Audio
+@onready var visuals_button : Button = $Buttons/Visuals
 @onready var controls_button : Button = $Buttons/Controls
 @onready var reset_save_button : Button = $Buttons/Reset_Save
 @onready var back_button : Button = $Buttons/Back
@@ -58,6 +59,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _re_enable() -> void:
 	audio_button.disabled = false
 	audio_button.focus_mode = Control.FOCUS_ALL
+	visuals_button.disabled = false
+	visuals_button.focus_mode = Control.FOCUS_ALL
 	controls_button.disabled = false
 	controls_button.focus_mode = Control.FOCUS_ALL
 	reset_save_button.disabled = false
@@ -69,6 +72,8 @@ func _re_enable() -> void:
 func _disable() -> void:
 	audio_button.disabled = true
 	audio_button.focus_mode = Control.FOCUS_NONE
+	visuals_button.disabled = true
+	visuals_button.focus_mode = Control.FOCUS_NONE
 	controls_button.disabled = true
 	controls_button.focus_mode = Control.FOCUS_NONE
 	reset_save_button.disabled = true
