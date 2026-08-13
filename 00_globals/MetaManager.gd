@@ -270,12 +270,15 @@ func _reconcile_character_unlocks(pickup_counts: Dictionary) -> void:
 	var companion_pickups := int(pickup_counts.get("cow_item", 0)) + int(pickup_counts.get("chicken_item", 0))
 	if companion_pickups >= 3:
 		_set_character_unlocked("old_mac")
-
+	
 	if int(meta_data.get("dash_count", 0)) >= 500:
 		_set_character_unlocked("aunt_em")
-
+	
 	if int(meta_data.get("player_deaths", 0)) >= 50:
 		_set_character_unlocked("napolean")
+	
+	if int(pickup_counts.get("shovel", 0)) >= 5:
+		_set_character_unlocked("uncle_owen")
 
 
 func _get_unlocked_item_ids() -> Array:

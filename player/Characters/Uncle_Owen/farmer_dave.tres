@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://dt5gdayelda7y"]
+
+[ext_resource type="Script" uid="uid://bsn7ulm18jpch" path="res://player/player_data.gd" id="1_hlrp8"]
+[ext_resource type="Texture2D" uid="uid://b7lasvodae6xn" path="res://player/Characters/Uncle_Owen/uncle_owen.png" id="2_hlrp8"]
+
+[resource]
+script = ExtResource("1_hlrp8")
+name = "Uncle Owen"
+spritesheet = ExtResource("2_hlrp8")
+fire_rate = 0.4
+bullet_speed = 700.0
+dash_speed = 1500.0
+shovel_unlocked = true
+shovel_damage = 6.0
+garden_fork_damage = 7.0
+trowel_damage = 7.0
+metadata/_custom_type_script = "uid://bsn7ulm18jpch"

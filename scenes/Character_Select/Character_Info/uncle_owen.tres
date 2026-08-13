@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://bnogmxhivv077"]
+
+[ext_resource type="Texture2D" uid="uid://e4pqqagrlwne" path="res://scenes/Character_Select/Character_Icons/Uncle_Owen_Icon.png" id="1_behcn"]
+[ext_resource type="Resource" uid="uid://dt5gdayelda7y" path="res://player/Characters/Uncle_Owen/farmer_dave.tres" id="2_dt8xw"]
+[ext_resource type="Script" uid="uid://8pds4nkc82ma" path="res://scenes/Character_Select/Character_Info/character_info.gd" id="3_wohqf"]
+
+[resource]
+script = ExtResource("3_wohqf")
+icon = ExtResource("1_behcn")
+player_data = ExtResource("2_dt8xw")
+health = "***"
+damage = "***"
+speed = "***"
+unlock_id = "uncle_owen"
+description = "A fighter eager to use weapons"
+unlock_text = "Pickup Shovel 5 times"
+metadata/_custom_type_script = "uid://8pds4nkc82ma"

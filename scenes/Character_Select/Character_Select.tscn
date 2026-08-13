@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://brmyn5l3fjnpq" path="res://scenes/Character_Select/carrot_button_pressed.png" id="7_lsqdn"]
 [ext_resource type="Texture2D" uid="uid://bu45cjsdr1qn4" path="res://scenes/Character_Select/carrot_button_hover.png" id="8_2inxf"]
 [ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png" id="8_7q623"]
+[ext_resource type="Resource" uid="uid://bnogmxhivv077" path="res://scenes/Character_Select/Character_Info/uncle_owen.tres" id="8_gyr45"]
 [ext_resource type="Texture2D" uid="uid://b6l5aa4hobex3" path="res://scenes/Character_Select/Lock.png" id="9_8dj70"]
 [ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="10_eygiu"]
 
@@ -24,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dri4s")
-characters = Array[ExtResource("2_iypma")]([ExtResource("3_0fkeu"), ExtResource("4_2inxf"), ExtResource("5_7q623"), ExtResource("6_t0kmd"), ExtResource("7_402fa")])
+characters = Array[ExtResource("2_iypma")]([ExtResource("3_0fkeu"), ExtResource("4_2inxf"), ExtResource("5_7q623"), ExtResource("6_t0kmd"), ExtResource("7_402fa"), ExtResource("8_gyr45")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=1414015131]
 layout_mode = 0
