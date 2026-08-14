@@ -82,6 +82,9 @@ func _enter_room(dir_from : String) -> void:
 			else:
 				lock_doors()
 	
+	if player.shield_unlocked and player.shield_on:
+		player._show_shield()
+	
 	spawn_companions()
 	spawn_rotators()
 

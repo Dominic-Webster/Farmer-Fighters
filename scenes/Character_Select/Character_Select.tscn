@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d1kdaojyavmte" path="res://scenes/Character_Select/Backdrop.png" id="6_1624o"]
 [ext_resource type="Texture2D" uid="uid://buqulbb3vi2ty" path="res://scenes/Character_Select/carrot_button.png" id="6_ic0qd"]
 [ext_resource type="Resource" uid="uid://dlqd3vfrkk2mt" path="res://scenes/Character_Select/Character_Info/aunt_em.tres" id="6_t0kmd"]
-[ext_resource type="Resource" uid="uid://bxonguubo6kws" path="res://scenes/Character_Select/Character_Info/napolean.tres" id="7_402fa"]
+[ext_resource type="Resource" uid="uid://bxonguubo6kws" path="res://scenes/Character_Select/Character_Info/napoleon.tres" id="7_402fa"]
 [ext_resource type="Texture2D" uid="uid://brmyn5l3fjnpq" path="res://scenes/Character_Select/carrot_button_pressed.png" id="7_lsqdn"]
 [ext_resource type="Texture2D" uid="uid://bu45cjsdr1qn4" path="res://scenes/Character_Select/carrot_button_hover.png" id="8_2inxf"]
 [ext_resource type="Texture2D" uid="uid://cc0qmb22wxfsu" path="res://scenes/Character_Select/Character_Icons/Farmer_Dave_Icon.png" id="8_7q623"]

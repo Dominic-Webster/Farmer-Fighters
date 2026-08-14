@@ -51,6 +51,8 @@ func _elevator_transition(player):
 	# Generate new map and move player to start room
 	RunManager.current_floor += 1
 	RunManager.player_damaged_this_floor = false
+	if RunManager.player.shield_unlocked:
+		RunManager.player.shield_on = true
 	MapGenerationManager.create_new_map()
 	# Remove old room (handled by load_room)
 	RunManager.current_room = MapGenerationManager._start

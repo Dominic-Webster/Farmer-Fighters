@@ -242,13 +242,15 @@ func refresh_item_pools() -> void:
 func _reconcile_unlocks(show_notification: bool) -> void:
 	var pickup_counts: Dictionary = meta_data.get("pickup_counts", {})
 	var enemy_kills := int(meta_data.get("enemy_kills", 0))
+	var player_deaths := int(meta_data.get("player_deaths", 0))
 	for unlock_id in item_unlock_definitions.keys():
 		var unlock_definition = item_unlock_definitions.get(unlock_id, {})
 		var source_item := str(unlock_definition.get("source_item", ""))
 		var required_pickups = int(unlock_definition.get("required_pickups", 0))
 		var required_enemy_kills = int(unlock_definition.get("required_enemy_kills", 0))
+		var required_player_deaths = int(unlock_definition.get("required_player_deaths", 0))
 
-		if required_pickups <= 0 and required_enemy_kills <= 0:
+		if required_pickups <= 0 and required_enemy_kills <= 0 and required_player_deaths <= 0:
 			continue
 
 		var meets_pickup_requirement := true
@@ -259,8 +261,9 @@ func _reconcile_unlocks(show_notification: bool) -> void:
 				meets_pickup_requirement = int(pickup_counts.get(source_item, 0)) >= required_pickups
 
 		var meets_kill_requirement := required_enemy_kills <= 0 or enemy_kills >= required_enemy_kills
+		var meets_death_requirement := required_player_deaths <= 0 or player_deaths >= required_player_deaths
 
-		if meets_pickup_requirement and meets_kill_requirement:
+		if meets_pickup_requirement and meets_kill_requirement and meets_death_requirement:
 			_set_item_unlocked(unlock_id, show_notification)
 
 	_reconcile_character_unlocks(pickup_counts)
@@ -275,7 +278,7 @@ func _reconcile_character_unlocks(pickup_counts: Dictionary) -> void:
 		_set_character_unlocked("aunt_em")
 	
 	if int(meta_data.get("player_deaths", 0)) >= 50:
-		_set_character_unlocked("napolean")
+		_set_character_unlocked("napoleon")
 	
 	if int(pickup_counts.get("shovel", 0)) >= 5:
 		_set_character_unlocked("uncle_owen")

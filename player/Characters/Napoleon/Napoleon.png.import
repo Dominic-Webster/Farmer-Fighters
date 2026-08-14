@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyapiq5nl4iq4"
-path="res://.godot/imported/Napolean.png-e79d5cbe9cb3d7881c3f7b9baa99f19e.ctex"
+path="res://.godot/imported/Napoleon.png-1f4a7335fd60be7f72e584f110a6e34e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/Characters/Napolean/Napolean.png"
-dest_files=["res://.godot/imported/Napolean.png-e79d5cbe9cb3d7881c3f7b9baa99f19e.ctex"]
+source_file="res://player/Characters/Napoleon/Napoleon.png"
+dest_files=["res://.godot/imported/Napoleon.png-1f4a7335fd60be7f72e584f110a6e34e.ctex"]
 
 [params]
 

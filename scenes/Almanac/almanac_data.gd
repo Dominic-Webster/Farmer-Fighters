@@ -432,6 +432,13 @@ const ITEM_ENTRIES := [
 		"texture": preload("res://Items/Unlocks/Pineapple/pineapple.png"),
 		"category": "rare"
 	},
+	{
+		"id": "straw_hat",
+		"name": "Straw Hat",
+		"desc": "Unlock Shield",
+		"texture": preload("res://Items/Unlocks/Straw_Hat/straw_hat.png"),
+		"category": "rare"
+	},
 ]
 
 

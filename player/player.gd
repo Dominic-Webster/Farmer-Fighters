@@ -33,6 +33,9 @@ var bullet_speed : float = 800
 var accuracy : Vector2 = Vector2(-0.05, 0.05)
 @export var tri_shot_spread_degrees : float = 12.0
 
+var shield_unlocked : bool = false
+var shield_on : bool = false
+
 var explosion_damage : float = 2.0
 var explosion_damage_mult : float = 1.0
 
@@ -86,6 +89,7 @@ var can_take_damage : bool = true
 @onready var shoot_point : Marker2D = $ShootPoint
 @onready var shoot_point_2 : Marker2D = $ShootPoint2
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var shield_sprite : Sprite2D = $Shield
 @onready var hurt_box : Area2D = $HurtBox
 var can_shoot : bool = true
 var movement_locked : bool = false
@@ -199,6 +203,11 @@ func _ready() -> void:
 	if stream:
 		_ensure_stream_beam()
 	current_health = get_max_health()
+	
+	if shield_unlocked and shield_on:
+		_show_shield()
+	else:
+		_hide_shield()
 
 
 func load_data() -> void:
@@ -218,6 +227,8 @@ func load_data() -> void:
 	fire_rate = data.fire_rate
 	bullet_speed = data.bullet_speed
 	accuracy = data.accuracy
+	
+	shield_unlocked = data.shield_unlocked
 	
 	explosion_damage = data.explosion_damage
 	explosion_damage_mult = data.explosion_damage_mult
@@ -624,7 +635,12 @@ func _on_push_area_body_entered(body):
 func take_damage(amount : int):
 	if is_dashing or not can_take_damage or amount <= 0:
 		return
-
+	
+	if shield_unlocked and shield_on:
+		shield_on = false
+		_hide_shield()
+		return
+	
 	can_take_damage = false
 
 	var remaining_damage := amount
@@ -777,6 +793,14 @@ func update_hp():
 			Hearts.CARROT :
 				heart = 1
 		hud.update_hp(current_health, get_max_health(), heart, num_hearts, temp_health)
+
+
+func _show_shield() -> void:
+	shield_sprite.visible = true
+
+
+func _hide_shield() -> void:
+	shield_sprite.visible = false
 
 
 func reset_player() -> void:

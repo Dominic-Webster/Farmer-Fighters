@@ -118,6 +118,8 @@ func serialize_player(player: Player) -> Dictionary:
 		"fire_rate": player.fire_rate,
 		"bullet_speed": player.bullet_speed,
 		"accuracy": player.accuracy,
+		"shield_unlocked": player.shield_unlocked,
+		"shield_on": player.shield_on,
 		"explosion_damage": player.explosion_damage,
 		"explosion_damage_mult": player.explosion_damage_mult,
 		"dash_unlocked": player.dash_unlocked,
@@ -189,6 +191,8 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.fire_rate = float(player_state.get("fire_rate", player.fire_rate))
 	player.bullet_speed = float(player_state.get("bullet_speed", player.bullet_speed))
 	player.accuracy = player_state.get("accuracy", player.accuracy)
+	player.shield_unlocked = player_state.get("shield_unlocked", player.shield_unlocked)
+	player.shield_on = player_state.get("shield_on", player.shield_on)
 	player.explosion_damage = float(player_state.get("explosion_damage", player.explosion_damage))
 	player.explosion_damage_mult = float(player_state.get("explosion_damage_mult", player.explosion_damage_mult))
 	player.dash_unlocked = bool(player_state.get("dash_unlocked", player.dash_unlocked))

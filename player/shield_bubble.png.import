@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4f38811v8tr8"
-path="res://.godot/imported/Napolean_Icon.png-28631c2d87d278778ed2d8ff6f2ad59d.ctex"
+uid="uid://psb05gumhuc5"
+path="res://.godot/imported/shield_bubble.png-3242a61ec00987a9e6438cc4ba595a66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Character_Select/Character_Icons/Napolean_Icon.png"
-dest_files=["res://.godot/imported/Napolean_Icon.png-28631c2d87d278778ed2d8ff6f2ad59d.ctex"]
+source_file="res://player/shield_bubble.png"
+dest_files=["res://.godot/imported/shield_bubble.png-3242a61ec00987a9e6438cc4ba595a66.ctex"]
 
 [params]
 

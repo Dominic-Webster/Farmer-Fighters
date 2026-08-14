@@ -19,6 +19,8 @@ class_name PlayerData
 @export var explosion_damage : float = 2.0
 @export var explosion_damage_mult : float = 1.0
 
+@export var shield_unlocked : bool = false
+
 # Dash Stats
 @export var dash_unlocked = false
 @export var dash_speed : float = 2500

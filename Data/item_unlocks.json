@@ -52,6 +52,13 @@
 		"rarity": "rare",
 		"scene_path": "res://Items/Unlocks/Cherry/Cherry.tscn"
 	},
+	"straw_hat": {
+		"display_name": "Straw Hat",
+		"unlock_title": "Item Unlocked!",
+		"required_player_deaths": 10,
+		"rarity": "rare",
+		"scene_path": "res://Items/Unlocks/Straw_Hat/Straw_Hat.tscn"
+	},
 	"da pickle": {
 		"display_name": "DA PICKLE",
 		"unlock_title": "Item Unlocked!",

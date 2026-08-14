@@ -13,7 +13,7 @@
 		"old_mac": false,
 		"farmer_jane": false,
 		"aunt_em": false,
-		"napolean": false,
+		"napoleon": false,
 		"uncle_owen": false
 	},
 	"item_unlocks": {
@@ -21,7 +21,12 @@
 		"cherry": false,
 		"good_soil": false,
 		"da pickle": false,
+		"straw_hat": false,
+		"pear": false,
+		"pumpkin": false,
 		"tomatillo": false,
-		"pineapple": false
+		"pineapple": false,
+		"trowel": false,
+		"wheat": false
 	}
 }

@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://pjhelbe4a3wx" path="res://player/Characters/Farmer_Dave/farmer_dave.tres" id="2_83hs8"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_83hs8"]
 [ext_resource type="Texture2D" uid="uid://cjjkws1amp5y2" path="res://player/Characters/Farmer_Dave/farmer_dave.png" id="3_wnvi2"]
+[ext_resource type="Texture2D" uid="uid://psb05gumhuc5" path="res://player/shield_bubble.png" id="5_x8kxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ulp21"]
 size = Vector2(62, 91)
@@ -30,6 +31,11 @@ texture = ExtResource("3_83hs8")
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_wnvi2")
 hframes = 3
+
+[node name="Shield" type="Sprite2D" parent="." unique_id=587910028]
+self_modulate = Color(1, 1, 1, 0.3137255)
+scale = Vector2(20, 20)
+texture = ExtResource("5_x8kxw")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=168178212]
 position = Vector2(0, 59.5)
