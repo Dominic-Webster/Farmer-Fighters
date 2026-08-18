@@ -264,7 +264,7 @@ func _connect_item_popup(instance: Node, pos: Vector2i, spawn_data: Dictionary =
 	if instance.has_signal("pickup_requested") and RunManager.gui:
 		instance.pickup_requested.connect(func(item):
 			if is_instance_valid(item):
-				RunManager.gui.show_item_info(item.item_name, item.desc, item)
+				RunManager.gui.show_item_info(item.get_item_name(), item.get_item_desc(), item)
 		)
 
 	if not spawn_data.has("id"):

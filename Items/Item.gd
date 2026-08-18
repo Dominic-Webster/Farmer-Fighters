@@ -53,6 +53,11 @@ func _cache_item_name() -> void:
 	if item_name != "":
 		return
 
+	var derived_name := _derive_item_name_fallback()
+	if derived_name != "":
+		item_name = derived_name
+		return
+
 	var script: Script = get_script()
 	if script == null or not script.has_method("get_source_code"):
 		return
@@ -71,3 +76,82 @@ func _cache_item_name() -> void:
 		return
 
 	item_name = result.get_string(1)
+
+
+func _derive_item_name_fallback() -> String:
+	var script: Script = get_script()
+	if script != null:
+		var script_path := str(script.resource_path)
+		if script_path != "":
+			var name_from_path := _normalize_item_name(script_path.get_file().get_basename())
+			if name_from_path != "":
+				return name_from_path
+		
+		var _class_name := String(self.get_class())
+		if _class_name != "" and _class_name != "Item":
+			var name_from_class := _normalize_item_name(_class_name)
+			if name_from_class != "":
+				return name_from_class
+	
+	return ""
+
+
+func _normalize_item_name(raw_name: String) -> String:
+	var normalized := raw_name.strip_edges()
+	if normalized == "":
+		return ""
+
+	normalized = normalized.replace("-", " ")
+	normalized = normalized.replace("_", " ")
+	normalized = normalized.replace(".", " ")
+	while normalized.contains("  "):
+		normalized = normalized.replace("  ", " ")
+
+	var words: PackedStringArray = normalized.split(" ", false)
+	if words.is_empty():
+		return ""
+
+	var cleaned: Array = []
+	for word in words:
+		var trimmed := word.strip_edges()
+		if trimmed == "":
+			continue
+		if trimmed.to_lower() == "item" and cleaned.size() > 0:
+			continue
+		cleaned.append(trimmed)
+
+	if cleaned.is_empty():
+		return ""
+
+	var result := ""
+	for i in range(cleaned.size()):
+		var word := str(cleaned[i])
+		if i == 0:
+			result += _format_name_word(word)
+		else:
+			result += " " + _format_name_word(word)
+
+	var lower_result := result.to_lower()
+	match lower_result:
+		"da pickle":
+			return "DA PICKLE"
+		"good soil":
+			return "Good Soil"
+		"grapes of wrath":
+			return "Grapes Of Wrath"
+		"fish emulsion":
+			return "Fish Emulsion"
+		"4 leaf clover":
+			return "4 Leaf Clover"
+
+	return result
+
+
+func _format_name_word(word: String) -> String:
+	if word == "":
+		return ""
+	if word.length() <= 1:
+		return word
+	if word == word.to_upper():
+		return word
+	return word.substr(0, 1).to_upper() + word.substr(1).to_lower()
