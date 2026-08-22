@@ -14,7 +14,7 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	if player == null:
+	if player == null or is_dead:
 		return
 	
 	if start_timer > 0:

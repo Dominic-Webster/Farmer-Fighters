@@ -16,6 +16,10 @@ var run_save : RunSave = RunSave.new()
 
 var shake_time_left: float = 0.0
 
+var theme1 = preload("res://Audio/Theme1.wav")
+var theme2 = preload("res://Audio/Theme2.wav")
+var theme3 = preload("res://Audio/Theme3.wav")
+
 
 func _ready():
 	get_tree().paused = false
@@ -43,6 +47,7 @@ func _ready():
 		if run_save.apply_run_data(RunManager.pending_run_data):
 			await RunManager.load_room(RunManager.current_room, RunManager.current_entry_dir)
 			gui.update_hp(player.current_health, player.get_max_health(), player.current_heart, player.num_hearts, player.temp_health)
+			_play_song()
 		else:
 			RunManager.start_new_run(player)
 
@@ -82,11 +87,17 @@ func _input(event):
 		unpause()
 
 
-#func _play_song(num : int) -> void:
-	#if num == 1:
-		#audio_player.play()
+func _set_song() -> void:
+	var _floor = RunManager.current_floor
+	if _floor == 1 or _floor == 2:
+		audio_player.stream = theme1
+	elif _floor == 3 or _floor == 4:
+		audio_player.stream = theme2
+	else:
+		audio_player.stream = theme3
 
 func _play_song() -> void:
+	_set_song()
 	audio_player.play()
 
 

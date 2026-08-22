@@ -33,4 +33,5 @@ position = Vector2(788, 418)
 process_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1997147440]
+process_mode = 1
 stream = ExtResource("6_i7fc2")
