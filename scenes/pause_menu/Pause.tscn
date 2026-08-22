@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ynrascmyyqjw" path="res://scenes/pause_menu/pause_menu.gd" id="1_01rj1"]
 [ext_resource type="Texture2D" uid="uid://ck3oc10gcoin1" path="res://scenes/pause_menu/pause_box.png" id="2_g524l"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_esln1"]
+[ext_resource type="FontFile" uid="uid://cs2s8581c6s2v" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="4_38a3a"]
+[ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="5_ietvr"]
 
 [sub_resource type="Animation" id="Animation_esln1"]
 length = 0.001
@@ -128,61 +130,149 @@ vertical_alignment = 1
 [node name="Buttons" type="VBoxContainer" parent="." unique_id=186386564]
 process_mode = 3
 layout_mode = 0
-offset_left = 534.0
-offset_top = 277.0
-offset_right = 1384.0
-offset_bottom = 908.0
+offset_left = 605.0
+offset_top = 231.0
+offset_right = 1344.0
+offset_bottom = 956.0
 mouse_filter = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Resume" type="Button" parent="Buttons" unique_id=1080228763]
 process_mode = 3
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_esln1")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Resume"
 
 [node name="New_Game" type="Button" parent="Buttons" unique_id=2031912727]
 process_mode = 3
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_esln1")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "New Game"
+
+[node name="Audio" type="Button" parent="Buttons" unique_id=1704578911]
+process_mode = 3
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_esln1")
+theme_override_font_sizes/font_size = 40
+text = "Audio"
+
+[node name="Visuals" type="Button" parent="Buttons" unique_id=345114284]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_esln1")
+theme_override_font_sizes/font_size = 40
+text = "Visuals"
 
 [node name="Main_Menu" type="Button" parent="Buttons" unique_id=1816661877]
 process_mode = 3
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_esln1")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Return To Menu"
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=1456194181]
 process_mode = 3
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("3_esln1")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1527086498]
 libraries/ = SubResource("AnimationLibrary_38a3a")
+
+[node name="AudioPanel" type="Control" parent="." unique_id=2108223398]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="AudioPanel" unique_id=2036112486]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 115.0
+offset_right = 1750.0
+offset_bottom = 965.0
+color = Color(2.0455569e-07, 0.24544081, 0.07046946, 1)
+
+[node name="Title" type="Label" parent="AudioPanel" unique_id=319486504]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 156.0
+offset_right = 1367.0
+offset_bottom = 236.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_esln1")
+theme_override_font_sizes/font_size = 80
+text = "Audio Settings"
+
+[node name="MasterLabel" type="Label" parent="AudioPanel" unique_id=1697811540]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 405.0
+offset_right = 815.0
+offset_bottom = 460.0
+theme_override_fonts/font = ExtResource("4_38a3a")
+theme_override_font_sizes/font_size = 45
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="AudioPanel" unique_id=315050242]
+layout_mode = 0
+offset_left = 855.0
+offset_top = 421.0
+offset_right = 1162.5
+offset_bottom = 437.0
+scale = Vector2(2, 2)
+value = 50.0
+rounded = true
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Back" type="Button" parent="AudioPanel" unique_id=255436547]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 166.0
+offset_top = 846.0
+offset_right = 366.0
+offset_bottom = 946.0
+localize_numeral_system = false
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_fonts/font = ExtResource("5_ietvr")
+theme_override_font_sizes/font_size = 40
+text = " Back "

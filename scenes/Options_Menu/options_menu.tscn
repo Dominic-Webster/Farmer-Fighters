@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_icb34"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_7m5gh"]
 [ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="4_fsihw"]
+[ext_resource type="FontFile" uid="uid://cs2s8581c6s2v" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Regular.ttf" id="5_faod2"]
 
 [node name="OptionsMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -45,7 +46,6 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Audio" type="Button" parent="Buttons" unique_id=741895842]
-visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
@@ -255,3 +255,65 @@ Dash: Left Trigger
 Active Item: Right Trigger"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioPanel" type="Control" parent="." unique_id=207356450]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="AudioPanel" unique_id=1642599066]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 115.0
+offset_right = 1750.0
+offset_bottom = 965.0
+color = Color(0, 0.34901962, 0.11372549, 1)
+
+[node name="Title" type="Label" parent="AudioPanel" unique_id=296958132]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 156.0
+offset_right = 1367.0
+offset_bottom = 236.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_7m5gh")
+theme_override_font_sizes/font_size = 80
+text = "Audio Settings"
+
+[node name="MasterLabel" type="Label" parent="AudioPanel" unique_id=1460897872]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 405.0
+offset_right = 815.0
+offset_bottom = 460.0
+theme_override_fonts/font = ExtResource("5_faod2")
+theme_override_font_sizes/font_size = 45
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="AudioPanel" unique_id=2002034550]
+layout_mode = 0
+offset_left = 855.0
+offset_top = 421.0
+offset_right = 1162.5
+offset_bottom = 437.0
+scale = Vector2(2, 2)
+value = 50.0
+rounded = true
+tick_count = 11
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Back" type="Button" parent="AudioPanel" unique_id=879052679]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 166.0
+offset_top = 846.0
+offset_right = 366.0
+offset_bottom = 946.0
+localize_numeral_system = false
+theme_override_colors/font_focus_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_color = Color(0.57254905, 0.9490196, 0.9490196, 1)
+theme_override_fonts/font = ExtResource("4_fsihw")
+theme_override_font_sizes/font_size = 40
+text = " Back "

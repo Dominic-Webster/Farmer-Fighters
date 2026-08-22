@@ -20,11 +20,23 @@ var run_save : RunSave = RunSave.new()
 @onready var controls_keyboard_label : Label = $ControlsPanel/KeyboardLabel
 @onready var controls_controller_label : Label = $ControlsPanel/ControllerLabel
 
+@onready var audio_panel : Control = $AudioPanel
+@onready var audio_back : Button = $AudioPanel/Back
+@onready var audio_master_slider : HSlider = $AudioPanel/MasterSlider
+
 
 func _ready() -> void:
 	reset_save_panel.visible = false
 	controls_panel.visible = false
+	audio_panel.visible = false
+	audio_master_slider.value = SettingsManager.get_master_volume()
+	audio_master_slider.value_changed.connect(_on_master_volume_changed)
 	back_button.grab_focus()
+	
+	audio_button.mouse_entered.connect(_on_audio_hovered)
+	audio_button.pressed.connect(_on_audio_pressed)
+	audio_back.mouse_entered.connect(_on_audio_back_hovered)
+	audio_back.pressed.connect(_on_audio_back_pressed)
 	
 	controls_button.mouse_entered.connect(_on_controls_hovered)
 	controls_button.pressed.connect(_on_controls_pressed)
@@ -48,11 +60,12 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") or event.is_action_pressed("back"):
-		if reset_save_panel.visible == false:
+		if reset_save_panel.visible == false and controls_panel.visible == false and audio_panel.visible == false:
 			get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
 		else:
 			reset_save_panel.visible = false
 			controls_panel.visible = false
+			audio_panel.visible = false
 			_re_enable()
 
 
@@ -80,6 +93,32 @@ func _disable() -> void:
 	reset_save_button.focus_mode = Control.FOCUS_NONE
 	back_button.disabled = true
 	back_button.focus_mode = Control.FOCUS_NONE
+
+# -----------
+# AUDIO
+# -----------
+
+func _on_master_volume_changed(value: float) -> void:
+	SettingsManager.set_master_volume(value)
+
+func _on_audio_hovered() -> void:
+	audio_button.grab_focus()
+
+
+func _on_audio_pressed() -> void:
+	_disable()
+	audio_panel.visible = true
+	audio_back.grab_focus()
+
+
+func _on_audio_back_hovered() -> void:
+	audio_back.grab_focus()
+
+
+func _on_audio_back_pressed() -> void:
+	audio_panel.visible = false
+	_re_enable()
+	audio_button.grab_focus()
 
 # -----------
 # CONTROLS
