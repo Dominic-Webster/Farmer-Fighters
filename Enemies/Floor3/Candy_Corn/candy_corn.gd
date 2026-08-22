@@ -40,6 +40,9 @@ func set_random_move_timer():
 
 
 func _physics_process(_delta: float) -> void:
+	if is_dead:
+		return
+
 	if player == null:
 		return
 
@@ -98,8 +101,12 @@ func die():
 		is_dead = true
 		hurt_box.set_deferred("monitoring", false)
 		move_speed = 0
+		velocity = Vector2.ZERO
+		set_physics_process(false)
 		anim.stop()
 		anim.play("die")
-		await anim.animation_finished
+		var finished_animation: StringName = await anim.animation_finished
+		while finished_animation != &"die":
+			finished_animation = await anim.animation_finished
 		cherry_shot()
 		queue_free()

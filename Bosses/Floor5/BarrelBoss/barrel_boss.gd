@@ -22,8 +22,6 @@ var state_timer = 1.5
 
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
 
-var dead : bool = false
-
 
 func _ready():
 	super._ready()
@@ -35,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
 	
-	if !dead:
+	if !is_dead:
 		match state:
 			
 			State.SHOOT1:
@@ -69,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot_at_player1() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot_1")
@@ -77,7 +75,7 @@ func shoot_at_player1() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot_1")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 6:
@@ -107,7 +105,7 @@ func shoot_at_player1() -> void:
 
 
 func shoot_at_player2() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot_2")
@@ -115,7 +113,7 @@ func shoot_at_player2() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot_2")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 8:
@@ -149,7 +147,7 @@ func shoot_at_player2() -> void:
 
 
 func shoot_at_player3() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot_3")
@@ -157,7 +155,7 @@ func shoot_at_player3() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot_3")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 4:

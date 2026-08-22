@@ -10,8 +10,6 @@ class_name PurpleChips
 
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
 
-var dead : bool = false
-
 
 func _physics_process(_delta: float) -> void:
 	if player == null:
@@ -23,13 +21,13 @@ func _physics_process(_delta: float) -> void:
 
 	# Action timer logic
 	action_timer -= _delta
-	if action_timer <= 0 and not dead:
+	if action_timer <= 0 and not is_dead:
 		shoot_at_player()
 		action_timer = randf_range(action_delay.x, action_delay.y)
 
 
 func shoot_at_player() -> void:
-	if bullet_scene == null or player == null or dead or player.current_health < 1:
+	if bullet_scene == null or player == null or is_dead or player.current_health < 1:
 		return
 	
 	anim.play("start_shoot")

@@ -21,15 +21,12 @@ var direction : Vector2 = Vector2.LEFT
 
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
 
-var dead : bool = false
-
-
 
 func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
 	
-	if !dead:
+	if !is_dead:
 		match state:
 			State.MOVE:
 				velocity = direction * move_speed
@@ -70,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot_at_player() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot")
@@ -78,7 +75,7 @@ func shoot_at_player() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 4:

@@ -23,8 +23,6 @@ var direction : Vector2 = Vector2.LEFT
 
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
 
-var dead : bool = false
-
 
 func _ready():
 	super._ready()
@@ -36,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
 	
-	if !dead:
+	if !is_dead:
 		match state:
 			State.MOVE:
 				velocity = direction * move_speed
@@ -88,7 +86,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot_at_player_1() -> void:
-	if spiral_bullet_scene == null or player == null or dead:
+	if spiral_bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot")
@@ -96,7 +94,7 @@ func shoot_at_player_1() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 8:
@@ -133,7 +131,7 @@ func shoot_at_player_1() -> void:
 
 
 func shoot_at_player_2() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 	
 	anim.play("start_shoot_2")
@@ -141,7 +139,7 @@ func shoot_at_player_2() -> void:
 	await anim.animation_finished
 	
 	anim.play("end_shoot_2")
-	if dead:
+	if is_dead:
 		return
 	
 	for i in 4:

@@ -23,13 +23,13 @@ func _physics_process(_delta: float) -> void:
 
 	# Action timer logic
 	action_timer -= _delta
-	if action_timer <= 0 and not dead:
+	if action_timer <= 0 and not dead and not is_dead:
 		shoot_at_player()
 		action_timer = randf_range(action_delay.x, action_delay.y)
 
 
 func shoot_at_player() -> void:
-	if bullet_scene == null or player == null or dead:
+	if bullet_scene == null or player == null or dead or is_dead:
 		return
 	
 	anim.play("start_shoot")
@@ -55,6 +55,7 @@ func die():
 	if not is_dead:
 		died.emit()
 		is_dead = true
+		dead = true
 		hurt_box.set_deferred("monitoring", false)
 		move_speed = 0
 		anim.stop()

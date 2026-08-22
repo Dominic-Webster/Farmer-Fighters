@@ -6,7 +6,6 @@ class_name TurretBoss
 @export var bullet_scene : PackedScene
 @export var action_delay : Vector2 = Vector2(0.2, 0.6)
 
-var dead : bool = false
 var is_shooting : bool = false
 var action_timer : float = randf_range(action_delay.x, action_delay.y)
 var aim_direction : Vector2 = Vector2.UP
@@ -32,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot_at_player(direction: Vector2) -> void:
-	if bullet_scene == null or player == null or dead or is_dead:
+	if bullet_scene == null or player == null or is_dead:
 		return
 
 	if direction == Vector2.ZERO:
@@ -46,7 +45,7 @@ func shoot_at_player(direction: Vector2) -> void:
 	anim.play("start_shoot")
 	await anim.animation_finished
 
-	if dead or is_dead:
+	if is_dead:
 		is_shooting = false
 		return
 
