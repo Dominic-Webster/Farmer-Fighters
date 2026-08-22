@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bvumn6awu6cdd"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_41mcc"]
+
+[resource]
+script = ExtResource("1_41mcc")
+enemy_name = "Candy Cane"
+damage = 1
+health = 45.0
+move_speed = 85.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"

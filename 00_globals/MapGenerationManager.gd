@@ -91,7 +91,7 @@ func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 					else:
 						if RunManager.rng.randi_range(1, 25) == 1:
 							dungeon[current.x][current.y] = marker
-						elif RunManager.rng.randi_range(1, 5) == 1:
+						elif RunManager.rng.randi_range(1, 4) == 1:
 							dungeon[current.x][current.y] = "M"
 						else:
 							dungeon[current.x][current.y] = "T"

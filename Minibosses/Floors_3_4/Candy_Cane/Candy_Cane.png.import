@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7tpvmkru0eyy"
-path="res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"
+path="res://.godot/imported/Candy_Cane.png-819721c4536ac02ce074414a0119bfe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Candy_Cane.png"
-dest_files=["res://.godot/imported/Candy_Cane.png-141ed049b7c3478c23ac4352398fe047.ctex"]
+source_file="res://Minibosses/Floors_3_4/Candy_Cane/Candy_Cane.png"
+dest_files=["res://.godot/imported/Candy_Cane.png-819721c4536ac02ce074414a0119bfe3.ctex"]
 
 [params]
 

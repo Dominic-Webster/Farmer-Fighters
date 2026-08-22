@@ -34,7 +34,8 @@
 		"res://Enemies/Floor5/BlueToxicBarrel/BlueToxicBarrel.tscn",
 		"res://Enemies/Floor5/OrangeToxicBarrel/OrangeToxicBarrel.tscn",
 		"res://Enemies/Floor5/RedToxicBarrel/RedToxicBarrel.tscn",
-		"res://Enemies/Floor5/ToxicBarrel/ToxicBarrel.tscn"
+		"res://Enemies/Floor5/ToxicBarrel/ToxicBarrel.tscn",
+		"res://Enemies/Floor5/Toxic_Symbol/Toxic_Symbol.tscn"
 	],
 	"6": [
 		"res://Enemies/Floor6/Turret/Turret.tscn",
