@@ -5,6 +5,8 @@
 		"res://PickUps/Heart/Heart.tscn"
 	],
 	"uncommon": [
+		"res://PickUps/Avacado/Avacado.tscn",
+		"res://PickUps/Lucky_Coin/Lucky_Coin.tscn",
 		"res://PickUps/Lucky_Coin/Lucky_Coin.tscn"
 	],
 }

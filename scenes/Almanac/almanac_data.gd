@@ -405,6 +405,13 @@ const ITEM_ENTRIES := [
 	},
 	#Rare
 	{
+		"id": "blackberry",
+		"name": "Blackberry",
+		"desc": "Orbitting Swarms of Bullets",
+		"texture": preload("res://Items/Rare/Blackberry/Blackberry.png"),
+		"category": "rare"
+	},
+	{
 		"id": "cherry",
 		"name": "Cherry",
 		"desc": "Enemies shoot Player Bullets on death",

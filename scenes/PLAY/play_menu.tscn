@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ckbnff0qivnbd" path="res://scenes/PLAY/play_menu.gd" id="1_boyu3"]
 [ext_resource type="Texture2D" uid="uid://ccjebc1tq1ynq" path="res://scenes/PLAY/Play_backdrop.png" id="2_fx40q"]
 [ext_resource type="FontFile" uid="uid://c7bkg77ydxney" path="res://zz_Fonts/Godot-Fontpack/fonts/kirifont/KiriFont.ttf" id="3_gai1t"]
+[ext_resource type="FontFile" uid="uid://dk6ui5qcdhysu" path="res://zz_Fonts/Godot-Fontpack/fonts/xolonium/xolonium-fonts-4.1/ttf/Xolonium-Bold.ttf" id="4_ehmtm"]
 
 [node name="PlayMenu" type="Control" unique_id=554405392]
 layout_mode = 3
@@ -32,6 +33,22 @@ theme_override_fonts/font = ExtResource("3_gai1t")
 theme_override_font_sizes/font_size = 120
 text = "Farmer
 Fighters"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="." unique_id=875437256]
+layout_mode = 0
+offset_left = 1622.0
+offset_top = 978.0
+offset_right = 1841.0
+offset_bottom = 1038.4167
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = 20
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("4_ehmtm")
+theme_override_font_sizes/font_size = 50
+text = "V  0.1.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

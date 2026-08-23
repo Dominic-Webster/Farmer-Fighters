@@ -121,6 +121,7 @@ var plantain_bullet = preload("res://Bullets/Plantain_Bullet/plantain_bullet.tsc
 var pumpkin_bullet = preload("res://Bullets/Pumpkin_Bullet/pumpkin_bullet.tscn")
 var strawberry_bullet = preload("res://Bullets/Strawberry_Bullet/strawberry_bullet.tscn")
 var watermelon_bullet = preload("res://Bullets/Watermelon_Bullet/watermelon_bullet.tscn")
+var orbit_point = preload("res://Bullets/Orbit/OrbitPoint.tscn")
 
 # Knockback
 var knockback_strength := 350
@@ -144,6 +145,7 @@ var five_shot : bool = false
 var portobello : bool = false
 var backshot : bool = false
 var explosion : bool = false
+var orbit : bool = false
 var inverse_controls : bool = false
 
 var companion_dmg_mult : float = 1.0
@@ -289,6 +291,7 @@ func load_data() -> void:
 	portobello = data.portobello
 	backshot = data.backshot
 	explosion = data.explosion
+	orbit = data.orbit
 	inverse_controls = data.inverse_controls
 	
 	companion_dmg_mult = data.companion_dmg_mult
@@ -495,33 +498,43 @@ func shoot(direction: Vector2):
 
 
 func spawn_bullet(direction: Vector2) -> void:
-	var bullet
+	var selected_bullet_scene: PackedScene
 	match current_bullet:
 		Bullets.TOMATO:
-			bullet = tomato_bullet.instantiate()
+			selected_bullet_scene = tomato_bullet
 		Bullets.GRAPE:
-			bullet = grape_bullet.instantiate()
+			selected_bullet_scene = grape_bullet
 		Bullets.BANANA:
-			bullet = banana_bullet.instantiate()
+			selected_bullet_scene = banana_bullet
 		Bullets.PLANTAIN:
-			bullet = plantain_bullet.instantiate()
+			selected_bullet_scene = plantain_bullet
 		Bullets.CABBAGE:
-			bullet = cabbage_bullet.instantiate()
+			selected_bullet_scene = cabbage_bullet
 		Bullets.CORN:
-			bullet = corn_bullet.instantiate()
+			selected_bullet_scene = corn_bullet
 		Bullets.POTATO:
-			bullet = potato_bullet.instantiate()
+			selected_bullet_scene = potato_bullet
 		Bullets.PEACH:
-			bullet = peach_bullet.instantiate()
+			selected_bullet_scene = peach_bullet
 		Bullets.PUMPKIN:
-			bullet = pumpkin_bullet.instantiate()
+			selected_bullet_scene = pumpkin_bullet
 		Bullets.STRAWBERRY:
-			bullet = strawberry_bullet.instantiate()
+			selected_bullet_scene = strawberry_bullet
 		Bullets.WATERMELON:
-			bullet = watermelon_bullet.instantiate()
+			selected_bullet_scene = watermelon_bullet
+
+	if selected_bullet_scene == null:
+		return
+
+	var bullet
+	if orbit:
+		bullet = orbit_point.instantiate()
+		bullet.setup(selected_bullet_scene, direction)
+	else:
+		bullet = selected_bullet_scene.instantiate()
+		bullet.direction = direction.normalized()
 
 	bullet.global_position = shoot_point.global_position
-	bullet.direction = direction.normalized()
 
 	RunManager.current_room_instance.add_child(bullet)
 

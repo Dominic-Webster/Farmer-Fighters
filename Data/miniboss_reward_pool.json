@@ -94,6 +94,7 @@
 		"res://Items/Uncommon/Raspberry/Raspberry.tscn",
 		"res://Items/Uncommon/Scythe/Scythe.tscn",
 		"res://Items/Uncommon/Zucchini/Zucchini.tscn",
+		"res://Items/Rare/Blackberry/Blackberry.tscn",
 		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn"
 	]
 }

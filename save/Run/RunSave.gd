@@ -149,6 +149,7 @@ func serialize_player(player: Player) -> Dictionary:
 		"portobello": player.portobello,
 		"backshot": player.backshot,
 		"explosion": player.explosion,
+		"orbit": player.orbit,
 		"inverse_controls": player.inverse_controls,
 		
 		"companion_dmg_mult": player.companion_dmg_mult,
@@ -225,6 +226,7 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.portobello = bool(player_state.get("portobello", player.portobello))
 	player.backshot = bool(player_state.get("backshot", player.backshot))
 	player.explosion = bool(player_state.get("explosion", player.explosion))
+	player.orbit = bool(player_state.get("orbit", player.orbit))
 	player.inverse_controls = bool(player_state.get("inverse_controls", player.inverse_controls))
 	# Companions
 	player.companion_dmg_mult = float(player_state.get("companion_dmg_mult", player.companion_dmg_mult))

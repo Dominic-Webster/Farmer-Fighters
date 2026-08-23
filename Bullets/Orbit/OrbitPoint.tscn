@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8kslwq06f15s"]
+
+[ext_resource type="Script" uid="uid://w3y3i0pma5tf" path="res://Bullets/Orbit/orbit_point.gd" id="1_orbit"]
+
+[node name="OrbitPoint" type="Node2D" unique_id=1632513871]
+script = ExtResource("1_orbit")
