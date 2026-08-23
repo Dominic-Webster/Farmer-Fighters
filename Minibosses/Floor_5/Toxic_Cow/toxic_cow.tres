@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c6twtbhodrshu"]
+
+[ext_resource type="Script" uid="uid://c4r2g3m6yrc8v" path="res://Enemies/enemy_data.gd" id="1_rtvw8"]
+
+[resource]
+script = ExtResource("1_rtvw8")
+enemy_name = "Toxic Cow"
+damage = 1
+health = 50.0
+move_speed = 700.0
+metadata/_custom_type_script = "uid://c4r2g3m6yrc8v"
