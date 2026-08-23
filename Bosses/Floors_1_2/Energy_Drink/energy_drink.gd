@@ -41,7 +41,7 @@ func set_random_move_timer():
 
 
 func _physics_process(_delta: float) -> void:
-	if player == null:
+	if player == null or is_dead:
 		return
 
 	match state:
