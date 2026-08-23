@@ -168,6 +168,8 @@ func serialize_player(player: Player) -> Dictionary:
 		"trowel_damage": player.trowel_damage,
 		
 		"slow_bullets": player.slow_bullets,
+		"poison_bullets": player.poison_bullets,
+		"poison_damage": player.poison_damage,
 		"stream": player.stream,
 		"active_item_id": player.active_item_id,
 		"active_item_name": player.active_item_name,
@@ -242,6 +244,8 @@ func apply_player_state(player: Player, player_state: Dictionary) -> void:
 	player.trowel_damage = float(player_state.get("trowel_damage", player.trowel_damage))
 	
 	player.slow_bullets = bool(player_state.get("slow_bullets", player.slow_bullets))
+	player.poison_bullets = bool(player_state.get("poison_bullets", player.poison_bullets))
+	player.poison_damage = float(player_state.get("poison_damage", player.poison_damage))
 	player.stream = bool(player_state.get("stream", player.stream))
 	player.active_item_id = str(player_state.get("active_item_id", player.active_item_id))
 	player.active_item_name = str(player_state.get("active_item_name", player.active_item_name))

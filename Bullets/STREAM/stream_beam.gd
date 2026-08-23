@@ -63,13 +63,13 @@ func configure(settings: Dictionary) -> void:
 func _apply_visual_settings() -> void:
 	if line_template == null:
 		return
-
+	
 	for beam_line in line_pool:
 		if beam_line == null:
 			continue
 		beam_line.width = stream_width
 		beam_line.default_color = stream_color
-
+	
 	line_template.width = stream_width
 	line_template.default_color = stream_color
 
@@ -78,45 +78,45 @@ func _process(delta: float) -> void:
 	if player == null or not is_instance_valid(player) or not player.stream:
 		_hide_stream()
 		return
-
+	
 	configure(player.stream_settings)
-
+	
 	var direction := player.get_shoot_direction()
 	if player.movement_locked or direction == Vector2.ZERO:
 		_hide_stream()
 		return
-
+	
 	var start := player.shoot_point_2.global_position
 	var homed_direction := _get_homed_stream_direction(direction.normalized(), start, delta)
-
+	
 	_update_stream_extend_progress(delta)
 	stream_wave_time += delta
 	var beam_directions := _get_stream_directions(homed_direction.normalized(), _get_stream_shot_count(), player.tri_shot_spread_degrees, player.eggplant, player.spiral, player.backshot)
 	var traces : Array[Dictionary] = []
 	var effective_length := stream_max_length * _get_stream_extend_scale()
-
+	
 	for beam_direction in beam_directions:
 		traces.append(_trace_stream_path(start, beam_direction, player.portobello, effective_length))
-
+	
 	_ensure_line_pool(traces.size())
 	for i in range(line_pool.size()):
 		var beam_line := line_pool[i]
 		if beam_line == null:
 			continue
-
+		
 		if i >= traces.size():
 			beam_line.visible = false
 			beam_line.points = PackedVector2Array()
 			continue
-
+		
 		var traced_points: Array = traces[i].get("points", [])
 		var local_points := PackedVector2Array()
 		for point in traced_points:
 			local_points.append(to_local(point))
-
+		
 		beam_line.visible = true
 		beam_line.points = local_points
-
+		
 	var hit_counts : Dictionary = {}
 	for trace in traces:
 		var enemy_hits: Array = trace.get("enemies", [])
@@ -124,14 +124,14 @@ func _process(delta: float) -> void:
 			var enemy_hit := enemy_candidate as Enemy
 			if enemy_hit == null or not is_instance_valid(enemy_hit):
 				continue
-
+			
 			var enemy_id := enemy_hit.get_instance_id()
 			hit_counts[enemy_id] = int(hit_counts.get(enemy_id, 0)) + 1
-
+	
 	if hit_counts.is_empty():
 		stream_tick_timer = 0.0
 		return
-
+	
 	if player.spiral:
 		for trace in traces:
 			var enemy_hits: Array = trace.get("enemies", [])
@@ -139,17 +139,17 @@ func _process(delta: float) -> void:
 				var enemy_hit := enemy_candidate as Enemy
 				if enemy_hit == null or not is_instance_valid(enemy_hit):
 					continue
-
+				
 				enemy_hit.take_damage(player.damage * player.damage_mult, player.global_position)
-				_apply_slow_status(enemy_hit)
+				_apply_status(enemy_hit)
 				_spawn_stream_explosion(enemy_hit.global_position)
 		return
-
+	
 	var tick_interval := maxf(player.fire_rate, 0.01)
 	stream_tick_timer += delta
 	if stream_tick_timer < tick_interval:
 		return
-
+	
 	var tick_count := int(stream_tick_timer / tick_interval)
 	stream_tick_timer -= tick_interval * tick_count
 	for trace in traces:
@@ -162,7 +162,7 @@ func _process(delta: float) -> void:
 			var enemy_ticks := int(hit_counts.get(enemy_hit.get_instance_id(), 0)) * tick_count
 			if enemy_ticks > 0:
 				enemy_hit.take_damage((player.damage * player.damage_mult) * float(enemy_ticks), player.global_position)
-				_apply_slow_status(enemy_hit)
+				_apply_status(enemy_hit)
 				_spawn_stream_explosion(enemy_hit.global_position)
 
 
@@ -377,16 +377,16 @@ func _get_stream_shot_directions(direction: Vector2, count: int, spread_degrees:
 	if direction == Vector2.ZERO:
 		dirs.append(direction)
 		return dirs
-
+	
 	if count <= 1:
 		dirs.append(direction.normalized())
 		return dirs
-
+	
 	for i in range(count):
 		var idx := float(i) - float(count - 1) / 2.0
 		var angle_deg := idx * spread_degrees
 		dirs.append(direction.rotated(deg_to_rad(angle_deg)).normalized())
-
+	
 	return dirs
 
 
@@ -394,22 +394,22 @@ func _get_homed_stream_direction(base_direction: Vector2, origin: Vector2, delta
 	if player == null or not player.homing or player.spiral:
 		stream_homing_target = null
 		return base_direction
-
+	
 	_update_stream_homing_target(origin)
 	if stream_homing_target == null:
 		return base_direction
-
+	
 	var target_direction := stream_homing_target.global_position - origin
 	if target_direction == Vector2.ZERO:
 		return base_direction
-
+	
 	return base_direction.lerp(target_direction.normalized(), clamp(stream_homing_strength * delta, 0.0, 1.0)).normalized()
 
 
 func _get_stream_homing_target(origin: Vector2) -> Node2D:
 	if player == null or not player.homing or player.spiral:
 		return null
-
+	
 	_update_stream_homing_target(origin)
 	return stream_homing_target
 
@@ -417,113 +417,113 @@ func _get_stream_homing_target(origin: Vector2) -> Node2D:
 func _get_boomerang_return_direction(forward_direction: Vector2) -> Vector2:
 	if forward_direction == Vector2.ZERO:
 		return Vector2.ZERO
-
+	
 	return (-forward_direction).rotated(stream_boomerang_return_angle_degrees).normalized()
 
 
 func _update_stream_homing_target(origin: Vector2) -> void:
 	if _is_valid_stream_homing_target(stream_homing_target, origin):
 		return
-
+	
 	stream_homing_target = _acquire_stream_homing_target(origin)
 
 
 func _acquire_stream_homing_target(origin: Vector2) -> Node2D:
 	var best_target: Node2D = null
 	var best_distance: float = stream_homing_range
-
+	
 	for node in get_tree().get_nodes_in_group("enemy"):
 		if not node is Enemy:
 			continue
-
+	
 		var enemy: Enemy = node
 		if not _can_be_stream_homed(enemy, origin):
 			continue
-
+	
 		var distance := origin.distance_to(enemy.global_position)
 		if distance > best_distance:
 			continue
-
+	
 		best_distance = distance
 		best_target = enemy
-
+	
 	return best_target
 
 
 func _is_valid_stream_homing_target(candidate: Node2D, origin: Vector2) -> bool:
 	if candidate == null or not is_instance_valid(candidate):
 		return false
-
+	
 	if not candidate is Enemy:
 		return false
-
+	
 	var enemy: Enemy = candidate
 	if enemy.is_dead:
 		return false
-
+	
 	return origin.distance_to(enemy.global_position) <= stream_homing_range
 
 
 func _can_be_stream_homed(enemy: Enemy, origin: Vector2) -> bool:
 	if not is_instance_valid(enemy):
 		return false
-
+	
 	if enemy.is_dead:
 		return false
-
+	
 	return origin.distance_to(enemy.global_position) <= stream_homing_range
 
 
 func _resolve_enemy_from_stream_hit(collider: Object) -> Enemy:
 	if collider == null:
 		return null
-
+	
 	if collider is Enemy:
 		return collider
-
+	
 	if collider is Area2D and collider.is_in_group("enemy"):
 		var parent: Node = collider.get_parent()
 		if parent is Enemy:
 			return parent
-
+	
 	return null
 
 
 func _should_ignore_stream_hit(collider: Object) -> bool:
 	if collider == null:
 		return false
-
+	
 	if collider is Node and collider.is_in_group("stream_passthrough"):
 		return true
-
+	
 	if collider is Node and collider.is_in_group("enemy_bullet"):
 		return true
-
+	
 	if collider is Node and collider.is_in_group("hazard"):
 		return true
-
+	
 	return false
 
 
 func _should_bounce_stream_hit(collider: Object) -> bool:
 	if collider is Node and collider.is_in_group("bullet_bounds"):
 		return true
-
+	
 	if collider is StaticBody2D:
 		var parent_node: Node = collider.get_parent()
 		if parent_node != null and parent_node.name == "Walls":
 			return true
-
+	
 	return false
 
 
 func _ignore_enemy_colliders(ignored_colliders: Array, enemy: Enemy) -> void:
 	if enemy == null:
 		return
-
+	
 	if enemy not in ignored_colliders:
 		ignored_colliders.append(enemy)
-
+	
 	if "hurt_box" in enemy:
 		var enemy_hurt_box = enemy.hurt_box
 		if enemy_hurt_box != null and enemy_hurt_box not in ignored_colliders:
@@ -574,12 +574,15 @@ func _spawn_stream_explosion(_position: Vector2) -> void:
 		add_child(explosion)
 
 
-func _apply_slow_status(enemy: Enemy) -> void:
-	if player == null or not player.slow_bullets:
+func _apply_status(enemy: Enemy) -> void:
+	if player == null:
 		return
-
+	
 	if enemy == null or not is_instance_valid(enemy):
 		return
-
-	if enemy.has_method("apply_status"):
+	
+	if player.slow_bullets and enemy.has_method("apply_status"):
 		enemy.apply_status("slow")
+	
+	if player.poison_bullets and enemy.has_method("apply_status"):
+		enemy.apply_status("poison")

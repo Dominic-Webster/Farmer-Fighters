@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cby3o2s6kb5hc"]
+
+[ext_resource type="Script" uid="uid://bxmg5qjv0n1ov" path="res://Enemies/Status_Effects/Poison_Bubble/poison_bubble.gd" id="1_728m5"]
+[ext_resource type="Texture2D" uid="uid://ds5gr2hstj85y" path="res://Enemies/Status_Effects/Poison_Bubble/Poison_Bubble.png" id="1_axfrr"]
+
+[node name="PoisonBubble" type="Node2D" unique_id=1125516012]
+scale = Vector2(3, 3)
+script = ExtResource("1_728m5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1629364496]
+texture = ExtResource("1_axfrr")

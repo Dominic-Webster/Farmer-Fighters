@@ -91,4 +91,6 @@ enum Bullets {
 @export var trowel_damage : float = 5.0
 
 @export var slow_bullets : bool = false
+@export var poison_bullets : bool = false
+@export var poison_damage : float = 2.0
 @export var stream : bool = false

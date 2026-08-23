@@ -164,6 +164,8 @@ var trowel_unlocked : bool = false
 var trowel_damage : float = 5.0
 
 var slow_bullets : bool = false
+var poison_bullets : bool = false
+var poison_damage : float = 2.0
 var stream : bool = false
 var stream_settings : Dictionary = {
 	"stream_max_length": 5000.0,
@@ -306,6 +308,8 @@ func load_data() -> void:
 	trowel_damage = data.trowel_damage
 	
 	slow_bullets = data.slow_bullets
+	poison_bullets = data.poison_bullets
+	poison_damage = data.poison_damage
 	stream = data.stream
 
 	if MetaManager != null:

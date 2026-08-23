@@ -20,6 +20,7 @@ var wave : bool = false
 var spiral : bool = false
 var explosion : bool = false
 var slow_bullets : bool = false
+var poison_bullets : bool = false
 var explosion_damage : float = 2.0
 var explosion_damage_mult : float = 1.0
 var target : Node2D = null
@@ -51,6 +52,7 @@ func _ready() -> void:
 		spiral = player.spiral
 		explosion = player.explosion
 		slow_bullets = player.slow_bullets
+		poison_bullets = player.poison_bullets
 		explosion_damage = player.explosion_damage
 		explosion_damage_mult = player.explosion_damage_mult
 
@@ -252,16 +254,19 @@ func _handle_enemy_hit(area: Area2D) -> void:
 	var enemy := area.get_parent()
 	if enemy == null or not enemy is Enemy:
 		return
-
+	
 	if _hit_enemies.has(enemy.get_instance_id()):
 		return
-
+	
 	_hit_enemies[enemy.get_instance_id()] = true
 	enemy.take_damage(damage, global_position)
-
+	
 	if slow_bullets and enemy.has_method("apply_status"):
 		enemy.apply_status("slow")
-
+	
+	if poison_bullets and enemy.has_method("apply_status"):
+		enemy.apply_status("poison")
+	
 	if homing:
 		if target == enemy:
 			target = null

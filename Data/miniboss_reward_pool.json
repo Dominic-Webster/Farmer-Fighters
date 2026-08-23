@@ -6,6 +6,7 @@
 		"res://Items/Common/Grapes_Of_Wrath/Grapes_Of_Wrath.tscn",
 		"res://Items/Common/Honeynut_Squash/Honeynut_Squash.tscn",
 		"res://Items/Common/Shovel/Shovel.tscn",
+		"res://Items/Common/Tobacco_Leaf/Tobacco_Leaf.tscn",
 		"res://Items/Common/Watermelon/Watermelon.tscn",
 		"res://Items/Uncommon/Celery/Celery.tscn",
 		"res://Items/Uncommon/Oregano/Oregano.tscn",
@@ -65,6 +66,7 @@
 	"5": [
 		"res://Items/Common/Eggplant/Eggplant.tscn",
 		"res://Items/Common/Strawberry/Strawberry.tscn",
+		"res://Items/Common/Tobacco_Leaf/Tobacco_Leaf.tscn",
 		"res://Items/Common/Watermelon/Watermelon.tscn",
 		"res://Items/Uncommon/Cilantro/Cilantro.tscn",
 		"res://Items/Uncommon/Cow_Item/Cow_Item.tscn",

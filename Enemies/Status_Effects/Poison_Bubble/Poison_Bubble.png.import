@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tku67yxolnct"
-path="res://.godot/imported/Tobacco_Leaf.png-2aaad4247d3b5aef4913dbae7b3e8ec7.ctex"
+uid="uid://ds5gr2hstj85y"
+path="res://.godot/imported/Poison_Bubble.png-5dadfe95b0f57871efcf3d57dc27bed3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_drop/Tobacco_Leaf.png"
-dest_files=["res://.godot/imported/Tobacco_Leaf.png-2aaad4247d3b5aef4913dbae7b3e8ec7.ctex"]
+source_file="res://Enemies/Status_Effects/Poison_Bubble/Poison_Bubble.png"
+dest_files=["res://.godot/imported/Poison_Bubble.png-5dadfe95b0f57871efcf3d57dc27bed3.ctex"]
 
 [params]
 

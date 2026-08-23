@@ -228,6 +228,13 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
+		"id": "tobacco_leaf",
+		"name": "Tobacco Leaf",
+		"desc": "Bullets Poison Enemies",
+		"texture": preload("res://Items/Common/Tobacco_Leaf/Tobacco_Leaf.png"),
+		"category": "common"
+	},
+	{
 		"id": "water",
 		"name": "Water",
 		"desc": "+1 Heart",

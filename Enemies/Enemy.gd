@@ -22,11 +22,16 @@ var is_dead : bool = false
 
 var knockback_velocity := Vector2.ZERO
 
+const POISON_TICK_INTERVAL : float = 0.75
+
 enum STATUS {
-	SLOW
+	SLOW,
+	POISON
 }
 
 var status_effects : Array[STATUS] = []
+var poison_bubble_scene = preload("res://Enemies/Status_Effects/Poison_Bubble/Poison_Bubble.tscn")
+var poison_tick_timer: Timer = null
 
 
 func _ready():
@@ -47,24 +52,12 @@ func await_player() -> void:
 	player = RunManager.player
 
 
-#func _physics_process(_delta: float) -> void:
-	#if player == null:
-		#return
-	#
-	#var direction = (player.global_position - global_position).normalized()
-	#var move_velocity = direction * move_speed
-	#
-	#velocity = move_velocity + knockback_velocity
-	#knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 800 * _delta)
-	#
-	#move_and_slide()
-
-
-func take_damage(amount: float, from_position : Vector2):
+func take_damage(amount: float, from_position : Vector2, apply_knockback : bool = true):
 	health -= amount
 	
-	var dir = (global_position - from_position).normalized()
-	knockback_velocity = dir * 200
+	if apply_knockback:
+		var dir = (global_position - from_position).normalized()
+		knockback_velocity = dir * 200
 	
 	flash_red()
 	
@@ -77,6 +70,59 @@ func die():
 		is_dead = true
 		died.emit()
 		queue_free()
+
+
+func _spawn_poison_bubbles() -> void:
+	var num : int = randi_range(1, 5)
+	for i in range(num):
+		var bubble = poison_bubble_scene.instantiate()
+		if bubble == null:
+			continue
+
+		bubble.global_position = global_position + Vector2(randf_range(-20.0, 20.0), randf_range(-15.0, 10.0))
+
+		if RunManager != null and RunManager.current_room_instance != null:
+			RunManager.current_room_instance.call_deferred("add_child", bubble)
+		else:
+			get_tree().current_scene.call_deferred("add_child", bubble)
+		
+
+
+func _ensure_poison_tick_timer() -> void:
+	if poison_tick_timer != null:
+		return
+
+	poison_tick_timer = Timer.new()
+	poison_tick_timer.name = "PoisonTickTimer"
+	poison_tick_timer.wait_time = POISON_TICK_INTERVAL
+	poison_tick_timer.one_shot = false
+	poison_tick_timer.autostart = false
+	poison_tick_timer.timeout.connect(_on_poison_tick_timeout)
+	add_child(poison_tick_timer)
+
+
+func _on_poison_tick_timeout() -> void:
+	if is_dead:
+		if poison_tick_timer != null:
+			poison_tick_timer.stop()
+		return
+
+	if not status_effects.has(STATUS.POISON):
+		if poison_tick_timer != null:
+			poison_tick_timer.stop()
+		return
+
+	var current_player: Player = player
+	if current_player == null:
+		current_player = RunManager.player
+		if current_player != null:
+			player = current_player
+
+	if current_player == null:
+		return
+
+	take_damage(current_player.poison_damage, current_player.global_position, false)
+	_spawn_poison_bubbles()
 
 
 func _on_hurt_box_area_entered(area):
@@ -97,8 +143,12 @@ func flash_red():
 	if is_flashing:
 		return
 	
+	var flash_color : Color = Color(1, 0.4, 0.4)
+	if status_effects.has(STATUS.POISON):
+		flash_color = Color(0.0, 0.573, 0.0, 1.0)
+	
 	is_flashing = true
-	sprite.modulate = Color(1, 0.4, 0.4) # red
+	sprite.modulate = flash_color
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1) # back to normal
 	is_flashing = false
@@ -110,6 +160,11 @@ func apply_status(status : String):
 			if not status_effects.has(STATUS.SLOW):
 				status_effects.append(STATUS.SLOW)
 				move_speed /= 2
+		"poison":
+			if not status_effects.has(STATUS.POISON):
+				status_effects.append(STATUS.POISON)
+				_ensure_poison_tick_timer()
+				poison_tick_timer.start()
 
 
 func remove_status(status : String):
@@ -118,6 +173,11 @@ func remove_status(status : String):
 			if status_effects.has(STATUS.SLOW):
 				status_effects.erase(STATUS.SLOW)
 				move_speed *= 2
+		"poison":
+			if status_effects.has(STATUS.POISON):
+				status_effects.erase(STATUS.POISON)
+				if poison_tick_timer != null:
+					poison_tick_timer.stop()
 
 
 func cherry_shot() -> void:
