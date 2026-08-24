@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f10jh6ghs2ym"
-path="res://.godot/imported/Habanero.png-a694b80a5ccd0c1eebfac3da76ccd3e3.ctex"
+uid="uid://cqoknjftxkhay"
+path="res://.godot/imported/habanero.png-8e0bcf6cfd200b17ed782504a3d256da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Common/Habanero/Habanero.png"
-dest_files=["res://.godot/imported/Habanero.png-a694b80a5ccd0c1eebfac3da76ccd3e3.ctex"]
+source_file="res://Items/Common/Habanero/habanero.png"
+dest_files=["res://.godot/imported/habanero.png-8e0bcf6cfd200b17ed782504a3d256da.ctex"]
 
 [params]
 

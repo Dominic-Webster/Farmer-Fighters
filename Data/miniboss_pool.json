@@ -15,8 +15,6 @@
 		"res://Minibosses/Floor_5/Toxic_Cow/Toxic_Cow.tscn"
 	],
 	"6": [
-		"res://Minibosses/Floors_1_2/Cheese_Puffs/Cheese_Puffs.tscn",
-		"res://Minibosses/Floors_1_2/Hot_Dog/Hot_Dog.tscn",
-		"res://Minibosses/Floors_3_4/Candy_Corn/Candy_Corn_Miniboss.tscn"
+		"res://Minibosses/Floor_6/Magnet/Magnet.tscn"
 	],
 }

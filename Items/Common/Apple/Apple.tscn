@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c634q6eqqkdcd"]
 
-[ext_resource type="Texture2D" uid="uid://xcpdnpihkp3a" path="res://Items/Common/Apple/Apple.png" id="1_2y67y"]
 [ext_resource type="Script" uid="uid://da61g7qmp11ay" path="res://Items/Common/Apple/apple.gd" id="1_n7skd"]
+[ext_resource type="Texture2D" uid="uid://bvoafkqhe86r0" path="res://Items/Common/Apple/apple.png" id="3_632wy"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="3_n7skd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kihth"]
-size = Vector2(99, 125)
+size = Vector2(99, 109.5)
 
 [sub_resource type="Animation" id="Animation_kqu8i"]
 length = 0.001
@@ -74,13 +74,13 @@ script = ExtResource("1_n7skd")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=2017795667]
 modulate = Color(1, 1, 1, 0.5882353)
-position = Vector2(0, 70)
+position = Vector2(0, 50)
 scale = Vector2(4, 4)
 texture = ExtResource("3_n7skd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1162642050]
 scale = Vector2(7, 7)
-texture = ExtResource("1_2y67y")
+texture = ExtResource("3_632wy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1660756505]
 collision_layer = 32

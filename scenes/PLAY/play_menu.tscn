@@ -48,7 +48,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("4_ehmtm")
 theme_override_font_sizes/font_size = 50
-text = "V  0.1.0"
+text = "V  0.1.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -127,6 +127,7 @@ var orbit_point = preload("res://Bullets/Orbit/OrbitPoint.tscn")
 var knockback_strength := 350
 var knockback_decay := 800
 var knockback_velocity := Vector2.ZERO
+var magnet_pull_velocity := Vector2.ZERO
 
 # Extra
 var is_flashing : bool = false
@@ -344,7 +345,7 @@ func _physics_process(_delta):
 			dash_cooldown = dash_cooldown_time
 	else:
 		var move_velocity = direction * move_speed
-		velocity = move_velocity + knockback_velocity
+		velocity = move_velocity + knockback_velocity + magnet_pull_velocity
 		# Smoothly reduce knockback over time
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * _delta)
 
