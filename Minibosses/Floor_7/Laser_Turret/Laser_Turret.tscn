@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://c204x60jvxa5h"]
+
+[ext_resource type="Script" uid="uid://cmd8agk4c1ygt" path="res://Minibosses/Floor_7/Laser_Turret/laser_turret.gd" id="1_nsvib"]
+[ext_resource type="Resource" uid="uid://c1x62srdxtrrx" path="res://Minibosses/Floor_7/Laser_Turret/laser_turret.tres" id="2_wtel3"]
+[ext_resource type="Texture2D" uid="uid://elfbot48kdng" path="res://Minibosses/Floor_7/Laser_Turret/laser_turret.png" id="4_qbg1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wemoi"]
+size = Vector2(69, 88.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q64cm"]
+size = Vector2(76.5, 76)
+
+[sub_resource type="Animation" id="Animation_2iy21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qbg1g"]
+resource_name = "charge"
+length = 0.36667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.33333334, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_q64cm"]
+resource_name = "die"
+length = 0.46667004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q64cm"]
+_data = {
+&"RESET": SubResource("Animation_2iy21"),
+&"charge": SubResource("Animation_qbg1g"),
+&"die": SubResource("Animation_q64cm")
+}
+
+[node name="LaserTurret" type="CharacterBody2D" unique_id=1226932169]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 20
+script = ExtResource("1_nsvib")
+enemy_data = ExtResource("2_wtel3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1891934141]
+position = Vector2(0.49999997, -24.499998)
+scale = Vector2(5, 5)
+texture = ExtResource("4_qbg1g")
+hframes = 5
+vframes = 3
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1042546436]
+position = Vector2(0.5, -0.75)
+shape = SubResource("RectangleShape2D_wemoi")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=853728641]
+position = Vector2(1.5, -24.5)
+collision_layer = 4
+collision_mask = 258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=638886840]
+position = Vector2(-0.25, 30.5)
+shape = SubResource("RectangleShape2D_q64cm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1909410684]
+libraries/ = SubResource("AnimationLibrary_q64cm")
+autoplay = &"move"
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1834082005]
+position = Vector2(0.5, -68.5)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

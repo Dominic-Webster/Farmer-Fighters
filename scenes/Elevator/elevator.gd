@@ -57,7 +57,7 @@ func _elevator_transition(player):
 	# Remove old room (handled by load_room)
 	RunManager.current_room = MapGenerationManager._start
 	
-	if RunManager.current_floor == 7:
+	if RunManager.current_floor == 8:
 		RunManager.ended.emit()
 	else:
 		RunManager.load_room(MapGenerationManager._start, "C")

@@ -96,5 +96,20 @@
 		"res://Items/Uncommon/Zucchini/Zucchini.tscn",
 		"res://Items/Rare/Blackberry/Blackberry.tscn",
 		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn"
+	],
+	"7": [
+		"res://Items/Common/Salsa/Salsa.tscn",
+		"res://Items/Common/Tobacco_Leaf/Tobacco_Leaf.tscn",
+		"res://Items/Uncommon/Asparagus/Asparagus.tscn",
+		"res://Items/Uncommon/Celery/Celery.tscn",
+		"res://Items/Uncommon/Cilantro/Cilantro.tscn",
+		"res://Items/Uncommon/Cow_Item/Cow_Item.tscn",
+		"res://Items/Uncommon/Garden_Fork/Garden_Fork.tscn",
+		"res://Items/Uncommon/Haybale/Haybale.tscn",
+		"res://Items/Uncommon/Mirror/Mirror.tscn",
+		"res://Items/Uncommon/Scythe/Scythe.tscn",
+		"res://Items/Rare/Blackberry/Blackberry.tscn",
+		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn",
+		"res://Items/Rare/Gourd/Gourd.tscn"
 	]
 }

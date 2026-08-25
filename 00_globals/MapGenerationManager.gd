@@ -30,6 +30,9 @@ func create_new_map() -> void:
 	RunManager.room_history.clear()
 	_start = Vector2i(-1, -1)
 	
+	if RunManager.current_floor == 7:
+		_critical_path_length = 10
+	
 	_initialize_dungeon()
 	_place_entrance()
 	_generate_path(_start, _critical_path_length, "C")

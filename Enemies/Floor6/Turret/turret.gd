@@ -12,6 +12,12 @@ var action_timer : float = randf_range(action_delay.x, action_delay.y)
 var aim_direction : Vector2 = Vector2.UP
 
 
+func _ready():
+	super._ready()
+	if RunManager.current_floor == 6:
+		weight = 2
+
+
 func _physics_process(_delta: float) -> void:
 	if player == null or is_dead:
 		return

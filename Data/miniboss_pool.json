@@ -17,4 +17,7 @@
 	"6": [
 		"res://Minibosses/Floor_6/Magnet/Magnet.tscn"
 	],
+	"7": [
+		"res://Minibosses/Floor_7/Laser_Turret/Laser_Turret.tscn"
+	],
 }

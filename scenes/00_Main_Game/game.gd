@@ -19,6 +19,7 @@ var shake_time_left: float = 0.0
 var theme1 = preload("res://Audio/Theme1.wav")
 var theme2 = preload("res://Audio/Theme2.wav")
 var theme3 = preload("res://Audio/Theme3.wav")
+var theme4 = preload("res://Audio/Theme4.wav")
 
 
 func _ready():
@@ -93,8 +94,10 @@ func _set_song() -> void:
 		audio_player.stream = theme1
 	elif _floor == 3 or _floor == 4:
 		audio_player.stream = theme2
-	else:
+	elif _floor == 5 or _floor == 6:
 		audio_player.stream = theme3
+	else:
+		audio_player.stream = theme4
 
 func _play_song() -> void:
 	_set_song()

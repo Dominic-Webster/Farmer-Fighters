@@ -334,6 +334,13 @@ const ITEM_ENTRIES := [
 		"category": "uncommon"
 	},
 	{
+		"id": "mango",
+		"name": "Mango",
+		"desc": "x2 Damage",
+		"texture": preload("res://Items/Unlocks/Mango/mango.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "mirror",
 		"name": "Mirror",
 		"desc": "Strength at a price...",

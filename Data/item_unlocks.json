@@ -23,6 +23,14 @@
 		"rarity": "common",
 		"scene_path": "res://Items/Unlocks/Tomatillo/Tomatillo.tscn"
 	},
+	"mango": {
+		"display_name": "Mango",
+		"unlock_title": "Item Unlocked!",
+		"source_item": "apple",
+		"required_pickups": 3,
+		"rarity": "uncommon",
+		"scene_path": "res://Items/Unlocks/Mango/Mango.tscn"
+	},
 	"pineapple": {
 		"display_name": "Pineapple",
 		"unlock_title": "Item Unlocked!",
