@@ -3,6 +3,8 @@ class_name LaserTurret
 
 @onready var shoot_point : Marker2D = $ShootPoint
 
+var start_timer : float = 0.5
+
 const SPIN_DURATION : float = 4.0
 const RECOVERY_DURATION : float = 0.3
 const LASER_DAMAGE_INTERVAL : float = 0.2
@@ -35,6 +37,10 @@ func _physics_process(delta : float) -> void:
 	
 	velocity = Vector2.ZERO
 	move_and_slide()
+	
+	if start_timer > 0:
+		start_timer -= delta
+		return
 	
 	match state:
 		State.CHARGING:
