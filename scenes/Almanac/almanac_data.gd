@@ -7,7 +7,7 @@ const ITEM_ENTRIES := [
 		"id": "4_leaf_clover",
 		"name": "4 Leaf Clover",
 		"desc": "+3 Luck",
-		"texture": preload("res://Items/Common/4_Leaf_Clover/4_Leaf_Clover.png"),
+		"texture": preload("res://Items/Common/4_Leaf_Clover/four_leaf_clover.png"),
 		"category": "common"
 	},
 	{
@@ -21,7 +21,7 @@ const ITEM_ENTRIES := [
 		"id": "apple",
 		"name": "Apple",
 		"desc": "+125 Movement Speed",
-		"texture": preload("res://Items/Common/Apple/Apple.png"),
+		"texture": preload("res://Items/Common/Apple/apple.png"),
 		"category": "common"
 	},
 	{
@@ -42,7 +42,7 @@ const ITEM_ENTRIES := [
 		"id": "broccoli",
 		"name": "Broccoli",
 		"desc": "+0.5 Damage",
-		"texture": preload("res://Items/Common/Broccoli/Broccoli.png"),
+		"texture": preload("res://Items/Common/Broccoli/broccoli.png"),
 		"category": "common"
 	},
 	{
@@ -98,7 +98,7 @@ const ITEM_ENTRIES := [
 		"id": "habanaro",
 		"name": "Habanero",
 		"desc": "0.075 Fire Rate Buff",
-		"texture": preload("res://Items/Common/Habanero/Habanero.png"),
+		"texture": preload("res://Items/Common/Habanero/habanero.png"),
 		"category": "common"
 	},
 	{
@@ -334,6 +334,13 @@ const ITEM_ENTRIES := [
 		"category": "uncommon"
 	},
 	{
+		"id": "mango",
+		"name": "Mango",
+		"desc": "x2 Damage",
+		"texture": preload("res://Items/Unlocks/Mango/mango.png"),
+		"category": "uncommon"
+	},
+	{
 		"id": "mirror",
 		"name": "Mirror",
 		"desc": "Strength at a price...",
@@ -405,6 +412,13 @@ const ITEM_ENTRIES := [
 	},
 	#Rare
 	{
+		"id": "blackberry",
+		"name": "Blackberry",
+		"desc": "Orbitting Swarms of Bullets",
+		"texture": preload("res://Items/Rare/Blackberry/Blackberry.png"),
+		"category": "rare"
+	},
+	{
 		"id": "cherry",
 		"name": "Cherry",
 		"desc": "Enemies shoot Player Bullets on death",
@@ -422,7 +436,7 @@ const ITEM_ENTRIES := [
 		"id": "good_soil",
 		"name": "Good_Soil",
 		"desc": "+2 Hearts",
-		"texture": preload("res://Items/Unlocks/Good_Soil/Good_Soil.png"),
+		"texture": preload("res://Items/Unlocks/Good_Soil/dirt_pile.png"),
 		"category": "rare"
 	},
 	{

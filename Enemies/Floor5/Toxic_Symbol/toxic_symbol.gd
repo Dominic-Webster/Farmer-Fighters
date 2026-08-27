@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 		start_timer -= _delta
 		velocity = Vector2.ZERO
 	else:
-		var direction = (player.global_position - global_position).normalized()
+		var direction = get_chase_direction(player.global_position, _delta)
 		var move_velocity
 		
 		if RunManager.player.is_dashing:

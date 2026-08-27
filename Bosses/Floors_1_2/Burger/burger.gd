@@ -29,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 	if !dead:
 		match state:
 			State.MOVE:
-				var direction = (player.global_position - global_position).normalized()
+				var direction = get_chase_direction(player.global_position, _delta)
 				velocity = direction * move_speed
 				move_and_slide()
 				

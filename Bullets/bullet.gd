@@ -36,6 +36,8 @@ var _bounce_remaining : int = 0
 var _bounce_angle : float = randf_range(bounce_angle_degrees.x, bounce_angle_degrees.y)
 var _hit_enemies : Dictionary = {}
 
+var orbit_managed : bool = false
+
 const ExplosionScene = preload("res://Bullets/EXPLOSION/EXPLOSION.tscn")
 
 
@@ -55,6 +57,7 @@ func _ready() -> void:
 		poison_bullets = player.poison_bullets
 		explosion_damage = player.explosion_damage
 		explosion_damage_mult = player.explosion_damage_mult
+		orbit_managed = player.orbit
 
 	spiral_outward_speed = speed * 0.25
 	spiral_spin_speed = speed / 85.0
@@ -69,6 +72,9 @@ func _ready() -> void:
 
 
 func _process(delta):
+	if orbit_managed:
+		return
+
 	_update_target()
 	_apply_homing(delta)
 	_update_boomerang(delta)
@@ -214,6 +220,10 @@ func _reset_hit_enemies() -> void:
 	_hit_enemies.clear()
 
 
+func reset_hits_for_orbit_return() -> void:
+	_reset_hit_enemies()
+
+
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
@@ -223,6 +233,14 @@ func _on_area_entered(area):
 		return
 
 	if area.is_in_group("bullet_bounds"):
+		if orbit_managed:
+			var orbit_parent := get_parent()
+			if orbit_parent != null and orbit_parent.has_method("orbit_hit_wall"):
+				orbit_parent.orbit_hit_wall(area.name, self)
+			else:
+				end_bullet()
+			return
+
 		if _bounce_remaining > 0:
 			_bounce_remaining -= 1
 			_bounce_from_wall(area.name)

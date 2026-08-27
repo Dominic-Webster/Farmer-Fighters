@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 
 func start_jump() -> void:
 	# Store direction at jump start
-	jump_direction = (player.global_position - global_position).normalized()
+	jump_direction = get_chase_direction(player.global_position, 0.0)
 	
 	anim.play("start_jump")
 	

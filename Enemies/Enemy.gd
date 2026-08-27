@@ -22,6 +22,14 @@ var is_dead : bool = false
 
 var knockback_velocity := Vector2.ZERO
 
+const CHASE_CELL_SIZE := 48.0
+const CHASE_GRID_SIZE := Vector2i(40, 23)
+const CHASE_OBSTACLE_MASK := 16 | 512
+
+var chase_path := PackedVector2Array()
+var chase_path_index := 0
+var chase_repath_timer := 0.0
+
 const POISON_TICK_INTERVAL : float = 0.75
 
 enum STATUS {
@@ -32,6 +40,87 @@ enum STATUS {
 var status_effects : Array[STATUS] = []
 var poison_bubble_scene = preload("res://Enemies/Status_Effects/Poison_Bubble/Poison_Bubble.tscn")
 var poison_tick_timer: Timer = null
+
+
+func get_chase_direction(target_position: Vector2, delta: float) -> Vector2:
+	var direct_direction := global_position.direction_to(target_position)
+	if _has_clear_chase_line(target_position):
+		chase_path = PackedVector2Array()
+		return direct_direction
+
+	chase_repath_timer -= delta
+	if delta <= 0.0 or chase_repath_timer <= 0.0 or chase_path_index >= chase_path.size():
+		_rebuild_chase_path(target_position)
+
+	while chase_path_index < chase_path.size() and global_position.distance_to(chase_path[chase_path_index]) < CHASE_CELL_SIZE * 0.35:
+		chase_path_index += 1
+
+	if chase_path_index < chase_path.size():
+		return global_position.direction_to(chase_path[chase_path_index])
+
+	return direct_direction
+
+
+func _has_clear_chase_line(target_position: Vector2) -> bool:
+	var query := PhysicsRayQueryParameters2D.create(global_position, target_position, CHASE_OBSTACLE_MASK)
+	query.exclude = [get_rid()]
+	query.collide_with_areas = true
+	return get_world_2d().direct_space_state.intersect_ray(query).is_empty()
+
+
+func _rebuild_chase_path(target_position: Vector2) -> void:
+	chase_repath_timer = 0.25
+	chase_path = PackedVector2Array()
+	chase_path_index = 0
+
+	var grid := AStarGrid2D.new()
+	grid.region = Rect2i(Vector2i.ZERO, CHASE_GRID_SIZE)
+	grid.cell_size = Vector2.ONE * CHASE_CELL_SIZE
+	grid.offset = Vector2.ONE * CHASE_CELL_SIZE * 0.5
+	grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_ONLY_IF_NO_OBSTACLES
+	grid.update()
+
+	var query_shape := CircleShape2D.new()
+	query_shape.radius = min(get_collision_radius(), CHASE_CELL_SIZE * 0.45)
+	var space_state := get_world_2d().direct_space_state
+	for y in CHASE_GRID_SIZE.y:
+		for x in CHASE_GRID_SIZE.x:
+			var cell := Vector2i(x, y)
+			var query := PhysicsShapeQueryParameters2D.new()
+			query.shape = query_shape
+			query.transform = Transform2D(0.0, grid.get_point_position(cell))
+			query.collision_mask = CHASE_OBSTACLE_MASK
+			query.exclude = [get_rid()]
+			query.collide_with_areas = true
+			if not space_state.intersect_shape(query, 1).is_empty():
+				grid.set_point_solid(cell, true)
+
+	var start_cell := _chase_cell_for_position(global_position)
+	var target_cell := _chase_cell_for_position(target_position)
+	grid.set_point_solid(start_cell, false)
+	grid.set_point_solid(target_cell, false)
+	chase_path = grid.get_point_path(start_cell, target_cell)
+	if chase_path.size() > 0:
+		chase_path_index = 1
+
+
+func _chase_cell_for_position(world_position: Vector2) -> Vector2i:
+	var cell := Vector2i(floor(world_position / CHASE_CELL_SIZE))
+	return Vector2i(
+		clampi(cell.x, 0, CHASE_GRID_SIZE.x - 1),
+		clampi(cell.y, 0, CHASE_GRID_SIZE.y - 1)
+	)
+
+
+func get_collision_radius() -> float:
+	var collision_shape := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if collision_shape == null or collision_shape.shape == null:
+		return 24.0
+	if collision_shape.shape is CircleShape2D:
+		return collision_shape.shape.radius * max(collision_shape.scale.x, collision_shape.scale.y)
+	if collision_shape.shape is RectangleShape2D:
+		return min(collision_shape.shape.size.x, collision_shape.shape.size.y) * 0.5
+	return 24.0
 
 
 func _ready():

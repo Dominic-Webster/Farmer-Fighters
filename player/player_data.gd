@@ -70,6 +70,7 @@ enum Bullets {
 @export var portobello : bool = false
 @export var backshot : bool = false
 @export var explosion : bool = false
+@export var orbit : bool = false
 @export var inverse_controls : bool = false
 
 # Companions

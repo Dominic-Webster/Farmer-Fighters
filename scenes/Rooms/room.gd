@@ -13,6 +13,7 @@ class_name Room
 
 var heart_scene : PackedScene = preload("res://PickUps/Heart/Heart.tscn")
 var avacado_scene : PackedScene = preload("res://PickUps/Avacado/Avacado.tscn")
+const FLOOR7_WIRE_SCENE_PATH := "res://Enemies/Floor6/Wire/Wire.tscn"
 const PICKUP_SPAWN_OFFSET := Vector2(0, -48)
 const AVACADO_REPLACEMENT_CHANCE := 4
 
@@ -160,6 +161,7 @@ func load_enemies(_player_spawn : String) -> void:
 		return
 	
 	var spawn_points = get_spawn_points(_player_spawn)
+	var occupied_spawn_points: Array = []
 	for spawn in spawn_points:
 		if RunManager.rng.randi_range(1, 3) == 1 and enemy_count < enemy_limit:
 			var scene_path = enemy_pool[RunManager.rng.randi() % enemy_pool.size()]
@@ -169,6 +171,7 @@ func load_enemies(_player_spawn : String) -> void:
 			if enemy_count + enemy.weight <= enemy_limit:
 				add_child(enemy)
 				enemy_count += enemy.weight
+				occupied_spawn_points.append(spawn)
 				enemy.died.connect(func(): _on_enemy_died(enemy))
 	
 	# load one enemy just in case
@@ -179,7 +182,44 @@ func load_enemies(_player_spawn : String) -> void:
 		enemy.global_position = spawn_points[0].global_position
 		add_child(enemy)
 		enemy_count += enemy.weight
+		occupied_spawn_points.append(spawn_points[0])
 		enemy.died.connect(func(): _on_enemy_died(enemy))
+
+	_spawn_floor7_wires(spawn_points, occupied_spawn_points)
+
+
+func _spawn_floor7_wires(spawn_points: Array, occupied_spawn_points: Array) -> void:
+	if RunManager.current_floor != 7:
+		return
+
+	if spawn_points.is_empty():
+		return
+
+	var wire_scene = load(FLOOR7_WIRE_SCENE_PATH)
+	if wire_scene == null:
+		return
+
+	var available_spawn_points: Array = []
+	for spawn in spawn_points:
+		if not occupied_spawn_points.has(spawn):
+			available_spawn_points.append(spawn)
+
+	if available_spawn_points.is_empty():
+		return
+
+	var wire_limit = min(4, available_spawn_points.size())
+	var wire_count = RunManager.rng.randi_range(0, wire_limit)
+
+	for _i in range(wire_count):
+		var spawn_index = RunManager.rng.randi() % available_spawn_points.size()
+		var spawn_point = available_spawn_points[spawn_index]
+		available_spawn_points.remove_at(spawn_index)
+
+		var wire = wire_scene.instantiate()
+		wire.global_position = spawn_point.global_position
+		add_child(wire)
+		enemy_count += wire.weight
+		wire.died.connect(func(): _on_enemy_died(wire))
 
 
 func spawn_explosion_effect(explosion: Node) -> void:

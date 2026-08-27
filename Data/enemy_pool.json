@@ -44,4 +44,10 @@
 		"res://Enemies/Floor6/Turret3/Turret3.tscn",
 		"res://Enemies/Floor6/Saw_Turret/Saw_Turret.tscn"
 	],
+	"7": [
+		"res://Enemies/Floor6/Turret/Turret.tscn",
+		"res://Enemies/Floor6/Turret2/Turret2.tscn",
+		"res://Enemies/Floor6/Turret3/Turret3.tscn",
+		"res://Enemies/Floor6/Saw_Turret/Saw_Turret.tscn",
+	],
 }

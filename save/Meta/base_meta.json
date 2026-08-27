@@ -4,6 +4,7 @@
 	"dash_count": 0,
 	"player_deaths": 0,
 	"pickup_counts": {
+		"apple": 0,
 		"broccoli": 0,
 		"salsa": 0,
 		"water": 0,
@@ -22,6 +23,7 @@
 		"good_soil": false,
 		"da pickle": false,
 		"straw_hat": false,
+		"mango": false,
 		"pear": false,
 		"pumpkin": false,
 		"tomatillo": false,

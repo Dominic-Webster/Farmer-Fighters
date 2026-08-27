@@ -68,6 +68,7 @@
 		"res://Items/Uncommon/Zucchini/Zucchini.tscn"
 	],
 	"rare": [
+		"res://Items/Rare/Blackberry/Blackberry.tscn",
 		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn",
 		"res://Items/Rare/Chicken_Item/Chicken_Item.tscn",
 		"res://Items/Rare/Gourd/Gourd.tscn"
