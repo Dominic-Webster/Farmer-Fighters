@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brt5i6rbyj1a6" path="res://Items/Common/Acorn/acorn.gd" id="1_eeoor"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_k1yeb"]
-[ext_resource type="Texture2D" uid="uid://cu5cf0xsn32mt" path="res://Items/Common/Acorn/acorn.png" id="3_740jj"]
+[ext_resource type="Texture2D" uid="uid://blx3dpm8k5jrh" path="res://Items/Common/Acorn/acorn.png" id="3_fahve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqf6s"]
 size = Vector2(109, 120)
@@ -74,13 +74,13 @@ script = ExtResource("1_eeoor")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=473109748]
 modulate = Color(1, 1, 1, 0.5882353)
-position = Vector2(0, 70)
+position = Vector2(0, 55)
 scale = Vector2(4, 4)
 texture = ExtResource("2_k1yeb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=987189565]
-scale = Vector2(5, 5)
-texture = ExtResource("3_740jj")
+scale = Vector2(7, 7)
+texture = ExtResource("3_fahve")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1767069926]
 collision_layer = 32

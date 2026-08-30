@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_01gdx"]
 [ext_resource type="Script" uid="uid://bkkyn2mqeqoum" path="res://Items/Common/Green_Bean/green_bean.gd" id="1_b1f5h"]
-[ext_resource type="Texture2D" uid="uid://ph0oynfonrw4" path="res://Items/Common/Green_Bean/green_bean.png" id="2_b1f5h"]
+[ext_resource type="Texture2D" uid="uid://cjnyy1yaggxq4" path="res://Items/Common/Green_Bean/green_bean.png" id="3_f2moy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ow4hg"]
-size = Vector2(74, 119)
+size = Vector2(99, 119)
 
 [sub_resource type="Animation" id="Animation_ow4hg"]
 length = 0.001
@@ -74,18 +74,19 @@ script = ExtResource("1_b1f5h")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=947905995]
 modulate = Color(1, 1, 1, 0.5882353)
-position = Vector2(0, 50)
-scale = Vector2(3, 3)
+position = Vector2(0, 60)
+scale = Vector2(3.5, 3.5)
 texture = ExtResource("1_01gdx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=345650502]
 scale = Vector2(7, 7)
-texture = ExtResource("2_b1f5h")
+texture = ExtResource("3_f2moy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1268092718]
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=725023207]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_ow4hg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=15242472]
