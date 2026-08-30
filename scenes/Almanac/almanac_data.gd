@@ -70,7 +70,7 @@ const ITEM_ENTRIES := [
 		"id": "eggplant",
 		"name": "Eggplant",
 		"desc": "More Bullets\n0.05 Fire Rate Buff",
-		"texture": preload("res://Items/Common/Eggplant/Eggplant.png"),
+		"texture": preload("res://Items/Common/Eggplant/egg_plant.png"),
 		"category": "common"
 	},
 	{
