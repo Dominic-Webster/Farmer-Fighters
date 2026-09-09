@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfubkg2426icd"]
 
 [ext_resource type="Script" uid="uid://dbs4n2vk7brrv" path="res://GUI/Player_HUD/heart_gui.gd" id="1_r8rx1"]
-[ext_resource type="Texture2D" uid="uid://crkqead1q8ka1" path="res://GUI/Player_HUD/Tomato_health.png" id="2_s2x5a"]
+[ext_resource type="Texture2D" uid="uid://3nknonypyio2" path="res://GUI/Player_HUD/Carrot_Heart.png" id="2_s2x5a"]
 
 [node name="HeartGui" type="Control" unique_id=801388645]
 modulate = Color(1, 1, 1, 0.88235295)
@@ -14,8 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_r8rx1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942648599]
-scale = Vector2(2.5, 2.5)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_s2x5a")
 centered = false
-hframes = 2
-vframes = 2
+hframes = 9

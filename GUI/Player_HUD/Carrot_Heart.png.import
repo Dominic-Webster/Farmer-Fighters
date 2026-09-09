@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crkqead1q8ka1"
-path="res://.godot/imported/Tomato_health.png-c9d25d4b0ba5117e01b9dacda191f3cf.ctex"
+uid="uid://3nknonypyio2"
+path="res://.godot/imported/Carrot_Heart.png-6e8f7ac0f0427c888e6bff338a4e618d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Player_HUD/Tomato_health.png"
-dest_files=["res://.godot/imported/Tomato_health.png-c9d25d4b0ba5117e01b9dacda191f3cf.ctex"]
+source_file="res://GUI/Player_HUD/Carrot_Heart.png"
+dest_files=["res://.godot/imported/Carrot_Heart.png-6e8f7ac0f0427c888e6bff338a4e618d.ctex"]
 
 [params]
 
