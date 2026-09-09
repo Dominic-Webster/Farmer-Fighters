@@ -274,10 +274,10 @@ func _reconcile_character_unlocks(pickup_counts: Dictionary) -> void:
 	if companion_pickups >= 3:
 		_set_character_unlocked("old_mac")
 	
-	if int(meta_data.get("dash_count", 0)) >= 500:
+	if int(meta_data.get("dash_count", 0)) >= 300:
 		_set_character_unlocked("aunt_em")
 	
-	if int(meta_data.get("player_deaths", 0)) >= 50:
+	if int(meta_data.get("player_deaths", 0)) >= 25:
 		_set_character_unlocked("napoleon")
 	
 	if int(pickup_counts.get("shovel", 0)) >= 5:

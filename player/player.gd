@@ -631,6 +631,8 @@ func _on_hurt_box_area_entered(area) -> void:
 			take_damage(enemy.damage)
 		else:
 			take_damage(1)
+		if "on_player_damaged" in enemy:
+			enemy.on_player_damaged()
 		
 		if area.is_in_group("enemy_bullet"):
 			area.queue_free()

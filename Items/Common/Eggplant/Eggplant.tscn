@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_ridtc"]
 [ext_resource type="Script" uid="uid://nktfa8xmuniq" path="res://Items/Common/Eggplant/eggplant.gd" id="1_rwuye"]
-[ext_resource type="Texture2D" uid="uid://fivvn1m5ffug" path="res://Items/Common/Eggplant/egg_plant.png" id="3_gar5u"]
+[ext_resource type="Texture2D" uid="uid://bqxqeoh1p4rvh" path="res://Items/Common/Eggplant/egg_plant.png" id="3_gar5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2bg1"]
 size = Vector2(92, 88)
