@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://h1pvntjsi82l"]
 
-[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="1_0k62m"]
-[ext_resource type="Script" uid="uid://d0i5gfvsdmcni" path="res://Items/Common/Carrot/carrot.gd" id="1_5hdhu"]
-[ext_resource type="Texture2D" uid="uid://cs1ovwk54sky1" path="res://Items/Common/Carrot/Carrot.png" id="3_3h77r"]
+[ext_resource type="Script" uid="uid://d0i5gfvsdmcni" path="res://Items/Common/Tomato/tomato.gd" id="1_jlst3"]
+[ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_d4pxg"]
+[ext_resource type="Texture2D" uid="uid://c0pgs304kol3j" path="res://Items/Common/Tomato/Tomato.png" id="3_ipn8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqrw"]
-size = Vector2(39, 119.5)
+size = Vector2(70, 80)
 
 [sub_resource type="Animation" id="Animation_0k62m"]
 resource_name = "hover"
@@ -41,19 +41,18 @@ _data = {
 &"hover": SubResource("Animation_0k62m")
 }
 
-[node name="Carrot" type="Node2D" unique_id=1971716887]
-script = ExtResource("1_5hdhu")
+[node name="Tomato" type="Node2D" unique_id=1971716887]
+script = ExtResource("1_jlst3")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1230841691]
 modulate = Color(1, 1, 1, 0.5882353)
 position = Vector2(0, 50)
 scale = Vector2(3, 3)
-texture = ExtResource("1_0k62m")
+texture = ExtResource("2_d4pxg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1095562804]
-scale = Vector2(4, 4)
-texture = ExtResource("3_3h77r")
-flip_v = true
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_ipn8i")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1139872505]
 collision_layer = 32

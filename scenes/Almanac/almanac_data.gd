@@ -53,13 +53,6 @@ const ITEM_ENTRIES := [
 		"category": "common"
 	},
 	{
-		"id": "carrot",
-		"name": "Carrot",
-		"desc": "Hearts become Carrots",
-		"texture": preload("res://Items/Common/Carrot/Carrot.png"),
-		"category": "common"
-	},
-	{
 		"id": "cauliflower",
 		"name": "Cauliflower",
 		"desc": "+1 Damage",
@@ -218,6 +211,13 @@ const ITEM_ENTRIES := [
 		"name": "Tomatillo",
 		"desc": "Extra Bullet",
 		"texture": preload("res://Items/Unlocks/Tomatillo/tomatillo.png"),
+		"category": "common"
+	},
+	{
+		"id": "tomato",
+		"name": "Tomato",
+		"desc": "Hearts become Tomatoes",
+		"texture": preload("res://Items/Common/Tomato/Tomato.png"),
 		"category": "common"
 	},
 	{

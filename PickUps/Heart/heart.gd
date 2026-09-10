@@ -8,12 +8,12 @@ var health : int = 2
 func _ready() -> void:
 	add_to_group("pickup")
 	area2d.body_entered.connect(_on_body_entered)
-	if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
+	if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO:
 		health = 3
-		sprite.texture = load("res://GUI/Player_HUD/carrot_health.png")
-		sprite.vframes = 2
-		sprite.hframes = 2
-		sprite.frame = 3
+		sprite.texture = load("res://GUI/Player_HUD/Tomato_Heart.png")
+		sprite.vframes = 1
+		sprite.hframes = 7
+		sprite.frame = 0
 
 
 func _on_body_entered(_body) -> void:

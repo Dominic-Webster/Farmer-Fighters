@@ -11,7 +11,7 @@ func get_item_desc() -> String:
 
 func _ready() -> void:
 	super._ready()
-	if RunManager.player.current_heart == RunManager.player.Hearts.CARROT:
+	if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO:
 		health_boost = 3
 
 

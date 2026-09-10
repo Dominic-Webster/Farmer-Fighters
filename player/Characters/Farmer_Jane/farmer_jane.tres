@@ -14,6 +14,5 @@ fire_rate = 1.2
 bullet_speed = 650.0
 accuracy = Vector2(-0.03, 0.03)
 explosion_damage = 3.0
-starting_heart = 1
 starting_bullet = 1
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"

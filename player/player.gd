@@ -47,22 +47,22 @@ var dash_damage : float = 0
 var dash_cooldown_time: float = 0.5
 
 enum Hearts {
-	TOMATO,
-	CARROT
+	CARROT,
+	TOMATO
 }
 
 # Returns the health value per heart type
 func get_heart_value() -> int:
 	match current_heart:
-		Hearts.TOMATO:
-			return 2
 		Hearts.CARROT:
+			return 2
+		Hearts.TOMATO:
 			return 3
 		_:
 			return 2
 
 
-var current_heart : Hearts = Hearts.TOMATO
+var current_heart : Hearts = Hearts.CARROT
 var current_health : int = 0
 var temp_health : int = 0
 
@@ -786,13 +786,13 @@ func add_temp_health(amount : int) -> void:
 	healed.emit()
 
 
-func upgrade_hearts_to_carrot():
-	if current_heart != Hearts.CARROT:
+func upgrade_hearts_to_tomato():
+	if current_heart != Hearts.TOMATO:
 		var old_heart_value = 2
 		var new_heart_value = 3
 		var old_health = current_health
 		var old_max_health = num_hearts * old_heart_value
-		current_heart = Hearts.CARROT
+		current_heart = Hearts.TOMATO
 		var health_ratio = float(old_health) / float(old_max_health)
 		current_health = int(round(health_ratio * (num_hearts * new_heart_value)))
 		update_hp()

@@ -11,7 +11,7 @@ enum DisplayKind {
 var heart_num : int = 2
 
 var value : int = 2
-var heart_type : int = 0 # 0 = TOMATO, 1 = CARROT
+var heart_type : int = 0 # 0 = CARROT, 1 = TOMATO
 var display_kind : DisplayKind = DisplayKind.BASE
 var has_displayed_value := false
 var damage_animation_id := 0
@@ -52,29 +52,30 @@ func update_sprite() -> void:
 		return
 
 	match RunManager.player.current_heart:
-		RunManager.player.Hearts.TOMATO:
+		RunManager.player.Hearts.CARROT:
 			tex = preload("res://GUI/Player_HUD/Carrot_Heart.png")
 			_scale = 1.5
-		RunManager.player.Hearts.CARROT:
-			tex = preload("res://GUI/Player_HUD/carrot_health.png")
-			_scale = 4
-	if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO:
-		sprite.hframes = 9
-		sprite.vframes = 1
-	else:
-		sprite.hframes = 2
-		sprite.vframes = 2
+			sprite.hframes = 9
+			sprite.vframes = 2
+		RunManager.player.Hearts.TOMATO:
+			tex = preload("res://GUI/Player_HUD/Tomato_Heart.png")
+			_scale = 1.5
+			sprite.hframes = 7
+			sprite.vframes = 1
 	if sprite.texture != tex:
 		sprite.texture = tex
 		sprite.scale = Vector2(_scale, _scale)
-	sprite.frame = (2 - value) * 2 if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO else value
+	sprite.frame = (3 - value) * 2 if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO else (2 - value) * 2
 	sprite.visible = true
 
 
 func play_damage_animation(previous_value: int) -> void:
 	damage_animation_id += 1
 	var animation_id := damage_animation_id
-	sprite.frame = 1 if previous_value >= 2 else 3
+	if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO:
+		sprite.frame = (3 - previous_value) * 2 + 1
+	else:
+		sprite.frame = (2 - previous_value) * 2 + 1
 	await get_tree().create_timer(0.12).timeout
 	if animation_id == damage_animation_id:
-		sprite.frame = (2 - value) * 2
+		sprite.frame = (3 - value) * 2 if RunManager.player.current_heart == RunManager.player.Hearts.TOMATO else (2 - value) * 2

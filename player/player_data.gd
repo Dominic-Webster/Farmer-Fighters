@@ -29,11 +29,11 @@ class_name PlayerData
 @export var dash_cooldown_time: float = 0.5
 
 enum Hearts {
-	TOMATO,
-	CARROT
+	CARROT,
+	TOMATO
 }
 
-@export var starting_heart : Hearts = Hearts.TOMATO
+@export var starting_heart : Hearts = Hearts.CARROT
 
 enum Bullets {
 	TOMATO,

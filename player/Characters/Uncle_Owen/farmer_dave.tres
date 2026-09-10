@@ -10,6 +10,7 @@ spritesheet = ExtResource("2_hlrp8")
 fire_rate = 0.4
 bullet_speed = 700.0
 dash_speed = 1500.0
+starting_heart = 1
 shovel_unlocked = true
 shovel_damage = 6.0
 garden_fork_damage = 7.0

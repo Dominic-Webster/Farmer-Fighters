@@ -12,4 +12,5 @@ fire_rate = 0.35
 dash_unlocked = true
 dash_speed = 3000.0
 dash_damage = 1.0
+starting_heart = 1
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"

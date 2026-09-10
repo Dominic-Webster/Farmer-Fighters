@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://taw2nmfgoo1d" path="res://PickUps/Heart/heart.gd" id="1_4qmb0"]
 [ext_resource type="Texture2D" uid="uid://ddhi4wr4aakr7" path="res://art_drop/shadow.png" id="2_sjkjb"]
-[ext_resource type="Texture2D" uid="uid://burxfocm1a4l8" path="res://Bullets/Tomato_Bullet/Tomato.png" id="3_td21h"]
+[ext_resource type="Texture2D" uid="uid://3nknonypyio2" path="res://GUI/Player_HUD/Carrot_Heart.png" id="3_4qmb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wtrb"]
 size = Vector2(90, 77)
@@ -79,8 +79,10 @@ scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_sjkjb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=829554821]
-scale = Vector2(3, 3)
-texture = ExtResource("3_td21h")
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_4qmb0")
+hframes = 9
+vframes = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1950010320]
 collision_layer = 32

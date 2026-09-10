@@ -13,4 +13,5 @@ damage_mult = 3.0
 fire_rate = 0.275
 bullet_speed = 850.0
 explosion_damage = 2.5
+starting_heart = 1
 metadata/_custom_type_script = "uid://bsn7ulm18jpch"
